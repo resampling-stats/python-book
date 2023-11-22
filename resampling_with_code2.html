@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.51">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Resampling statistics - 7&nbsp; More resampling with code</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./probability_theory_1a.html" rel="next">
+<link href="./sampling_tools.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table").addClass('lightable-paper lightable-striped lightable-hover')
+  });
+</script>
+
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./resampling_with_code2.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Resampling statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_third.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_second.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_is_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about_technology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introducing Python and the Jupyter notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more_sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_2_compound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_4_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monte_carlo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard_scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./point_estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framing_questions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_measured.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reliability_average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_big_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-question-of-life-and-death" id="toc-a-question-of-life-and-death" class="nav-link active" data-scroll-target="#a-question-of-life-and-death"><span class="header-section-number">7.1</span> A question of life and death</a></li>
+  <li><a href="#a-small-disparity-and-a-hypothetical-world" id="toc-a-small-disparity-and-a-hypothetical-world" class="nav-link" data-scroll-target="#a-small-disparity-and-a-hypothetical-world"><span class="header-section-number">7.2</span> A small disparity and a hypothetical world</a></li>
+  <li><a href="#designing-the-experiment" id="toc-designing-the-experiment" class="nav-link" data-scroll-target="#designing-the-experiment"><span class="header-section-number">7.3</span> Designing the experiment</a>
+  <ul class="collapse">
+  <li><a href="#one-trial" id="toc-one-trial" class="nav-link" data-scroll-target="#one-trial"><span class="header-section-number">7.3.1</span> One trial</a></li>
+  <li><a href="#using-code-to-simulate-a-trial" id="toc-using-code-to-simulate-a-trial" class="nav-link" data-scroll-target="#using-code-to-simulate-a-trial"><span class="header-section-number">7.3.2</span> Using code to simulate a trial</a></li>
+  <li><a href="#sec-random-zero-through-ninety-nine" id="toc-sec-random-zero-through-ninety-nine" class="nav-link" data-scroll-target="#sec-random-zero-through-ninety-nine"><span class="header-section-number">7.3.3</span> Random numbers from 0 through 99</a></li>
+  </ul></li>
+  <li><a href="#three-simulation-steps" id="toc-three-simulation-steps" class="nav-link" data-scroll-target="#three-simulation-steps"><span class="header-section-number">7.4</span> Three simulation steps</a>
+  <ul class="collapse">
+  <li><a href="#repeating-trials" id="toc-repeating-trials" class="nav-link" data-scroll-target="#repeating-trials"><span class="header-section-number">7.6.1</span> Repeating trials</a></li>
+  <li><a href="#sec-for-loops" id="toc-sec-for-loops" class="nav-link" data-scroll-target="#sec-for-loops"><span class="header-section-number">7.6.2</span> For-loops in Python</a></li>
+  <li><a href="#sec-for-range" id="toc-sec-for-range" class="nav-link" data-scroll-target="#sec-for-range"><span class="header-section-number">7.6.3</span> <code>range</code> in Python <code>for</code> loops</a></li>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together"><span class="header-section-number">7.6.4</span> Putting it all together</a></li>
+  </ul></li>
+  <li><a href="#many-many-trials" id="toc-many-many-trials" class="nav-link" data-scroll-target="#many-many-trials"><span class="header-section-number">7.7</span> Many many trials</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7.8</span> Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-resampling-two" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><a href="resampling_with_code.html" class="quarto-xref"><span>Chapter&nbsp;5</span></a> introduced a problem in probability, that was also a problem in statistics. We asked how surprised we should be at the results of a trial of a new cancer treatment regime.</p>
+<p>Here we study another urgent problem in the real world - racial bias and the death penalty.</p>
+<section id="a-question-of-life-and-death" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="a-question-of-life-and-death"><span class="header-section-number">7.1</span> A question of life and death</h2>
+<p>This example comes from the excellent Berkeley introduction to data science <span class="citation" data-cites="adhikari2021data8">(<a href="references.html#ref-adhikari2021data8" role="doc-biblioref">Ani Adhikari and Wagner 2021</a>)</span>.</p>
+<p>Robert Swain was a young black man who was sentenced to death in the early 60s. Swain’s trial was held in Talladega County, Alabama. At the time, 26% of the eligible jurors in that county were black, but every member of Swain’s jury was white. Swain and his legal team appealed to the Alabama Supreme Court, and then to the <a href="https://en.wikipedia.org/wiki/Swain_v._Alabama">US Supreme Court</a>, arguing that there was racial bias in the jury selection. They noted that there had been no black jurors in Talladega county since 1950, even though they made up about a quarter of the eligible pool of jurors. The US Supreme Court rejected this argument, in a 6 to 3 opinion, writing that “The overall percentage disparity has been small and reflects no studied attempt to include or exclude a specified number of Negros.”.</p>
+<p>Swain’s team presented a variety of evidence on bias in jury selection, but here we will look at the obvious and apparently surprising fact that Swain’s jury was entirely white. The Supreme Court decided that the “disparity” between selection of white and black jurors “has been small” — but how would they, and how would we, make a rational decision about whether this disparity <em>really</em> was “small”?</p>
+<p>You might reasonably be worried about the result of this decision for Robert Swain. In fact his death sentence was invalidated by a <a href="https://en.wikipedia.org/wiki/Furman_v._Georgia">later, unrelated decision</a> and he served a long prison sentence instead. In 1986, the Supreme Court overturned the precedent set by Swain’s case, in <a href="https://supreme.justia.com/cases/federal/us/476/79">Batson v. Kentucky, 476 U.S. 79</a>.</p>
+</section>
+<section id="a-small-disparity-and-a-hypothetical-world" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="a-small-disparity-and-a-hypothetical-world"><span class="header-section-number">7.2</span> A small disparity and a hypothetical world</h2>
+<p>To answer the question that the Supreme Court asked, we return to the method we used in the last chapter.</p>
+<p>Let us imagine a hypothetical world, in which each individual black or white person had an equal chance of being selected for the jury. Call this world Hypothetical County, Alabama.</p>
+<p>Just as in 1960’s Talladega County, 26% of eligible jurors in Hypothetical County are black. Hypothetical County jury selection has no bias against black people, so we expect around 26% of the jury to be black. 0.26 * 12 = 3.12, so we expect that, on average, just over 3 out of 12 jurors in a Hypothetical County jury will be black. But, if we select each juror at random from the population, that means that, sometimes, by chance, we will have fewer than 3 black jurors, and sometimes will have more than 3 black jurors. And, by chance, sometimes we will have no black jurors. But, if the jurors really are selected at random, how often would we expect this to happen — that there are no black jurors? We would like to estimate the <em>probability</em> that we will get no black jurors. If that probability is small, then we have some evidence that the disparity in selection between black and white jurors, was not “small”.</p>
+<div class="question">
+<p>What is the probability of an <em>all white</em> jury being randomly selected out of a population having 26% black people?</p>
+</div>
+</section>
+<section id="designing-the-experiment" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="designing-the-experiment"><span class="header-section-number">7.3</span> Designing the experiment</h2>
+<p>Before we start, we need to figure out three things:</p>
+<ol type="1">
+<li>What do we mean by one trial?</li>
+<li>What is the outcome of interest from the trial?</li>
+<li>How do we simulate one trial?</li>
+</ol>
+<p>We then take <strong>three steps</strong> to calculate the desired probability:</p>
+<ol type="1">
+<li><em>Repeat</em> the simulated trial procedure N times.</li>
+<li><em>Count</em> M, the number of trials with an outcome that matches the outcome we are interested in.</li>
+<li>Calculate the <em>proportion</em>, M/N. This is an estimate of the probability in question.</li>
+</ol>
+<p>For this problem, our task is made a little easier by the fact that our <em>trial</em> (in the resampling sense) is a simulated <em>trial</em> (in the legal sense). One trial requires 12 simulated jurors, each labeled by race (white or black).</p>
+<p>The outcome we are interested in is the number of black jurors.</p>
+<p>Now comes the harder part. How do we simulate one trial?</p>
+<section id="one-trial" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="one-trial"><span class="header-section-number">7.3.1</span> One trial</h3>
+<p>One trial requires 12 jurors, and we are interested only in the race of each juror. In Hypothetical County, where selection by race is entirely random, each juror has a 26% chance of being black.</p>
+<p>We need a way of simulating a 26% chance.</p>
+<p>One way of doing this is by getting a random number from 0 through 99 (inclusive). There are 100 numbers in the range 0 through 99 (inclusive).</p>
+<p>We will arbitrarily say that the juror is white if the random number is in the range from 0 through 73. 74 of the 100 numbers are in this range, so the juror has a 74/100 = 74% chance of getting the label “white”. We will say the juror is black if the random number is in the range 74 though 99. There are 26 such numbers, so the juror has a 26% chance of getting the label “black”.</p>
+<p>Next we need a way of getting a random number in the range 0 through 99. This is an easy job for the computer, but if we had to do this with a physical device, we could get a single number by throwing <em>two</em> 10-sided dice, say a blue die and a green die. The face of the blue die will be the 10s digit, and the green face will be the ones digit. So, if the blue die comes up with 8 and the green die has 4, then the random number is 84.</p>
+<p>We could then simulate 12 jurors by repeating this process 12 times, each time writing down “white” if the number is from 0 through 74, and “black” otherwise. The trial outcome is the number of times we wrote “black” for these 12 simulated jurors.</p>
+</section>
+<section id="using-code-to-simulate-a-trial" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="using-code-to-simulate-a-trial"><span class="header-section-number">7.3.2</span> Using code to simulate a trial</h3>
+<p>We use the same logic to simulate a trial with the computer. A little code makes the job easier, because we can ask Python to give us 12 random numbers from 0 through 99, and to count how many of these numbers are in the range from 75 through 99. Numbers in the range from 75 through 99 correspond to black jurors.</p>
+</section>
+<section id="sec-random-zero-through-ninety-nine" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="sec-random-zero-through-ninety-nine"><span class="header-section-number">7.3.3</span> Random numbers from 0 through 99</h3>
+<p>We can now use NumPy and <span class="python">the random number functions</span> from the last chapter to get 12 random numbers from 0 through 99.</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-1_27d750adcc29ad63bc14d192144da233">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the Numpy library, rename as "np"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask NumPy for a random number generator.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># All the integers from 0 up to, but not including 100.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>zero_thru_99 <span class="op">=</span> np.arange(<span class="dv">100</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Get 12 random numbers from 0 through 99</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> rnd.choice(zero_thru_99, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([59, 43, 45, 58, 95, 89, 23, 99, 17, 51, 85, 23])</code></pre>
+</div>
+</div>
+<section id="counting-the-jurors" class="level4" data-number="7.3.3.1">
+<h4 data-number="7.3.3.1" class="anchored" data-anchor-id="counting-the-jurors"><span class="header-section-number">7.3.3.1</span> Counting the jurors</h4>
+<p>We use <em>comparison</em> and <span class="python"><code>np.sum</code></span> to count how many numbers are greater than 74, and therefore, in the range from 75 through 99:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-3_ebaf3402f3a2f7c152e9961421ec6277">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many numbers are greater than 74?</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">&gt;</span> <span class="dv">74</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4</code></pre>
+</div>
+</div>
+</section>
+<section id="a-single-simulated-trial" class="level4" data-number="7.3.3.2">
+<h4 data-number="7.3.3.2" class="anchored" data-anchor-id="a-single-simulated-trial"><span class="header-section-number">7.3.3.2</span> A single simulated trial</h4>
+<p>We assemble the pieces from the last few sections to make a cell that simulates a single trial:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-5_ec50777ae5fc77ab49c22bad5b8cc723">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>zero_thru_99 <span class="op">=</span> np.arange(<span class="dv">100</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get 12 random numbers from 0 through 99</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> rnd.choice(zero_thru_99, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># How many numbers are greater than 74?</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">&gt;</span> <span class="dv">74</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="three-simulation-steps" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="three-simulation-steps"><span class="header-section-number">7.4</span> Three simulation steps</h2>
+<p>Now we come back to the details of how we:</p>
+<ol type="1">
+<li>Repeat the simulated trial many times;</li>
+<li>record the results for each trial;</li>
+<li>calculate the required proportion as an estimate of the probability we seek.</li>
+</ol>
+<p>Repeating the trial many times is the job of the <code>for</code> loop, and we will come to that soon.</p>
+<p>In order to record the results, we will store each trial result in an array.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+More on arrays
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Since we will be working with arrays a lot, it is worth knowing more about them.</p>
+<p>A <span class="python">NumPy array</span> is a <em>container</em> that stores many elements of the same type. You have already seen, in <a href="resampling_method.html" class="quarto-xref"><span>Chapter&nbsp;2</span></a>, how we can create an array from a sequence of numbers using the <span class="python"><code>np.array</code></span> function.</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-7_2ef079bb74fea63ccfbc8dd205075f63">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make an array of numbers, store with the name "some_numbers".</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>some_numbers <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>])</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the value of "some_numbers"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>some_numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
+</div>
+</div>
+<p>Another way that we can create arrays is to use the <span class="python"><code>np.zeros</code></span> function to make a new array where all the elements are 0.</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-9_6e188b7660783528c165ed4afc95937a">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a new array containing 5 zeros.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># store with the name "z".</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.zeros(<span class="dv">5</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the value of "z"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([0., 0., 0., 0., 0.])</code></pre>
+</div>
+</div>
+<p>Notice the argument <code>5</code> to the <span class="python"><code>np.zeros</code></span> function. This tells the function how many zeros we want in the array that the function will return.</p>
+<section id="sec-array-length" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="sec-array-length"><span class="header-section-number">7.5</span> array length</h2>
+<p>The are various useful things we can do with this array container. One is to ask how many elements there are in the array container. We can use the <span class="python"><code>len</code></span> function to calculate the number of elements in an array:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-11_3265e48b1781352fae27bbf381488f40">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the number of elements in "z"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-array-indexing" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="sec-array-indexing"><span class="header-section-number">7.6</span> Indexing into arrays</h2>
+<p>Another thing we can do is <em>set</em> the value for a particular element in the array. To do this, we use square brackets following the array value, on the left hand side of the equals sign, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-13_26d75958d46e6f8214b32fbfd7f1c911">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the value of the *first* element in the array.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>z[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the new contents of the array.</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([99.,  0.,  0.,  0.,  0.])</code></pre>
+</div>
+</div>
+<p>Read the first line of code as “the element at position <span class="python">0</span> gets a value of 99”.</p>
+<div class="python">
+<p>Notice that the position number of the first element in the array is 0, and the position number of the second element is 1. Think of the position as an <em>offset</em> from the beginning of the array. The first element is at the beginning of the array, and so it is at offset (position) 0. This can be a little difficult to get used to at first, but you will find that thinking of the positions of offsets in this way soon starts to come naturally, and later you will also find that it helps you to avoid some common mistakes when using positions for getting and setting values.</p>
+</div>
+<p>For practice, let us also set the value of the third element in the array:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-15_9944416d4e174a221cc22514079854e5">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the value of the *third* element in the array.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>z[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">99</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the new contents of the array.</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([99.,  0., 99.,  0.,  0.])</code></pre>
+</div>
+</div>
+<p>Read the first code line above as as “set the value at position <span class="python">2</span> in the array to have the value 99”.</p>
+<p>We can also <em>get</em> the value of the element at a given position, using the same square-bracket notation:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-17_a171d8bf5631d367b09d2adcfb00390f">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the value of the *first* element in the array.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the value with name "v"</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> z[<span class="dv">0</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the value we got</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>99.0</code></pre>
+</div>
+</div>
+<p>Read the first code line here as “v gets the value at position <span class="python">0</span> in the array”.</p>
+<p>Using square brackets to get and set element values is called <em>indexing</em> into the array.</p>
+</section>
+</div>
+</div>
+<section id="repeating-trials" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="repeating-trials"><span class="header-section-number">7.6.1</span> Repeating trials</h3>
+<p>As a preview, let us now imagine that we want to do 50 simulated trials of Robert Swain’s jury in Hypothetical County. We will want to store the count for each trial, to give 50 counts.</p>
+<p>In order to do this, we make an array to hold the 50 counts. Call this array <code>z</code>.</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-19_9017dfac7a23b05e0dbd41b5541eee94">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An array to hold the 50 count values.</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.zeros(<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We could run a single trial to get a single simulated count. Here we just repeat the code cell you saw above. Notice that we can get a different result each time we run this code, because the numbers in <code>a</code> are <em>random</em> choices from the range 0 through 99, and different random numbers will give different counts.</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-21_70a1dda78104a3eba4f0cb890836585f">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>zero_thru_99 <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get 12 random numbers from 0 through 99</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> rnd.choice(zero_thru_99, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># How many numbers are greater than 74?</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">&gt;</span> <span class="dv">74</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4</code></pre>
+</div>
+</div>
+<p>Now we have the result of a single trial, we can store it as the first number in the <code>z</code> array:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-23_b00c846b8a289421e9f0136954956de1">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the single trial count as the first value in the "z" array.</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>z[<span class="dv">0</span>] <span class="op">=</span> b</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show all the values in the "z" array.</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([4., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])</code></pre>
+</div>
+</div>
+<p>Of course we could just keep doing this: run the cell corresponding to a trial, above, to get a new count, and then store it at the next position in the <code>z</code> array. For example, we could store the counts for the first three trials with:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-25_8aa9e3ce1dce5961a4ce0b717c03ba93">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First trial</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> rnd.choice(zero_thru_99, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">&gt;</span> <span class="dv">74</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the result at the first position in z</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember, the first position is offset 0.</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>z[<span class="dv">0</span>] <span class="op">=</span> b</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Second trial</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> rnd.choice(zero_thru_99, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">&gt;</span> <span class="dv">74</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the result at the second position in z</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>z[<span class="dv">1</span>] <span class="op">=</span> b</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Third trial</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> rnd.choice(zero_thru_99, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">&gt;</span> <span class="dv">74</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the result at the third position in z</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>z[<span class="dv">2</span>] <span class="op">=</span> b</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co"># And so on ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This would get terribly long and boring to type for 50 trials. Luckily computer code is very good at repeating the same procedure many times. For example, Python can do this using a <code>for</code> loop. You have already seen a preview of the <code>for</code> loop in <a href="resampling_method.html" class="quarto-xref"><span>Chapter&nbsp;2</span></a>. Here we dive into <code>for</code> loops in more depth.</p>
+</section>
+<section id="sec-for-loops" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="sec-for-loops"><span class="header-section-number">7.6.2</span> For-loops in Python</h3>
+<p>A for-loop is a way of asking Python to:</p>
+<ul>
+<li>Take a sequence of things, one by one, and</li>
+<li>Do the same task on each one.</li>
+</ul>
+<p>We often use this idea when we are trying to explain a repeating procedure. For example, imagine we wanted to explain what the supermarket checkout person does for the items in your shopping basket. You might say that they do this:</p>
+<blockquote class="blockquote">
+<p>For each item of shopping in your basket, they take the item off the conveyor belt, scan it, and put it on the other side of the till.</p>
+</blockquote>
+<p>You could also break this description up into bullet points with indentation, to say the same thing:</p>
+<ul>
+<li>For each item from your shopping basket, they:
+<ul>
+<li>Take the item off the conveyor belt.</li>
+<li>Scan the item.</li>
+<li>Put it on the other side of the till.</li>
+</ul></li>
+</ul>
+<p>Notice the logic; the checkout person is repeating the same procedure for each of a series of items.</p>
+<p>This is the logic of the <code>for</code> loop in Python. The procedure that Python repeats is called the <em>body of the for loop</em>. In the example of the checkout person above, the repeating procedure is:</p>
+<ul>
+<li>Take the item off the conveyor belt.</li>
+<li>Scan the item.</li>
+<li>Put it on the other side of the till.</li>
+</ul>
+<p>Now imagine we wanted to use Python to print out the year of birth for each of the authors for the third edition of this book:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Author</th>
+<th>Year of birth</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Julian Lincoln Simon</td>
+<td>1932</td>
+</tr>
+<tr class="even">
+<td>Matthew Brett</td>
+<td>1964</td>
+</tr>
+<tr class="odd">
+<td>Stéfan van der Walt</td>
+<td>1980</td>
+</tr>
+<tr class="even">
+<td>Ian Nimmo-Smith</td>
+<td>1944</td>
+</tr>
+</tbody>
+</table>
+<p>We want to see this output:</p>
+<pre><code>Author birth year is 1932
+Author birth year is 1964
+Author birth year is 1980
+Author birth year is 1944</code></pre>
+<p>Of course, we could just ask Python to print out these exact lines, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-27_183fa6292336cac1b1e3e1cf10ed6f0e">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Author birth year is 1932'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Author birth year is 1932</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Author birth year is 1964'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Author birth year is 1964</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Author birth year is 1980'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Author birth year is 1980</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Author birth year is 1944'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Author birth year is 1944</code></pre>
+</div>
+</div>
+<p>We might instead notice that we are repeating the same procedure for each of the four birth years, and decide to do the same thing using a <code>for</code> loop:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-29_c915f4220842c50f6ae4d047e916b633">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>author_birth_years <span class="op">=</span> np.array([<span class="dv">1932</span>, <span class="dv">1964</span>, <span class="dv">1980</span>, <span class="dv">1944</span>])</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># For each birth year</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> birth_year <span class="kw">in</span> author_birth_years:</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Repeat this procedure ...</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Author birth year is'</span>, birth_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Author birth year is 1932
+Author birth year is 1964
+Author birth year is 1980
+Author birth year is 1944</code></pre>
+</div>
+</div>
+<p>The <code>for</code> loop starts with a line where we tell it what items we want to repeat the procedure for:</p>
+<div class="python">
+<pre><code>for birth_year in author_birth_years:</code></pre>
+<p>This <em>initial line</em> of the <code>for</code> loop ends with a colon.</p>
+<p>The next thing in the <code>for</code> loop is the procedure Python should follow for each item. Python knows that the following lines are the procedure it should repeat, because the lines are <em>indented</em>. The <em>indented</em> lines are the <em>body of the for loop</em>.</p>
+</div>
+<p>The initial line of the <code>for</code> loop above tells Python that it should take <em>each item</em> in <code>author_birth_years</code>, one by one — first 1932, then 1964, then 1980, then 1944. For each of these numbers it will:</p>
+<ul>
+<li>Put the number into the variable <code>birth_year</code>, then</li>
+<li>Run the <span class="python">indented</span> code .</li>
+</ul>
+<p>Just as the person at the supermarket checkout takes each item in turn, for each iteration (repeat) of the <code>for</code> loop, <code>birth_year</code> gets a new value from the sequence in <code>author_birth_years</code>. <code>birth_year</code> is called the <em>loop variable</em>, because it is the variable that gets a new value each time we begin a new iteration of the <code>for</code> loop procedure. As for any variable in Python, we can call our loop variable anything we like. We used <code>birth_year</code> here, but we could have used <code>y</code> or <code>year</code> or some other name.</p>
+<p>Now you know what the <code>for</code> loop is doing, you can see that the <code>for</code> loop above is equivalent to the following code:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-31_3947e97b1b9ebf94c0cc149c73b8cc5b">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>birth_year <span class="op">=</span> <span class="dv">1932</span>  <span class="co"># Set the loop variable to contain the first value.</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Author birth year is'</span>, birth_year)  <span class="co"># Use it.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Author birth year is 1932</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>birth_year <span class="op">=</span> <span class="dv">1964</span>  <span class="co"># Set the loop variable to contain the next value.</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Author birth year is'</span>, birth_year)  <span class="co"># Use the second value.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Author birth year is 1964</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>birth_year <span class="op">=</span> <span class="dv">1980</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Author birth year is'</span>, birth_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Author birth year is 1980</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>birth_year <span class="op">=</span> <span class="dv">1944</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Author birth year is'</span>, birth_year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Author birth year is 1944</code></pre>
+</div>
+</div>
+<p>Writing the steps in the <code>for</code> loop out like this is called <em>unrolling</em> the loop. It can be a useful exercise to do this when you come across a <code>for</code> loop, in order to work through the logic of the loop. For example, you may want to write out the unrolled equivalent of the first couple of iterations, to see what the loop variable will be, and what will happen in the body of the loop.</p>
+<p>We often use <code>for</code> loops with ranges (see <a href="resampling_with_code.html#sec-ranges" class="quarto-xref"><span>Section&nbsp;5.9</span></a>). Here we use a loop to print out the numbers <span class="python">0 through 3</span>:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-33_395c718bce99e02a15f0d66b9f0eaabe">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> np.arange(<span class="dv">0</span>, <span class="dv">4</span>):</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The loop variable n is'</span>, n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The loop variable n is 0
+The loop variable n is 1
+The loop variable n is 2
+The loop variable n is 3</code></pre>
+</div>
+</div>
+<p>Notice that the range ended at <span class="python">(the number before)</span> 4, and that means we repeat the loop body 4 times. We can also use the loop variable value from the range as an <em>index</em>, to get or set the first, second, etc values from an array.</p>
+<p>For example, maybe we would like to show the author position <em>and</em> the author year of birth.</p>
+<p>Remember our author birth years:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-35_d033cb052a467e7290c6fd63d28cd658">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>author_birth_years</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([1932, 1964, 1980, 1944])</code></pre>
+</div>
+</div>
+<p>We can get (for example) the second author birth year with:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-37_c622ec574e78c53c7f5ad653acf94e64">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>author_birth_years[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1964</code></pre>
+</div>
+</div>
+<div class="python">
+<p>Remember, for Python, the first element is position 0, so the second element is position 1.</p>
+</div>
+<p>Using the combination of looping over a range, and array indexing, we can print out the author position <em>and</em> the author birth year:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-39_91fe6e185fc0c39837c7557a5b758834">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> np.arange(<span class="dv">0</span>, <span class="dv">4</span>):</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> author_birth_years[n]</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Birth year of author position'</span>, n, <span class="st">'is'</span>, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Birth year of author position 0 is 1932
+Birth year of author position 1 is 1964
+Birth year of author position 2 is 1980
+Birth year of author position 3 is 1944</code></pre>
+</div>
+</div>
+<div class="python">
+<p>Again, remember Python considers 0 as the first position.</p>
+</div>
+<p>Just for practice, let us unroll the first two iterations through this <code>for</code> loop, to remind ourselves what the code is doing:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-41_78640251a73841460e1e77d2c1d6c350">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unrolling the for loop.</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>year <span class="op">=</span> author_birth_years[n]  <span class="co"># Will be 1932</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Birth year of author position'</span>, n, <span class="st">'is'</span>, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Birth year of author position 0 is 1932</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>year <span class="op">=</span> author_birth_years[n]  <span class="co"># Will be 1964</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Birth year of author position'</span>, n, <span class="st">'is'</span>, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Birth year of author position 1 is 1964</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And so on.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sec-for-range" class="level3 python" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="sec-for-range"><span class="header-section-number">7.6.3</span> <code>range</code> in Python <code>for</code> loops</h3>
+<p>So far we have used <code>np.arange</code> to give us the sequence of integers that we feed into the <code>for</code> loop. But — as you saw in <a href="resampling_with_code.html#sec-python-range" class="quarto-xref"><span>Section&nbsp;5.10</span></a> — we can also get a range of numbers from Python’s <code>range</code> function. <code>range</code> is a common and useful alternative way to provide a range of numbers to a <code>for</code> loop.</p>
+<p>You have just seen how we would use <code>np.arange</code> to send the numbers 0, 1, 2, and 3 to a <code>for</code> loop, in the example above, repeated here:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-43_d6de7f21555bb0e35413755e7e59aa53">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> np.arange(<span class="dv">0</span>, <span class="dv">4</span>):</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> author_birth_years[n]</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Birth year of author position'</span>, n, <span class="st">'is'</span>, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Birth year of author position 0 is 1932
+Birth year of author position 1 is 1964
+Birth year of author position 2 is 1980
+Birth year of author position 3 is 1944</code></pre>
+</div>
+</div>
+<p>We could also use <code>range</code> instead of <code>np.arange</code> to do the same task:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-44_28adf1001f6e3979862e0eeb827cbd40">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">4</span>):</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    year <span class="op">=</span> author_birth_years[n]</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Birth year of author position'</span>, n, <span class="st">'is'</span>, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Birth year of author position 0 is 1932
+Birth year of author position 1 is 1964
+Birth year of author position 2 is 1980
+Birth year of author position 3 is 1944</code></pre>
+</div>
+</div>
+<p>In fact, you will see this pattern throughout the book, where we use <code>for</code> statements like <code>for value in range(10000):</code> to ask Python to put each number in the range 0 up to (not including) 100000 into the variable <code>value</code>, and then do something in the body of the loop. Just to be clear, we could always, and almost as easily, write <code>for value in np.range(10000):</code> to do the same task. But — even though we could use <code>np.arange</code> to get an array of numbers, we generally prefer <code>range</code> in our Python <code>for</code> loops, because it is just a little less typing (without the <code>np.a</code> of <code>np.arange</code>, and because it is a more common pattern in standard Python code.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="putting-it-all-together" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="putting-it-all-together"><span class="header-section-number">7.6.4</span> Putting it all together</h3>
+<p>Here is the code we worked out above, to implement a single trial:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-45_67aac74424aa533e4e8ca43079cc0a21">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>zero_thru_99 <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get 12 random numbers from 0 through 99</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> rnd.choice(zero_thru_99, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co"># How many numbers are greater than 74?</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">&gt;</span> <span class="dv">74</span>)</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4</code></pre>
+</div>
+</div>
+<p>We found that we could use arrays to store the results of these trials, and that we could use <code>for</code> loops to repeat the same procedure many times.</p>
+<p>Now we can put these parts together to do 50 simulated trials:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-47_11e99d6e01063e94ed670f4870886b00">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Procedure for 50 simulated trials.</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The Numpy random number generator.</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="co"># All the numbers from 0 through 99.</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>zero_through_99 <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="co"># An array to store the counts for each trial.</span></span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.zeros(<span class="dv">50</span>)</span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat the trial procedure 50 times.</span></span>
+<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">0</span>, <span class="dv">50</span>):</span>
+<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get 12 random numbers from 0 through 99</span></span>
+<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> rnd.choice(zero_through_99, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb64-16"><a href="#cb64-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># How many numbers are greater than 74?</span></span>
+<span id="cb64-17"><a href="#cb64-17" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">&gt;</span> <span class="dv">74</span>)</span>
+<span id="cb64-18"><a href="#cb64-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Store the result at the next position in the "z" array.</span></span>
+<span id="cb64-19"><a href="#cb64-19" aria-hidden="true" tabindex="-1"></a>    z[i] <span class="op">=</span> b</span>
+<span id="cb64-20"><a href="#cb64-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Now go back and do the next trial until finished.</span></span>
+<span id="cb64-21"><a href="#cb64-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of all 50 trials.</span></span>
+<span id="cb64-22"><a href="#cb64-22" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([4., 2., 3., 3., 4., 1., 4., 2., 7., 2., 3., 1., 6., 2., 5., 5., 3.,
+       1., 3., 4., 2., 2., 2., 4., 3., 4., 4., 2., 3., 3., 3., 1., 3., 1.,
+       2., 3., 2., 2., 3., 3., 6., 1., 3., 3., 4., 2., 4., 3., 4., 3.])</code></pre>
+</div>
+</div>
+<p>Finally, we need to count how many of the trials in <code>z</code> ended up with all-white juries. These are the trials with a <code>z</code> (count) value of 0.</p>
+<p>To do this, we can ask an array which elements match a certain condition. E.g.:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-49_fa90a99670897aba79e686ed613853ef">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>])</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x <span class="op">&lt;</span> <span class="dv">2</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([False,  True, False,  True])</code></pre>
+</div>
+</div>
+<p>We now use that same technique to ask, of <em>each of the 50 counts</em>, whether the array <code>z</code> is equal to 0, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-51_21d056f4e524cc27fb27ea6be2eb7216">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of z equal to 0?</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>all_white <span class="op">=</span> z <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>all_white</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False])</code></pre>
+</div>
+</div>
+<p>We need to get the number of <code>True</code> values in <code>all_white</code>, to find how many simulated trials gave all-white juries.</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-53_2a37a6670633dee928c3055ceefca9e7">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of True values in "all_white"</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the same as the number of values in "z" that are equal to 0.</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>n_all_white <span class="op">=</span> np.<span class="bu">sum</span>(all_white)</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>n_all_white</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0</code></pre>
+</div>
+</div>
+<p><code>n_all_white</code> is the number of simulated trials for which all the jury members were white. It only remains to get the proportion of trials for which this was true, and to do this, we divide by the number of trials.</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-55_a1be73ea8a663f1a5d19f403f9ffe7c7">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of trials where all jury members were white.</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> n_all_white <span class="op">/</span> <span class="dv">50</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.0</code></pre>
+</div>
+</div>
+<p>From this initial simulation, it seems there is around a 0% chance that a jury selected randomly from the population, which was 26% black, would have no black jurors.</p>
+</section>
+</section>
+<section id="many-many-trials" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="many-many-trials"><span class="header-section-number">7.7</span> Many many trials</h2>
+<p>Our experiment above is only 50 simulated trials. The higher the number of trials, the more confident we can be of our estimate for <code>p</code> — the proportion of trials where we get an all-white jury.</p>
+<p>It is no extra trouble for us to tell the computer to do a very large number of trials. For example, we might want to run 10,000 trials instead of 50. All we have to do is to run the loop 10,000 times instead of 50 times. The computer has to do more work, but it is more than up to the job.</p>
+<p>Here is exactly the same code we ran above, but collected into one cell, and using 10,000 trials instead of 50. We have left out the comments, to make the code more compact.</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-57_9d1bba89f1231a16d2f2211d8a5fa10a">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full simulation procedure, with 10,000 trials.</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>zero_through_99 <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 10,000 trials.</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">0</span>, <span class="dv">10000</span>):</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> rnd.choice(zero_through_99, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">&gt;</span> <span class="dv">74</span>)</span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>    z[i] <span class="op">=</span> b</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>all_white <span class="op">=</span> z <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>n_all_white <span class="op">=</span> <span class="bu">sum</span>(all_white)</span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> n_all_white <span class="op">/</span> <span class="dv">10000</span></span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.0305</code></pre>
+</div>
+</div>
+<p>We now have a new, more accurate estimate of the proportion of Hypothetical County juries with all-white juries. The proportion is 0.03, and so 3%.</p>
+<p>This proportion means that, for any one jury from Hypothetical County, there is a less than one in 20 chance that the jury would be all white.</p>
+<p>As we will see in more detail later, we might consider using the results from this experiment in Hypothetical County, to reflect on the result we saw in the real Talladega County. We might conclude, for example, that there was likely some systematic difference between Hypothetical County and Talledega County. Maybe the difference was that there was, in fact, some bias in the jury selection in Talledega county, and that the Supreme Court was wrong to reject this. You will hear more of this line of reasoning later in the book.</p>
+</section>
+<section id="conclusion" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7.8</span> Conclusion</h2>
+<p>In this chapter we studied a real life-and-death question, on racial bias and the death penalty. We continued our exploration of the ways we can use probability, and resampling, to draw conclusions about real events. Along the way, we went into more detail on arrays in Python, and <code>for</code> loops; two basic tools in resampling.</p>
+<p>In the next chapter, we will work through some more problems in probability, to show how we can use resampling, to answer questions about chance. We will add some more tools for writing code in Python, to make your programs easier to write, read, and understand.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-adhikari2021data8" class="csl-entry" role="listitem">
+Ani Adhikari, John DeNero, and David Wagner. 2021. <em>Computational and Inferential Thinking: The Foundations of Data Science</em>. <a href="https://inferentialthinking.com" class="uri">https://inferentialthinking.com</a>. <a href="https://inferentialthinking.com">https://inferentialthinking.com</a>.
+</div>
+</div>
+</section>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Actually, there is a reason why many Python programmers prefer <code>range</code> in their <code>for</code> loops to <code>np.arange</code>. <code>range</code> is a very efficient container, in that it doesn’t need to take up all the memory required to create the full array, it just needs to keep track of the number to give you next. For example, consider <code>for i in np.arange(10000000):</code> — in this case Python has to make an array with 10,000,000 elements, and then, from that array, it passes each value one by one to the <code>for</code> loop. On the other hand, <code>for i in range(10000000):</code> will do the job just as well, passing the same sequence of 0 through 9,999,999 to <code>i</code>, one by one, but <code>range(10000000)</code> never has to make the whole 10,000,000 element array — it just needs to keep track of which number to give up next. Therefore <code>range</code> is very quick, and very efficient in memory. This doesn’t have any great practical impact for the arrays we are using here, typically of 10,0000 elements or so, but it is worthwhile for larger arrays.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./sampling_tools.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./probability_theory_1a.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

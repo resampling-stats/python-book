@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.51">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Resampling statistics - References</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./technical_note.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table").addClass('lightable-paper lightable-striped lightable-hover')
+  });
+</script>
+
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Resampling statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_third.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_second.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_is_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about_technology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introducing Python and the Jupyter notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more_sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_2_compound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_4_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monte_carlo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard_scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./point_estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framing_questions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_measured.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reliability_average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_big_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">References</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-adhikari2021data8" class="csl-entry" role="listitem">
+Ani Adhikari, John DeNero, and David Wagner. 2021. <em>Computational and
+Inferential Thinking: The Foundations of Data Science</em>. <a href="https://inferentialthinking.com" class="uri">https://inferentialthinking.com</a>. <a href="https://inferentialthinking.com">https://inferentialthinking.com</a>.
+</div>
+<div id="ref-arbuthnot1710christenings" class="csl-entry" role="listitem">
+Arbuthnot, John. 1710. <span>“An Argument for Divine Providence, Taken
+from the Constant Regularity Observ’d in the Births of Both Sexes. By
+Dr. John Arbuthnott, Physitian in Ordinary to Her Majesty, and Fellow of
+the College of Physitians and the Royal Society.”</span>
+<em>Philosophical Transactions of the Royal Society of London</em> 27
+(328): 186–90. <a href="https://royalsocietypublishing.org/doi/pdf/10.1098/rstl.1710.0011">https://royalsocietypublishing.org/doi/pdf/10.1098/rstl.1710.0011</a>.
+</div>
+<div id="ref-barnett1982comparative" class="csl-entry" role="listitem">
+Barnett, Vic. 1982. <em>Comparative Statistical Inference</em>. 2nd ed.
+Wiley Series in Probability and Mathematical Statistics. Chichester:
+John Wiley &amp; Sons. <a href="https://archive.org/details/comparativestati0000barn">https://archive.org/details/comparativestati0000barn</a>.
+</div>
+<div id="ref-box1992bayesian" class="csl-entry" role="listitem">
+Box, George E. P., and George C. Tiao. 1992. <em>Bayesian Inference in
+Statistical Analysis</em>. New <span>Y</span>ork: Wiley &amp; Sons, Inc.
+<a href="https://www.google.co.uk/books/edition/Bayesian_Inference_in_Statistical_Analys/T8Askeyk1k4C">https://www.google.co.uk/books/edition/Bayesian_Inference_in_Statistical_Analys/T8Askeyk1k4C</a>.
+</div>
+<div id="ref-brooks1928periodicities" class="csl-entry" role="listitem">
+Brooks, Charles Ernest Pelham. 1928. <span>“Periodicities in the Nile
+Floods.”</span> <em>Memoirs of the Royal Meteorological Society</em> 2
+(12): 9--26. <a href="https://www.rmets.org/sites/default/files/papers/brooksmem2-12.pdf">https://www.rmets.org/sites/default/files/papers/brooksmem2-12.pdf</a>.
+</div>
+<div id="ref-bulmer1979principles" class="csl-entry" role="listitem">
+Bulmer, M. G. 1979. <em>Principles of Statistics</em>. New York, NY:
+Dover Publications, inc. <a href="https://archive.org/details/principlesofstat0000bulm">https://archive.org/details/principlesofstat0000bulm</a>.
+</div>
+<div id="ref-burnett1988complete" class="csl-entry" role="listitem">
+Burnett, Ed. 1988. <em>The Complete Direct Mail List Handbook:
+Everything You Need to Know about Lists and How to Use Them for Greater
+Profit</em>. Englewood Cliffs, New Jersey: Prentice Hall. <a href="https://archive.org/details/completedirectma00burn">https://archive.org/details/completedirectma00burn</a>.
+</div>
+<div id="ref-cascells1978interpretation" class="csl-entry" role="listitem">
+Cascells, Ward, Arno Schoenberger, and Thomas B. Grayboys. 1978.
+<span>“Interpretation by Physicians of Clinical Laboratory
+Results.”</span> <em>New England Journal of Medicine</em> 299: 999–1001.
+<a href="https://www.nejm.org/doi/full/10.1056/NEJM197811022991808">https://www.nejm.org/doi/full/10.1056/NEJM197811022991808</a>.
+</div>
+<div id="ref-catling1977theban" class="csl-entry" role="listitem">
+Catling, HW, and RE Jones. 1977. <span>“A Reinvestigation of the
+Provenance of the Inscribed Stirrup Jars Found at Thebes.”</span>
+<em>Archaeometry</em> 19 (2): 137–46.
+</div>
+<div id="ref-chung1958randomization" class="csl-entry" role="listitem">
+Chung, James H, and Donald AS Fraser. 1958. <span>“Randomization Tests
+for a Multivariate Two-Sample Problem.”</span> <em>Journal of the
+American Statistical Association</em> 53 (283): 729–35. <a href="https://www.jstor.org/stable/pdf/2282050.pdf">https://www.jstor.org/stable/pdf/2282050.pdf</a>.
+</div>
+<div id="ref-cipolla1981fighting" class="csl-entry" role="listitem">
+Cipolla, C. M. 1981. <em>Fighting the Plague in Seventeenth-Century
+Italy</em>. Merle Curti Lectures. Madison, Wisconsin: University of
+Wisconsin Press. <a href="https://books.google.co.uk/books?id=Ct\_OJYgnKCsC">https://books.google.co.uk/books?id=Ct\_OJYgnKCsC</a>.
+</div>
+<div id="ref-cobb2007introductory" class="csl-entry" role="listitem">
+Cobb, George W. 2007. <span>“The Introductory Statistics Course: A
+Ptolemaic Curriculum?”</span> <em>Technology Innovations in Statistics
+Education</em> 1 (1). <a href="https://escholarship.org/uc/item/6hb3k0nz">https://escholarship.org/uc/item/6hb3k0nz</a>.
+</div>
+<div id="ref-coleman1987experimental" class="csl-entry" role="listitem">
+Coleman, William. 1987. <span>“Experimental Physiology and Statistical
+Inference: The Therapeutic Trial in Nineteenth Century
+<span>G</span>ermany.”</span> In <em>The Probabilistic Revolution:
+Volume 2: Ideas in the Sciences</em>, edited by Lorenz Krüger, Gerd
+Gigerenzer, and Mary S. Morgan. An MIT Press Classic. MIT Press. <a href="https://books.google.co.uk/books?id=SLftmgEACAAJ">https://books.google.co.uk/books?id=SLftmgEACAAJ</a>.
+</div>
+<div id="ref-cook1976limits" class="csl-entry" role="listitem">
+Cook, Earl. 1976. <span>“Limits to Exploitation of Nonrenewable
+Resources.”</span> <em>Science</em> 191 (4228): 677–82. <a href="https://www.jstor.org/stable/pdf/1741483.pdf">https://www.jstor.org/stable/pdf/1741483.pdf</a>.
+</div>
+<div id="ref-davenport2012data" class="csl-entry" role="listitem">
+Davenport, Thomas H, and DJ Patil. 2012. <span>“Data Scientist: The
+Sexiest Job of the 21st Century.”</span> <em>Harvard Business
+Review</em> 90 (10): 70–76. <a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century">https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century</a>.
+</div>
+<div id="ref-deshpande1995statistical" class="csl-entry" role="listitem">
+Deshpande, Jayant V, AP Gore, and A Shanubhogue. 1995. <em>Statistical
+Analysis of Nonnormal Data</em>. Taylor &amp; Francis. <a href="https://www.google.co.uk/books/edition/Statistical_Analysis_of_Nonnormal_Data/sS0on2XqwwoC">https://www.google.co.uk/books/edition/Statistical_Analysis_of_Nonnormal_Data/sS0on2XqwwoC</a>.
+</div>
+<div id="ref-dixon1983introduction" class="csl-entry" role="listitem">
+Dixon, Wilfrid J, and Frank J Massey Jr. 1983. <span>“Introduction to
+Statistical Analysis.”</span>
+</div>
+<div id="ref-donoho201750_official" class="csl-entry" role="listitem">
+Donoho, David. 2017. <span>“50 Years of Data Science.”</span>
+<em>Journal of Computational and Graphical Statistics</em> 26 (4):
+745–66. <a href="http://courses.csail.mit.edu/18.337/2015/docs/50YearsDataScience.pdf">http://courses.csail.mit.edu/18.337/2015/docs/50YearsDataScience.pdf</a>.
+</div>
+<div id="ref-dunleavy2006burkitt" class="csl-entry" role="listitem">
+Dunleavy, Kieron, Stefania Pittaluga, John Janik, Nicole Grant, Margaret
+Shovlin, Richard Little, Robert Yarchoan, Seth Steinberg, Elaine S.
+Jaffe, and Wyndham H. Wilson. 2006. <span>“<span class="nocase">Novel
+Treatment of Burkitt Lymphoma with Dose-Adjusted EPOCH-Rituximab:
+Preliminary Results Showing Excellent Outcome.</span>”</span>
+<em>Blood</em> 108 (11): 2736–36. <a href="https://doi.org/10.1182/blood.V108.11.2736.2736">https://doi.org/10.1182/blood.V108.11.2736.2736</a>.
+</div>
+<div id="ref-dwass1957modified" class="csl-entry" role="listitem">
+Dwass, Meyer. 1957. <span>“Modified Randomization Tests for
+Nonparametric Hypotheses.”</span> <em>The Annals of Mathematical
+Statistics</em>, 181–87. <a href="https://www.jstor.org/stable/pdf/2237031.pdf">https://www.jstor.org/stable/pdf/2237031.pdf</a>.
+</div>
+<div id="ref-efron1979bootstrap" class="csl-entry" role="listitem">
+Efron, Bradley. 1979. <span>“Bootstrap Methods; Another Look at the
+Jackknife.”</span> <em>The Annals of Statistics</em> 7 (1): 1–26. <a href="http://www.econ.uiuc.edu/~econ508/Papers/efron79.pdf">http://www.econ.uiuc.edu/~econ508/Papers/efron79.pdf</a>.
+</div>
+<div id="ref-efron1993bootstrap" class="csl-entry" role="listitem">
+Efron, Bradley, and Robert J Tibshirani. 1993. <span>“An Introduction to
+the Bootstrap.”</span> In <em>Monographs on Statistics and Applied
+Probability</em>, edited by David R Cox, David V Hinkley, Nancy Reid,
+Donald B Rubin, and Bernard W Silverman. Vol. 57. New York:
+<span>Chapman &amp; Hall</span>.
+</div>
+<div id="ref-feller1968introduction" class="csl-entry" role="listitem">
+Feller, William. 1968. <em>An Introduction to Probability Theory and Its
+Applications: Volume i</em>. 3rd ed. Vol. 1. New York: John Wiley &amp;
+Sons. <a href="https://www.google.co.uk/books/edition/An_Introduction_to_Probability_Theory_an/jbkdAQAAMAAJ">https://www.google.co.uk/books/edition/An_Introduction_to_Probability_Theory_an/jbkdAQAAMAAJ</a>.
+</div>
+<div id="ref-feynman1988what" class="csl-entry" role="listitem">
+Feynman, Richard P., and Ralph Leighton. 1988. <em>What Do <u>You</u>
+Care What Other People Think? Further Adventures of a Curious
+Character.</em> New York, NY: W. W. Norton; Company, Inc. <a href="https://archive.org/details/whatdoyoucarewha0000feyn_x5w7">https://archive.org/details/whatdoyoucarewha0000feyn_x5w7</a>.
+</div>
+<div id="ref-fisher1935design" class="csl-entry" role="listitem">
+Fisher, Ronald Aylmer. 1935. <em>The Design of Experiments</em>. 1st ed.
+Edinburgh: <span>Oliver and Boyd Ltd</span>. <a href="https://archive.org/details/in.ernet.dli.2015.502684">https://archive.org/details/in.ernet.dli.2015.502684</a>.
+</div>
+<div id="ref-fisher1959statistical" class="csl-entry" role="listitem">
+———. 1959. <span>“Statistical Methods and Scientific Inference.”</span>
+<a href="https://archive.org/details/statisticalmetho0000fish">https://archive.org/details/statisticalmetho0000fish</a>.
+</div>
+<div id="ref-fisher1960design" class="csl-entry" role="listitem">
+———. 1960. <em>The Design of Experiments</em>. 7th ed. Edinburgh:
+<span>Oliver and Boyd Ltd</span>. <a href="https://archive.org/details/designofexperime0000rona_q7u5">https://archive.org/details/designofexperime0000rona_q7u5</a>.
+</div>
+<div id="ref-fussler1961patterns" class="csl-entry" role="listitem">
+Fussler, Herman Howe, and Julian Lincoln Simon. 1961. <em>Patterns in
+the Use of Books in Large Research Libraries</em>. Chicago: University
+of Chicago Library.
+</div>
+<div id="ref-gardner1985mathematical" class="csl-entry" role="listitem">
+Gardner, Martin. 1985. <em>Mathematical Magic Show</em>. Penguin Books
+Ltd, Harmondsworth.
+</div>
+<div id="ref-gardner2001colossal" class="csl-entry" role="listitem">
+———. 2001. <em>The Colossal Book of Mathematics</em>. W.W. Norton &amp;
+Company Inc., New York. <a href="https://archive.org/details/B-001-001-265">https://archive.org/details/B-001-001-265</a>.
+</div>
+<div id="ref-gilovich1985hot" class="csl-entry" role="listitem">
+Gilovich, Thomas, Robert Vallone, and Amos Tversky. 1985. <span>“The Hot
+Hand in Basketball: On the Misperception of Random Sequences.”</span>
+<em>Cognitive Psychology</em> 17 (3): 295–314. <a href="https://www.joelvelasco.net/teaching/122/Gilo.Vallone.Tversky.pdf">https://www.joelvelasco.net/teaching/122/Gilo.Vallone.Tversky.pdf</a>.
+</div>
+<div id="ref-gnedenko1962elementary" class="csl-entry" role="listitem">
+Gnedenko, Boris Vladimirovich, I Aleksandr, and Akovlevich Khinchin.
+1962. <em>An Elementary Introduction to the Theory of Probability</em>.
+New York, NY, USA: Dover Publications, Inc. <a href="https://archive.org/details/gnedenko-khinchin-an-elementary-introduction-to-the-theory-of-probability">https://archive.org/details/gnedenko-khinchin-an-elementary-introduction-to-the-theory-of-probability</a>.
+</div>
+<div id="ref-goldberg1986probability" class="csl-entry" role="listitem">
+Goldberg, Samuel. 1986. <em>Probability: An Introduction</em>. Courier
+Corporation. <a href="https://www.google.co.uk/books/edition/Probability/CmzFx9rB_FcC">https://www.google.co.uk/books/edition/Probability/CmzFx9rB_FcC</a>.
+</div>
+<div id="ref-graunt1663collection" class="csl-entry" role="listitem">
+Graunt, John. 1759. <span>“Natural and Political Observations Mentioned
+in a Following Index and Made Upon the Bills of Mortality.”</span> In
+<em>Collection of Yearly Bills of Mortality, from 1657 to 1758
+Inclusive</em>, edited by Thomas Birch. London: A. Miller. <a href="https://archive.org/details/collectionyearl00hebegoog">https://archive.org/details/collectionyearl00hebegoog</a>.
+</div>
+<div id="ref-hald1990history" class="csl-entry" role="listitem">
+Hald, Anders. 1990. <em>A History of Probability and Statistics and
+Their Applications Before 1750</em>. New York: John Wiley &amp; Sons. <a href="https://archive.org/details/historyofprobabi0000hald">https://archive.org/details/historyofprobabi0000hald</a>.
+</div>
+<div id="ref-hansen1953sample" class="csl-entry" role="listitem">
+Hansen, Morris H, William N Hurwitz, and William G Madow. 1953.
+<span>“Sample Survey Methods and Theory. Vol. I. Methods and
+Applications.”</span> <a href="https://archive.org/details/SampleSurveyMethodsAndTheoryVol1">https://archive.org/details/SampleSurveyMethodsAndTheoryVol1</a>.
+</div>
+<div id="ref-hodges1970basic" class="csl-entry" role="listitem">
+Hodges Jr, Joseph Lawson, and Erich Leo Lehmann. 1970. <em>Basic
+Concepts of Probability and Statistics</em>. 2nd ed. San Francisco,
+California: <span>H</span>olden-<span>D</span>ay, <span>I</span>nc. <a href="https://archive.org/details/basicconceptsofp0000unse_m8m9">https://archive.org/details/basicconceptsofp0000unse_m8m9</a>.
+</div>
+<div id="ref-hollander1999nonparametric" class="csl-entry" role="listitem">
+Hollander, Myles, and Douglas A Wolfe. 1999. <em>Nonparametric
+Statistical Methods</em>. 2nd ed. Wiley Series in Probability and
+Statistics: Applied Probability and Statistics. New York: John Wiley
+&amp; Sons, Inc. <a href="https://archive.org/details/nonparametricsta0000ed2holl">https://archive.org/details/nonparametricsta0000ed2holl</a>.
+</div>
+<div id="ref-hyndman1996sample" class="csl-entry" role="listitem">
+Hyndman, Rob J, and Yanan Fan. 1996. <span>“Sample Quantiles in
+Statistical Packages.”</span> <em>The American Statistician</em> 50 (4):
+361–65. <a href="https://www.jstor.org/stable/pdf/2684934.pdf">https://www.jstor.org/stable/pdf/2684934.pdf</a>.
+</div>
+<div id="ref-kahn1989statistical" class="csl-entry" role="listitem">
+Kahn, Harold A, and Christopher T Sempos. 1989. <em>Statistical Methods
+in Epidemiology</em>. Vol. 12. Monographs in Epidemiology and
+Biostatistics. New <span>Y</span>ork: Oxford University Press. <a href="https://www.google.co.uk/books/edition/Statistical_Methods_in_Epidemiology/YERYAgAAQBAJ">https://www.google.co.uk/books/edition/Statistical_Methods_in_Epidemiology/YERYAgAAQBAJ</a>.
+</div>
+<div id="ref-kinsey1948sexual" class="csl-entry" role="listitem">
+Kinsey, Alfred C, Wardell B Pomeroy, and Clyde E Martin. 1948.
+<span>“Sexual Behavior in the Human Male.”</span> <em>W. B. Saunders
+Company</em>. <a href="https://books.google.co.uk/books?id=pfMKrY3VvigC">https://books.google.co.uk/books?id=pfMKrY3VvigC</a>.
+</div>
+<div id="ref-kornberg1991love_enzymes" class="csl-entry" role="listitem">
+Kornberg, Arthur. 1991. <em>For the Love of Enzymes: The Odyssey of a
+Biochemist</em>. Cambridge, Massachusetts: Harvard University Press. <a href="https://archive.org/details/forloveofenzymes00arth">https://archive.org/details/forloveofenzymes00arth</a>.
+</div>
+<div id="ref-kotz1992breakthroughs" class="csl-entry" role="listitem">
+Kotz, Samuel, and Norman Lloyd Johnson. 1992. <em>Breakthroughs in
+Statistics</em>. New York: Springer-Verlag.
+</div>
+<div id="ref-lee2012bayesian" class="csl-entry" role="listitem">
+Lee, Peter M. 2012. <em>Bayesian Statistics: An Introduction</em>. 4th
+ed. Wiley Online Library. <a href="https://www.york.ac.uk/depts/maths/histstat/pml1/bayes/book.htm">https://www.york.ac.uk/depts/maths/histstat/pml1/bayes/book.htm</a>.
+</div>
+<div id="ref-lorie1951basic" class="csl-entry" role="listitem">
+Lorie, James Hirsch, and Harry V Roberts. 1951. <em>Basic Methods of
+Marketing Research</em>. McGraw-Hill.
+</div>
+<div id="ref-lyon1968price" class="csl-entry" role="listitem">
+Lyon, Herbert L, and Julian Lincoln Simon. 1968. <span>“Price Elasticity
+of the Demand for Cigarettes in the United States.”</span> <em>American
+Journal of Agricultural Economics</em> 50 (4): 888–95.
+</div>
+<div id="ref-martineau2017vitamin" class="csl-entry" role="listitem">
+Martineau, Adrian R, David A Jolliffe, Richard L Hooper, Lauren
+Greenberg, John F Aloia, Peter Bergman, Gal Dubnov-Raz, et al. 2017.
+<span>“Vitamin <span>D</span> Supplementation to Prevent Acute
+Respiratory Tract Infections: Systematic Review and Meta-Analysis of
+Individual Participant Data.”</span> <em>Bmj</em> 356.
+</div>
+<div id="ref-mccabe1989instructors" class="csl-entry" role="listitem">
+McCabe, George P, and Linda Doyle McCabe. 1989. <em>Instructor’s Guide
+with Solutions for Introduction to the Practice of Statistics</em>. New
+York: W. H. Freeman.
+</div>
+<div id="ref-mosteller1987fifty" class="csl-entry" role="listitem">
+Mosteller, Frederick. 1987. <em>Fifty Challenging Problems in
+Probability with Solutions</em>. Courier Corporation.
+</div>
+<div id="ref-mosteller1973sturdy" class="csl-entry" role="listitem">
+Mosteller, Frederick, and Robert E. K. Rourke. 1973. <em>Sturdy
+Statistics: Nonparametrics and Order Statistics</em>. Addison-Wesley
+Publishing Company.
+</div>
+<div id="ref-mosteller1961probability" class="csl-entry" role="listitem">
+Mosteller, Frederick, Robert E. K. Rourke, and George Brinton Thomas Jr.
+1961. <em>Probability with Statistical Applications</em>. 2nd ed. <a href="https://archive.org/details/probabilitywiths0000most">https://archive.org/details/probabilitywiths0000most</a>.
+</div>
+<div id="ref-noreen1989computer" class="csl-entry" role="listitem">
+Noreen, Eric W. 1989. <em>Computer-Intensive Methods for Testing
+Hypotheses</em>. New York: John Wiley &amp; Sons. <a href="https://archive.org/details/computerintensiv0000nore">https://archive.org/details/computerintensiv0000nore</a>.
+</div>
+<div id="ref-peirce1923chance" class="csl-entry" role="listitem">
+Peirce, Charles Sanders. 1923. <em>Chance, Love, and Logic:
+Philosophical Essays</em>. New York: Harcourt Brace &amp; Company, Inc.
+<a href="https://www.gutenberg.org/files/65274/65274-h/65274-h.htm">https://www.gutenberg.org/files/65274/65274-h/65274-h.htm</a>.
+</div>
+<div id="ref-piketty2018brahmin" class="csl-entry" role="listitem">
+Piketty, Thomas. 2018. <span>“Brahmin Left Vs Merchant Right: Rising
+Inequality &amp; the Changing Structure of Political Conflict.”</span>
+2018. <a href="https://www.prsinstitute.org/downloads/related/economics/RisingInequalityandtheChangingStructureofPoliticalConflict1.pdf">https://www.prsinstitute.org/downloads/related/economics/RisingInequalityandtheChangingStructureofPoliticalConflict1.pdf</a>.
+</div>
+<div id="ref-pitman1937significance" class="csl-entry" role="listitem">
+Pitman, Edwin JG. 1937. <span>“Significance Tests Which May Be Applied
+to Samples from Any Populations.”</span> <em>Supplement to the Journal
+of the Royal Statistical Society</em> 4 (1): 119–30. <a href="https://www.jstor.org/stable/pdf/2984124.pdf">https://www.jstor.org/stable/pdf/2984124.pdf</a>.
+</div>
+<div id="ref-raiffa1968decision" class="csl-entry" role="listitem">
+Raiffa, Howard. 1968. <span>“Decision Analysis: Introductory Lectures on
+Choices Under Uncertainty.”</span> <a href="https://archive.org/details/decisionanalysis0000raif">https://archive.org/details/decisionanalysis0000raif</a>.
+</div>
+<div id="ref-ruark1930atoms" class="csl-entry" role="listitem">
+Ruark, Arthur Edward, and Harold Clayton Urey. 1930. <em>Atoms,
+Moleculues and Quanta</em>. New York, NY: <span>McGraw-Hill</span> book
+company, inc. <a href="https://archive.org/details/atomsmoleculesqu00ruar">https://archive.org/details/atomsmoleculesqu00ruar</a>.
+</div>
+<div id="ref-russell1945history" class="csl-entry" role="listitem">
+Russell, Bertrand. 1945. <em>A History of <span>W</span>estern
+Philosophy</em>. New York: Simon; Schuster.
+</div>
+<div id="ref-savage1972foundations" class="csl-entry" role="listitem">
+Savage, Leonard J. 1972. <em>The Foundations of Statistics</em>. New
+York: Dover Publications, Inc.
+</div>
+<div id="ref-savant1990monty" class="csl-entry" role="listitem">
+Savant, Marilyn vos. 1990. <span>“Ask Marilyn.”</span> 1990. <a href="https://web.archive.org/web/20160318182523/http://marilynvossavant.com/game-show-problem">https://web.archive.org/web/20160318182523/http://marilynvossavant.com/game-show-problem</a>.
+</div>
+<div id="ref-schlaifer1961introduction" class="csl-entry" role="listitem">
+Schlaifer, Robert. 1961. <em>Introduction to Statistics for Business
+Decisions</em>. New York: MacGraw-Hill. <a href="https://archive.org/details/introductiontost00schl">https://archive.org/details/introductiontost00schl</a>.
+</div>
+<div id="ref-slevin1975monty" class="csl-entry" role="listitem">
+Selvin, Steve. 1975. <span>“Letters to the Editor.”</span> <em>The
+American Statistician</em> 29 (1): 67. <a href="http://www.jstor.org/stable/2683689">http://www.jstor.org/stable/2683689</a>.
+</div>
+<div id="ref-semmelweis1983etiology" class="csl-entry" role="listitem">
+Semmelweis, Ignác Fülöp. 1983. <em>The Etiology, Concept, and
+Prophylaxis of Childbed Fever</em>. Translated by K. Codell Carter.
+Madison, Wisconsin: University of Wisconsin Press. <a href="https://archive.org/details/etiologyconcepta0000unse">https://archive.org/details/etiologyconcepta0000unse</a>.
+</div>
+<div id="ref-shurtleff1970framingham" class="csl-entry" role="listitem">
+Shurtleff, Dewey. 1970. <span>“Some Characteristics Related to the
+Incidence of Cardiovascular Disease and Death: Framingham Study, 16-Year
+Follow-up.”</span> Section 26. Edited by William B. Kannel and Tavia
+Gordon. The Framingham Study: An Epidemiological Investigation of
+Cardiovascular Disease. Washington, D.C.: <span>U.S. Government Printing
+Office</span>. <a href="https://upload.wikimedia.org/wikipedia/commons/6/6d/The_Framingham_study_-_an_epidemiological_investigation_of_cardiovascular_disease_sec.26_1970_%28IA_framinghamstudye00kann_25%29.pdf">https://upload.wikimedia.org/wikipedia/commons/6/6d/The_Framingham_study_-_an_epidemiological_investigation_of_cardiovascular_disease_sec.26_1970_%28IA_framinghamstudye00kann_25%29.pdf</a>.
+</div>
+<div id="ref-simon1967doctors" class="csl-entry" role="listitem">
+Simon, Julian Lincoln. 1967. <span>“Doctors, Smoking, and Reference
+Groups.”</span> <em>Public Opinion Quarterly</em> 31 (4): 646–47.
+</div>
+<div id="ref-simon1969basic" class="csl-entry" role="listitem">
+———. 1969. <em>Basic Research Methods in Social Science</em>. 1st ed.
+New York: Random House.
+</div>
+<div id="ref-simon1992resampling" class="csl-entry" role="listitem">
+———. 1992. <em>Resampling: The New Statistics</em>. 1st ed.
+<span>Arlington, VA</span>: <span>Resampling Stats Inc.</span>
+</div>
+<div id="ref-simon1998philosophy" class="csl-entry" role="listitem">
+———. 1998. <span>“The Philosophy and Practice of Resampling
+Statistics.”</span> 1998. <a href="http://www.juliansimon.org/writings/Resampling_Philosophy">http://www.juliansimon.org/writings/Resampling_Philosophy</a>.
+</div>
+<div id="ref-simon1976probability" class="csl-entry" role="listitem">
+Simon, Julian Lincoln, David T Atkinson, and Carolyn Shevokas. 1976.
+<span>“Probability and Statistics: Experimental Results of a Radically
+Different Teaching Method.”</span> <em>The American Mathematical
+Monthly</em> 83 (9): 733–39. <a href="https://www.jstor.org/stable/pdf/2318961.pdf">https://www.jstor.org/stable/pdf/2318961.pdf</a>.
+</div>
+<div id="ref-simon1985basic" class="csl-entry" role="listitem">
+Simon, Julian Lincoln, and Paul Burstein. 1985. <em>Basic Research
+Methods in Social Science</em>. 3rd ed. New York: Random House.
+</div>
+<div id="ref-simon1969new" class="csl-entry" role="listitem">
+Simon, Julian Lincoln, and Allen Holmes. 1969. <span>“A New Way to Teach
+Probability Statistics.”</span> <em>The Mathematics Teacher</em> 62 (4):
+283–88.
+</div>
+<div id="ref-simon1996mergers" class="csl-entry" role="listitem">
+Simon, Julian Lincoln, Manouchehr Mokhtari, and Daniel H Simon. 1996.
+<span>“Are Mergers Beneficial or Detrimental? Evidence from Advertising
+Agencies.”</span> <em>International Journal of the Economics of
+Business</em> 3 (1): 69–82.
+</div>
+<div id="ref-simon1996effects" class="csl-entry" role="listitem">
+Simon, Julian Lincoln, and David M Simon. 1996. <span>“The Effects of
+Regulations on State Liquor Prices.”</span> <em>Empirica</em> 23:
+303–16.
+</div>
+<div id="ref-stovring1999radicke" class="csl-entry" role="listitem">
+Støvring, H. 1999. <span>“On Radicke and His Method for Testing Mean
+Differences.”</span> <em>Journal of the Royal Statistical Society:
+Series D (The Statistician)</em> 48 (2): 189–201. <a href="https://www.jstor.org/stable/pdf/2681185.pdf">https://www.jstor.org/stable/pdf/2681185.pdf</a>.
+</div>
+<div id="ref-sudman1976applied" class="csl-entry" role="listitem">
+Sudman, Seymour. 1976. <em>Applied Sampling</em>. New <span>Y</span>ork:
+Academic Press. <a href="https://archive.org/details/appliedsampling0000unse">https://archive.org/details/appliedsampling0000unse</a>.
+</div>
+<div id="ref-tukey1977exploratory" class="csl-entry" role="listitem">
+Tukey, John W. 1977. <em>Exploratory Data Analysis</em>. Reading, MA,
+USA: Ad<span>d</span>i<span>s</span>on-Wes<span>l</span>ey.
+</div>
+<div id="ref-tversky1982evidential" class="csl-entry" role="listitem">
+Tversky, Amos, and Daniel Kahneman. 1982. <span>“Evidential Impact of
+Base Rates.”</span> In <em>Judgement Under Uncertainty: Heuristics and
+Biases</em>, edited by Daniel Kahneman, Paul Slovic, and Amos Tversky.
+Cambridge: Cambridge University Press. <a href="https://www.google.co.uk/books/edition/Judgment_Under_Uncertainty/_0H8gwj4a1MC">https://www.google.co.uk/books/edition/Judgment_Under_Uncertainty/_0H8gwj4a1MC</a>.
+</div>
+<div id="ref-vazsonyi1999door" class="csl-entry" role="listitem">
+Vazsonyi, Andrew. 1999. <span>“Which Door Has the Cadillac.”</span>
+<em>Decision Line</em> 30 (1): 17–19. <a href="https://web.archive.org/web/20140413131827/http://www.decisionsciences.org/DecisionLine/Vol30/30_1/vazs30_1.pdf">https://web.archive.org/web/20140413131827/http://www.decisionsciences.org/DecisionLine/Vol30/30_1/vazs30_1.pdf</a>.
+</div>
+<div id="ref-wallis1956statistics" class="csl-entry" role="listitem">
+Wallis, Wilson Allen, and Harry V Roberts. 1956. <em>Statistics, a New
+Approach.</em> New York: The Free Press.
+</div>
+<div id="ref-whitworth1897dcc" class="csl-entry" role="listitem">
+Whitworth, William Allen. 1897. <em><span>DCC</span> Exercises in Choice
+and Chance</em>. Cambridge, UK: Deighton Bell; Co. <a href="https://archive.org/details/dccexerciseschoi00whit">https://archive.org/details/dccexerciseschoi00whit</a>.
+</div>
+<div id="ref-winslow1980conquest" class="csl-entry" role="listitem">
+Winslow, Charles-Edward Amory. 1980. <em>The Conquest of Epidemic
+Disease: A Chapter in the History of Ideas</em>. Madison, Wisconsin:
+University of Wisconsin Press. <a href="https://archive.org/details/conquestofepidem0000wins_p3k0">https://archive.org/details/conquestofepidem0000wins_p3k0</a>.
+</div>
+<div id="ref-wonnacott1990introductory" class="csl-entry" role="listitem">
+Wonnacott, Thomas H, and Ronald J Wonnacott. 1990. <em>Introductory
+Statistics</em>. 5th ed. New York: John Wiley &amp; Sons.
+</div>
+<div id="ref-zhou2000lake" class="csl-entry" role="listitem">
+Zhou, Qixing, Christopher E Gibson, and Robert H Foy. 2000.
+<span>“Long-Term Changes of Nitrogen and Phosphorus Loadings to a Large
+Lake in North-West Ireland.”</span> <em>Water Research</em> 34 (3):
+922–26. <a href="https://doi.org/10.1016/S0043-1354(99)00199-2">https://doi.org/10.1016/S0043-1354(99)00199-2</a>.
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./technical_note.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.51">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Resampling statistics - 23&nbsp; The Statistics of Hypothesis-Testing with Counted Data, Part 2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./testing_measured.html" rel="next">
+<link href="./significance.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table").addClass('lightable-paper lightable-striped lightable-hover')
+  });
+</script>
+
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./testing_counts_2.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Resampling statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_third.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_second.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_is_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about_technology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introducing Python and the Jupyter notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more_sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_2_compound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_4_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monte_carlo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard_scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./point_estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framing_questions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_measured.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reliability_average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_big_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#comparisons-among-more-than-two-samples-of-counted-data" id="toc-comparisons-among-more-than-two-samples-of-counted-data" class="nav-link active" data-scroll-target="#comparisons-among-more-than-two-samples-of-counted-data"><span class="header-section-number">23.1</span> Comparisons among more than two samples of counted data</a></li>
+  <li><a href="#paired-comparisons-with-counted-data" id="toc-paired-comparisons-with-counted-data" class="nav-link" data-scroll-target="#paired-comparisons-with-counted-data"><span class="header-section-number">23.2</span> Paired Comparisons With Counted Data</a></li>
+  <li><a href="#technical-note" id="toc-technical-note" class="nav-link" data-scroll-target="#technical-note"><span class="header-section-number">23.3</span> Technical note</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Draft page partially ported from original PDF
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is an automated and partial import from the <a href="https://resample.com/content/text/21-Chap-17.pdf">original second-edition PDF</a>.</p>
+<p>We are in the process of updating this page for formatting, and porting any code from the original <a href="http://www.statistics101.net">RESAMPLING-STATS language</a> to Python and R.</p>
+<p>Feel free to read this version for the sense, but expect there to be multiple issues with formatting.</p>
+<p>We will remove this warning when the page has adequate formatting, and we have ported the code.</p>
+</div>
+</div>
+<p>Here’s the bad-news-good-news message again: The bad news is that the subject of inferential statistics is extremely difficult — not because it is complex but rather because it is subtle. The cause of the difficulty is that the world around us is difficult to understand, and spoon-fed mathematical simplifications which you manipulate mechanically simply mislead you into thinking you understand that about which you have not got a clue.</p>
+<p>The good news is that you — and that means <em>you</em> , even if you say you are “no good at math” — can understand these problems with a layperson’s hard thinking, even if you have no mathematical background beyond arithmetic and you think that you have no mathematical capability. That’s because the difficulty lies in such matters as pin-pointing the right question, and understanding how to interpret your results.</p>
+<p>The problems in the previous chapter were tough enough. But this chapter considers problems with additional complications, such as when there are more than two groups, or paired comparisons for the same units of observation.</p>
+<section id="comparisons-among-more-than-two-samples-of-counted-data" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="comparisons-among-more-than-two-samples-of-counted-data"><span class="header-section-number">23.1</span> Comparisons among more than two samples of counted data</h2>
+<p><strong>Example 17-1: Do Any of Four Treatments Affect the Sex Ratio in Fruit Flies?</strong> (When the Benchmark Universe Proportion is Known, Is the Propor tion of the Binomial Population Affected by Any of the Treatments?) (Program “4treat”)</p>
+<p>Suppose that, instead of experimenting with just one type of radiation treatment on the flies (as in Example 15-1), you try <em>four</em> different treatments, which we shall label A, B, C, and D. Treatment A produces fourteen males and six females, but treatments B, C, and D produce ten, eleven, and ten males, respectively. It is immediately obvious that there is no reason to think that treatment B, C, or D affects the sex ratio. But what about treatment A?</p>
+<p>A frequent and dangerous mistake made by young scientists is to scrounge around in the data for the most extreme result, and then treat it as if it were the only result. In the context of this example, it would be fallacious to think that the probability of the fourteen-males-to-six females split observed for treatment A is the same as the probability that we figured for a <em>single</em> experiment in Example 15-1. Instead, we must consider that our benchmark universe is composed of <em>four sets</em> of twenty trials, each trial having a 50-50 probability of being male. We can consider that our previous trials 1-4 in Example 15-1 constitute a <em>single</em> new trial, and each subsequent set of four previous trials constitute another new trial. We then ask how likely a new trial of our sets of twenty flips is to produce <em>one</em> set with fourteen or more of one or the other sex.</p>
+<p>Let us make the procedure explicit, but using random numbers instead of coins this time:</p>
+<p><strong>Step 1.</strong> Let “1-5” = males, “6-0” = females</p>
+<p><strong>Step 2.</strong> Choose four groups of twenty numbers. If for <em>any</em> group there are 14 or more males, record “yes”; if 13 or less, record “no.”</p>
+<p><strong>Step 3.</strong> Repeat perhaps 1000 times.</p>
+<p><strong>Step 4.</strong> Calculate the proportion “yes” in the 1000 trials. This proportion estimates the probability that a fruit fly population with a proportion of 50 percent males will produce as many as 14 males in at least one of four samples of 20 flies.</p>
+<p>We begin the trials with data as in Table 17-1. In two of the six simulation trials, more than one sample shows 14 or more males. Another trial shows fourteen or more <em>females</em> . Without even concerning ourselves about whether we should be looking at males or females, or just males, or needing to do more trials, we can see that it would be <em>very common indeed</em> to have one of four treatments show fourteen or more of one sex just by chance. This discovery clearly indicates that a result that would be fairly unusual (three in twenty-five) for a single sample alone is commonplace in one of four observed samples.</p>
+<p>Table 17-1</p>
+<p><strong>Number of “Males” in Groups of 20 (Based on Random Numbers)</strong></p>
+<p><strong>Trial Group A Group B Group C Group D Yes / No</strong></p>
+<p><strong>&gt;= 14 or &lt;= 6</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>A key point of the RESAMPLING STATS program “4TREAT” is that each sample consists of <em>four sets</em> of 20 randomly generated hypothetical fruit flies. And if we consider 1000 trials, we will be examining 4000 sets of 20 fruit flies.</p>
+<p>In each trial we GENERATE up to 4 random samples of 20 fruit flies, and for each, we count the number of males (“1”s) and then check whether that group has more than 13 of either sex (actually, more than 13 “1”s or less than 7 “1”s). If it does, then we change J to 1, which informs us that for this sample, at least 1 group of 20 fruit flies had results as unusual as the results from the fruit flies exposed to the four treatments.</p>
+<p>After the 1000 runs are made, we count the number of trials where one sample had a group of fruit flies with 14 or more of either sex, and PRINT the results.</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "4treat.rss"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Do 1000 experiments.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">COPY</span> (<span class="fl">0</span>) <span class="va">j</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">' j indicates whether we have obtained a trial group with 14 or more of</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="er">' either sex. We start at "0" (= no).</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">REPEAT</span> <span class="fl">4</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Repeat the following steps 4 times to constitute 4 trial groups of 20</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="er">' flies each.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">GENERATE</span> <span class="fl">20</span> <span class="fl">1</span><span class="op">,</span><span class="fl">2</span> <span class="va">a</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Generate randomly 20 "1"s and "2"s and put them in a; let "1"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="er">' = male.</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">COUNT</span> <span class="va">a</span> <span class="op">=</span><span class="fl">1</span> <span class="va">b</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Count the number of males, put the result in b.</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">IF</span> <span class="va">b</span> <span class="op">&gt;=</span> <span class="fl">14</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="er">' If the result is 14 or more males, then</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">END</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">COPY</span> (<span class="fl">1</span>) <span class="va">j</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Set the indicator to "1."</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="er">' End the IF condition.</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">IF</span> <span class="va">b</span> <span class="op">&lt;=</span> <span class="fl">6</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            <span class="er">' If the result is 6 or fewer males (the same as 14 or more females), then</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="va">END</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">COPY</span> (<span class="fl">1</span>) <span class="va">j</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Set the indicator to "1."</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="er">' End the IF condition.</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="va">END</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="er">' End the procedure for one group, go back and repeat until all four</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="er">' groups have been done.</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="va">SCORE</span> <span class="va">j</span> <span class="va">z</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="er">' j now tells us whether we got a result as extreme as that observed (j =</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="er">' "1" if we did, j = "0" if not). We must keep track in z of this result</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="er">' for each experiment.</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="er">' End one experiment, go back and repeat until all 1000 are complete.</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">=</span><span class="fl">1</span> <span class="va">k</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="er">' Count the number of experiments in which we had results as extreme as</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="er">' those observed.</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">kk</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="er">' Convert to a proportion.</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">kk</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="er">' Print the result.</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="er">' Note: The file "4treat" on the Resampling Stats software disk contains</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="er">' this set of commands.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In one set of 1000 trials, there were more than 13 or less than 7 males 33 percent of the time — clearly not an unusual occurrence.</p>
+<p><strong>Example 17-2: Do Four Psychological Treatments Differ in Effectiveness?</strong> (Do Several Two-Outcome Samples Differ Among Themselves in Their Propor tions? (Program “4treat1”)</p>
+<p>Consider four different psychological treatments designed to rehabilitate juvenile delinquents. Instead of a numerical test score, there is only a “yes” or a “no” answer as to whether the juvenile has been rehabilitated or has gotten into trouble again. Label the treatments P, R, S, and T, each of which is administered to a separate group of twenty juvenile delinquents. The number of rehabilitations per group has been: P, 17; R, 10; S, 10; T, 7. Is it improbable that all four groups come from the same universe?</p>
+<p>This problem is like the placebo vs.&nbsp;cancer-cure problem, but now there are more than two samples. It is also like the four-sample irradiated-fruit flies example (Example 17-1), except that now we are <em>not</em> asking whether any or some of the samples differ from a <em>given universe</em> (50-50 sex ratio in that case). Rather, we are now asking whether there are differences <em>among</em> the samples themselves. Please keep in mind that we are still dealing with two-outcome (yes-or-no, well-or-sick) problems. Later we shall take up problems that are similar except that the outcomes are “quantitative.”</p>
+<p>If all four groups were drawn from the same universe, that universe has an estimated rehabilitation rate of 17/20 + 10/20 + 10/20 + 7/20 = 44/80 = 55/100, because the observed data <em>taken as a whole</em> constitute our best guess as to the nature of the universe from which they come — again, <em>if</em> they all come from the same universe. (Please think this matter over a bit, because it is important and subtle. It may help you to notice the absence of any <em>other</em> information about the universe from which they have all come, if they have come from the same universe.)</p>
+<p>Therefore, select twenty two-digit numbers for each group from the random-number table, marking “yes” for each number “1-55” and “no” for each number “56-100.” Conduct a number of such trials. Then count the proportion of times that the difference between the highest and lowest groups is larger than the widest observed difference, the difference between P and T (17-7 = 10). In Table 17-2, none of the first six trials shows anywhere near as large a difference as the observed range of 10, suggesting that it would be rare for four treatments that are “really” similar to show so great a difference. There is thus reason to believe that P and T differ in their effects.</p>
+<p>Table 7-2</p>
+<p><strong>Results of Six Random Trials for Problem “Delinquents”</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Trial</strong></td>
+<td style="text-align: left;"><strong>P</strong></td>
+<td style="text-align: left;"><strong>R</strong></td>
+<td style="text-align: left;"><strong>S</strong></td>
+<td style="text-align: left;"><strong>T</strong></td>
+<td style="text-align: left;"><strong>Largest Minus Smallest</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+<p>The strategy of the RESAMPLING STATS solution to “Delinquents” is similar to the strategy for previous problems in this chapter. The benchmark (null) hypothesis is that the treatments do not differ in their effects observed, and we estimate the probability that the observed results would occur by chance using the benchmark universe. The only new twist is that we must instruct the computer to find the groups with the highest and the lowest numbers of rehabilitations.</p>
+<p>Using RESAMPLING STATS we GENERATE four “treatments,” each represented by 20 numbers, each number randomly selected between 1 and 100. We let 1-55 = success, 56-100</p>
+<p>= failure. Follow along in the program for the rest of the procedure:</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "4treat1.rss"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Do 1000 trials</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">GENERATE</span> <span class="fl">20</span> <span class="fl">1</span><span class="op">,</span><span class="fl">100</span> <span class="va">a</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">' The first treatment group, where "1-55" = success, "56-100" = failure</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">GENERATE</span> <span class="fl">20</span> <span class="fl">1</span><span class="op">,</span><span class="fl">100</span> <span class="va">b</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="er">' The second group</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">GENERATE</span> <span class="fl">20</span> <span class="fl">1</span><span class="op">,</span><span class="fl">100</span> <span class="va">c</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="er">' The third group</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">GENERATE</span> <span class="fl">20</span> <span class="fl">1</span><span class="op">,</span><span class="fl">100</span> <span class="va">d</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="er">' The fourth group</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">a</span> <span class="op">&lt;=</span><span class="fl">55</span> <span class="va">aa</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="ss">' Count the first group'</span><span class="va">s</span> <span class="va">successes</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">b</span> <span class="op">&lt;=</span><span class="fl">55</span> <span class="va">bb</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Same for second, third &amp; fourth groups</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">c</span> <span class="op">&lt;=</span><span class="fl">55</span> <span class="va">cc</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">d</span> <span class="op">&lt;=</span><span class="fl">55</span> <span class="va">dd</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="va">SUBTRACT</span> <span class="va">aa</span> <span class="va">bb</span> <span class="va">ab</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="er">' Now find all the pairwise differences in successes among the groups</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="va">SUBTRACT</span> <span class="va">aa</span> <span class="va">cc</span> <span class="va">ac</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="va">SUBTRACT</span> <span class="va">aa</span> <span class="va">dd</span> <span class="va">ad</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="va">SUBTRACT</span> <span class="va">bb</span> <span class="va">cc</span> <span class="va">bc</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="va">SUBTRACT</span> <span class="va">bb</span> <span class="va">dd</span> <span class="va">bd</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="va">SUBTRACT</span> <span class="va">cc</span> <span class="va">dd</span> <span class="va">cd</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="va">CONCAT</span> <span class="va">ab</span> <span class="va">ac</span> <span class="va">ad</span> <span class="va">bc</span> <span class="va">bd</span> <span class="va">cd</span> <span class="va">e</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="er">' Concatenate, or join, all the differences in a single vector e</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="va">ABS</span> <span class="va">e</span> <span class="va">f</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="er">' Since we are interested only in the magnitude of the difference, not its</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="er">' direction, we take the ABSolute value of all the differences.</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="va">MAX</span> <span class="va">f</span> <span class="va">g</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="er">' Find the largest of all the differences</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="va">SCORE</span> <span class="va">g</span> <span class="va">z</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="er">' Keep score of the largest</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="er">' End a trial, go back and repeat until all 1000 are complete.</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&gt;=</span><span class="fl">10</span> <span class="va">k</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="er">' How many of the trials yielded a maximum difference greater than the</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="er">' observed maximum difference?</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">kk</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="er">' Convert to a proportion</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">kk</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="er">' Note: The file "4treat1" on the Resampling Stats software disk contains</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="er">' this set of commands.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>One percent of the experiments with randomly generated treatments from a common success rate of .55 produced differences in excess of the observed maximum difference (10).</p>
+<p>An alternative approach to this problem would be to deal with <em>each</em> result’s departure from the mean, rather than the largest difference among the pairs. Once again, we want to deal with <em>absolute</em> departures, since we are interested only in magnitude of difference. We could take the absolute value of the differences, as above, but we will try something different here. <em>Squaring</em> the differences also renders them all positive: this is a common approach in statistics.</p>
+<p>The first step is to examine our data and calculate this measure: The mean is 11, the differences are 6, 1, 1, and 4, the</p>
+<p>squared differences are 36, 1, 1, and 16, and their sum is 54. Our experiment will be, as before, to constitute four groups of 20 at random from a universe with a 55 percent rehabilitation rate. We then calculate this same measure for the random groups. If it is frequently larger than 54, then we conclude that a uniform cure rate of 55 percent could easily have produced the observed results. The program that follows also GENERATES the four treatments by using a REPEAT loop, rather than spelling out the GENERATE command 4 times as above. In RESAMPLING STATS:</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb3"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "testing_counts_2_02.rss"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Do 1000 trials</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">REPEAT</span> <span class="fl">4</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Repeat the following steps 4 times to constitute 4 groups of 20 and</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="er">' count their rehabilitation rates.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">GENERATE</span> <span class="fl">20</span> <span class="fl">1</span><span class="op">,</span><span class="fl">100</span> <span class="va">a</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Randomly generate 20 numbers between 1 and 100 and put them in a; let</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="er">' 1-55 = rehabilitation, 56-100 no rehab.</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">COUNT</span> <span class="va">a</span> <span class="va">between</span> <span class="fl">1</span> <span class="fl">55</span> <span class="va">b</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Count the number of rehabs, put the result in b.</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">SCORE</span> <span class="va">b</span> <span class="va">w</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Keep track of the 4 rehab rates for the group of 20.</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="va">END</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="er">' End the procedure for one group of 20, go back and repeat until all 4</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="er">' are done.</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">w</span> <span class="va">x</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Calculate the mean</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="va">SUMSQRDEV</span> <span class="va">w</span> <span class="va">x</span> <span class="va">y</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Find the sum of squared deviations between group rehab rates (w) and the</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="er">' overall rate (x).</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">y</span> <span class="va">z</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Keep track of the result for each trial.</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="va">CLEAR</span> <span class="va">w</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Erase the contents of w to prepare for the next trial.</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="er">' End one experiment, go back and repeat until all 1000 are complete.</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">z</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="er">' Produce a histogram of trial results.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>4 Treatments</strong></p>
+<p><img src="images/21-Chap-17_000.png" class="img-fluid"></p>
+<p><strong>sum of squared differences</strong></p>
+<p>From this histogram, we see that in only 1 percent of the cases did our trial sum of squared differences equal or exceed 54, confirming our conclusion that this is an unusual result. We can have RESAMPLING STATS calculate this proportion:</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb4"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "4treat2.rss"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&gt;=</span> <span class="fl">54</span> <span class="va">k</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="er">' Determine how many trials produced differences as great as those</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="er">' observed.</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">kk</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="er">' Convert to a proportion.</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">kk</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="er">' Print the results.</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="er">' Note: The file "4treat2" on the Resampling Stats software disk contains</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="er">' this set of commands.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The conventional way to approach this problem would be with what is known as a “chi-square test.”</p>
+<p><strong>Example 17-3: Three-way Comparison</strong></p>
+<p>In a national election poll of 750 respondents in May, 1992, George Bush got 36 percent of the preferences (270 voters), Ross Perot got 30 percent (225 voters), and Bill Clinton got 28 percent (210 voters) ( <em>Wall Street Journal</em>, October 29, 1992, A16). Assuming that the poll was representative of actual voting, how likely is it that Bush was actually <em>behind</em> and just came out ahead in this poll by chance? Or to put it differently, what was the probability that Bush actually had a plurality of support, rather than that his apparent advantage was a matter of sampling variability? We test this by constructing a universe in which Bush is slightly behind (in practice, just equal), and then drawing samples to see how likely it is that those samples will show Bush ahead.</p>
+<p>We must first find that universe — among all possible universes that yield a conclusion contrary to the conclusion shown by the data, and one in which we are interested — that has the highest probability of producing the observed sample. With a two-person race the universe is obvious: a universe that is evenly split except for a single vote against “our” candidate who is now in the lead, i.e.&nbsp;in practice a 50-50 universe. In that simple case we then ask the probability that <em>that</em> universe would produce a sample as far out in the direction of the conclusion drawn from the observed sample as the observed sample.</p>
+<p>With a three-person race, however, the decision is not obvious (and if this problem becomes too murky for you, skip over it; it is included here more for fun than anything else). And there is no standard method for handling this problem in conventional statistics (a solution in terms of a confidence interval was first offered in 1992, and that one is very complicated and not very satisfactory to me). But the sort of thinking that we must labor to accomplish is also required for any conventional solution; the difficulty is inherent in the problem, rather than being inherent in resampling, and resampling will be at least as simple and understandable as any formulaic approach.</p>
+<p>The relevant universe is (or so I think) a universe that is 35 Bush — 35 Perot — 30 Clinton (for a race where the poll indicates a 36-30-28 split); the 35-35-30 universe is of interest because it is the universe that is closest to the observed sample that does not provide a win for Bush (leaving out the “undecideds” for convenience); it is roughly analogous to the 50-50 split in the two-person race, though a clear-cut argument would require a lot more discussion. A universe that is split 34-34-32, or any of the other possible universes, is less likely to produce a 36-30-28 sample (such as was observed) than is a 35-35-30 universe, I believe, but that is a checkable matter. (In technical terms, it might be a “maximum likelihood universe” that we are looking for.)</p>
+<p>We might also try a 36-36-28 universe to see if that produces a result very different than the 35-35-30 universe.</p>
+<p>Among those universes where Bush is behind (or equal), a universe that is split 50-50-0 (with just one extra vote for the closest opponent to Bush) would be the most likely to produce a 6 percent difference between the top two candidates by chance, but we are not prepared to believe that the voters are split in such a fashion. This assumption shows that we are bringing some judgments to bear from outside the observed data.</p>
+<p>For now, the point is not <em>how</em> to discover the appropriate benchmark hypothesis, but rather its <em>criterion</em> — which is, I repeat, that universe (among all possible universes) that yields a conclusion contrary to the conclusion shown by the data (and in which we are interested) and that (among such universes that yield such a conclusion) has the highest probability of producing the observed sample.</p>
+<p>Let’s go through the logic again: 1) Bush apparently has a 6 percent lead over the second-place candidate. 2) We ask if the second-place candidate might be ahead if all voters were polled. We test that by setting up a universe in which the second-place candidate is infinitesimally ahead (in practice, we make the two top candidates equal in our hypothetical universe). And we make the third-place candidate somewhere close to the top two candidates. 3) We then draw samples from this universe and observe how often the result is a 6 percent lead for the top candidate (who starts off just below equal in the universe).</p>
+<p>From here on, the procedure is straightforward: Determine how likely that universe is to produce a sample as far (or further) away in the direction of “our” candidate winning. (One could do something like this even if the candidate of interest were not now in the lead.)</p>
+<p>This problem teaches again that one must think explicitly about the choice of a benchmark hypothesis. The grounds for the choice of the benchmark hypothesis should precede the program, or should be included as an extended comment within the program.</p>
+<p>This program embodies the previous line of thought.</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "testing_counts_2_04.rss"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">URN</span> <span class="fl">35</span>#<span class="fl">1</span> <span class="fl">35</span>#<span class="fl">2</span> <span class="fl">30</span>#<span class="fl">3</span> <span class="va">univ</span> <span class="fl">1</span><span class="op">=</span> <span class="va">Bush</span><span class="op">,</span> <span class="fl">2</span><span class="op">=</span> <span class="va">Perot</span><span class="op">,</span> <span class="fl">3</span><span class="op">=</span><span class="va">Clinton</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span> <span class="fl">750</span> <span class="va">univ</span> <span class="va">samp</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Take a sample of 750 votes</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">samp</span> <span class="op">=</span><span class="fl">1</span> <span class="va">bush</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Count the Bush voters, etc.</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">samp</span> <span class="op">=</span><span class="fl">2</span> <span class="va">pero</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Perot voters</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">samp</span> <span class="op">=</span><span class="fl">3</span> <span class="va">clin</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Clinton voters</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">CONCAT</span> <span class="va">pero</span> <span class="va">clin</span> <span class="va">others</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Join Perot &amp; Clinton votes</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="va">MAX</span> <span class="va">others</span> <span class="va">second</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Find the larger of the other two</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">SUBTRACT</span> <span class="va">bush</span> <span class="va">second</span> <span class="va">d</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="ss">' Find Bush'</span><span class="va">s</span> <span class="va">margin</span> <span class="va">over</span> <span class="fl">2</span><span class="va">nd</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">d</span> <span class="va">z</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">z</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&gt;=</span><span class="fl">46</span> <span class="va">m</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="er">' Compare to the observed margin in the sample of 750 corresponding to a 6</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="er">' percent margin by Bush over 2nd place finisher (rounded)</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">m</span> <span class="fl">1000</span> <span class="va">mm</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">mm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-bush-margin" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/21-Chap-17_001.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;23.1: Samples of 750 Voters:</figcaption>
+</figure>
+</div>
+<p>The result is — Bush’s margin over 2nd (<code>mm</code>) = 0.018.</p>
+<p>When we run this program with a 36-36-28 split, we also get a similar result — 2.6 percent. That is, the analysis shows a probability of only 2.6 percent that Bush would score a 6 percentage point “victory” in the sample, by chance, if the universe were split as specified. So Bush could feels reasonably confident that at the time the poll was taken, he was ahead of the other two candidates.</p>
+</section>
+<section id="paired-comparisons-with-counted-data" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="paired-comparisons-with-counted-data"><span class="header-section-number">23.2</span> Paired Comparisons With Counted Data</h2>
+<p><strong>Example 17-4: The Pig Rations Again, But Comparing Pairs of Pigs</strong> (Paired-Comparison Test) (Program “Pigs2”)</p>
+<p>To illustrate how several different procedures can reasonably be used to deal with a given problem, here is another way to decide whether pig ration A is “really” better: We can assume that the order of the pig scores listed <em>within each ration group</em> is random — perhaps the order of the stalls the pigs were kept in, or their alphabetical-name order, or any other random order <em>not related to their weights</em> . Match the first pig eating ration A with the first pig eating ration B, and also match the second pigs, the third pigs, and so forth. Then count the number of matched pairs on which ration A does better. On nine of twelve pairings ration A does better, that is, 31.0 &gt; 26.0, 34.0 &gt; 24.0, and so forth.</p>
+<p>Now we can ask: <em>If</em> the two rations are equally good, how often will one ration exceed the other nine or more times out of twelve, just by chance? This is the same as asking how often either heads <em>or</em> tails will come up nine or more times in twelve tosses. (This is a “two-tailed” test because, as far as we know, either ration may be as good as or better than the other.) Once we have decided to treat the problem in this manner, it is quite similar to Example 15-1 (the first fruitfly irradiation problem). We ask how likely it is that the outcome will be as far away as the observed outcome (9 “heads” of 12) from 6 of 12 (which is what we expect to get by chance in this case if the two rations are similar).</p>
+<p>So we conduct perhaps fifty trials as in Table 17-3, where an asterisk denotes nine or more heads or tails.</p>
+<p><strong>Step 1.</strong> Let odd numbers equal “A better” and even numbers equal “B better.”</p>
+<p><strong>Step 2.</strong> Examine 12 random digits and check whether 9 or more, or 3 or less, are odd. If so, record “yes,” otherwise “no.”</p>
+<p><strong>Step 3.</strong> Repeat step 2 fifty times.</p>
+<p><strong>Step 4.</strong> Compute the proportion “yes,” which estimates the probability sought.</p>
+<p>The results are shown in Table 17-3.</p>
+<p>In 8 of 50 simulation trials, one or the other ration had nine or more tosses in its favor. Therefore, we estimate the probability to be .16 (eight of fifty) that samples this different would be generated by chance if the samples came from the same universe.</p>
+<p>Table 17-3</p>
+<p><strong>Results From Fifty Simulation Trials Of The Problem “Pigs2”</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Trial</strong></td>
+<td><p><strong>Heads” or Odds”</strong></p>
+<p><strong>(Ration A)</strong></p></td>
+<td><p><strong>“Tails” or “Evems”</strong></p>
+<p><strong>(Ration B)</strong></p></td>
+<td><strong>Trial</strong></td>
+<td><p><strong>“Heads” or Odds”</strong></p>
+<p><strong>(Ration A)</strong></p></td>
+<td><p><strong>“Tails” or “Evens”</strong></p>
+<p><strong>(Ration B)</strong></p></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>6</td>
+<td>6</td>
+<td>26</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>4</td>
+<td>8</td>
+<td>27</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>6</td>
+<td>6</td>
+<td>28</td>
+<td>7</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>7</td>
+<td>5</td>
+<td>29</td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>* 5</td>
+<td>3</td>
+<td>9</td>
+<td>30</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>5</td>
+<td>7</td>
+<td>* 31</td>
+<td>9</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>8</td>
+<td>4</td>
+<td>* 32</td>
+<td>2</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>6</td>
+<td>6</td>
+<td>33</td>
+<td>7</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>7</td>
+<td>5</td>
+<td>34</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>*10</td>
+<td>9</td>
+<td>3</td>
+<td>35</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>7</td>
+<td>5</td>
+<td>36</td>
+<td>8</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>*12</td>
+<td>3</td>
+<td>9</td>
+<td>37</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>5</td>
+<td>7</td>
+<td>38</td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td>6</td>
+<td>6</td>
+<td>39</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>6</td>
+<td>6</td>
+<td>40</td>
+<td>8</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td>8</td>
+<td>4</td>
+<td>41</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>17</td>
+<td>5</td>
+<td>7</td>
+<td>42</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>*18</td>
+<td>9</td>
+<td>3</td>
+<td>43</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>19</td>
+<td>6</td>
+<td>6</td>
+<td>44</td>
+<td>7</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>20</td>
+<td>7</td>
+<td>5</td>
+<td>45</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>21</td>
+<td>4</td>
+<td>8</td>
+<td>46</td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>* 22</td>
+<td>10</td>
+<td>2</td>
+<td>47</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>23</td>
+<td>6</td>
+<td>6</td>
+<td>48</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>24</td>
+<td>5</td>
+<td>7</td>
+<td>49</td>
+<td>8</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>*25</td>
+<td>3</td>
+<td>9</td>
+<td>50</td>
+<td>7</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>Now for a RESAMPLING STATS program and results. “Pigs2” is different from “Pigs1” in that it compares the weight-gain results of <em>pairs</em> of pigs, instead of simply looking at the <em>rankings</em> for weight gains.</p>
+<p>The key to “Pigs2” is the GENERATE statement. If we assume that ration A does not have an effect on weight gain (which is the “benchmark” or “null” hypothesis), then the results of the actual experiment would be no different than if we randomly GENERATE numbers “1” and “2” and treat a “1” as a larger weight gain for the ration A pig, and a “2” as a larger weight gain for the ration B pig. Both events have a .5 chance of occurring for each pair of pigs because if the rations had no effect on weight gain (the null hypothesis), ration A pigs would have larger weight gains about half of the time. The next step is to COUNT the number of times that the weight gains of one group (call it the group fed with ration A) were larger than the weight gains of the other (call it the group fed with ration B). The complete program follows:</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb6"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "pigs2.rss"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Do 1000 trials</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">GENERATE</span> <span class="fl">12</span> <span class="fl">1</span><span class="op">,</span><span class="fl">2</span> <span class="va">a</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Generate randomly 12 "1"s and "2"s, put them in a. This represents 12</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="er">' "pairings" where "1" = ration a "wins," "2" = ration b = "wins."</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">a</span> <span class="op">=</span><span class="fl">1</span> <span class="va">b</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Count the number of "pairings" where ration a won, put the result in b.</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">b</span> <span class="va">z</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Keep track of the result in z</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="er">' End the trial, go back and repeat until all 100 trials are complete.</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&gt;=</span> <span class="fl">9</span> <span class="va">j</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="er">' Determine how often we got 9 or more "wins" for ration a.</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&lt;=</span> <span class="fl">3</span> <span class="va">k</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="er">' Determine how often we got 3 or fewer "wins" for ration a.</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="va">ADD</span> <span class="va">j</span> <span class="va">k</span> <span class="va">m</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="er">' Add the two together</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">m</span> <span class="fl">100</span> <span class="va">mm</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="er">' Convert to a proportion</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">mm</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="er">' Print the result.</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="er">' Note: The file "pigs2" on the Resampling Stats software disk contains</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="er">' this set of commands.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Notice how we proceeded in Examples 15-6 and 17-4. The data were originally quantitative — weight gains in pounds for each pig. But for simplicity we classified the data into simpler counted-data formats. The first format (Example 15-6) was a rank order, from highest to lowest. The second format (Example 17-4) was simply higher-lower, obtained by randomly pairing the observations (using alphabetical letter, or pig’s stall number, or whatever was the cause of the order in which the data were presented to be random). Classifying the data in either of these ways loses some information and makes the subsequent tests somewhat cruder than more refined analysis could provide (as we shall see in the next chapter), but the loss of efficiency is not crucial in many such cases. We shall see how to deal directly with the quantitative data in <a href="testing_measured.html" class="quarto-xref"><span>Chapter&nbsp;24</span></a>.</p>
+<p><strong>Example 17-5: Merged Firms Compared to Two Non-Merged Groups</strong></p>
+<p>In a study by Simon, Mokhtari, and Simon <span class="citation" data-cites="simon1996mergers">(<a href="references.html#ref-simon1996mergers" role="doc-biblioref">1996</a>)</span>, a set of 33 advertising agencies that merged over a period of years were each compared to entities within two groups (each also of 33 firms) that did not merge; one non-merging group contained firms of roughly the same size as the final merged entities, and the other non-merging group contained pairs of non-merging firms whose total size was roughly the same as the total size of the merging entities.</p>
+<p>The idea behind the matching was that each pair of merged firms was compared against</p>
+<ol type="1">
+<li><p>a pair of contemporaneous firms that were roughly the same size as the merging firms <em>before</em> the merger, and</p></li>
+<li><p>a single firm that was roughly the same size as the merged entity <em>after</em> the merger.</p>
+<p>Here (Table 17-4) are the data (provided by the authors):</p>
+<p>Table 17-4</p>
+<p><strong>Revenue Growth In Year 1 Following Merger</strong></p>
+<p><strong>Set # Merged Match1 Match2</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">-0.20000</td>
+<td style="text-align: left;">0.02564</td>
+<td style="text-align: left;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">-0.34831</td>
+<td style="text-align: left;">-0.12500</td>
+<td style="text-align: left;">0.080460</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0.07514</td>
+<td style="text-align: left;">0.06322</td>
+<td style="text-align: left;">-0.023121</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">0.12613</td>
+<td style="text-align: left;">-0.04199</td>
+<td style="text-align: left;">0.164671</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">-0.10169</td>
+<td style="text-align: left;">0.08000</td>
+<td style="text-align: left;">0.277778</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">0.03784</td>
+<td style="text-align: left;">0.14907</td>
+<td style="text-align: left;">0.430168</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">0.11616</td>
+<td style="text-align: left;">0.15183</td>
+<td style="text-align: left;">0.142857</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">-0.09836</td>
+<td style="text-align: left;">0.03774</td>
+<td style="text-align: left;">0.040000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">0.02137</td>
+<td style="text-align: left;">0.07661</td>
+<td style="text-align: left;">.0111111</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">-0.01711</td>
+<td style="text-align: left;">0.28434</td>
+<td style="text-align: left;">0.189139</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">-0.36478</td>
+<td style="text-align: left;">0.13907</td>
+<td style="text-align: left;">0.038869</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">0.08814</td>
+<td style="text-align: left;">0.03874</td>
+<td style="text-align: left;">0.094792</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">-0.26316</td>
+<td style="text-align: left;">0.05641</td>
+<td style="text-align: left;">0.045139</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">-0.04938</td>
+<td style="text-align: left;">0.05371</td>
+<td style="text-align: left;">0.008333</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">0.01146</td>
+<td style="text-align: left;">0.04805</td>
+<td style="text-align: left;">0.094817</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">0.00975</td>
+<td style="text-align: left;">0.19816</td>
+<td style="text-align: left;">0.060929</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">0.07143</td>
+<td style="text-align: left;">0.42083</td>
+<td style="text-align: left;">-0.024823</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">0.00183</td>
+<td style="text-align: left;">0.07432</td>
+<td style="text-align: left;">0.053191</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">0.00482</td>
+<td style="text-align: left;">-0.00707</td>
+<td style="text-align: left;">0.050083</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">-0.05399</td>
+<td style="text-align: left;">0.17152</td>
+<td style="text-align: left;">0.109524</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">0.02270</td>
+<td style="text-align: left;">0.02788</td>
+<td style="text-align: left;">-0.022456</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">0.05984</td>
+<td style="text-align: left;">0.04857</td>
+<td style="text-align: left;">0.167064</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">23</td>
+<td style="text-align: left;">-0.05987</td>
+<td style="text-align: left;">0.02643</td>
+<td style="text-align: left;">0.020676</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">-0.08861</td>
+<td style="text-align: left;">-0.05927</td>
+<td style="text-align: left;">0.077067</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">-0.02483</td>
+<td style="text-align: left;">-0.01839</td>
+<td style="text-align: left;">0.059633</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">0.07643</td>
+<td style="text-align: left;">0.01262</td>
+<td style="text-align: left;">0.034635</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">-0.00170</td>
+<td style="text-align: left;">-0.04549</td>
+<td style="text-align: left;">0.053571</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">-0.21975</td>
+<td style="text-align: left;">0.34309</td>
+<td style="text-align: left;">0.042789</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">0.38237</td>
+<td style="text-align: left;">0.22105</td>
+<td style="text-align: left;">0.115773</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">-0.00676</td>
+<td style="text-align: left;">0.25494</td>
+<td style="text-align: left;">0.237047</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">-0.16298</td>
+<td style="text-align: left;">0.01124</td>
+<td style="text-align: left;">0.190476</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">0.19182</td>
+<td style="text-align: left;">0.15048</td>
+<td style="text-align: left;">0.151994</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">0.06116</td>
+<td style="text-align: left;">0.17045</td>
+<td style="text-align: left;">0.093525</td>
+</tr>
+</tbody>
+</table>
+<p>Comparisons were made in several years before and after the mergings to see whether the merged entities did better or worse than the non-merging entities they were matched with by the researchers, but for simplicity we may focus on just one of the more important years in which they were compared — say, the revenue growth rates in the year after the merger.</p>
+<p>Here are those average revenue growth rates for the three groups:</p>
+<p><strong>Year’s rev. growth</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">MERGED</td>
+<td style="text-align: left;">-0.0213</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MATCH 1</td>
+<td style="text-align: left;">0.092085</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MATCH 2</td>
+<td style="text-align: left;">0.095931</td>
+</tr>
+</tbody>
+</table>
+<p>We could do a general test to determine whether there are differences among the means of the three groups, as was done in the “Differences Among 4 Pig Rations” problem (<a href="testing_measured.html#sec-pig-rations-measured" class="quarto-xref"><span>Section&nbsp;24.0.1</span></a>). However, we note that there may be considerable variation from one matched set to another — variation which can obscure the overall results if we resample from a large general bucket.</p>
+<p>Therefore, we use the following resampling procedure that maintains the separation between matched sets by converting each observation into a rank (1, 2 or 3) within the matched set.</p>
+<p>Here (Table 17-5) are those ranks:</p>
+<p>Table 17-5</p>
+<p><strong>Ranked Within Matched Set</strong> (1 = worst, 3 = best)</p>
+<p><strong>Set # Merged Match1 Match2</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Set #</strong></td>
+<td style="text-align: left;"><strong>Merged</strong></td>
+<td style="text-align: left;"><strong>Match1</strong></td>
+<td style="text-align: left;"><strong>Match2</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">23</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+<p>These are the average ranks for the three groups (1 = worst, 3</p>
+<p>= best):</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">MERGED</td>
+<td style="text-align: left;">1.45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MATCH 1</td>
+<td style="text-align: left;">2.18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MATCH 2</td>
+<td style="text-align: left;">2.36</td>
+</tr>
+</tbody>
+</table>
+<p>Is it possible that the merged group received such a low (poor) average ranking just by chance? The null hypothesis is that the ranks within each set were assigned randomly, and that “merged” came out so poorly just by chance. The following procedure simulates random assignment of ranks to the “merged” group:</p>
+<ol type="1">
+<li><p>Randomly select 33 integers between “1” and “3” (inclusive).</p></li>
+<li><p>Find the average rank &amp; record.</p></li>
+<li><p>Repeat steps 1 and 2, say, 1000 times.</p></li>
+<li><p>Find out how often the average rank is as low as 1.45</p></li>
+</ol></li>
+</ol>
+<p>Here’s a RESAMPLING STATS program (“merge.sta”):</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb7"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "testing_counts_2_06.rss"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">GENERATE</span> <span class="fl">33</span> (<span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span>) <span class="va">ranks</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">ranks</span> <span class="va">ranksum</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">ranksum</span> <span class="va">z</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">z</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&lt;=</span><span class="fl">1.45</span> <span class="va">k</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">kk</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">kk</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/21-Chap-17_002.png" class="img-fluid"></p>
+<p>Result: kk = 0</p>
+<p>Interpretation: 1000 random selections of 33 ranks never produced an average as low as the observed average. Therefore we rule out chance as an explanation for the poor ranking of the merged firms.</p>
+<p>Exactly the same technique might be used in experimental medical studies wherein subjects in an experimental group are matched with two different entities that receive placebos or control treatments.</p>
+<p>For example, there have been several recent three-way tests of treatments for depression: drug therapy versus cognitive therapy versus combined drug and cognitive therapy. If we are interested in the combined drug-therapy treatment in particular, comparing it to standard existing treatments, we can proceed in the same fashion as in the merger problem.</p>
+<p>We might just as well consider the real data from the merger as hypothetical data for a proposed test in 33 triplets of people that have been matched within triplet by sex, age, and years of education. The three treatments were to be chosen randomly within each triplet.</p>
+<p>Assume that we now switch scales from the merger data, so that #1 = best and #3 = worst, and that the outcomes on a series of tests were ranked from best (#1) to worst (#3) within each triplet. Assume that the combined drug-and-therapy regime has the best average rank. How sure can we be that the observed result would not occur by chance? Here are the data from the merger study, seen here as Table 17-5-b:</p>
+<p>Table 17-5-b</p>
+<p><strong>Ranked Therapies Within Matched Patient Triplets</strong></p>
+<p><strong>(hypothetical data identical to merger data) (1 = best, 3 = worst)</strong></p>
+<p><strong>Triplet # Therapy Only Combined Drug Only</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">23</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+<p>These are the average ranks for the three groups (“1” = best, “3”= worst):</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Combined</td>
+<td style="text-align: left;">1.45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Drug</td>
+<td style="text-align: left;">2.18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Therapy</td>
+<td style="text-align: left;">2.36</td>
+</tr>
+</tbody>
+</table>
+<p>In these hypothetical data, the average rank for the drug and therapy regime is 1.45. Is it likely that the regimes do not “really” differ with respect to effectiveness, and that the drug and therapy regime came out with the best rank just by the luck of the draw? We test by asking, “If there is no difference, what is the probability that the treatment of interest will get an average rank this good, just by chance?”</p>
+<p>We proceed exactly as with the solution for the merger problem (see above).</p>
+<p>In the above problems, we did not concern ourselves with chance outcomes for the other therapies (or the matched firms) because they were not our primary focus. If, in actual fact, one of them had done exceptionally well or poorly, we would have paid little notice because their performance was not the object of the study. We needed, therefore, only to guard against the possibility that chance good luck for <em>our therapy of interest</em> might have led us to a hasty conclusion.</p>
+<p>Suppose now that we are not interested primarily in the combined drug-therapy treatment, and that we have three treatments being tested, all on equal footing. It is no longer sufficient to ask the question “What is the probability that the combined therapy could come out this well just by chance?” We must now ask “What is the probability that <em>any</em> of the therapies could have come out this well by chance?” (Perhaps you can guess that this probability will be higher than the probability that our <em>chosen therapy</em> will do so well by chance.)</p>
+<p>Here is a resampling procedure that will answer this question:</p>
+<ol type="1">
+<li><p>Put the numbers “1”, “2” and “3” (corresponding to ranks) in a bucket</p></li>
+<li><p>Shuffle the numbers and deal them out to three locations that correspond to treatments (call the locations “t1,” “t2,” and “t3”)</p></li>
+<li><p>Repeat step two another 32 times (for a total of 33 repetitions, for 33 matched triplets)</p></li>
+<li><p>Find the average rank for each location (treatment.</p></li>
+<li><p>Record the minimum (best) score.</p></li>
+<li><p>Repeat steps 2-4, say, 1000 times.</p></li>
+<li><p>Find out how often the minimum average rank for any treatment is as low as 1.45</p></li>
+</ol>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb8"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "testing_counts_2_07.rss"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="va">NUMBERS</span> (<span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span>) <span class="va">a</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="er">' Step 1 above</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Step 6</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">REPEAT</span> <span class="fl">33</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Step 3</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">SHUFFLE</span> <span class="va">a</span> <span class="va">a</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Step 2</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">SCORE</span> <span class="va">a</span> <span class="va">t1</span> <span class="va">t2</span> <span class="va">t3</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="er">' Step 2</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">END</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Step 3</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">t1</span> <span class="va">tt1</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Step 4</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">t2</span> <span class="va">tt2</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">t3</span> <span class="va">tt3</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="va">CLEAR</span> <span class="va">t1</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="ss">' Clear the vectors where we'</span><span class="va">ve</span> <span class="va">stored</span> <span class="va">the</span> <span class="va">ranks</span> <span class="kw">for</span> <span class="va">this</span> <span class="va">trial</span> (<span class="va">must</span> <span class="va">do</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="ss">' this whenever we have a SCORE statement that'</span><span class="va">s</span> <span class="va">part</span> <span class="va">of</span> <span class="va">a</span> <span class="st">"nested"</span> <span class="va">repeat</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="er">' loop)</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="va">CLEAR</span> <span class="va">t2</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="va">CLEAR</span> <span class="va">t3</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="va">CONCAT</span> <span class="va">tt1</span> <span class="va">tt2</span> <span class="va">tt3</span> <span class="va">b</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Part of step 5</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="va">MIN</span> <span class="va">b</span> <span class="va">bb</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Part of step 5</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">bb</span> <span class="va">z</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Part of step 5</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="er">' Step 6</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">z</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&lt;=</span><span class="fl">1.45</span> <span class="va">k</span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="er">' Step 7</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">kk</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">kk</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Interpretation: 1000 random shufflings of 33 ranks, apportioned to three “treatments,” never produced for the best treatment in the three an average as low as the observed average, therefore we rule out chance as an explanation for the success of the combined therapy.</p>
+<p>An interesting feature of the mergers (or depression treatment) problem is that it would be hard to find a conventional test that would handle this three-way comparison in an efficient manner. Certainly it would be impossible to find a test that does not require formulae and tables that only a talented professional statistician could manage satisfactorily, and even s/ he is not likely to fully understand those formulaic procedures.</p>
+<p><img src="images/21-Chap-17_003.png" class="img-fluid"></p>
+<p>Result: kk = 0</p>
+</section>
+<section id="technical-note" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="technical-note"><span class="header-section-number">23.3</span> Technical note</h2>
+<p>Some of the tests introduced in this chapter are similar to standard nonparametric rank and sign tests. They differ less in the structure of the test statistic than in the way in which significance is assessed (the comparison is to multiple simulations of a model based on the benchmark hypothesis, rather than to critical values calculated analytically).</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-simon1996mergers" class="csl-entry" role="listitem">
+Simon, Julian Lincoln, Manouchehr Mokhtari, and Daniel H Simon. 1996. <span>“Are Mergers Beneficial or Detrimental? Evidence from Advertising Agencies.”</span> <em>International Journal of the Economics of Business</em> 3 (1): 69–82.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./significance.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./testing_measured.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

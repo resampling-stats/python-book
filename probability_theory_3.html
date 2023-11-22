@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.51">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Resampling statistics - 12&nbsp; Probability Theory, Part 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./probability_theory_4_finite.html" rel="next">
+<link href="./probability_theory_2_compound.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table").addClass('lightable-paper lightable-striped lightable-hover')
+  });
+</script>
+
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability_theory_3.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Resampling statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_third.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_second.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_is_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about_technology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introducing Python and the Jupyter notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more_sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_2_compound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_4_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monte_carlo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard_scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./point_estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framing_questions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_measured.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reliability_average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_big_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-birthday-problem" id="toc-sec-birthday-problem" class="nav-link active" data-scroll-target="#sec-birthday-problem"><span class="header-section-number">12.1</span> Example: The Birthday Problem</a></li>
+  <li><a href="#example-three-daughters-among-four-children" id="toc-example-three-daughters-among-four-children" class="nav-link" data-scroll-target="#example-three-daughters-among-four-children"><span class="header-section-number">12.2</span> Example: Three Daughters Among Four Children</a></li>
+  <li><a href="#variations-of-the-daughters-problem" id="toc-variations-of-the-daughters-problem" class="nav-link" data-scroll-target="#variations-of-the-daughters-problem"><span class="header-section-number">12.3</span> Variations of the daughters problem</a></li>
+  <li><a href="#and-the-probp-argument" id="toc-and-the-probp-argument" class="nav-link" data-scroll-target="#and-the-probp-argument"><span class="header-section-number">12.4</span> <code>rnd.choice</code> and the <span class="python"><code>p</code></span> argument</a></li>
+  <li><a href="#the-daughters-problem-with-more-accurate-probabilities" id="toc-the-daughters-problem-with-more-accurate-probabilities" class="nav-link" data-scroll-target="#the-daughters-problem-with-more-accurate-probabilities"><span class="header-section-number">12.5</span> The daughters problem with more accurate probabilities</a></li>
+  <li><a href="#a-note-on-clarifying-and-labeling-problems" id="toc-a-note-on-clarifying-and-labeling-problems" class="nav-link" data-scroll-target="#a-note-on-clarifying-and-labeling-problems"><span class="header-section-number">12.6</span> A note on clarifying and labeling problems</a></li>
+  <li><a href="#binomial-trials" id="toc-binomial-trials" class="nav-link" data-scroll-target="#binomial-trials"><span class="header-section-number">12.7</span> Binomial trials</a></li>
+  <li><a href="#example-three-or-more-successful-basketball-shots-in-five-attempts" id="toc-example-three-or-more-successful-basketball-shots-in-five-attempts" class="nav-link" data-scroll-target="#example-three-or-more-successful-basketball-shots-in-five-attempts"><span class="header-section-number">12.8</span> Example: Three or More Successful Basketball Shots in Five Attempts</a></li>
+  <li><a href="#note-to-the-student-of-analytic-probability-theory" id="toc-note-to-the-student-of-analytic-probability-theory" class="nav-link" data-scroll-target="#note-to-the-student-of-analytic-probability-theory"><span class="header-section-number">12.9</span> Note to the student of analytic probability theory</a></li>
+  <li><a href="#sec-one-black-archery" id="toc-sec-one-black-archery" class="nav-link" data-scroll-target="#sec-one-black-archery"><span class="header-section-number">12.10</span> Example: One in Black, Two in White, No Misses in Three Archery Shots</a></li>
+  <li><a href="#example-two-groups-of-heart-patients" id="toc-example-two-groups-of-heart-patients" class="nav-link" data-scroll-target="#example-two-groups-of-heart-patients"><span class="header-section-number">12.11</span> Example: Two Groups of Heart Patients</a></li>
+  <li><a href="#example-dispersion-of-a-sum-of-random-variables-hammer-lengths-heads-and-handles" id="toc-example-dispersion-of-a-sum-of-random-variables-hammer-lengths-heads-and-handles" class="nav-link" data-scroll-target="#example-dispersion-of-a-sum-of-random-variables-hammer-lengths-heads-and-handles"><span class="header-section-number">12.12</span> Example: Dispersion of a Sum of Random Variables — Hammer Lengths — Heads and Handles</a></li>
+  <li><a href="#example-the-product-of-random-variables-theft-by-employees" id="toc-example-the-product-of-random-variables-theft-by-employees" class="nav-link" data-scroll-target="#example-the-product-of-random-variables-theft-by-employees"><span class="header-section-number">12.13</span> Example: The Product of Random Variables — Theft by Employees</a></li>
+  <li><a href="#example-flipping-pennies-to-the-end" id="toc-example-flipping-pennies-to-the-end" class="nav-link" data-scroll-target="#example-flipping-pennies-to-the-end"><span class="header-section-number">12.14</span> Example: Flipping Pennies to the End</a></li>
+  <li><a href="#example-a-drunks-random-walk" id="toc-example-a-drunks-random-walk" class="nav-link" data-scroll-target="#example-a-drunks-random-walk"><span class="header-section-number">12.15</span> Example: A Drunk’s Random Walk</a></li>
+  <li><a href="#sec-public-liquor" id="toc-sec-public-liquor" class="nav-link" data-scroll-target="#sec-public-liquor"><span class="header-section-number">12.16</span> Example: public and private liquor pricing</a></li>
+  <li><a href="#the-general-procedure" id="toc-the-general-procedure" class="nav-link" data-scroll-target="#the-general-procedure"><span class="header-section-number">12.17</span> The general procedure</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-infinite-universes" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This chapter discusses problems whose appropriate concept of a universe is not finite, whereas <a href="probability_theory_4_finite.html" class="quarto-xref"><span>Chapter&nbsp;13</span></a> discusses problems whose appropriate concept of a universe is finite.</p>
+<p>How can a universe be infinite yet known? Consider, for example, the possible flips with a given coin; the number is not limited in any meaningful sense, yet we understand the properties of the coin and the probabilities of a head and a tail.</p>
+<section id="sec-birthday-problem" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="sec-birthday-problem"><span class="header-section-number">12.1</span> Example: The Birthday Problem</h2>
+<p>This examples illustrates the probability of duplication in a multi-outcome sample from an infinite universe.</p>
+<p>As an indication of the power <em>and</em> simplicity of resampling methods, consider this famous examination question used in probability courses: What is the probability that two or more people among a roomful of (say) twenty-five people will have the same birthday? To obtain an answer we need simply examine the first twenty-five numbers from the random-number table that fall between “001” and “365” (the number of days in the year), record whether or not there is a duplication among the twenty-five, and repeat the process often enough to obtain a reasonably stable probability estimate.</p>
+<p>Pose the question to a mathematical friend of yours, then watch her or him sweat for a while, and afterwards compare your answer to hers/his. I think you will find the correct answer very surprising. It is not unheard of for people who know how this problem works to take advantage of their knowledge by making and winning big bets on it. (See how a bit of knowledge of probability can immediately be profitable to you by avoiding such unfortunate occurrences?)</p>
+<p>More specifically, these steps answer the question for the case of twenty-five people in the room:</p>
+<ul>
+<li><strong>Step 1.</strong> Let three-digit random numbers 1-365 stand for the 365 days in the year. (Ignore leap year for simplicity.)</li>
+<li><strong>Step 2.</strong> Examine for duplication among the first twenty-five random numbers chosen “001-365.” (Triplicates or higher-order repeats are counted as duplicates here.) If there is one or more duplicate, record “yes.” Otherwise record “no.”</li>
+<li><strong>Step 3.</strong> Repeat perhaps a thousand times, and calculate the proportion of a duplicate birthday among twenty-five people.</li>
+</ul>
+<p>You would probably use the computer to generate the initial random numbers.</p>
+<p>Now try the program written as follows.</p>
+<div class="notebook" name="birthday_problem" title="The Birthday Problem">
+<p>Start of <code>birthday_problem</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/birthday_problem.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/birthday_problem.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-1_bc59a1364053f6391c9c34e8c1c06cbe">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-2_1f36b9bcebdf5612d79c43a648778d66">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n_with_same_birthday <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>days_of_year <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">366</span>)  <span class="co"># 1 through 365</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials (experiments)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate 25 numbers randomly between "1" and "365" put them in a.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> rnd.choice(days_of_year, size<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Looking in a, count the number of multiples and put the result in</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># b. We request multiples &gt; 1 because we are interested in any multiple,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># whether it is a duplicate, triplicate, etc. Had we been interested only</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># in duplicates, we would have put in np.sum(counts == 2).</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> np.bincount(a)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    n_duplicates <span class="op">=</span> np.<span class="bu">sum</span>(counts <span class="op">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Score the result of each trial to our store</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    n_with_same_birthday[i] <span class="op">=</span> n_duplicates</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End the loop for the trial, go back and repeat the trial until all 10000</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># are complete, then proceed.</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine how many trials had at least one multiple.</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(n_with_same_birthday)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion.</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> <span class="dv">10000</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result.</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.7799</code></pre>
+</div>
+</div>
+<p>End of <code>birthday_problem</code> notebook</p>
+</div>
+<p>We have dealt with this example in a rather intuitive and unsystematic fashion. From here on, we will work in a more systematic, step-by-step manner. And from here on the problems form an orderly sequence of the classical types of problems in probability theory (<a href="#sec-infinite-universes" class="quarto-xref"><span>Chapter&nbsp;12</span></a> and <a href="probability_theory_4_finite.html" class="quarto-xref"><span>Chapter&nbsp;13</span></a>), and inferential statistics (<a href="framing_questions.html" class="quarto-xref"><span>Chapter&nbsp;20</span></a> to <a href="reliability_average.html" class="quarto-xref"><span>Chapter&nbsp;28</span></a>.)</p>
+</section>
+<section id="example-three-daughters-among-four-children" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="example-three-daughters-among-four-children"><span class="header-section-number">12.2</span> Example: Three Daughters Among Four Children</h2>
+<p>This problem illustrates a problem with two outcomes (Binomial <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>) and sampling with Replacement Among Equally Likely Outcomes.</p>
+<p>What is the probability that exactly three of the four children in a four-child family will be daughters?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>The first step is to state that the approximate probability that a single birth will produce a daughter is 50-50 (1 in 2). This estimate is not strictly correct, because there are roughly 106 male children born to each 100 female children. But the approximation is close enough for most purposes, and the 50-50 split simplifies the job considerably. (Such “false” approximations are part of the everyday work of the scientist. The appropriate question is not whether or not a statement is “only” an approximation, but whether or not it is a <em>good enough</em> approximation for your purposes.)</p>
+<p>The probability that a fair coin will turn up heads is .50 or 50-50, close to the probability of having a daughter. Therefore, flip a coin in groups of four flips, and count how often three of the flips produce <em>heads</em> . (You must decide in <em>advance</em> whether three heads means three girls or three boys.) It is as simple as that.</p>
+<p>In resampling estimation it is of the highest importance to work in a careful, step-by-step fashion — to write down the steps in the estimation, and then to do the experiments just as described in the steps. Here are a set of steps that will lead to a correct answer about the probability of getting three daughters among four children:</p>
+<ul>
+<li><strong>Step 1.</strong> Using coins, let “heads” equal “girl” and “tails” equal “boy.”</li>
+<li><strong>Step 2.</strong> Throw four coins.</li>
+<li><strong>Step 3.</strong> Examine whether the four coins fall with exactly three heads up. If so, write “yes” on a record sheet; otherwise write “no.”</li>
+<li><strong>Step 4.</strong> Repeat step 2 perhaps two hundred times.</li>
+<li><strong>Step 5.</strong> Count the proportion “yes.” This proportion is an estimate of the probability of obtaining exactly 3 daughters in 4 children.</li>
+</ul>
+<p>The first few experimental trials might appear in the record sheet as follows (<a href="#tbl-coins-girls" class="quarto-xref">Table&nbsp;<span>12.1</span></a>):</p>
+<div id="tbl-coins-girls" class="anchored">
+<table class="table">
+<caption>Table&nbsp;12.1: Example trials from the three-girls problem</caption>
+<thead>
+<tr class="header">
+<th>Number of Heads</th>
+<th>Yes or No</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The probability of getting three daughters in four births could also be found with a deck of cards, a random number table, a die, or with Python. For example, half the cards in a deck are black, so the probability of getting a black card (“daughter”) from a full deck is 1 in 2. Therefore, deal a card, record “daughter” or “son,” <em>replace</em> the card, shuffle, deal again, and so forth for 200 sets of four cards. Then count the proportion of groups of four cards in which you got four daughters.</p>
+<div class="notebook" name="three_girls" title="Three Girls">
+<p>Start of <code>three_girls</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/three_girls.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/three_girls.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-4_b4fd4a6be67d4d4e916f95bb7388b165">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-5_1cf31d499f8266e4399f8a821c2eefae">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>girl_counts <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Select 'girl' or 'boy' at random, four times.</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    children <span class="op">=</span> rnd.choice([<span class="st">'girl'</span>, <span class="st">'boy'</span>], size<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count the number of girls and put the result in b.</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.<span class="bu">sum</span>(children <span class="op">==</span> <span class="st">'girl'</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep track of each trial result in z.</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    girl_counts[i] <span class="op">=</span> b</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End this trial, repeat the experiment until 10000 trials are complete,</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># then proceed.</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of experiments where we got exactly 3 girls, and put this</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># result in k.</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>n_three_girls <span class="op">=</span> np.<span class="bu">sum</span>(girl_counts <span class="op">==</span> <span class="dv">3</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion.</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>three_girls_prop <span class="op">=</span> n_three_girls <span class="op">/</span> <span class="dv">10000</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results.</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(three_girls_prop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.2502</code></pre>
+</div>
+</div>
+<p>End of <code>three_girls</code> notebook</p>
+</div>
+<p>Notice that the procedure outlined in the steps above would have been different (though almost identical) if we asked about the probability of <em>three or more</em> daughters rather than <em>exactly three</em> daughters among four children. For <em>three or more</em> daughters we would have scored “yes” on our score-keeping pad for <em>either</em> three or four heads, rather than for just three heads. Likewise, in the computer solution we would have used the statement <span class="python"><code>n_three_girls = np.sum(girl_counts &gt;= 3)</code></span> .</p>
+<p>It is important that, in this case, in contrast to what we did in the example from <a href="probability_theory_2_compound.html#sec-one-pair" class="quarto-xref"><span>Section&nbsp;11.2</span></a> (the introductory poker example), the card is <em>replaced</em> each time so that each card is dealt from a full deck. This method is known as <em>sampling with replacement</em> . One samples with replacement whenever the successive events are <em>independent</em> ; in this case we assume that the chance of having a daughter remains the same (1 girl in 2 births) no matter what sex the previous births were <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. But, if the first card dealt is black and would <em>not</em> be replaced, the chance of the second card being black would no longer be 26 in 52 (.50), but rather 25 in 51 (.49), if the first <em>three</em> cards are black and would not be replaced, the chances of the fourth card’s being black would sink to 23 in 49 (.47).</p>
+<p>To push the illustration further, consider what would happen if we used a deck of only six cards, half (3 of 6) black and half (3 of 6) red, instead of a deck of 52 cards. If the chosen card is replaced each time, the 6-card deck produces the same results as a 52-card deck; in fact, a two-card deck would do as well. But, if the sampling is done <em>without</em> replacement, it is <em>impossible</em> to obtain 4 “daughters” with the 6-card deck because there are only 3 “daughters” in the deck. To repeat, then, whenever you want to estimate the probability of some series of events where each event is independent of the other, you must sample <em>with replacement</em> .</p>
+</section>
+<section id="variations-of-the-daughters-problem" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="variations-of-the-daughters-problem"><span class="header-section-number">12.3</span> Variations of the daughters problem</h2>
+<p>In later chapters we will frequently refer to a problem which is identical in basic structure to the problem of three girls in four children — the probability of getting 9 females in ten calf births if the probability of a female birth is (say) .5 — when we set this problem in the context of the possibility that a genetic engineering practice is effective in increasing the proportion of females (desirable for the production of milk).</p>
+<p>So far we have assumed the simple case where we have an array of values that we are sampling from, and we are selecting each of these values into the sample with equal probability.</p>
+<p>For example, we started with the simple assumption that a child is just as likely to be born a boy as a girl. Our input is:</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-7_fff65c5d52ee874ed5e60967d5868e01">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>input_values <span class="op">=</span> [<span class="st">'girl'</span>, <span class="st">'boy'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>By default, <code>rnd.choice</code> will draw the input values with equal probability. Here, we draw a sample (<code>children</code>) of four values from the input, where <em>each value</em> in <code>children</code> has an equal chance of being “girl” or “boy”.</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-9_9aedca581aeacf17cc7a593e3a018fd9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>children <span class="op">=</span> rnd.choice(input_values, size<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>children</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['boy', 'boy', 'boy', 'girl'], dtype='&lt;U4')</code></pre>
+</div>
+</div>
+<p>That is, <code>rnd.choice</code> gives each element in <code>input_values</code> an equal chance of being selected as the next element in <code>children</code>.</p>
+<p>That is fine if we have some simple probability to simulate, like 0.5. But now let us imagine we want to get more precise. We happen to know that any given birth is just slightly more likely to be a boy than a girl.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. For example, the <a href="https://www.gov.uk/government/statistics/gender-ratios-at-birth-in-great-britain-2010-to-2014">proportion of boys born in the UK</a> is 0.513. Hence the proportion of girls is 1-0.513 = 0.487.</p>
+</section>
+<section id="and-the-probp-argument" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="and-the-probp-argument"><span class="header-section-number">12.4</span> <code>rnd.choice</code> and the <span class="python"><code>p</code></span> argument</h2>
+<p>We could replicate this probability of 0.487 for ‘girl’ in the output sample by making an input array of 1000 strings, that contains 487 ‘girls’ and 513 ‘boys’:</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-11_cea3d9c02080f05701af5a81babe7814">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>big_girls <span class="op">=</span> np.repeat([<span class="st">'girl'</span>, <span class="st">'boy'</span>], [<span class="dv">487</span>, <span class="dv">513</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now if we sample using the default in <code>rnd.choice</code>, each <em>element</em> in the input <code>big_girls</code> array will have the same chance of appearing in the sample, but because there are 487 ‘girls’, and 513 ‘boys’, each with an equal chance of appearing in the sample, we will get a ‘girl’ in roughly 487 out of every 1000 elements we draw, and a boy roughly 513 / 1000 times. That is, our chance of any one element of being a ‘girl’ is, as we want, 0.487.</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-13_19971126359f2161248c77bff76e9276">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now each element has probability 0.487 of 'girl', 0.513 of 'boy'.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>realistic_children <span class="op">=</span> rnd.choice(big_girls, size<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>realistic_children</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['boy', 'boy', 'girl', 'boy'], dtype='&lt;U4')</code></pre>
+</div>
+</div>
+<p>But, there is an easier way than compiling a big 1000 element array, and that is to use the <span class="python"><code>p=</code></span> argument to <code>rnd.choice</code>. This allows us to specify the probability with which we will draw each of the input elements into the output sample. For example, to draw ‘girl’ with probability 0.487 and ‘boy’ with probability 0.513, we would do:</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-15_ef00797e761727648aa24697f4137272">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw 'girl' with probability (p) 0.487 and 'boy' 0.513.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>children_again <span class="op">=</span> rnd.choice([<span class="st">'girl'</span>, <span class="st">'boy'</span>], size<span class="op">=</span><span class="dv">4</span>, p<span class="op">=</span>[<span class="fl">0.487</span>, <span class="fl">0.513</span>])</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>children_again</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['girl', 'boy', 'girl', 'girl'], dtype='&lt;U4')</code></pre>
+</div>
+</div>
+<p>The <span class="python"><code>p</code></span> argument allows us to specify the probability of each element in the input array — so if we had three elements in the input array, we would need three probabilities in <span class="python"><code>p</code></span>. For example, let’s say we were looking at some poorly-entered hospital records, we might have ‘girl’ or ‘boy’ recorded as the child’s gender, but the record might be missing — ‘not-recorded’ — with a 19% chance:</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-17_514ceebb6952d108458afbfb58879378">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw 'girl' with probability (p) 0.4, 'boy' with p=0.41, 'not-recorded' with</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># p=0.19.</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>rnd.choice([<span class="st">'girl'</span>, <span class="st">'boy'</span>, <span class="st">'not-recorded'</span>], size<span class="op">=</span><span class="dv">30</span>, p<span class="op">=</span>[<span class="fl">0.4</span>, <span class="fl">0.41</span>, <span class="fl">0.19</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['girl', 'girl', 'girl', 'girl', 'boy', 'girl', 'girl',
+       'not-recorded', 'girl', 'boy', 'boy', 'girl', 'girl', 'boy',
+       'not-recorded', 'girl', 'not-recorded', 'boy', 'girl', 'boy',
+       'not-recorded', 'girl', 'boy', 'girl', 'boy', 'not-recorded',
+       'girl', 'girl', 'boy', 'not-recorded'], dtype='&lt;U12')</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How does the <span class="python"><code>p</code></span> argument to <code>rnd.choice</code> work?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You might wonder how Python does this trick of choosing the elements with different probabilities.</p>
+<p>One way of doing this is to use <em>uniform</em> random numbers from 0 through 1. These are floating point numbers that can take any value, at random, from 0 through 1.</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-19_901c57b92379ccf3f35d4c2dc484a4fb">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this cell a few times to see random numbers anywhere from 0 through 1.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>rnd.uniform()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.3358873070551027</code></pre>
+</div>
+</div>
+<p>Because this random uniform number has an equal chance of being anywhere in the range 0 through 1, there is a 50% chance that any given number will be less then 0.5 and a 50% chance it is greater than 0.5. (Of course it could be <em>exactly equal to</em> 0.5, but this is vanishingly unlikely, so we will ignore that for now).</p>
+<p>So, if we thought girls were exactly as likely as boys, we could select from ‘girl’ and ‘boy’ using this simple logic:</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-21_2239c80ab4d51d4e9d419e277aee25c6">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rnd.uniform() <span class="op">&lt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="st">'girl'</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="st">'boy'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>But, by the same logic, there is a 0.487 chance that the random uniform number will be less than 0.487 and a 0.513 chance it will be greater. So, if we wanted to give ourselves a 0.487 chance of ‘girl’, we could do:</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-23_1fc52b4bba0424d888a46e3f34c3001b">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rnd.uniform() <span class="op">&lt;</span> <span class="fl">0.487</span>:</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="st">'girl'</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="st">'boy'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can extend the same kind of logic to three options. For example, there is a 0.4 chance the random uniform number will be less than 0.4, a 0.41 chance it will be somewhere between 0.4 and 0.81, and a 0.19 chance it will be greater than 0.81.</p>
+</div>
+</div>
+</section>
+<section id="the-daughters-problem-with-more-accurate-probabilities" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="the-daughters-problem-with-more-accurate-probabilities"><span class="header-section-number">12.5</span> The daughters problem with more accurate probabilities</h2>
+<p>We can use the probability argument to <code>rnd.choice</code> to do a more realistic simulation of the chance of a family with exactly three girls. In this case it is easy to make the chance for the Python simulation, but much more difficult using physical devices like coins to simulate the randomness.</p>
+<p>Remember, the original code for the 50-50 case, has the following:</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-25_215193c9c0339f1bb7cef4b2d95a68d3">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'girl' or 'boy' at random, four times.</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>children <span class="op">=</span> rnd.choice([<span class="st">'girl'</span>, <span class="st">'boy'</span>], size<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of girls and put the result in b.</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(children <span class="op">==</span> <span class="st">'girl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The only change we need to the above, for the 0.487 - 0.513 case, is the one you see above:</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-27_e32d11ea20e8bf890a35bac799768b76">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Give 'girl' 48.7% of the time, 'boy' 51.3% of the time.</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>children <span class="op">=</span> rnd.choice([<span class="st">'girl'</span>, <span class="st">'boy'</span>], size<span class="op">=</span><span class="dv">4</span>, p<span class="op">=</span>[<span class="fl">0.487</span>, <span class="fl">0.513</span>])</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(children <span class="op">==</span> <span class="st">'girl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The rest of the program remains unchanged.</p>
+</section>
+<section id="a-note-on-clarifying-and-labeling-problems" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="a-note-on-clarifying-and-labeling-problems"><span class="header-section-number">12.6</span> A note on clarifying and labeling problems</h2>
+<p>In conventional analytic texts and courses on inferential statistics, students are taught to distinguish between various classes of problems in order to decide which formula to apply. I doubt the wisdom of categorizing and labeling problems in that fashion, and the practice is unnecessary here. I consider it better that the student think through every new problem in the most fundamental terms. The exercise of this basic thinking avoids the mistakes that come from too-hasty and superficial pigeon-holing of problems into categories. Nevertheless, in order to help readers connect up the resampling material with the conventional curriculum of analytic methods, the examples presented here are given their conventional labels. And the examples given here cover the range of problems encountered in courses in probability and inferential statistics.</p>
+<p>To repeat, one does not need to classify a problem when one proceeds with the Monte Carlo resampling method; you simply model the features of the situation you wish to analyze. In contrast, with conventional methods you must classify the situation and then apply procedures according to rules that depend upon the classification; often the decision about which rules to follow must be messy because classification is difficult in many cases, which contributes to the difficulty of choosing correct conventional formulaic methods.</p>
+</section>
+<section id="binomial-trials" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="binomial-trials"><span class="header-section-number">12.7</span> Binomial trials</h2>
+<p>The problem of the three daughters in four births is known in the conventional literature as a “binomial sampling experiment with equally-likely outcomes.” “Binomial” means that the <em>individual</em> simple event (a birth or a coin flip) can have only <em>two outcomes</em> (boy or girl, heads or tails), “binomial” meaning “two names” in Latin.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>A fundamental property of binomial processes is that the individual trials are <em>independent</em> , a concept discussed earlier. A binomial sampling process is a <em>series</em> of binomial (one-of-two-outcome) events about which one may ask many sorts of questions — the probability of exactly X heads (“successes”) in N trials, or the probability of X or more “successes” in N trials, and so on.</p>
+<p>“Equally likely outcomes” means we assume that the probability of a girl or boy in any one birth is the same (though this assumption is slightly contrary to fact); we represent this assumption with the equal-probability heads and tails of a coin. Shortly we will come to binomial sampling experiments where the probabilities of the individual outcomes are <em>not</em> equal.</p>
+<p>The term “with replacement” was explained earlier; if we were to use a deck of red and black cards (instead of a coin) for this resampling experiment, we would <em>replace</em> the card each time a card is drawn.</p>
+<p>The introductory poker example from <a href="probability_theory_2_compound.html#sec-one-pair" class="quarto-xref"><span>Section&nbsp;11.2</span></a>, illustrated sampling without replacement, as will other examples to follow.</p>
+<p>This problem would be done conventionally with the binomial theorem using probabilities of .5, or of .487 and .513, asking about 3 successes in 4 trials.</p>
+</section>
+<section id="example-three-or-more-successful-basketball-shots-in-five-attempts" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="example-three-or-more-successful-basketball-shots-in-five-attempts"><span class="header-section-number">12.8</span> Example: Three or More Successful Basketball Shots in Five Attempts</h2>
+<p>This is an example of two-outcome sampling with unequally-likely outcomes, with replacement — a binomial experiment.</p>
+<p>What is the probability that a basketball player will score three or more baskets in five shots from a spot 30 feet from the basket, if on the average she succeeds with 25 percent of her shots from that spot?</p>
+<p>In this problem the probabilities of “success” or “failure” are not equal, in contrast to the previous problem of the daughters. Instead of a 50-50 coin, then, an appropriate “model” would be a thumbtack that has a 25 percent chance of landing “up” when it falls, and a 75 percent chance of landing down.</p>
+<p>If we lack a thumbtack known to have a 25 percent chance of landing “up,” we could use a card deck and let spades equal “success” and the other three suits represent “failure.” Our resampling experiment could then be done as follows:</p>
+<ol type="1">
+<li>Let “spade” stand for “successful shot,” and the other suits stand for unsuccessful shot.</li>
+<li>Draw a card, record its suit (“spade” or “other”) and replace. Do so five times (for five shots).</li>
+<li>Record whether the outcome of step 2 was three or more spades. If so indicate “yes,” and otherwise “no.”</li>
+<li>Repeat steps 2-4 perhaps four hundred times.</li>
+<li>Count the proportion “yes” out of the four hundred throws. That proportion estimates the probability of getting three or more baskets out of five shots if the probability of a single basket is .25.</li>
+</ol>
+<p>The first four repetitions on your score sheet might look like this (<a href="#tbl-three-shots" class="quarto-xref">Table&nbsp;<span>12.2</span></a>):</p>
+<div id="tbl-three-shots" class="anchored">
+<table class="table">
+<caption>Table&nbsp;12.2: First four repetitions of 3 or more shots simulation</caption>
+<thead>
+<tr class="header">
+<th>Card 1</th>
+<th>Card 2</th>
+<th>Card 3</th>
+<th>Card 4</th>
+<th>Card 5</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Spade</td>
+<td>Other</td>
+<td>Other</td>
+<td>Other</td>
+<td>Other</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Other</td>
+<td>Other</td>
+<td>Other</td>
+<td>Other</td>
+<td>Other</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Spade</td>
+<td>Spade</td>
+<td>Other</td>
+<td>Spade</td>
+<td>Spade</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Other</td>
+<td>Spade</td>
+<td>Other</td>
+<td>Other</td>
+<td>Spade</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Instead of cards, we could have used two-digit random numbers, with (say) “1-25” standing for “success,” and “26-00” (“00” in place of “100”) standing for failure. Then the steps would simply be:</p>
+<ol type="1">
+<li>Let the random numbers “1-25” stand for “successful shot,” “26-00” for unsuccessful shot.</li>
+<li>Draw five random numbers;</li>
+<li>Count how many of the numbers are between “01” and “25.” If three or more, score “yes.”</li>
+<li>Repeat step 2 four hundred times.</li>
+</ol>
+<p>If you understand the earlier “three_girls” program, then the program below should be easy: To create 10000 samples, we start with a <code>for</code> statement. We then sample 5 numbers between “1” and “4” into our variable <code>a</code> to simulate the 5 shots, each with a 25 percent — or 1 in 4 — chance of scoring. We decide that 1 will stand for a successful shot, and 2 through 4 will stand for a missed shot, and therefore we count (<code>sum</code>) the number of 1’s in <code>a</code> to determine the number of shots resulting in baskets in the current sample. The next step is to transfer the results of each trial to array <code>n_baskets</code>. We then finish the loop <span class="python">by unindenting the next line of code</span>. The final step is to search the array <code>n_baskets</code>, after the 10000 samples have been generated and <code>sum</code> the times that 3 or more baskets were made. We place the results in <code>n_more_than_2</code>, calculate the proportion in <code>propo_more_than_2</code>, and then display the result.</p>
+<div class="notebook" name="basketball_shots" title="Three or more basketball shots">
+<p>Start of <code>basketball_shots</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/basketball_shots.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/basketball_shots.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-29_62cd6bc80ec65a0e3011574453d2225a">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-30_22dbe7a79d795d2ce8ddfa1a214baf37">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>n_baskets <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 experimental trials.</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate 5 random numbers, each between 1 and 4, put them in "a".</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Let "1" represent a basket, "2" through "4" be a miss.</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> rnd.integers(<span class="dv">1</span>, <span class="dv">5</span>, size<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count the number of baskets, put that result in b.</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">==</span> <span class="dv">1</span>)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep track of each experiment's results in z.</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    n_baskets[i] <span class="op">=</span> b</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End the experiment, go back and repeat until all 10000 are completed, then</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># proceed.</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine how many experiments produced more than two baskets, put that</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="co"># result in k.</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>n_more_than_2 <span class="op">=</span> np.<span class="bu">sum</span>(n_baskets <span class="op">&gt;</span> <span class="dv">2</span>)</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion.</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>prop_more_than_2 <span class="op">=</span> n_more_than_2 <span class="op">/</span> <span class="dv">10000</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result.</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prop_more_than_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.104</code></pre>
+</div>
+</div>
+<p>End of <code>basketball_shots</code> notebook</p>
+</div>
+</section>
+<section id="note-to-the-student-of-analytic-probability-theory" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="note-to-the-student-of-analytic-probability-theory"><span class="header-section-number">12.9</span> Note to the student of analytic probability theory</h2>
+<p>This problem would be done conventionally with the binomial theorem, asking about the chance of getting 3 successes in 5 trials, with the probability of a success = .25.</p>
+</section>
+<section id="sec-one-black-archery" class="level2" data-number="12.10">
+<h2 data-number="12.10" class="anchored" data-anchor-id="sec-one-black-archery"><span class="header-section-number">12.10</span> Example: One in Black, Two in White, No Misses in Three Archery Shots</h2>
+<p>This is an example of a multiple outcome (<em>multinomial</em>) sampling with unequally likely outcomes; with replacement.</p>
+<p>Assume from past experience that a given archer puts 10 percent of his shots in the black (“bullseye”) and 60 percent of his shots in the white ring around the bullseye, but misses with 30 percent of his shots. How likely is it that in three shots the shooter will get exactly one bullseye, two in the white, and no misses? Notice that unlike the previous cases, in this example there are more than two outcomes for each trial.</p>
+<p>This problem may be handled with a deck of three colors (or suits) of cards in proportions varying according to the probabilities of the various outcomes, and sampling with replacement. Using random numbers is simpler, however:</p>
+<ul>
+<li><strong>Step 1.</strong> Let “1” = “bullseye,” “2-7” = “in the white,” and “8-0” = “miss.”</li>
+<li><strong>Step 2.</strong> Choose three random numbers, and examine whether there are one “1” and two numbers “2-7.” If so, record “yes,” otherwise “no.”</li>
+<li><strong>Step 3.</strong> Repeat step 2 perhaps 400 times, and count the proportion of “yeses.” This estimates the probability sought.</li>
+</ul>
+<p>This problem would be handled in conventional probability theory with what is known as the <em>Multinomial Distribution</em>.</p>
+<p>This problem may be quickly solved on the computer using Python with the notebook labeled “bullseye” below. Bullseye has a complication not found in previous problems: It tests whether two different sorts of events <em>both</em> happen — a bullseye plus two shots in the white.</p>
+<p>After generating three randomly-drawn numbers between 1 and 10, we check with the <code>sum</code> function to see if there is a bullseye. If there is, the <code>if</code> statement tells the computer to continue with the operations, checking if there are two shots in the white; if there is no bullseye, the <code>if</code> statement tells the computer to end the trial and start another trial. A thousand repetitions are called for, the number of trials meeting the criteria are counted, and the results are then printed.</p>
+<p>In addition to showing how this particular problem may be handled with Python, the “bullseye” program teaches you some more fundamentals of computer programming. The <code>if</code> statement and the two loops, one within the other, are basic tools of programming.</p>
+<div class="notebook" name="bullseye" title="Bullseye">
+<p>Start of <code>bullseye</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/bullseye.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/bullseye.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-32_13adc918d734bff148961977de4755df">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-33_9bdb3060d803db74922cea78eefc1a9c">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make an array to store the results of each trial.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>white_counts <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 experimental trials</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># To represent 3 shots, generate 3 numbers at random between "1" and "10"</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># and put them in a. We will let a "1" denote a bullseye, "2"-"7" a shot in</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the white, and "8"-"10" a miss.</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> rnd.integers(<span class="dv">1</span>, <span class="dv">11</span>, size<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count the number of bullseyes, put that result in b.</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">==</span> <span class="dv">1</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If there is exactly one bullseye, we will continue with counting the</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># other shots. (If there are no bullseyes, we need not bother — the</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># outcome we are interested in has not occurred.)</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> b <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Count the number of shots in the white, put them in c. (Recall we are</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># doing this only if we got one bullseye.)</span></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> np.<span class="bu">sum</span>((a <span class="op">&gt;=</span> <span class="dv">2</span>) <span class="op">&amp;</span> (a <span class="op">&lt;=</span><span class="dv">7</span>))</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Keep track of the results of this second count.</span></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>        white_counts[i] <span class="op">=</span> c</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># End the "if" sequence — we will do the following steps without regard</span></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># to the "if" condition.</span></span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End the above experiment and repeat it until 10000 repetitions are</span></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># complete, then continue.</span></span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of occasions on which there are two in the white and a</span></span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a><span class="co"># bullseye.</span></span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>n_desired <span class="op">=</span> np.<span class="bu">sum</span>(white_counts <span class="op">==</span> <span class="dv">2</span>)</span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion.</span></span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>prop_desired <span class="op">=</span> n_desired <span class="op">/</span> <span class="dv">10000</span></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results.</span></span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prop_desired)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.1052</code></pre>
+</div>
+</div>
+<p>End of <code>bullseye</code> notebook</p>
+</div>
+<p>This example illustrates the addition rule that was introduced and discussed in <a href="probability_theory_1b.html" class="quarto-xref"><span>Chapter&nbsp;9</span></a>. In <a href="#sec-one-black-archery" class="quarto-xref"><span>Section&nbsp;12.10</span></a>, a bullseye, an in-the-white shot, and a missed shot are “mutually exclusive” events because a single shot cannot result in more than one of the three possible outcomes. One can calculate the probability of <em>either of two</em> mutually-exclusive outcomes by adding their probabilities. The probability of <em>either</em> a bullseye or a shot in the white is .1 + .6 = .7. The probability of an arrow <em>either</em> in the white <em>or</em> a miss is .6 + .3 = .9. The logic of the addition rule is obvious when we examine the random numbers given to the outcomes. Seven of 10 random numbers belong to “bullseye” or “in the white,” and nine of 10 belong to “in the white” or “miss.”</p>
+</section>
+<section id="example-two-groups-of-heart-patients" class="level2" data-number="12.11">
+<h2 data-number="12.11" class="anchored" data-anchor-id="example-two-groups-of-heart-patients"><span class="header-section-number">12.11</span> Example: Two Groups of Heart Patients</h2>
+<p>We want to learn how likely it is that, by chance, group A would have as little as two deaths more than group B — <a href="#tbl-two-heart-groups" class="quarto-xref">Table&nbsp;<span>12.3</span></a>:</p>
+<div id="tbl-two-heart-groups" class="anchored">
+<table class="table">
+<caption>Table&nbsp;12.3: Two Groups of Heart Patients</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Live</th>
+<th style="text-align: left;">Die</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Group A</td>
+<td style="text-align: left;">79</td>
+<td style="text-align: left;">11</td>
+</tr>
+<tr class="even">
+<td>Group B</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This problem, phrased here as a question in probability, is the prototype of a problem in statistics that we will consider later (which the conventional theory would handle with a “chi square distribution”). We can handle it in either of two ways, as follows:</p>
+<p><strong>Approach A</strong></p>
+<ol type="1">
+<li>Put 120 balls into a bucket, 100 white (for live) and 20 black (for die).</li>
+<li>Draw 30 balls randomly and assign them to Group B; the others are assigned to group A.</li>
+<li>Count the numbers of black balls in the two groups and determine whether Group A’s excess “deaths” (= black balls), compared to Group B, is two or fewer (or what is equivalent in this case, whether there are 11 or fewer black balls in Group A); if so, write “Yes,” otherwise “No.”</li>
+<li>Repeat steps 2 and 3 perhaps 10000 times and compute the proportion “Yes.”</li>
+</ol>
+<p>A second way we shall think about this sort of problem may be handled as follows:</p>
+<p><strong>Approach B</strong></p>
+<ol type="1">
+<li>Put 120 balls into a bucket, 100 white (for live) and 20 black (for die) (as before).</li>
+<li>Draw balls one by one, replacing the drawn ball each time, until you have accumulated 90 balls for Group A and 30 balls for Group B. (You could, of course, just as well use a bucket for 4 white and 1 black balls or 8 white and 2 black in this approach.)</li>
+<li>As in approach “A” above, count the numbers of black balls in the two groups and determine whether Group A’s excess deaths is two or fewer; if so, write “Yes,” otherwise “No.”</li>
+<li>As above, repeat steps 2 and 3 perhaps 10000 times and compute the proportion “Yes.”</li>
+</ol>
+<p>We must also take into account the possibility of a similar eye-catching “unbalanced” result of a much larger proportion of deaths in Group B. It will be a tough decision how to do so, but a reasonable option is to simply double the probability computed in step 4a or 4b.</p>
+<p>Deciding which of these two approaches — the “permutation” (without replacement) and “bootstrap” (with replacement) methods — is the more appropriate is often a thorny matter; it will be discussed latter in <a href="testing_measured.html" class="quarto-xref"><span>Chapter&nbsp;24</span></a>. In many cases, however, the two approaches will lead to similar results.</p>
+<p>Later, we will actually carry out these procedures with the aid of Python, and estimate the probabilities we seek.</p>
+</section>
+<section id="example-dispersion-of-a-sum-of-random-variables-hammer-lengths-heads-and-handles" class="level2" data-number="12.12">
+<h2 data-number="12.12" class="anchored" data-anchor-id="example-dispersion-of-a-sum-of-random-variables-hammer-lengths-heads-and-handles"><span class="header-section-number">12.12</span> Example: Dispersion of a Sum of Random Variables — Hammer Lengths — Heads and Handles</h2>
+<p>The distribution of lengths for hammer <em>handles</em> is as follows: 20 percent are 10 inches long, 30 percent are 10.1 inches, 30 percent are 10.2 inches, and 20 percent are 10.3 inches long. The distribution of lengths for hammer <em>heads</em> is as follows: 2.0 inches, 20 percent; 2.1 inches, 20 percent; 2.2 inches, 30 percent; 2.3 inches, 20 percent; 2.4 inches, 10 percent.</p>
+<p>If you draw a handle and a head at random, what will be the mean total length? In <a href="probability_theory_1b.html" class="quarto-xref"><span>Chapter&nbsp;9</span></a> we saw that the conventional formulaic method tells you that an answer with a formula that says the sum of the means is the mean of the sums, but it is easy to get the answer with simulation. But now we ask about the <em>dispersion</em> of the sum. There are formulaic rules for such measures as the variance. But consider this other example: What proportion of the hammers made with handles and heads drawn at random will have lengths equal to or greater than 12.4 inches? No simple formula will provide an answer. And if the number of categories is increased considerably, any formulaic approach will be become burdensome if not undoable. But Monte Carlo simulation produces an answer quickly and easily, as follows:</p>
+<ol type="1">
+<li><p>Fill a bucket with:</p>
+<ul>
+<li>2 balls marked “10” (inches),</li>
+<li>3 balls marked “10.1”,</li>
+<li>3 marked “10.2”, and</li>
+<li>2 marked “10.3”.</li>
+</ul>
+<p>This bucket represents the handles.</p>
+<p>Fill another bucket with:</p>
+<ul>
+<li>2 balls marked “2.0”,</li>
+<li>2 balls marked “2.1”,</li>
+<li>3 balls marked “2.2”,</li>
+<li>2 balls marked “2.3” and</li>
+<li>1 ball marked “2.4”.</li>
+</ul>
+<p>This bucket represents the heads.</p></li>
+<li><p>Pick a ball from each of the “handles” and “heads” bucket, calculate the sum, and replace the balls.</p></li>
+<li><p>Repeat perhaps 200 times (more when you write a computer program), and calculate the proportion of the sums that are greater than 12.4 inches.</p></li>
+</ol>
+<p>You may also want to forego learning the standard “rule,” and simply estimate the mean this way, also. As an exercise, compute the interquartile range — the difference between the 25th and the 75th percentiles.</p>
+</section>
+<section id="example-the-product-of-random-variables-theft-by-employees" class="level2" data-number="12.13">
+<h2 data-number="12.13" class="anchored" data-anchor-id="example-the-product-of-random-variables-theft-by-employees"><span class="header-section-number">12.13</span> Example: The Product of Random Variables — Theft by Employees</h2>
+<p>The distribution of the number of thefts per month you can expect in your business is as follows:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Number</th>
+<th style="text-align: left;">Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+</tbody>
+</table>
+<p>The amounts that may be stolen on any theft are as follows:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Amount</th>
+<th style="text-align: left;">Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">$50</td>
+<td style="text-align: left;">0.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">$75</td>
+<td style="text-align: left;">0.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">$100</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">$125</td>
+<td style="text-align: left;">0.1</td>
+</tr>
+</tbody>
+</table>
+<p>The same procedure as used above to estimate the mean length of hammers — add the lengths of handles and heads — can be used for this problem except that the results of the drawings from each bucket are multiplied rather than added.</p>
+<p>In this case there is again a simple rule: The mean of the products equals the product of the means. But this rule holds only when the two urns are indeed independent of each other, as they are in this case.</p>
+<p>The next two problems are a bit harder than the previous ones; you might skip them for now and come back to them a bit later. However, with the Monte Carlo simulation method they are within the grasp of any introductory student who has had just a bit of experience with the method. In contrast, a standard book whose lead author is Frederick Mosteller, as respected a statistician as there is, says of this type of problem: “Naturally, in this book we cannot expect to study such difficult problems in their full generality [that is, show how to solve them, rather than merely state them], but we can lay a foundation for their study.” <span class="citation" data-cites="mosteller1961probability">(<a href="references.html#ref-mosteller1961probability" role="doc-biblioref">Mosteller, Rourke, and Thomas 1961, 5</a>)</span></p>
+</section>
+<section id="example-flipping-pennies-to-the-end" class="level2" data-number="12.14">
+<h2 data-number="12.14" class="anchored" data-anchor-id="example-flipping-pennies-to-the-end"><span class="header-section-number">12.14</span> Example: Flipping Pennies to the End</h2>
+<p>Two players, each with a stake of ten pennies, engage in the following game: A coin is tossed, and if it is (say) heads, player A gives player B a penny; if it is tails, player B gives player A a penny. What is the probability that one player will lose his or her entire stake of 10 pennies if they play for 200 tosses?</p>
+<p>This is a classic problem in probability theory; it has many everyday applications in situations such as inventory management. For example, what is the probability of going out of stock of a given item in a given week if customers and deliveries arrive randomly? It also is a model for many processes in modern particle physics.</p>
+<p>Solution of the penny-matching problem with coins is straightforward. Repeatedly flip a coin and check if one player or the other reaches a zero balance before you reach 200 flips. Or with random numbers:</p>
+<ol type="1">
+<li>Numbers “1-5” = head = “+1”; Numbers “6-0” = tail = “-1.”</li>
+<li>Proceed down a series of 200 numbers, keeping a running tally of the “+1”’s and the “-1”’s. If the tally reaches “+10” or “-10” on or before the two-hundredth digit, record “yes”; otherwise record “no.”</li>
+<li>Repeat step 2 perhaps 400 or 10000 times, and calculate the proportion of “yeses.” This estimates the probability sought.</li>
+</ol>
+<p>The following Python program also solves the problem. The heart of the program starts at the line where the program models a coin flip with the statement: <span class="python"><code>c = rnd.integers(1, 3)</code></span> After you study that, go back and notice the inner <code>for</code> loop starting with <span class="python"><code>for j in range(200):</code></span> that describes the procedure for flipping a coin 200 times. Finally, note how the outer <span class="python"><code>for i in range(10000):</code></span> loop simulates 10000 games, each game consisting of the 200 coin flips we generated with the inner <code>for</code> loop above.</p>
+<div class="notebook" name="pennies" title="Simulating the pennies game">
+<p>Start of <code>pennies</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/pennies.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/pennies.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-35_2a0ba33a41a5bbe79890fb29198cbc62">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-36_c7013b5020968f3d8cfab21eec43bdc8">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>someone_won <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Record the number 10: a's stake</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    a_stake <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Same for b</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    b_stake <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># An indicator flag that will be set to "1" when somebody wins.</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    flag <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Repeat the following steps 200 times.</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Notice we use "j" as the counter variable, to avoid overwriting</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "i", the counter variable for the 10000 trials.</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">200</span>):</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Generate the equivalent of a coin flip, letting 1 = heads,</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 2 = tails</span></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> rnd.integers(<span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If it's a heads</span></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> c <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Add 1 to b's stake</span></span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>            b_stake <span class="op">=</span> b_stake <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Subtract 1 from a's stake</span></span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>            a_stake <span class="op">=</span> a_stake <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># End the "if" condition</span></span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If it's a tails</span></span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> c <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Add one to a's stake</span></span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>            a_stake <span class="op">=</span> a_stake <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Subtract 1 from b's stake</span></span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>            b_stake <span class="op">=</span> b_stake <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># End the "if" condition</span></span>
+<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If a has won</span></span>
+<span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> a_stake <span class="op">==</span> <span class="dv">20</span>:</span>
+<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-48"><a href="#cb30-48" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Set the indicator flag to 1</span></span>
+<span id="cb30-49"><a href="#cb30-49" aria-hidden="true" tabindex="-1"></a>            flag <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb30-50"><a href="#cb30-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-51"><a href="#cb30-51" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If b has won</span></span>
+<span id="cb30-52"><a href="#cb30-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> b_stake <span class="op">==</span> <span class="dv">20</span>:</span>
+<span id="cb30-53"><a href="#cb30-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-54"><a href="#cb30-54" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Set the indicator flag to 1</span></span>
+<span id="cb30-55"><a href="#cb30-55" aria-hidden="true" tabindex="-1"></a>            flag <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb30-56"><a href="#cb30-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-57"><a href="#cb30-57" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End the repeat loop for 200 plays (note that the indicator flag stays at</span></span>
+<span id="cb30-58"><a href="#cb30-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 0 if neither a nor b has won)</span></span>
+<span id="cb30-59"><a href="#cb30-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-60"><a href="#cb30-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep track of whether anybody won</span></span>
+<span id="cb30-61"><a href="#cb30-61" aria-hidden="true" tabindex="-1"></a>    someone_won[i] <span class="op">=</span> flag</span>
+<span id="cb30-62"><a href="#cb30-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-63"><a href="#cb30-63" aria-hidden="true" tabindex="-1"></a><span class="co"># End the 10000 trials</span></span>
+<span id="cb30-64"><a href="#cb30-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-65"><a href="#cb30-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Find out how often somebody won</span></span>
+<span id="cb30-66"><a href="#cb30-66" aria-hidden="true" tabindex="-1"></a>n_wins <span class="op">=</span> np.<span class="bu">sum</span>(someone_won)</span>
+<span id="cb30-67"><a href="#cb30-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-68"><a href="#cb30-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion</span></span>
+<span id="cb30-69"><a href="#cb30-69" aria-hidden="true" tabindex="-1"></a>prop_wins <span class="op">=</span> n_wins <span class="op">/</span> <span class="dv">10000</span></span>
+<span id="cb30-70"><a href="#cb30-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-71"><a href="#cb30-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results</span></span>
+<span id="cb30-72"><a href="#cb30-72" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(prop_wins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.8918</code></pre>
+</div>
+</div>
+<p>End of <code>pennies</code> notebook</p>
+</div>
+<p>A similar example: Your warehouse starts out with a supply of twelve capacirators. Every three days a new shipment of two capacirators is received. There is a .6 probability that a capacirator will be used each morning, and the same each afternoon. (It is as if a random drawing is made each half-day to see if a capacirator is used; two capacirators may be used in a single day, or one or none). How long will be it, on the average, before the warehouse runs out of stock?</p>
+</section>
+<section id="example-a-drunks-random-walk" class="level2" data-number="12.15">
+<h2 data-number="12.15" class="anchored" data-anchor-id="example-a-drunks-random-walk"><span class="header-section-number">12.15</span> Example: A Drunk’s Random Walk</h2>
+<p>If a drunk chooses the direction of each step randomly, will he ever get home? If he can only walk on the road on which he lives, the problem is almost the same as the gambler’s-ruin problem above (“pennies”). But if the drunk can go north-south as well as east-west, the problem becomes a bit different and interesting.</p>
+<p>Looking now at <a href="#fig-drunk-walk" class="quarto-xref">Figure&nbsp;<span>12.1</span></a> — what is the probability of the drunk reaching <em>either</em> his house (at 3 steps east, 2 steps north) <em>or</em> my house (1 west, 4 south) before he finishes taking twelve steps?</p>
+<p>One way to handle the problem would be to use a four-directional spinner such as is used with a child’s board game, and then keep track of each step on a piece of graph paper. The reader may construct a Python program as an exercise.</p>
+<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="probability_theory_3_cache/html/fig-drunk-walk_64e1c516b93f651194cc068bf218efc2">
+<div class="cell-output-display">
+<div id="fig-drunk-walk" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="diagrams/drunks_walk.svg" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;12.1: Drunk random walk</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-public-liquor" class="level2" data-number="12.16">
+<h2 data-number="12.16" class="anchored" data-anchor-id="sec-public-liquor"><span class="header-section-number">12.16</span> Example: public and private liquor pricing</h2>
+<p>Let’s end this chapter with an actual example that will be used again in <a href="probability_theory_4_finite.html" class="quarto-xref"><span>Chapter&nbsp;13</span></a> when discussing probability in finite universes, and then at great length in the context of statistics in <a href="testing_measured.html" class="quarto-xref"><span>Chapter&nbsp;24</span></a>. This example also illustrates the close connection between problems in pure probability and those in statistical inference.</p>
+<p>As of 1963, there were 26 U.S. states in whose liquor systems the retail liquor stores are privately owned, and 16 “monopoly” states where the state government owns the retail liquor stores. (Some states were omitted for technical reasons.) These were the representative 1961 prices of a fifth of Seagram 7 Crown whiskey in the two sets of states (<a href="#tbl-whiskey-prices" class="quarto-xref">Table&nbsp;<span>12.4</span></a>):</p>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-38_d5f4c9b5b6fe35b1fe4757b12bab82a7">
+<div id="tbl-whiskey-prices" class="anchored">
+<table class="table table-sm table-striped small">
+<caption>Table&nbsp;12.4: Whiskey prices by state category</caption>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Private</th>
+<th>Government</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>4.82</td>
+<td>4.65</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>5.29</td>
+<td>4.55</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>4.89</td>
+<td>4.11</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>4.95</td>
+<td>4.15</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>4.55</td>
+<td>4.2</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>4.9</td>
+<td>4.55</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>5.25</td>
+<td>3.8</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>5.3</td>
+<td>4.0</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>4.29</td>
+<td>4.19</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>4.85</td>
+<td>4.75</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>4.54</td>
+<td>4.74</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>4.75</td>
+<td>4.5</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>4.85</td>
+<td>4.1</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>4.85</td>
+<td>4.0</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>4.5</td>
+<td>5.05</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>4.75</td>
+<td>4.2</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>4.79</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>4.85</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>4.79</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>4.95</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>4.95</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>4.75</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>5.2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>5.1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>4.8</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>4.29</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Count</strong></td>
+<td>26</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td><strong>Mean</strong></td>
+<td>4.84</td>
+<td>4.35</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="probability_theory_3_cache/html/fig-whiskey-hist_6a928988f87c3772964342f3e9fb79d5">
+<div class="cell-output-display">
+<div id="fig-whiskey-hist" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="probability_theory_3_files/figure-html/fig-whiskey-hist-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;12.2: Whiskey prices by state category</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Let us consider that all these states’ prices constitute one single universe (an assumption whose justification will be discussed later). If so, one can ask: If these 42 states constitute a single universe, how likely is it that one would choose two samples at random, containing 16 and 26 observations, that would have prices as different as $.49 (the difference between the means that was actually observed)?</p>
+<p>This can be thought of as problem in pure probability because we begin with a known universe and ask how it would behave with random drawings from it. We sample <em>with replacement</em> ; the decision to do so, rather than to sample without replacement (which is the way I had first done it, and for which there may be better justification) will be discussed later. We do so to introduce a “bootstrap”-type procedure (defined later) as follows: Write each of the forty-two observed state prices on a separate card. The shuffled deck simulated a situation in which each state has an equal chance for each price. Repeatedly deal groups of 16 and 26 cards, replacing the cards as they are chosen, to simulate hypothetical monopoly-state and private-state samples. For each trial, calculate the difference in mean prices.</p>
+<p>These are the steps systematically:</p>
+<ul>
+<li><strong>Step A:</strong> Write each of the 42 prices on a card and shuffle.</li>
+<li><strong>Steps B and C</strong> (combined in this case): i) Draw cards randomly with replacement into groups of 16 and 26 cards. Then ii) calculate the mean price difference between the groups, and iii) compare the simulation-trial difference to the observed mean difference of $4.84 - $4.35 = $.49; if it is as great or greater than $.49, write “yes,” otherwise “no.”</li>
+<li><strong>Step D:</strong> Repeat step B-C a hundred or a thousand times. Calculate the proportion “yes,” which estimates the probability we seek.</li>
+</ul>
+<p>The probability that the postulated universe would produce a difference between groups as large or larger than observed in 1961 is estimated by how frequently the mean of the group of randomly-chosen sixteen prices from the simulated state-ownership universe is less than (or equal to) the mean of the actual sixteen state-ownership prices. The following notebook performs the operations described above.</p>
+<div class="notebook" name="liquor_prices" title="Public and private liquor prices">
+<p>Start of <code>liquor_prices</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/liquor_prices.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/liquor_prices.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-39_2ab3d4087a881eae7ba5eba215ced591">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the plotting library</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-40_09776c444d613f258c9e3e44d5ab8171">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fake_diffs <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>priv <span class="op">=</span> np.array([</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.82</span>, <span class="fl">5.29</span>, <span class="fl">4.89</span>, <span class="fl">4.95</span>, <span class="fl">4.55</span>, <span class="fl">4.90</span>, <span class="fl">5.25</span>, <span class="fl">5.30</span>, <span class="fl">4.29</span>, <span class="fl">4.85</span>, <span class="fl">4.54</span>, <span class="fl">4.75</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.85</span>, <span class="fl">4.85</span>, <span class="fl">4.50</span>, <span class="fl">4.75</span>, <span class="fl">4.79</span>, <span class="fl">4.85</span>, <span class="fl">4.79</span>, <span class="fl">4.95</span>, <span class="fl">4.95</span>, <span class="fl">4.75</span>, <span class="fl">5.20</span>, <span class="fl">5.10</span>,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.80</span>, <span class="fl">4.29</span>])</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>govt <span class="op">=</span> np.array([</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.65</span>, <span class="fl">4.55</span>, <span class="fl">4.11</span>, <span class="fl">4.15</span>, <span class="fl">4.20</span>, <span class="fl">4.55</span>, <span class="fl">3.80</span>, <span class="fl">4.00</span>, <span class="fl">4.19</span>, <span class="fl">4.75</span>, <span class="fl">4.74</span>, <span class="fl">4.50</span>,</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.10</span>, <span class="fl">4.00</span>, <span class="fl">5.05</span>, <span class="fl">4.20</span>])</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>actual_diff <span class="op">=</span> np.mean(priv) <span class="op">-</span> np.mean(govt)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the two vectors of data</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> np.concatenate((priv, govt))</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat 10000 simulation trials</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample 26 with replacement for private group</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>    fake_priv <span class="op">=</span> np.random.choice(both, size<span class="op">=</span><span class="dv">26</span>)</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample 16 with replacement for govt. group</span></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    fake_govt <span class="op">=</span> np.random.choice(both, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the mean of the "private" group.</span></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> np.mean(fake_priv)</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Mean of the "govt." group</span></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> np.mean(fake_govt)</span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Difference in the means</span></span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>    diff <span class="op">=</span> p <span class="op">-</span> g</span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep score of the trials</span></span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>    fake_diffs[i] <span class="op">=</span> diff</span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Graph of simulation results to compare with the observed result.</span></span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>plt.hist(fake_diffs)</span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Difference in average prices (cents)'</span>)</span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average price difference (Actual difference = '</span></span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a><span class="ss">f'</span><span class="sc">{</span>actual_diff <span class="op">*</span> <span class="dv">100</span><span class="sc">:.0f}</span><span class="ss"> cents)'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="probability_theory_3_files/figure-html/unnamed-chunk-40-3.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>End of <code>liquor_prices</code> notebook</p>
+</div>
+<p>The results shown above — not even one “success” in 10,000 trials — imply that there is only a very small probability that two groups with mean prices as different as were observed would happen by chance if drawn with replacement from the universe of 42 observed prices.</p>
+<p>Here we think of these states as if they came from a non-finite universe, which is one possible interpretation for one particular context. However, in <a href="probability_theory_4_finite.html" class="quarto-xref"><span>Chapter&nbsp;13</span></a> we will postulate a finite universe, which is appropriate if it is reasonable to consider that these observations constitute the entire universe (aside from those states excluded from the analysis because of data complexities).</p>
+</section>
+<section id="the-general-procedure" class="level2" data-number="12.17">
+<h2 data-number="12.17" class="anchored" data-anchor-id="the-general-procedure"><span class="header-section-number">12.17</span> The general procedure</h2>
+<p><a href="testing_procedures.html" class="quarto-xref"><span>Chapter&nbsp;25</span></a> generalizes what we have done in the probability problems above into a general procedure, which will in turn be a subpart of a general procedure for all of resampling.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-arbuthnot1710christenings" class="csl-entry" role="listitem">
+Arbuthnot, John. 1710. <span>“An Argument for Divine Providence, Taken from the Constant Regularity Observ’d in the Births of Both Sexes. By Dr. John Arbuthnott, Physitian in Ordinary to Her Majesty, and Fellow of the College of Physitians and the Royal Society.”</span> <em>Philosophical Transactions of the Royal Society of London</em> 27 (328): 186–90. <a href="https://royalsocietypublishing.org/doi/pdf/10.1098/rstl.1710.0011">https://royalsocietypublishing.org/doi/pdf/10.1098/rstl.1710.0011</a>.
+</div>
+<div id="ref-mosteller1961probability" class="csl-entry" role="listitem">
+Mosteller, Frederick, Robert E. K. Rourke, and George Brinton Thomas Jr. 1961. <em>Probability with Statistical Applications</em>. 2nd ed. <a href="https://archive.org/details/probabilitywiths0000most">https://archive.org/details/probabilitywiths0000most</a>.
+</div>
+</div>
+</section>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Conventional labels such as “binomial” are used here for general background and as guideposts to orient the student of conventional statistics. You do not need to know these labels to understand the resampling approach; one of the advantages of resampling is that it avoids errors resulting from incorrect pigeonholing of problems.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Here, by “daughter” or “girl”, we just mean the assigned gender of the child at birth. If we wanted to be more sophisticated, and work out the proportion of children who identify as female, we would need some statistics on the current likelihood of changing gender identification by age, the children’s ages, and so on.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>This assumption is slightly contrary to scientific fact. A better example would be: What is the probability that four mothers delivering successively in a hospital will all have daughters? But that example has other difficulties — which is the way science always is.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>This fact was the origin of the very first “significance test” in statistics. In the early 1700s, John Arbuthnot <span class="citation" data-cites="arbuthnot1710christenings">(<a href="references.html#ref-arbuthnot1710christenings" role="doc-biblioref">1710</a>)</span> noticed that there were more christenings of boys than girls in London in every year for which he had figures. He showed that this was vanishingly unlikely if male births were in fact exactly as likely as female births, and attributed this to divine providence, because society tended to lose males faster than females in in adulthood, due to manual labor and war.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Conventional labels such as “binomial” are used here for general background and as guideposts to orient the student of conventional statistics. You do not need to know these labels to understand the resampling approach; one of the advantages of resampling is that it avoids errors resulting from incorrect pigeonholing of problems.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./probability_theory_2_compound.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./probability_theory_4_finite.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

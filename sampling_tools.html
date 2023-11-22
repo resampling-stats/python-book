@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.51">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Resampling statistics - 6&nbsp; Tools for samples and sampling</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./resampling_with_code2.html" rel="next">
+<link href="./resampling_with_code.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table").addClass('lightable-paper lightable-striped lightable-hover')
+  });
+</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sampling_tools.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Resampling statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_third.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_second.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_is_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about_technology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introducing Python and the Jupyter notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more_sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_2_compound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_4_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monte_carlo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard_scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./point_estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framing_questions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_measured.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reliability_average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_big_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6.8</span> Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-sampling-tools" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
+<p>Now you have some experience with Python, probabilities and resampling, it is time to introduce some useful tools for our experiments and programs.</p>
+<div class="notebook" name="sampling_tools" title="Sampling tools">
+<p>Start of <code>sampling_tools</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/sampling_tools.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/sampling_tools.ipynb">Interact</a>
+</div>
+
+<section id="samples-and-labels" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="samples-and-labels"><span class="header-section-number">6.2</span> Samples and labels</h2>
+<p>Thus far we have used numbers such as 1 and 0 and 10 to represent the elements we are sampling from. For example, in <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a>, we were simulating the chance of a particular juror being black, given that 26% of the eligible jurors in the county were black. We used <em>integers</em> for that task, where we started with all the integers from 0 through 99, and asked NumPy to select values at random from those integers. When NumPy selected an integer from 0 through 25, we chose to label the resulting simulated juror as black — there are 26 integers in the range 0 through 25, so there is a 26% chance that any one integer will be in that range. If the integer was from 26 through 99, the simulated juror was white (there are 74 integers in the range 26 through 99).</p>
+<p>Here is the process of simulating a single juror, adapted from <a href="resampling_with_code2.html#sec-random-zero-through-ninety-nine" class="quarto-xref"><span>Section&nbsp;7.3.3</span></a>:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-1_bad4738eb93152f4aea86bcb079d9c0a">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask NumPy for a random number generator.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># All the integers from 0 up to, but not including 100.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>zero_thru_99 <span class="op">=</span> np.arange(<span class="dv">100</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get one random numbers from 0 through 99</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> rnd.choice(zero_thru_99)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>59</code></pre>
+</div>
+</div>
+<p>After that, we have to unpack our labeling of 0 through 25 as being “black” and 26 through 99 as being “white”. We might do that like this:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-3_c5c6f8c809db0d1e6f2ec45cb031235f">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>this_juror_is_black <span class="op">=</span> a <span class="op">&lt;</span> <span class="dv">26</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>this_juror_is_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False</code></pre>
+</div>
+</div>
+<p>This all works as we want it to, but it’s just a little bit difficult to remember the coding (less than 26 means “black”, greater than 25 means “white”). We had to use that coding because we committed ourselves to using random numbers to simulate the outcomes.</p>
+<p>However, Python can also store bits of text, called <em>strings</em>. Values that are bits of text can be very useful because the text values can be memorable labels for the entities we are sampling from, in our simulations.</p>
+<div class="python">
+<p>Before we get to strings, let us consider the different types of value we have seen so far.</p>
+<section id="types-of-values-in-python" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="types-of-values-in-python"><span class="header-section-number">6.3</span> Types of values in Python</h2>
+<p>You have already come across the idea that Python values can be integers (positive or negative whole numbers), like this:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-5_b24ffb5c1f38cc2efe8381b0bff4e590">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10</code></pre>
+</div>
+</div>
+<p>Here the variable <code>v</code> holds the value. We can see what type of value <code>v</code> holds by using the <code>type</code> function:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-6_8ad389bab5ff6bc7264b66b044139000">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'int'&gt;</code></pre>
+</div>
+</div>
+<p>As you may have noticed, Python can also have <em>floating point</em> values. These are values with a decimal point — so numbers that do not have to be integers, but can be any value between the integers. These floating points values are of type <code>float</code>:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-7_87596aca4a37bb2f62df105af1905a5e">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="fl">10.1</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'float'&gt;</code></pre>
+</div>
+</div>
+<section id="numpy-arrays" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="numpy-arrays"><span class="header-section-number">6.3.1</span> Numpy arrays</h3>
+<p>You have also seen that Numpy contains another type, the <em>array</em>. An array is a value that contains a sequence of values. For example, here is an array of integers:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-8_6638133ad2ff85e76eadf966c38f5881">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">99</span>, <span class="dv">4</span>])</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([ 0, 10, 99,  4])</code></pre>
+</div>
+</div>
+<p>Notice that this value <code>arr</code> is of type <code>np.ndarray</code>:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-9_c4bd8e79bc44d458fb4b97107c4a4526">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(arr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'numpy.ndarray'&gt;</code></pre>
+</div>
+</div>
+<p>The array has its own internal record of what type of values it holds. This is called the array <code>dtype</code>:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-10_ac0614cb5e12dae0938b8965b9d58a4d">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>arr.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('int64')</code></pre>
+</div>
+</div>
+<p>The array <code>dtype</code> records the type of value stored in the array. All values in the array must be of this type, and all values in the array are therefore of the same type.</p>
+<p>The array above contains integers, but we can also make arrays containing floating point values:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-11_004d47498f7a5f4b11e11a5e5b036771">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>float_arr <span class="op">=</span> np.array([<span class="fl">0.1</span>, <span class="fl">10.1</span>, <span class="fl">99.0</span>, <span class="fl">4.3</span>])</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>float_arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([ 0.1, 10.1, 99. ,  4.3])</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-12_2567598b68f7e9f9e689e9f9f59028ec">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>float_arr.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('float64')</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-lists" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-lists"><span class="header-section-number">6.3.2</span> Lists</h3>
+<p>We have elided past another Python type, the <em>list</em>. In fact we have already used lists in making arrays. For example, here we make an array with four values:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-13_545903a443abb0d5a737867b19e47d27">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.array([<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">99</span>, <span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([ 0, 10, 99,  4])</code></pre>
+</div>
+</div>
+<p>We could also write the statement above in two steps:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-14_e1d63de09265d13a78cfe33a994eff40">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">99</span>, <span class="dv">4</span>]</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>np.array(my_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([ 0, 10, 99,  4])</code></pre>
+</div>
+</div>
+<p>In the first statement — <code>my_list = [0, 10, 99, 4]</code> — we construct a <em>list</em> — a container for the four values. Let’s look at the <code>my_list</code> value:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-15_918014498e21b3991feaccdf230671cd">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>my_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0, 10, 99, 4]</code></pre>
+</div>
+</div>
+<p>Notice that we do not see <code>array</code> in the display — this is not an array but a list:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-16_97ec931d584dd8ed3fe140ebf6a2c389">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(my_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'list'&gt;</code></pre>
+</div>
+</div>
+<p>A list is a basic Python type. We can construct it by using the square brackets notation that you see above; we start with <code>[</code>, then we put the values we want to go in the list, separated by commas, followed by <code>]</code>. Here is another list:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-17_9f65cd71edff5c255314c5253b6b6365">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating another list.</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>list_2 <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As you saw, we have been building arrays by building lists, and then passing the list to the <code>np.array</code> function, to create an array.</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-18_ac99960954247deab1044875138c8db2">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>list_again <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">0</span>]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>np.array(list_again)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([100,  10,   0])</code></pre>
+</div>
+</div>
+<p>Of course, we can do this one line, as we have been doing up till now, by constructing the list inside the parentheses of the function. So, the following cell has just the same output as the cell above:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-19_3e41b1c278d6becab73aa51ffca8cfae">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructing the list inside the function brackets.</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>np.array([<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([100,  10,   0])</code></pre>
+</div>
+</div>
+<p>Lists are like arrays in that they are values that contain values, but they are unlike arrays in various ways — that we will not go into now. We often use lists to construct sequences into lists to turn them into arrays. For our purposes, and particularly for our calculations, arrays are much more useful and efficient than lists.</p>
+<!---
+End of Python section
+-->
+</section>
+</section>
+</div>
+</section>
+<section id="sec-intro-to-strings" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="sec-intro-to-strings"><span class="header-section-number">6.4</span> String values</h2>
+<p>So far, all the values you have seen in Python arrays have been numbers. Now we get on to values that are bits of text. These are called <em>strings</em>.</p>
+<p>Here is a single Python string value:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-20_6bb7f2b2d9440218e610be06c0f7a760">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Resampling"</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'Resampling'</code></pre>
+</div>
+</div>
+<p>What is the <span class="python"><code>type</code></span> of the new bit-of-text value <code>s</code>?</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-23_22569295ab32f6512e5bf7569c2aa838">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'str'&gt;</code></pre>
+</div>
+</div>
+<p>The Python <span class="python"><code>str</code></span> value is a bit of text, and therefore consists of a sequence of characters.</p>
+<p>As arrays are containers for other things, such as numbers, strings are containers for characters.</p>
+<div class="python">
+<p>As we can find the number of elements in an array (<a href="resampling_with_code2.html#sec-array-length" class="quarto-xref"><span>Section&nbsp;7.5</span></a>), we can find the number of characters in a string with the <code>len</code> function:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-25_000c1217e184e3ef5d1b63e7160c1c5a">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of characters in s</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10</code></pre>
+</div>
+</div>
+</div>
+<div class="python">
+<p>As we can <em>index</em> into array values to get individual elements (<a href="resampling_with_code2.html#sec-array-indexing" class="quarto-xref"><span>Section&nbsp;7.6</span></a>), we can index into string values to get individual characters:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-27_8553d92ec8e714731a35a0f557611116">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the second character of the string</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember, Python's index positions start at 0.</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>second_char <span class="op">=</span> s[<span class="dv">1</span>]</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>second_char</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'e'</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="strings-in-s" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="strings-in-s"><span class="header-section-number">6.5</span> Strings in arrays</h2>
+<p>As we can store numbers as elements in arrays, we can also store strings as array elements.</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-29_3b17d186c456b10140d02d668ea7b0fb">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Just for clarity, make the list first.</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Lists can also contain strings.</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>list_of_strings <span class="op">=</span> [<span class="st">'Julian'</span>, <span class="st">'Lincoln'</span>, <span class="st">'Simon'</span>]</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Then pass the list to np.array to make the array.</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>arr_of_strings <span class="op">=</span> np.array(list_of_strings)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>arr_of_strings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['Julian', 'Lincoln', 'Simon'], dtype='&lt;U7')</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-30_c96f115f9cba86448b85630ed3e52595">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can also create the list and the array in one line,</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># as we have been doing up til now.</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>arr_of_strings <span class="op">=</span> np.array([<span class="st">'Julian'</span>, <span class="st">'Lincoln'</span>, <span class="st">'Simon'</span>])</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>arr_of_strings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['Julian', 'Lincoln', 'Simon'], dtype='&lt;U7')</code></pre>
+</div>
+</div>
+<div class="python">
+<p>Notice the array <code>dtype</code>:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-32_25cecd81505ec693d96701e03646720a">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>arr_of_strings.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('&lt;U7')</code></pre>
+</div>
+</div>
+<p>The <code>U</code> in the <code>dtype</code> tells you that the elements in the array are <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> strings (Unicode is a computer representation of text characters). The number after the <code>U</code> gives the maximum number of characters for any string in the array, here set to the length of the longest string when we created the array.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Take care with Numpy string arrays
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is easy to run into trouble with Numpy string arrays where the elements have a maximum length, as here. Remember, the <code>dtype</code> of the array tells you what type of element the array can hold. Here the <code>dtype</code> is telling you that the array can hold strings of maximum length 7 characters. Now imagine trying to put a longer string into the array — what do you think would happen?</p>
+<p>This happens:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-33_aa5ff07bab8f0ceb8e4f45e1352aa6cf">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An array of small strings.</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>small_strings <span class="op">=</span> np.array([<span class="st">'six'</span>, <span class="st">'one'</span>, <span class="st">'two'</span>])</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>small_strings.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dtype('&lt;U3')</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-34_d124b86df11f525c8a99e993b89b310c">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a new value for the first element (first string).</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>small_strings[<span class="dv">0</span>] <span class="op">=</span> <span class="st">'seven'</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>small_strings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['sev', 'one', 'two'], dtype='&lt;U3')</code></pre>
+</div>
+</div>
+<p>Numpy truncates the new string to match the original maximum length.</p>
+<p>For that reason, it is often useful to instruct Numpy that you want to use effectively infinite length strings, by specifying the array <code>dtype</code> as <code>object</code> <em>when you make the array</em>, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-35_fb8b494ab46ab952c74a02837be21bbc">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An array of small strings, but this time, tell Numpy</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># that the strings should be of effectively infinite length.</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>small_strings_better <span class="op">=</span> np.array([<span class="st">'six'</span>, <span class="st">'one'</span>, <span class="st">'two'</span>], dtype<span class="op">=</span><span class="bu">object</span>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>small_strings_better</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['six', 'one', 'two'], dtype=object)</code></pre>
+</div>
+</div>
+<p>Notice that the code uses a <em>named function argument</em> (<a href="resampling_with_code.html#sec-named-arguments" class="quarto-xref"><span>Section&nbsp;5.8</span></a>), to specify to <code>np.array</code> that the array elements should be of type <code>object</code>. This type can store any Python value, and so, when the array is storing strings, it will use Python’s own string values as elements, rather than the more efficient but more fragile Unicode strings that Numpy uses by default.</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-36_b2e709aa429bf7191999c11b82fa0548">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a new value for the first element in the new array.</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>small_strings_better[<span class="dv">0</span>] <span class="op">=</span> <span class="st">'seven'</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>small_strings_better</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['seven', 'one', 'two'], dtype=object)</code></pre>
+</div>
+</div>
+<!---
+End of warning
+-->
+</div>
+</div>
+<!---
+End of Python section
+-->
+</div>
+<p>As for any array, you can select elements with <em>indexing</em>. When you select an element with a given position (index), you get the <em>string</em> at at that position:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-37_9d1daacb939298f694514c92db367573">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Julian Lincoln Simon's second name.</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (Remember, Python's positions start at 0).</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>middle_name <span class="op">=</span> arr_of_strings[<span class="dv">1</span>]</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>middle_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'Lincoln'</code></pre>
+</div>
+</div>
+<p>As for numbers, we can compare strings with, for example, the <code>==</code> operator, that asks whether the two strings are equal:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-39_e03bcc7a9105611108e3b2d6feac3812">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>middle_name <span class="op">==</span> <span class="st">'Lincoln'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-repeating" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="sec-repeating"><span class="header-section-number">6.6</span> Repeating elements</h2>
+<p>Now let us go back to the problem of selecting black and white jurors.</p>
+<p>We started with the strategy of using numbers 0 through 25 to mean “black” jurors, and 26 through 99 to mean “white” jurors. We selected values at random from 0 through 99, and then worked out whether the number meant a “black” juror (was less than 26) or a “white” juror (was greater than 25).</p>
+<p>It would be good to use strings instead of numbers to identify the potential jurors. Then we would not have to remember our coding of 0 through 25 and 26 through 99.</p>
+<p>If only there was a way to make an array of 100 strings, where 26 of the strings were “black” and 74 were “white”. Then we could select randomly from that array, and it would be immediately obvious that we had a “black” or “white” juror.</p>
+<p>Luckily, of course, we can do that, by using the <span class="python"><code>np.repeat</code></span> function to construct the array.</p>
+<p>Here is how that works:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-41_800ab782d2c130f5a91effd7e4c614d6">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The values that we will repeat to fill up the larger array.</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a list to store the sequence of values.</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>juror_types <span class="op">=</span> [<span class="st">'black'</span>, <span class="st">'white'</span>]</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The number of times we want to repeat "black" and "white".</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a list to store the sequence of values.</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>repeat_nos <span class="op">=</span> [<span class="dv">26</span>, <span class="dv">74</span>]</span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat "black" 26 times and "white" 74 times.</span></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="co"># We have passed two lists here, but we could also have passed</span></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co"># arrays - the Numpy repeat function converts the lists to arrays</span></span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="co"># before it builds the repeats.</span></span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>jury_pool <span class="op">=</span> np.repeat(juror_types, repeat_nos)</span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>jury_pool</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['black', 'black', 'black', 'black', 'black', 'black', 'black',
+       'black', 'black', 'black', 'black', 'black', 'black', 'black',
+       'black', 'black', 'black', 'black', 'black', 'black', 'black',
+       'black', 'black', 'black', 'black', 'black', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white'], dtype='&lt;U5')</code></pre>
+</div>
+</div>
+<p>We can use this array of repeats of strings, to sample from. The result is easier to grasp, because we are using the string labels, instead of numbers:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-43_4be241eb1d9ce7323d4ee24952c90353">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select one juror at random from the black / white pool.</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>one_juror <span class="op">=</span> rnd.choice(jury_pool)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>one_juror</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'white'</code></pre>
+</div>
+</div>
+<p>We can select our full jury of 12 jurors, and see the results in a more obvious form:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-45_d780f1918dc6fb7b78fc51c35d3bba66">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 12 jurors at random from the black / white pool.</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>one_jury <span class="op">=</span> rnd.choice(jury_pool, <span class="dv">12</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>one_jury</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['white', 'white', 'white', 'white', 'black', 'white', 'black',
+       'white', 'white', 'black', 'black', 'white'], dtype='&lt;U5')</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Using the <code>size</code> argument to <code>rnd.choice</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the code above, we have specified the <em>size</em> of the sample we want (12) with the second argument to <code>rnd.choice</code>. As you saw in <a href="resampling_with_code.html#sec-named-arguments" class="quarto-xref"><span>Section&nbsp;5.8</span></a>, we can also give names to the function arguments, in this case, to make it clearer what we mean by “12” in the code above. In fact, from now on, that is what we will do; we will specify the <em>size</em> of our sample by using the <em>name</em> for the function argument to <code>rnd.choice</code> — <code>size</code> — like this:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-47_b269cde4f4fbfb5ad0dffa119447b483">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 12 jurors at random from the black / white pool.</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the sample size using the "size" named argument.</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>one_jury <span class="op">=</span> rnd.choice(jury_pool, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>one_jury</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['black', 'white', 'white', 'white', 'black', 'white', 'black',
+       'white', 'white', 'white', 'white', 'white'], dtype='&lt;U5')</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>We can use <code>==</code> on the array to get <code>True</code> values where the juror was “black” and <code>False</code> values otherwise:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-49_5be7ba61049c23cb16f3157d2071d084">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>are_black <span class="op">=</span> one_jury <span class="op">==</span> <span class="st">'black'</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>are_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([ True, False, False, False,  True, False,  True, False, False,
+       False, False, False])</code></pre>
+</div>
+</div>
+<p>Finally, we can <span class="python"><code>np.sum</code></span> to find the number of black jurors (<a href="resampling_with_code.html#sec-count-with-sum" class="quarto-xref"><span>Section&nbsp;5.14</span></a>):</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-51_e6b30cb97d54ff3ed79977867115086d">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of black jurors in this simulated jury.</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>n_black <span class="op">=</span> np.<span class="bu">sum</span>(are_black)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>n_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3</code></pre>
+</div>
+</div>
+<p>Putting that all together, this is our new procedure to select one jury and count the number of black jurors:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-53_67a8a1b3cc73984349e8117a07ba81d6">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>one_jury <span class="op">=</span> rnd.choice(jury_pool, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>are_black <span class="op">=</span> one_jury <span class="op">==</span> <span class="st">'black'</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>n_black <span class="op">=</span> np.<span class="bu">sum</span>(are_black)</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>n_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3</code></pre>
+</div>
+</div>
+<p>Or we can be even more compact by putting several statements together into one line:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-55_d7165e384191a09d3ef8711c47b2667b">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The same as above, but on one line.</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>n_black <span class="op">=</span> np.<span class="bu">sum</span>(rnd.choice(jury_pool, size<span class="op">=</span><span class="dv">12</span>) <span class="op">==</span> <span class="st">'black'</span>)</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>n_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1</code></pre>
+</div>
+</div>
+</section>
+<section id="resampling-with-and-without-replacement" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="resampling-with-and-without-replacement"><span class="header-section-number">6.7</span> Resampling with and without replacement</h2>
+<p>Now let us return to the details of Robert Swain’s case, that you first saw in <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a>.</p>
+<p>We looked at the composition of Robert Swain’s 12-person jury — but in fact, by law, that does not have to be representative of the eligible jurors. The 12-person jury is drawn from a jury <em>panel</em>, of 100 people, and this should, in turn, be drawn from the population of all eligible jurors in the county, consisting, at the time, of “all male citizens in the community over 21 who are reputed to be honest, intelligent men and are esteemed for their integrity, good character and sound judgment.” So, unless there was some bias against black jurors, we might expect the 100-person jury panel to be a plausibly random sample of the eligible jurors, of whom 26% were black. See <a href="https://supreme.justia.com/cases/federal/us/380/202">the Supreme Court case judgement</a> for details.</p>
+<p>In fact, in Robert Swain’s trial, there were 8 black members in the 100-person jury panel. We will leave it to you to adapt the simulation from <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a> to ask the question — is 8% surprising as a random sample from a population with 26% black people?</p>
+<p>But we have a different question: given that 8 out of 100 of the jury panel were black, is it surprising that none of the 12-person jury were black? As usual, we can answer that question with simulation.</p>
+<p>Let’s think about what a single simulated jury selection would look like.</p>
+<p>First we compile a representation of the actual jury panel, using the tools we have used above.</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-57_469016fedf06f796f82205835dfee79f">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>juror_types <span class="op">=</span> [<span class="st">'black'</span>, <span class="st">'white'</span>]</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in fact there were 8 black jurors and 92 white jurors.</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>panel_nos <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">92</span>]</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>jury_panel <span class="op">=</span> np.repeat(juror_types, panel_nos)</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>jury_panel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['black', 'black', 'black', 'black', 'black', 'black', 'black',
+       'black', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white', 'white', 'white',
+       'white', 'white'], dtype='&lt;U5')</code></pre>
+</div>
+</div>
+<p>Now consider taking a 12-person jury at random from this panel. We select the first juror at random, so that juror has an 8 out of 100 chance of being black. But when we select the second jury member, the situation has changed slightly. We can’t select the first juror again, so our panel is now 99 people. If our first juror was black, then the chances of selecting another black juror next are not 8 out of 100, but 7 out of 99 — a smaller chance. The problem is, as we shall see in more detail later, the chances of getting a black juror as the second, and third and fourth members of the jury depend on whether we selected a black juror as the first and second and third jury members. At its most extreme, imagine we had already selected eight jurors, and by some strange chance, all eight were black. Now our chances of selecting a black juror as the ninth juror are zero — there are no black jurors left to select from the panel.</p>
+<p>In this case we are selecting jurors from the panel <em>without replacement</em>, meaning, that once we have selected a particular juror, we cannot select them again, and we do not put them back into the panel when we select our next juror.</p>
+<p>This is the probability equivalent of the situation when you are dealing a hand of cards. Let’s say someone is dealing you, and you only, a hand of five cards. You get an ace as your first card. Your chances of getting an ace as your first card were just the number of aces in the deck divided by the number of cards — four in 52 – <span class="math inline">\(\frac{4}{52}\)</span>. But for your second card, the probability has changed, because there is one less ace remaining in the pack, and one less card, so your chances of getting an ace as your second card are now <span class="math inline">\(\frac{3}{51}\)</span>. This is sampling without replacement — in a normal game, you can’t get the same card twice. Of course, you could imagine getting a hand where you sampled <em>with replacement</em>. In that case, you’d get a card, you’d write down what it was, and you’d give the card back to the dealer, who would <em>replace</em> the card in the deck, shuffle again, and give you another card.</p>
+<p>As you can see, the chances change if you are sampling with or without replacement, and the kind of sampling you do, will dictate how you model your chances in your simulations.</p>
+<p>Because this distinction is so common, and so important, the machinery you have already seen in <span class="python"><code>rnd.choice</code></span> has simple ways for you to select your sampling type. You have already seen sampling <em>with replacement</em>, and it looks like this:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-59_f152b9cc477755eb2f260af882686c13">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a sample of 12 jurors from the panel *with replacement*</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="co"># With replacement is the default for `rnd.choice`.</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>strange_jury <span class="op">=</span> rnd.choice(jury_panel, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>strange_jury</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['white', 'white', 'white', 'black', 'white', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white'], dtype='&lt;U5')</code></pre>
+</div>
+</div>
+<p>This is a strange jury, because it can select any member of the jury pool more than once. Perhaps that juror would have to fill two (or more!) seats, or run quickly between them. But of course, that is not how juries are selected. They are selected <em>without replacement</em>:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-61_b59902c4bca1e80db3b88da8ad953cc0">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a sample of 12 jurors from the panel *without replacement*</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>ok_jury <span class="op">=</span> rnd.choice(jury_panel, <span class="dv">12</span>, replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>ok_jury</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['white', 'white', 'white', 'white', 'black', 'white', 'white',
+       'white', 'white', 'white', 'white', 'white'], dtype='&lt;U5')</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Comments at the end of lines
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You have already seen comment lines. These are lines beginning with <code>#</code>, to signal to Python that the rest of the line is text for humans to read, but Python to ignore.</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-63_c098743d1b69bc0a9b2c4f87e6fdbdce">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a comment.  Python ignores this line.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can also put comments at the <em>end of code lines</em>, by finishing the code part of the line, and then putting a <code>#</code>, followed by more text. Again, Python will ignore everything after the <code>#</code> as a text for humans, but not for Python.</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-65_ddce9662a12f92e2c2ebe334b0d6306c">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Hello'</span>)  <span class="co"># This is a comment at the end of the line.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>To finish the procedure for simulating a single jury selection, we count the number of black jurors:</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-67_70b7340973d7f80366303bb48204bf45">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>n_black <span class="op">=</span> np.<span class="bu">sum</span>(ok_jury <span class="op">==</span> <span class="st">'black'</span>)  <span class="co"># How many black jurors?</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>n_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1</code></pre>
+</div>
+</div>
+<p>Now we have the procedure for one simulated trial, here is the procedure for 10000 simulated trials.</p>
+<div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-69_7a07847fd5edc7db17dbbf958d4d01c5">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">10000</span>):</span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Single trial procedure</span></span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>    jury <span class="op">=</span> rnd.choice(jury_panel, size<span class="op">=</span><span class="dv">12</span>, replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>    n_black <span class="op">=</span> np.<span class="bu">sum</span>(jury <span class="op">==</span> <span class="st">'black'</span>)  <span class="co"># How many black jurors?</span></span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Store the result</span></span>
+<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a>    counts[i] <span class="op">=</span> n_black</span>
+<span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-9"><a href="#cb87-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of juries with 0 black jurors.</span></span>
+<span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a>zero_black <span class="op">=</span> np.<span class="bu">sum</span>(counts <span class="op">==</span> <span class="dv">0</span>)</span>
+<span id="cb87-11"><a href="#cb87-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion</span></span>
+<span id="cb87-12"><a href="#cb87-12" aria-hidden="true" tabindex="-1"></a>p_zero_black <span class="op">=</span> zero_black <span class="op">/</span> <span class="dv">10000</span></span>
+<span id="cb87-13"><a href="#cb87-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p_zero_black)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.3421</code></pre>
+</div>
+</div>
+<p>We have found that, when there are only 8% black jurors in the jury panel, having no black jurors in the final jury happens about 34% of the time, even in this case, where the jury is selected completely at random from the jury panel.</p>
+<p>We should look for the main source of bias in the initial selection of the jury panel, not in the selection of the jury from the panel.</p>
+<!---
+End of notebook
+-->
+<p>End of <code>sampling_tools</code> notebook</p>
+</section>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+With or without replacement for the original jury selection
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You may have noticed in <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a> that we were sampling Robert Swain’s jury from the eligible pool of jurors, <em>with replacement</em>. You might reasonably ask whether we should have selected from the eligible jurors <em>without replacement</em>, given that the same juror cannot serve more than once in the same jury, and therefore, the same argument applies there as here.</p>
+<p>The trick there was that we were selecting from a very large pool of many thousand eligible jurors, of whom 26% were black. Let’s say there were 10,000 eligible jurors, of whom 2,600 were black. When selecting the first juror, there is exactly a 2,600 in 10,000 chance of getting a black juror — 26%. If we do get a black juror first, then the chance that the second juror will be black has changed slightly, 2,599 in 9,999. But these changes are very small; even if we select eleven black jurors out of eleven, when we come to the twelfth juror, we still have a 2,589 out of 9,989 chance of getting another black juror, and that works out at a 25.92% chance — hardly changed from the original 26%. So yes, you’d be right, we really should have compiled our population of 2,600 black jurors and 7,400 white jurors, and then sampled without replacement from that population, but as the resulting sample probabilities will be very similar to the simpler sampling with replacement, we chose to try and slide that one quietly past you, in the hope you would forgive us when you realized.</p>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6.8</span> Conclusion</h2>
+<p>This chapter introduced you to the idea of strings — values in Python that store bits of text. Strings are very useful as labels for the entities we are sampling from, when we do our simulations. Strings are particularly useful when we use them with arrays, and one way we often do that is to build up arrays of strings to sample from, using the <span class="python"><code>np.repeat</code></span> function.</p>
+<p>There is a fundamental distinction between two different types of sampling — sampling <em>with replacement</em>, where we draw an element from a larger pool, then put that element back before drawing again, and sampling <em>without replacement</em>, where we remove the element from the remaining pool when we draw it into the sample. As we will see later, it is often a judgment call which of these two types of sampling is a more reasonable model of the world you are trying to simulate.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./resampling_with_code.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./resampling_with_code2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

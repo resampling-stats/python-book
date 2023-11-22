@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.51">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Resampling statistics - 16&nbsp; Ranks, Quantiles and Standard Scores</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./inference_ideas.html" rel="next">
+<link href="./monte_carlo.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table").addClass('lightable-paper lightable-striped lightable-hover')
+  });
+</script>
+
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./standard_scores.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Resampling statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_third.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_second.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_is_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about_technology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introducing Python and the Jupyter notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more_sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_2_compound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_4_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monte_carlo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard_scores.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./point_estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framing_questions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_measured.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reliability_average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_big_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#household-income-and-congressional-districts" id="toc-household-income-and-congressional-districts" class="nav-link active" data-scroll-target="#household-income-and-congressional-districts"><span class="header-section-number">16.1</span> Household income and congressional districts</a>
+  <ul class="collapse">
+  <li><a href="#sec-csv-format" id="toc-sec-csv-format" class="nav-link" data-scroll-target="#sec-csv-format"><span class="header-section-number">16.1.1</span> Comma-separated-values (CSV) format</a></li>
+  <li><a href="#sec-pandas-intro" id="toc-sec-pandas-intro" class="nav-link" data-scroll-target="#sec-pandas-intro"><span class="header-section-number">16.1.2</span> Introducing the Pandas library</a></li>
+  <li><a href="#incomes-and-ranks" id="toc-incomes-and-ranks" class="nav-link" data-scroll-target="#incomes-and-ranks"><span class="header-section-number">16.1.3</span> Incomes and Ranks</a></li>
+  <li><a href="#introducing-scipy" id="toc-introducing-scipy" class="nav-link" data-scroll-target="#introducing-scipy"><span class="header-section-number">16.1.4</span> Introducing Scipy</a></li>
+  <li><a href="#calculating-ranks" id="toc-calculating-ranks" class="nav-link" data-scroll-target="#calculating-ranks"><span class="header-section-number">16.1.5</span> Calculating ranks</a></li>
+  </ul></li>
+  <li><a href="#comparing-two-values-in-the-district-income-data" id="toc-comparing-two-values-in-the-district-income-data" class="nav-link" data-scroll-target="#comparing-two-values-in-the-district-income-data"><span class="header-section-number">16.2</span> Comparing two values in the district income data</a></li>
+  <li><a href="#comparing-values-with-ranks-and-quantile-positions" id="toc-comparing-values-with-ranks-and-quantile-positions" class="nav-link" data-scroll-target="#comparing-values-with-ranks-and-quantile-positions"><span class="header-section-number">16.3</span> Comparing values with ranks and quantile positions</a></li>
+  <li><a href="#unusual-values-compared-to-the-distribution" id="toc-unusual-values-compared-to-the-distribution" class="nav-link" data-scroll-target="#unusual-values-compared-to-the-distribution"><span class="header-section-number">16.4</span> Unusual values compared to the distribution</a></li>
+  <li><a href="#on-deviations" id="toc-on-deviations" class="nav-link" data-scroll-target="#on-deviations"><span class="header-section-number">16.5</span> On deviations</a></li>
+  <li><a href="#the-mean-absolute-deviation" id="toc-the-mean-absolute-deviation" class="nav-link" data-scroll-target="#the-mean-absolute-deviation"><span class="header-section-number">16.6</span> The mean absolute deviation</a></li>
+  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="header-section-number">16.7</span> The standard deviation</a></li>
+  <li><a href="#standard-scores" id="toc-standard-scores" class="nav-link" data-scroll-target="#standard-scores"><span class="header-section-number">16.8</span> Standard scores</a></li>
+  <li><a href="#standard-scores-to-compare-values-on-different-scales" id="toc-standard-scores-to-compare-values-on-different-scales" class="nav-link" data-scroll-target="#standard-scores-to-compare-values-on-different-scales"><span class="header-section-number">16.9</span> Standard scores to compare values on different scales</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">16.10</span> Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Imagine we have a set of measures, in some particular units. We may want some way to see quickly how these measures compare to one another, and how they may compare to other measures, in different units.</p>
+<p>Ranks are one way of having an implicit comparison between values.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Is the value large in terms of the other values (with high rank) — or is it small (low rank)?</p>
+<p>We can convert ranks to quantile positions. Quantile positions are values from 0 through 1 that are closer to 1 for high rank values, and closer to 0 for low rank values. Each value in the data has a rank, and a corresponding quantile position. We can also look at the <em>value</em> corresponding to each quantile position, and these are the <em>quantiles</em>. You will see what we mean later in the chapter.</p>
+<p>Ranks and quantile positions give an idea whether the measure is high or low compared to the other values, but they do not immediately tell us whether the measure is exceptional or unusual. To do that, we may want to ask whether the measure falls outside the typical range of values — that is, how the measure compares to the <em>distribution</em> of values. One common way of doing this is to re-express the measures (values) as <em>standard scores</em>, where the standard score for a particular value tells you how far the value is from the <em>center</em> of the distribution, in terms of the typical <em>spread</em> of the distribution. (We will say more about what we mean by “typical” later.) Standard values are particularly useful to allow us to <em>compare</em> different types of measures on a standard scale. They translate the units of measurement into <em>standard</em> and comparable units.</p>
+<section id="household-income-and-congressional-districts" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="household-income-and-congressional-districts"><span class="header-section-number">16.1</span> Household income and congressional districts</h2>
+<p>Democratic <a href="https://en.wikipedia.org/wiki/Marcy_Kaptur">congresswoman Marcy Kaptur</a> has represented the 9th district of Ohio since 1983. Ohio’s 9th district is relatively working class, and the Democratic party has, traditionally, represented people with lower income. However, Kaptur has pointed out that this pattern appears to be changing; more of the high-income congressional districts now lean Democrat, and the Republican party is now more likely to represent lower-income districts. The French economist <a href="https://en.wikipedia.org/wiki/Thomas_Piketty">Thomas Piketty</a> has described this phenomenon across several Western countries. Voters for left parties are now more likely to be highly educated and wealthy. He terms this shift “Brahmin Left Vs Merchant Right” <span class="citation" data-cites="piketty2018brahmin">(<a href="references.html#ref-piketty2018brahmin" role="doc-biblioref">Piketty 2018</a>)</span>. The data below come from a <a href="https://s3.documentcloud.org/documents/23726766/rep-kaptur-district-chart.pdf">table Kaptur prepared</a> that shows this pattern in the 2023 US congress. The table lists the top 20 districts by the median income of the households in that district, along with their representatives and their party.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-2_2febf71028ce07d67ab3090949dc545a">
+<div class="cell-output-display">
+<div id="tbl-district_income" class="anchored">
+<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Table&nbsp;16.1: 20 most wealthy 2023 Congressional districts by household income</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ascending_Rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">District</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Median Income</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Representative</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Party</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">422</td>
+<td style="text-align: right;">422</td>
+<td style="text-align: left;">MD-3</td>
+<td style="text-align: right;">114804</td>
+<td style="text-align: left;">J. Sarbanes</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">423</td>
+<td style="text-align: right;">423</td>
+<td style="text-align: left;">MA-5</td>
+<td style="text-align: right;">115618</td>
+<td style="text-align: left;">K. Clark</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">424</td>
+<td style="text-align: right;">424</td>
+<td style="text-align: left;">NY-12</td>
+<td style="text-align: right;">116070</td>
+<td style="text-align: left;">J. Nadler</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">425</td>
+<td style="text-align: right;">425</td>
+<td style="text-align: left;">VA-8</td>
+<td style="text-align: right;">116332</td>
+<td style="text-align: left;">D. Beyer</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">426</td>
+<td style="text-align: right;">426</td>
+<td style="text-align: left;">MD-5</td>
+<td style="text-align: right;">117049</td>
+<td style="text-align: left;">S. Hoyer</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">427</td>
+<td style="text-align: right;">427</td>
+<td style="text-align: left;">NJ-11</td>
+<td style="text-align: right;">117198</td>
+<td style="text-align: left;">M. Sherrill</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">428</td>
+<td style="text-align: right;">428</td>
+<td style="text-align: left;">NY-3</td>
+<td style="text-align: right;">119185</td>
+<td style="text-align: left;">G. Santos</td>
+<td style="text-align: left;">Republican</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">429</td>
+<td style="text-align: right;">429</td>
+<td style="text-align: left;">CA-14</td>
+<td style="text-align: right;">119209</td>
+<td style="text-align: left;">E. Swalwell</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">430</td>
+<td style="text-align: right;">430</td>
+<td style="text-align: left;">NJ-7</td>
+<td style="text-align: right;">119567</td>
+<td style="text-align: left;">T. Kean</td>
+<td style="text-align: left;">Republican</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">431</td>
+<td style="text-align: right;">431</td>
+<td style="text-align: left;">NY-1</td>
+<td style="text-align: right;">120031</td>
+<td style="text-align: left;">N. LaLota</td>
+<td style="text-align: left;">Republican</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">432</td>
+<td style="text-align: right;">432</td>
+<td style="text-align: left;">WA-1</td>
+<td style="text-align: right;">120671</td>
+<td style="text-align: left;">S. DelBene</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">433</td>
+<td style="text-align: right;">433</td>
+<td style="text-align: left;">MD-8</td>
+<td style="text-align: right;">120948</td>
+<td style="text-align: left;">J. Raskin</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">434</td>
+<td style="text-align: right;">434</td>
+<td style="text-align: left;">NY-4</td>
+<td style="text-align: right;">121979</td>
+<td style="text-align: left;">A. D’Esposito</td>
+<td style="text-align: left;">Republican</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">435</td>
+<td style="text-align: right;">435</td>
+<td style="text-align: left;">CA-11</td>
+<td style="text-align: right;">124456</td>
+<td style="text-align: left;">N. Pelosi</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">436</td>
+<td style="text-align: right;">436</td>
+<td style="text-align: left;">CA-15</td>
+<td style="text-align: right;">125855</td>
+<td style="text-align: left;">K. Mullin</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">437</td>
+<td style="text-align: right;">437</td>
+<td style="text-align: left;">CA-10</td>
+<td style="text-align: right;">135150</td>
+<td style="text-align: left;">M. DeSaulnier</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">438</td>
+<td style="text-align: right;">438</td>
+<td style="text-align: left;">VA-11</td>
+<td style="text-align: right;">139003</td>
+<td style="text-align: left;">G. Connolly</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">439</td>
+<td style="text-align: right;">439</td>
+<td style="text-align: left;">VA-10</td>
+<td style="text-align: right;">140815</td>
+<td style="text-align: left;">J. Wexton</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">440</td>
+<td style="text-align: right;">440</td>
+<td style="text-align: left;">CA-16</td>
+<td style="text-align: right;">150720</td>
+<td style="text-align: left;">A. Eshoo</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">441</td>
+<td style="text-align: right;">441</td>
+<td style="text-align: left;">CA-17</td>
+<td style="text-align: right;">157049</td>
+<td style="text-align: left;">R. Khanna</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+</div>
+<p>You may notice right away that many of the 20 richest districts have Democratic Party representatives.</p>
+<p>In fact, if we look at all 441 congressional districts in Kaptur’s table, we find a large difference in the average median household income for Democrat and Republican districts; the Democrat districts are, on average, about 14% richer (<a href="#tbl-party_means" class="quarto-xref">Table&nbsp;<span>16.2</span></a>).</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-4_22fcbb477ea749a091af5b25dab39a5a">
+<div class="cell-output-display">
+<div id="tbl-party_means" class="anchored">
+<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Table&nbsp;16.2: Means for median household income by party</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Mean of median household income</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Democrat</td>
+<td style="text-align: right;">$76,933</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Republican</td>
+<td style="text-align: right;">$67,474</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+</div>
+<p>Next we are going to tip our hand, and show how we got these data. In previous chapters, we had cells like this in which we enter the values we will analyze. These values come from the example we introduced in <a href="probability_theory_3.html#sec-public-liquor" class="quarto-xref"><span>Section&nbsp;12.16</span></a>:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-5_253c15d7bd99a468b133be64f67bdb60">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Liquor prices for US states with private market.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>priv <span class="op">=</span> np.array([</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.82</span>, <span class="fl">5.29</span>, <span class="fl">4.89</span>, <span class="fl">4.95</span>, <span class="fl">4.55</span>, <span class="fl">4.90</span>, <span class="fl">5.25</span>, <span class="fl">5.30</span>, <span class="fl">4.29</span>, <span class="fl">4.85</span>, <span class="fl">4.54</span>, <span class="fl">4.75</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.85</span>, <span class="fl">4.85</span>, <span class="fl">4.50</span>, <span class="fl">4.75</span>, <span class="fl">4.79</span>, <span class="fl">4.85</span>, <span class="fl">4.79</span>, <span class="fl">4.95</span>, <span class="fl">4.95</span>, <span class="fl">4.75</span>, <span class="fl">5.20</span>, <span class="fl">5.10</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.80</span>, <span class="fl">4.29</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we have 441 values to enter, and it is time to introduce Pythons standard tools for loading data.</p>
+<section id="sec-csv-format" class="level3" data-number="16.1.1">
+<h3 data-number="16.1.1" class="anchored" data-anchor-id="sec-csv-format"><span class="header-section-number">16.1.1</span> Comma-separated-values (CSV) format</h3>
+<p>The data we will load is in a file on disk called <code>data/congress_2023.csv</code>. These are data from Kaptur’s table in a comma-separated-values (CSV) format file. We refer to this file with its <em>filename</em>, containing the directory (<code>data/</code>) followed by the name of the file (<code>congress_2023.csv</code>), giving a filename of <code>data/congress_2023.csv</code>.</p>
+<p>The <em>CSV format</em> is a very simple text format for storing table data. Usually, the first line of the CSV file contains the column names of the table, and the rest of the lines contain the row values. As the name suggests, commas (<code>,</code>) separate the column names in the first line, and the row values in the following lines. If you opened the <code>data/congress_2023.csv</code> file in some editor, such as Notepad on Windows or TextEdit on Mac, you would find that the first few lines looked like this:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-7_b5100c514d1a3d75d08ff722d097b12b">
+<pre><code>Ascending_Rank,District,Median_Income,Representative,Party
+1,PR-At Large,22237,J. González-Colón,Republican
+2,AS-At Large,28352,A. Coleman,Republican
+3,MP-At Large,31362,G. Sablan,Democrat
+4,KY-5,37910,H. Rogers,Republican
+5,MS-2,37933,B. G. Thompson,Democrat</code></pre>
+</div>
+</section>
+<section id="sec-pandas-intro" class="level3 python" data-number="16.1.2">
+<h3 data-number="16.1.2" class="anchored" data-anchor-id="sec-pandas-intro"><span class="header-section-number">16.1.2</span> Introducing the Pandas library</h3>
+<p>Here we start using the Pandas library to load table data into Python.</p>
+<p>Thus far we have used the Numpy library to work with data in arrays. Pandas is As always with Python, when we want to use a library like Pandas, we have to <code>import</code> it first.</p>
+<p>We have used the term <em>library</em> here, but Python uses the term <em>module</em> to refer to libraries of code and data that you <code>import</code>.</p>
+<p>When using Numpy, we write:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-8_5aaf30407836120735f86bbd28ddd5c1">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the Numpy library (module), name it "np".</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we will use the Pandas library (module).</p>
+<p>We can import Pandas like this:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-9_105a9f7a7541aa0a67d0fc2bc6961914">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the Pandas library (module)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As Numpy has a standard abbreviation <code>np</code>, that almost everyone writing Python code will recognize and use, so Pandas has the standard abbreviation <code>pd</code>:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-10_350398c48d3354d3846903827158a881">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the Pandas library (module), name it "pd".</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Pandas is the standard data science library for Python. It is particularly good at loading data files, and presenting them to us as a useful table-like structure, called a <em>data frame</em>.</p>
+<p>We start by using Pandas to load our data file:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-11_44e8534a7275e0fe376af1324f635022">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>district_income <span class="op">=</span> pd.read_csv(<span class="st">'data/congress_2023.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We have thus far done many operations that returned Numpy <em>arrays</em>. <code>pd.read_csv</code> returns a Pandas <em>data frame</em>:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-12_97466b7cfb4ea037ebe17e8135ba8c90">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(district_income)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;</code></pre>
+</div>
+</div>
+<p>A data frame is Pandas’ own way of representing a table, with columns and rows. You can think of it as Python’s version of a spreadsheet. As strings or Numpy arrays have <em>methods</em> (functions attached to the array), so Pandas data frames have methods. These methods do things with the data frame to which they are attached. For example, the <code>head</code> method of the data frame shows (by default) the first five rows in the table:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-13_c14589dd8e2c345d2b6723b864a7ac41">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first five rows in the data frame</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>district_income.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Ascending_Rank     District  Median_Income     Representative       Party
+0               1  PR-At Large          22237  J. González-Colón  Republican
+1               2  AS-At Large          28352         A. Coleman  Republican
+2               3  MP-At Large          31362          G. Sablan    Democrat
+3               4         KY-5          37910          H. Rogers  Republican
+4               5         MS-2          37933     B. G. Thompson    Democrat</code></pre>
+</div>
+</div>
+<p>The data are in income order, from lowest to highest, so the first five districts are those with the lowest household income.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sorting
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="python">
+<p>If the data were not already in income order, we could have sorted them with <span class="python">Numpy’s <code>sort</code></span>[R’s function.</p>
+</div>
+</div>
+</div>
+</section>
+<p>We are particularly interested in the column named <code>Median_Income</code>.</p>
+<p>You may remember the idea of <em>indexing</em>, introduced in <a href="resampling_with_code2.html#sec-array-indexing" class="quarto-xref"><span>Section&nbsp;7.6</span></a>. Indexing occurs when we fetch data from within a container, such as a string or an array. We do this by putting square brackets <code>[]</code> after the value we want to index into, and put something inside the brackets to say what we want.</p>
+<p>For example, to get the <em>first</em> element of the <code>priv</code> array above, we use indexing:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-14_d0c17bb698f0a265cca1e9e09bc0ce90">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the first element of the priv array with indexing.</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the element at position 0.</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>priv[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4.82</code></pre>
+</div>
+</div>
+<p>As you can index into strings and Numpy arrays, by using square brackets, so you can index into Pandas data frames. Instead of putting the <em>position</em> between the square brackets, we can put the <em>column name</em>. This fetches the data from that column, returning a new type of value called a Pandas <em>Series</em>.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-15_f3c39021387c5c8a70162e06f227e692">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Index into Pandas data frame to get one column of data.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice we use a string between the square brackets, giving the column name.</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>income_col <span class="op">=</span> district_income[<span class="st">'Median_Income'</span>]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The value that comes back is of type Series.  A Series represents the</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># data from a single column.</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(income_col)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.series.Series'&gt;</code></pre>
+</div>
+</div>
+<p>We want to go straight to our familiar Numpy arrays, so we convert the column of data into a Numpy array, using the <code>np.array</code> function you have already seen:</p>
+<!---
+Need to introduce indexing with slices.
+-->
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-16_ff2ebc7b34149c129aad9c6815090c29">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert column data into a Numpy array.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>incomes <span class="op">=</span> np.array(income_col)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first five values, by indexing with a slice.</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>incomes[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([22237, 28352, 31362, 37910, 37933])</code></pre>
+</div>
+</div>
+<p>:::</p>
+<section id="incomes-and-ranks" class="level3" data-number="16.1.3">
+<h3 data-number="16.1.3" class="anchored" data-anchor-id="incomes-and-ranks"><span class="header-section-number">16.1.3</span> Incomes and Ranks</h3>
+<p>We now have the <code>incomes</code> values as an array.</p>
+<p>There are 441 values in the whole vector, one of each congressional district:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-21_5f8b3f31bf34e31af97cfa05f12ffe6f">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>441</code></pre>
+</div>
+</div>
+<p>While we are at it, let us also get the values from the “Ascending_Rank” column, with the same procedure. These are ranks from low to high, meaning 1 is the lowest median income, and 441 is the highest median income.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-23_2a91239a4efb6ebb2ddf779e25ad0f1f">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>lo_to_hi_ranks <span class="op">=</span> np.array(district_income[<span class="st">'Ascending_Rank'</span>])</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first five values, by indexing with a slice.</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>lo_to_hi_ranks[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([1, 2, 3, 4, 5])</code></pre>
+</div>
+</div>
+<p>In our case, the <span class="python">DataFrame</span> has the <code>Ascending_Rank</code> column with the ranks we need, but if we need the ranks and we don’t have them, we can calculate them using the <span class="python"><code>rankdata</code> function from the Scipy <code>stats</code> package</span>.</p>
+</section>
+<section id="introducing-scipy" class="level3 python" data-number="16.1.4">
+<h3 data-number="16.1.4" class="anchored" data-anchor-id="introducing-scipy"><span class="header-section-number">16.1.4</span> Introducing Scipy</h3>
+<p>Earlier in this chapter we introduced the Pandas module. We used Pandas to load the CSV data into Python.</p>
+<p>Now we introduce another fundamental Python library for working with data called Scipy. The name Scipy comes from the compression of SCIentific PYthon, and the library is nearly as broad as the name suggests — it is a huge collection of functions and data that implement a wide range of scientific algorithms. Scipy is an umbrella package, in that it contains sub-packages, each covering a particular field of scientific computing. One of those sub-packages is called <code>stats</code>, and, yes, it covers statistics.</p>
+<p>We can get the Scipy <code>stats</code> sub-package with:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-25_6db3bd1ff6726efc78899e0cef0add49">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>but, as for Numpy and Pandas, we often <code>import</code> the package with an abbreviation, such as:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-26_b3c60d9a17bfc1a0d43fb7a2556c5a21">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the scipy.stats package with the name "sps".</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> sps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>One of the many functions in <code>scipy.stats</code> is the <code>rankdata</code> function.</p>
+</section>
+<section id="calculating-ranks" class="level3" data-number="16.1.5">
+<h3 data-number="16.1.5" class="anchored" data-anchor-id="calculating-ranks"><span class="header-section-number">16.1.5</span> Calculating ranks</h3>
+<p>As you might expect <span class="python"><code>sps.rankdata</code></span> accepts an array as an input argument. Let’s say that there are <span class="python"><code>n = len(data)</code></span> values in the array that we pass to <span class="python"><code>sps.rankdata</code></span>. The function returns an array, length <span class="math inline">\(n\)</span>, where the elements are the ranks of each corresponding element in the input <code>data</code> array. A rank value of 1 corresponds the lowest value in <code>data</code> (closest to negative infinity), and a rank of <span class="math inline">\(n\)</span> corresponds to the highest value (closest to positive infinity).</p>
+<p>Here’s an example <code>data</code> array to show how <span class="python"><code>sps.rankdata</code></span> works.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-27_c519ef6641e6767c6af05eecd63169a1">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The data.</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">2</span>])</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Corresponding ranks for the data.</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>sps.rankdata(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([3., 2., 4., 1.])</code></pre>
+</div>
+</div>
+<p>We can use <span class="python"><code>sps.rankdata</code></span> to recalculate the ranks for the congressional median household income values.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-29_254ea54b33762fdb2d4fa0b46a6f2f61">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recalculate the ranks.</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>recalculated_ranks <span class="op">=</span> sps.rankdata(incomes)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first 5 ranks.</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>recalculated_ranks[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([1., 2., 3., 4., 5.])</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="comparing-two-values-in-the-district-income-data" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="comparing-two-values-in-the-district-income-data"><span class="header-section-number">16.2</span> Comparing two values in the district income data</h2>
+<p>Let us say that we have taken an interest in two particular members of Congress: the Speaker of the House of Representatives, Republican <a href="https://en.wikipedia.org/wiki/Kevin_McCarthy">Kevin McCarthy</a>, and the progressive activist and Democrat <a href="https://en.wikipedia.org/wiki/Alexandria_Ocasio-Cortez">Alexandria Ocasio-Cortez</a>. We will refer to both using their initials: KM for Kevin Owen McCarthy and AOC for Alexandra Ocasio-Cortez.</p>
+<p>By scrolling through the CSV file, or (in our case) using some simple <span class="python">Pandas</span> code that we won’t cover now, we find the rows corresponding to McCarthy (KM) and Ocasio-Cortez (AOC) — <a href="#tbl-rows-of-interest" class="quarto-xref">Table&nbsp;<span>16.3</span></a>.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-32_a723f3e7316699a09ab8f6fc93d9c2c5">
+<div class="cell-output-display">
+<div id="tbl-rows-of-interest" class="anchored">
+<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Table&nbsp;16.3: Rows for Kevin McCarthy and Alexandra Ocasio-Cortez </caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ascending_Rank</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">District</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Median Income</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Representative</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Party</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">81</td>
+<td style="text-align: left;">NY-14</td>
+<td style="text-align: right;">56129</td>
+<td style="text-align: left;">A. Ocasio-Cortez</td>
+<td style="text-align: left;">Democrat</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">295</td>
+<td style="text-align: left;">CA-20</td>
+<td style="text-align: right;">77205</td>
+<td style="text-align: left;">K. McCarthy</td>
+<td style="text-align: left;">Republican</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+</div>
+<p>The rows show the <em>rank</em> of each congressional district in terms of median household income. The districts are ordered by this rank, so we can get their respective <em>indices</em> (positions) in the <code>incomes</code> array from their rank. <span class="python">Remember, Python’s indices start at 0, whereas the ranks start at 1, so we need to subtract 1 from the rank to get the index</span></p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-33_4b302c51cba234de672fdcf3c20e6a1d">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rank of McCarthy's district in terms of median household income.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>km_rank <span class="op">=</span> <span class="dv">295</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Index (position) of McCarthy's value in the "incomes" array.</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract one from rank, because Python starts indices at 0 rather than 1.</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>km_index <span class="op">=</span> km_rank <span class="op">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we have the index (position) of KM’s value, we can find the household income for his district from the <code>incomes</code> array:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-35_773c7eb0734c212a4523db0783c2065c">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the median household income from McCarthy's district</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># by indexing into the "incomes" array:</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>km_income <span class="op">=</span> incomes[km_index]</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>km_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>77205</code></pre>
+</div>
+</div>
+<p>Here is the corresponding index and <code>incomes</code> value for AOC:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-37_82d9ae4a144413c6868a4ef39084d494">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Index (position) of AOC's value in the "incomes" array.</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>aoc_rank <span class="op">=</span> <span class="dv">81</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>aoc_index <span class="op">=</span> aoc_rank <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the median household income from AOC's district</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># by indexing into the "incomes" array:</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>aoc_income <span class="op">=</span> incomes[aoc_index]</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>aoc_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>56129</code></pre>
+</div>
+</div>
+<p>Notice that we fetch the same value for median household income from <code>incomes</code> as you see in the corresponding rows.</p>
+</section>
+<section id="comparing-values-with-ranks-and-quantile-positions" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="comparing-values-with-ranks-and-quantile-positions"><span class="header-section-number">16.3</span> Comparing values with ranks and quantile positions</h2>
+<p>We have KM’s and AOC’s district median household income values, but our next question might be — how unusual are these values?</p>
+<p>Of course, it depends what we mean by <em>unusual</em>. We might mean, are they greater or smaller than most of the other values?</p>
+<p>One way of answering that question is simply looking at the rank of the values. If the rank is lower than <span class="math inline">\(\frac{441}{2} = 220.5\)</span> then this is a district with lower median income than most districts. If it is greater than <span class="math inline">\(220.5\)</span> then it has higher median income than most districts. We see that KM’s district, with rank 295 is wealthier than most, whereas AOC’s district (rank 81) is poorer than most.</p>
+<p>But we can’t interpret the ranks without remembering that there are 441 values, so — for example - a rank of 81 represents a relatively low value, whereas one of 295 is relatively high.</p>
+<p>We would like some scale that tells us immediately whether this is a relatively low or a relatively high value, without having to remembering how many values there are.</p>
+<p>This is a good use for <em>quantile positions</em> (QPs). The QP of a value tells you where the value ranks relative to the other values, on a scale from <span class="math inline">\(0\)</span> through <span class="math inline">\(1\)</span>. A QP of <span class="math inline">\(0\)</span> tells you this is the lowest-ranking value, and a QP of <span class="math inline">\(1\)</span> tells you this is the highest-ranking value.</p>
+<p>We can calculate the QP for each rank. Think of the low-to-high ranks as being a line starting at 1 (the lowest rank — for the lowest median income) and going up to 441 (the highest rank — for the highest median income).</p>
+<p>The QP corresponding to any particular rank tells you how far along this line the rank is. Notice that the length of the line is the distance from the first to the last value, so 441 - 1 = 440.</p>
+<p>So, if the rank was <span class="math inline">\(1\)</span>, then the value is at the start of the line. It has got <span class="math inline">\(\frac{0}{440}\)</span> of the way along the line, and the QP is <span class="math inline">\(0\)</span>. If the rank is <span class="math inline">\(441\)</span>, the value is at the end of the line, it has got <span class="math inline">\(\frac{440}{440}\)</span> of the way along the line and the QP is <span class="math inline">\(1\)</span>.</p>
+<p>Now consider the rank of <span class="math inline">\(100\)</span>. It has got <span class="math inline">\(\frac{(100 - 1)}{440}\)</span> of the way along the line, and the QP position is 0.22.</p>
+<p>More generally, we can translate the high-to-low ranks to QPs with:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-39_bb757aebed3c7b1d480efe8ad26555c5">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Length of the line defining quantile positions.</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Start of line is rank 1 (quantile position 0).</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># End of line is rank 441 (quantile position 1).</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>distance <span class="op">=</span> <span class="bu">len</span>(lo_to_hi_ranks) <span class="op">-</span> <span class="dv">1</span>  <span class="co"># 440 in our case.</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># What proportion along the line does each value get to?</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>quantile_positions <span class="op">=</span> (lo_to_hi_ranks <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> distance</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first five.</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>quantile_positions[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([0.        , 0.00227273, 0.00454545, 0.00681818, 0.00909091])</code></pre>
+</div>
+</div>
+<p>Let’s plot the ranks and the QPs together on the x-axis:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-41_174670db8543bca33167af885e3e8949">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The QPs for KM and AOC tell us where their districts’ incomes are in the ranks, on a 0 to 1 scale:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-42_bd196da43e0c8008e305395cd9b4dd3e">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>km_quantile_position <span class="op">=</span> quantile_positions[km_index]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>km_quantile_position</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6681818181818182</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-44_d0d9c54eab4e57690df162ed94414dcb">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>aoc_quantile_position <span class="op">=</span> quantile_positions[aoc_index]</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>aoc_quantile_position</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.18181818181818182</code></pre>
+</div>
+</div>
+<p>If we multiply the QP by 100, we get the <em>percentile positions</em> — so the percentile position ranges from 0 through 100.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-46_85a19ab4a075555761120c77ffe34406">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentile positions are just quantile positions * 100</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'KM percentile position:'</span>, km_quantile_position <span class="op">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KM percentile position: 66.81818181818183</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'AOC percentile position:'</span>, aoc_quantile_position <span class="op">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>AOC percentile position: 18.181818181818183</code></pre>
+</div>
+</div>
+<p>Now consider one particular QP: <span class="math inline">\(0.5\)</span>. The <span class="math inline">\(0.5\)</span> QP is exactly half-way along the line from rank <span class="math inline">\(1\)</span> to rank <span class="math inline">\(441\)</span>. In our case this corresponds to rank <span class="math inline">\(\frac{441 - 1}{2} + 1 = 221\)</span>.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-48_380dcf4a3640f76d21488e155ea47975">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For rank 221 we need index 220, because Python indices start at 0</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Middle rank:'</span>, lo_to_hi_ranks[<span class="dv">220</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Middle rank: 221</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Quantile position:'</span>, quantile_positions[<span class="dv">220</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Quantile position: 0.5</code></pre>
+</div>
+</div>
+<p>The <em>value</em> corresponding to any particular QP is the <em>quantile value</em>, or just the <em>quantile</em> for short. For a QP of 0.5, the <em>quantile</em> (quantile value) is:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-50_b3f70e453412a0139d36f5654aa55376">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quantile value for 0.5</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Quantile value for QP of 0.5:'</span>, incomes[<span class="dv">220</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Quantile value for QP of 0.5: 67407</code></pre>
+</div>
+</div>
+<p>In fact we can ask Python for this <em>value</em> (quantile) directly, using the <code>quantile</code> function:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-52_9e29ab8ef525c66eb4cdfd2eb1c7cdc6">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>np.quantile(incomes, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>67407.0</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>quantile</code> and sorting
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In our case, the <code>incomes</code> data is already sorted from lowest (at position <span class="python">0</span> in the array to highest (at position <span class="python">440</span> in the array). The <code>quantile</code> function does not need the data to be sorted; it does its own internal sorting to do the calculation.</p>
+<p>For example, we could shuffle <code>incomes</code> into a random order, and still get the same values from <code>quantile</code>.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-54_185e082de110a021087037a50c0915cf">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>shuffled_incomes <span class="op">=</span> rnd.permuted(incomes)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Quantile still gives the same value.</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>np.quantile(incomes, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>67407.0</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>Above we have the 0.5 <em>quantile</em> — the value corresponding to the QP of 0.5.</p>
+<p>The 0.5 quantile is an interesting value. By the definition of QP, exactly half of the remaining values (after excluding the 0.5 quantile value) have lower rank, and are therefore less than the 0.5 quantile value. Similarly exactly half of the remaining values are greater than the 0.5 quantile. You may recognize this as the <em>median</em> value. This is such a common quantile value that NumPy has a function <span class="python"><code>np.median</code></span> as a shortcut for <span class="python"><code>np.quantile(data, 0.5)</code></span>.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-56_445ae35fdcd989e4674b77f08f8b3bd2">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>np.median(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>67407.0</code></pre>
+</div>
+</div>
+<p>Another interesting QP is 0.25. We find the QP of 0.25 at rank:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-57_52591d980cc2c7c76308440c7ea55816">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>qp25_rank <span class="op">=</span> (<span class="dv">441</span> <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> <span class="fl">0.25</span> <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>qp25_rank</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>111.0</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-59_02539e7fee6af1fbb97c1e185b788381">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Therefore, index 110 (Python indices start from 0)</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Rank corresponding to QP 0.25:'</span>, qp25_rank)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rank corresponding to QP 0.25: 111.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'0.25 quantile value:'</span>, incomes[<span class="dv">110</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.25 quantile value: 58961</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'0.25 quantile value using np.quantile:'</span>,</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>      np.quantile(incomes, <span class="fl">0.25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.25 quantile value using np.quantile: 58961.0</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-61_34d9f191ff18128d98df9bb76c61fa34">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Call the 0.25 quantile value <span class="math inline">\(V\)</span>. <span class="math inline">\(V\)</span> is the number such that 25% of the <em>remaining</em> values are less than <span class="math inline">\(V\)</span>, and 75% are greater.</p>
+<p>Now let’s think about the 0.01 quantile. We don’t have an <em>income value</em> exactly corresponding to this QP, because there is no rank exactly corresponding to the 0.01 QP.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-62_e49a9dd7014a68642f8915d6c71c8464">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>rank_for_qp001 <span class="op">=</span> (<span class="dv">441</span> <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> <span class="fl">0.01</span> <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>rank_for_qp001</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5.4</code></pre>
+</div>
+</div>
+<p>Let’s have a look at the first 10 values for rank / QP and incomes:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-64_9263795e18a21ec876293b3f984e8ba3">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-64-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What then, is the quantile value for QP = 0.01? There are various ways to answer that question <span class="citation" data-cites="hyndman1996sample">(<a href="references.html#ref-hyndman1996sample" role="doc-biblioref">Hyndman and Fan 1996</a>)</span>, but one obvious way, and the default for NumPy, is to draw a straight line up from the matching rank — or equivalently, down from the QP — then note where that line crosses the lines joining the values to the left and right of the QP on the graph above, and look across to the y-axis for the corresponding value:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-65_ede1f3e14ab04af66ed5e0a2744320cc">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-65-3.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-66_42510a40469f7897eca8f15662d35120">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>np.quantile(incomes, <span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>38887.4</code></pre>
+</div>
+</div>
+<p>This is called the <em>linear</em> method — because it uses straight lines joining the points to estimate the quantile value for a QP that does not correspond to a whole-number rank.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Calculating quantiles using the linear method
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We gave a graphical explanation of how to calculate the quantile for a QP that does not correspond to whole-number rank in the data. A more formal way of getting the value using the numerical equivalent of the graphical method is <a href="https://en.wikipedia.org/wiki/Linear_interpolation">linear interpolation</a>. Linear interpolation calculates the quantile value as a <em>weighted average</em> of the quantile values for the QPs of the whole number ranks just less than, and just greater than the QP we are interested in. For example, let us return to the QP of <span class="math inline">\(0.01\)</span>. Let us remind ourselves of the QPs, whole-number ranks and corresponding values either side of the QP <span class="math inline">\(0.01\)</span>:</p>
+<table class="table">
+<caption>Ranks, QPs and corresponding values around QP of 0.01</caption>
+<thead>
+<tr class="header">
+<th>Rank</th>
+<th>Quantile position</th>
+<th>Quantile value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5</td>
+<td>0.0099</td>
+<td>37933</td>
+</tr>
+<tr class="even">
+<td>5.4</td>
+<td>0.01</td>
+<td><strong>V</strong></td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>0.0113</td>
+<td>40319</td>
+</tr>
+</tbody>
+</table>
+<p>What value should we should give <span class="math inline">\(V\)</span> in the table? One answer is to take the average of the two values either side of the desired QP — in this case <span class="math inline">\((37933 + 40319) / 2\)</span>. We could write this same calculation as <span class="math inline">\(37933 * 0.5 + 40319 * 0.5\)</span> — showing that we are giving equal weight (<span class="math inline">\(0.5\)</span>) to the two values either side.</p>
+<p>But giving both values equal weight doesn’t seem quite right, because the QP we want is closer to the QP for rank 5 (and corresponding value 37933) than it is to the QP for rank 6 (and corresponding value 40319). We should give more weight to the rank 5 value than the rank 6 value. Specifically the lower value is 0.4 rank units away from the QP rank we want, and the higher is 0.6 rank units away. So we give higher weight for shorter distance, and multiply the rank 5 value by <span class="math inline">\(1 - 0.4 = 0.6\)</span>, and the rank 6 value by <span class="math inline">\(1 - 0.6 = 0.4\)</span>. Therefore the weighted average is <span class="math inline">\(37933 * 0.6 + 40319 * 0.4 = 38887.4\)</span>. This is a mathematical way to get the value we described graphically, of tracking up from the rank of 5.4 to the line drawn between the values for rank 5 and 6, and reading off the y-value at which this track crosses that line.</p>
+</div>
+</div>
+</section>
+<section id="unusual-values-compared-to-the-distribution" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="unusual-values-compared-to-the-distribution"><span class="header-section-number">16.4</span> Unusual values compared to the distribution</h2>
+<p>Now we return the problem of whether KMs and AOCs districts are unusual in terms of their median household incomes. From what we have so far, we might conclude that AOC’s district is fairly poor, and KM’s district is relatively wealthy. But — are either of their districts <em>unusual</em> in their wealth or poverty?</p>
+<p>To answer that question, we have to think about the <em>distribution</em> of values. Are either AOC’s or KM’s district outside the <em>typical spread</em> of values for districts?</p>
+<p>The rest of this section is an attempt to answer what we could mean by <em>outside</em> and <em>typical spread</em>.</p>
+<p>Let us start with a histogram of the district incomes, marking the position of the KM and AOC districts.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-68_2c4603dc4734396595d5b3ee5b634314">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-68-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What could we mean by “outside” the “typical spread”. By outside, we mean somewhere away from the center of the distribution. Let us take the mean of the distribution to be its center, and add that to the plot.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-69_f3bb65f6e3ebfc39cf660be6e45ec718">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>mean_income <span class="op">=</span> np.mean(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-71_d4afb9304f580c014d3e844730b7f541">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-71-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="on-deviations" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="on-deviations"><span class="header-section-number">16.5</span> On deviations</h2>
+<p>Now let us ask what we could mean by <em>typical spread</em>. By <em>spread</em> we mean deviation either side of the center.</p>
+<p>We can calculate how far away each income is away from the mean, by subtracting the mean from all the income values. Call the result — the <em>deviations</em> from the mean, or <em>deviations</em> for short.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-72_c48576b5395366e795632f9be279083b">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>deviations <span class="op">=</span> incomes <span class="op">-</span> np.mean(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The deviation values give, for each district, how far that district’s income is from the mean. Values near the mean will have small (positive or negative) values, and values further from the mean will have large (positive and negative) values. Here is a histogram of the <em>deviation</em> values.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-74_387dcddf4d3645b2168ab93babcce498">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-74-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice that the shape of the distribution has not changed — all that changed is the position of the distribution on the x-axis. In fact, the distribution of deviations centers on zero — the deviations have a mean of (as near as the computer can accurately calculate) zero:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-75_5064a49549384795001aed45a9e0dd1e">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the mean of the deviations, rounded to 8 decimal places.</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(np.mean(deviations), <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.0</code></pre>
+</div>
+</div>
+</section>
+<section id="the-mean-absolute-deviation" class="level2" data-number="16.6">
+<h2 data-number="16.6" class="anchored" data-anchor-id="the-mean-absolute-deviation"><span class="header-section-number">16.6</span> The mean absolute deviation</h2>
+<p>Now let us consider the deviation value for KM and AOC:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-77_4446c082ef5527c25b33dbf30cc3517c">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Deviation for KM:'</span>, deviations[km_index])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deviation for KM: 5098.036281179142</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Deviation for AOC:'</span>, deviations[aoc_index])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deviation for AOC: -15977.963718820858</code></pre>
+</div>
+</div>
+<p>We have the same problem as before. Yes, we see that KM has a positive deviation, and therefore, that his district is more wealthy than average across the 441 districts. Conversely AOC’s district has a negative deviation, and is poorer than average. But we still lack a standard measure of how far away from the mean each district is, in terms of the spread of values in the histogram.</p>
+<p>To get such a standard measure, we would like idea of a typical or average deviation. Then we will compare KM’s and AOC’s deviations to the average deviation, to see if they are unusually far from the mean.</p>
+<p>You have just seen above that we cannot use the literal average (mean) of the deviations for this purpose because the positive and negative deviations will exactly cancel out, and the mean deviation will always be as near as the computer can calculate to zero.</p>
+<p>To stop the negatives canceling the positives, we can simply knock the minus signs off all the negative deviations.</p>
+<p>This is the job of the NumPy <code>abs</code> function — where <code>abs</code> is short for <em>absolute</em>. The <code>abs</code> function will knock minus signs off negative values, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-79_f1f62d5d188615edfabc67f423c9d9ef">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">abs</span>([<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([1, 0, 1, 2])</code></pre>
+</div>
+</div>
+<p>To get an average of the deviations, <em>regardless of whether they are positive or negative</em>, we can take the mean of the absolute deviations, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-81_6b6f674ad55d7a0d2635e0e253adcdf5">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The Mean Absolute Deviation (MAD)</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>abs_deviations <span class="op">=</span> np.<span class="bu">abs</span>(deviations)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>mad <span class="op">=</span> np.mean(abs_deviations)</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>mad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>15101.657570662428</code></pre>
+</div>
+</div>
+<p>This is the Mean Absolute Deviation (MAD). It is one measure of the typical spread. MAD is the average distance (regardless of positive or negative) of a value from the mean of the values.</p>
+<p>We can get an idea of how typical a particular deviation is by dividing the deviation by the MAD value, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-83_fe1a4d5961a3d99d2a9649368aba6bce">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Deviation in MAD units for KM:'</span>, deviations[km_index] <span class="op">/</span> mad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deviation in MAD units for KM: 0.33758123949803737</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Deviation in MAD units AOC:'</span>, deviations[aoc_index] <span class="op">/</span> mad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deviation in MAD units AOC: -1.0580271499375542</code></pre>
+</div>
+</div>
+</section>
+<section id="the-standard-deviation" class="level2" data-number="16.7">
+<h2 data-number="16.7" class="anchored" data-anchor-id="the-standard-deviation"><span class="header-section-number">16.7</span> The standard deviation</h2>
+<p>We are interested in the average deviation, but we find that a simple average of the deviations from the mean always gives 0 (perhaps with some tiny calculation error), because the positive and negative deviations cancel exactly.</p>
+<p>The MAD calculation solves this problem by knocking the signs off the negative values before we take the mean.</p>
+<p>Another very popular way of solving the same problem is to precede the calculation by squaring all the deviations, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-85_c80145f59b45eb77e96526d6c7e6fb1b">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>squared_deviations <span class="op">=</span> deviations <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first five values.</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>squared_deviations[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([2.48701328e+09, 1.91449685e+09, 1.66015207e+09, 1.16943233e+09,
+       1.16785980e+09])</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exponential format for showing very large and very small numbers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>squared_deviation</code> values above appear in <em>exponential notation</em> (E-notation). Other terms for E-notation are <a href="https://en.wikipedia.org/wiki/Scientific_notation">scientific notation</a>, <em>scientific form</em>, or <em>standard form</em>. E-notation is a useful way to express very large (far from 0) or very small (close to 0) numbers in a more compact form.</p>
+<p>E-notation represents a value as a floating point value <span class="math inline">\(m\)</span> multiplied by 10 to the power of an exponent <span class="math inline">\(n\)</span>:</p>
+<p><span class="math display">\[
+m * 10^n
+\]</span></p>
+<p><span class="math inline">\(m\)</span> is a floating point number with one digit before the decimal point — so it can be any value from 1.0 through 9.9999… <span class="math inline">\(n\)</span> is an integer (positive or negative whole number).</p>
+<p>For example, the median household income of KM’s district is 77205 (dollars). We can express that same number in E-notation as <span class="math inline">\(7.7205 * 10^4\)</span> . Python writes this as <code>7.7205e4</code>, where the number before the <code>e</code> is <span class="math inline">\(m\)</span> and the number after the <code>e</code> is the exponent value <span class="math inline">\(n\)</span>. E-notation is another way of writing the number, because <span class="math inline">\(7.7205 * 10^4 = 77205\)</span>.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-87_f8245d55726cf1998dae91090acdfdd4">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fl">7.7205e4</span> <span class="op">==</span> <span class="dv">77205</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True</code></pre>
+</div>
+</div>
+<p>It is no great advantage to use E-notation in this case; 77205 is probably easier to read and understand than <code>7.7205e4</code>. The notation comes into its own where you start to lose track of the powers of 10 when you read a number — and that does happen when the number becomes very long without E-notation. For example, <span class="math inline">\(77205^2 = 5960612025\)</span>. <span class="math inline">\(5960612025\)</span> is long enough that you start having to count the digits to see how large it is. In E-notation, that number is <code>5.960612025e9</code>. If you remember that <span class="math inline">\(10^9\)</span> is one US billion, then the E-notation tells you at a glance that the value is about <span class="math inline">\(5.9\)</span> billion.</p>
+<p>Python makes its own decision whether to print out numbers using E-notation. This only affects the display of the numbers; the underlying values remain the same whether NumPy chooses to show them in E-notation or not.</p>
+</div>
+</div>
+<p>The process of squaring the deviations turns all the negative values into positive values.</p>
+<p>We can then take the average (mean) of the <em>squared deviations</em> to give a measure of the typical <em>squared</em> deviation:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-89_be6dd6ef69efd20618c9d01f66625b69">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>mean_squared_deviation <span class="op">=</span> np.mean(squared_deviations)</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>mean_squared_deviation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>385971462.1165975</code></pre>
+</div>
+</div>
+<p>Rather confusingly, the field of statistics uses the term <em>variance</em> to refer to mean squared deviation value. Just to emphasize that naming, let’s do the same calculation but using “variance” as the variable name.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-91_c1c154bc85443322392f89d3f9048112">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistics calls the mean squared deviation - the "variance"</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>variance <span class="op">=</span> np.mean(squared_deviations)</span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>385971462.1165975</code></pre>
+</div>
+</div>
+<div class="python">
+<p>It will come as no surprise to find that Numpy has a function to do the whole variance calculation — subtracting the mean, and returning the average squared deviation — <code>np.var</code>:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-93_7df19137166dfb1db28e86f1dfce0b6f">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use np.var to calculate the mean squared deviation directly.</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>np.var(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>385971462.1165975</code></pre>
+</div>
+</div>
+</div>
+<p>The variance is the typical (in the sense of the mean) <em>squared</em> deviation. The units for the variance, in our case, would be <em>squared dollars</em>. But we are more interested in the typical <em>deviation</em>, in our original units – dollars rather than squared dollars.</p>
+<p>So we take the square root of the mean squared deviation (the square root of the variance), to get the <em>standard deviation</em>. It is the <em>standard</em> deviation in the sense that it a measure of <em>typical</em> deviation, in the specific sense of the square root of the mean squared deviations.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-94_7dfa4efd29cac625b7d83adebf7ca1bf">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The standard deviation is the square root of the mean squared deviation.</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (and therefore, the square root of the variance).</span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>standard_deviation <span class="op">=</span> np.sqrt(mean_squared_deviation)</span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>standard_deviation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>19646.156420954136</code></pre>
+</div>
+</div>
+<div class="python">
+<p>Again, Numpy has a function to do this calculation directly: <code>np.std</code>:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-96_93948e07a5014832952133f92d905e74">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use np.std to calculate the square root of the mean squared deviation</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="co"># directly.</span></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>np.std(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>19646.156420954136</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-97_db7e2562f9242257f06992f52f6c7492">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Of course, np.std(incomes) is the same as:</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>np.sqrt(np.var(incomes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>19646.156420954136</code></pre>
+</div>
+</div>
+</div>
+<p>The <em>standard deviation</em> (the square root of the mean squared deviation) is a popular alternative to the Mean Absolute Deviation, as a measure of typical spread.</p>
+<p><a href="#fig-mean-stds" class="quarto-xref">Figure&nbsp;<span>16.1</span></a> shows another histogram of the <code>income</code> values, marking the mean, the mean plus or minus one standard deviation, and the mean plus or minus two standard deviations. You can see that the mean plus or minus one standard deviation includes a fairly large proportion of the data. The mean plus or minus two standard deviation includes much larger proportion.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/fig-mean-stds_c69740eef070ae221037612a8ab0799a">
+<div class="cell-output-display">
+<div id="fig-mean-stds" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/fig-mean-stds-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;16.1: Income histogram plus or minus 1 and 2 standard deviations</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Now let us return to the question of how unusual our two congressional districts are in terms of the distribution. First we calculate the number of standard deviations of each district from the mean:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-98_c2644ec86d7385df749c0960e08b030c">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>km_std_devs <span class="op">=</span> deviations[km_index] <span class="op">/</span> standard_deviation</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Deviation in standard deviation units for KM:'</span>,</span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(km_std_devs), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deviation in standard deviation units for KM: 0.0 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>aoc_std_devs <span class="op">=</span> deviations[aoc_index] <span class="op">/</span> standard_deviation</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Deviation in standard deviation units for AOC:'</span>,</span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(aoc_std_devs), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Deviation in standard deviation units for AOC: -1.0 2</code></pre>
+</div>
+</div>
+<p>The values for each district are a re-expression of the income values in terms of the distribution. They give the distance from the mean (positive or negative) in units of standard deviation.</p>
+</section>
+<section id="standard-scores" class="level2" data-number="16.8">
+<h2 data-number="16.8" class="anchored" data-anchor-id="standard-scores"><span class="header-section-number">16.8</span> Standard scores</h2>
+<p>We will often find uses for the procedure we have just applied, where we take the original values (here, <code>incomes</code>) and:</p>
+<ul>
+<li>Subtract the mean to convert to deviations, then</li>
+<li>Divide by the standard deviation</li>
+</ul>
+<p>Let’s apply that procedure to all the <code>incomes</code> values.</p>
+<p>First we calculate the standard deviation:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-100_e73abe1a32c41d66af2fab2d55a40728">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>deviations <span class="op">=</span> incomes <span class="op">-</span> np.mean(incomes)</span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>income_std <span class="op">=</span> np.sqrt(np.mean(deviations <span class="op">**</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then we calculate standard scores:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-102_5c52a7b309012bcbc9255dd74f86f3dc">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>deviations_in_stds <span class="op">=</span> deviations <span class="op">/</span> income_std</span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>deviations_in_stds[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([-2.53840816, -2.22715135, -2.07394072, -1.74064397, -1.73947326])</code></pre>
+</div>
+</div>
+<p>This procedure converts the original data (here <code>incomes</code>) to deviations from the mean in terms of the standard deviation. The resulting values are called <a href="https://en.wikipedia.org/wiki/Standard_score">standard scores</a> or <em>z-scores</em>. One name for this procedure is “z-scoring”.</p>
+<p>If you plot a histogram of the standard scores, you will see they have a mean of (actually exactly) 0, and a standard deviation of (actually exactly) 1.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-104_79994e77e4b36f769d404a74e9d4c032">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-104-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>With all this information — what should we conclude about the two districts in question? KM’s district is 0.26 standard deviations <em>above</em> the mean, but that’s not enough to conclude that it is unusual. We see from the histogram that a large proportion of the districts are at least this distance from the mean. We can calculate that proportion directly.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-105_559c5626b4aae00500ed4260331a1d52">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distances (negative or positive) from the mean.</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>abs_std_devs <span class="op">=</span> np.<span class="bu">abs</span>(deviations_in_stds)</span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Number where distance greater than KM distance.</span></span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>n_gt_km <span class="op">=</span> np.<span class="bu">sum</span>(abs_std_devs <span class="op">&gt;</span> km_std_devs)</span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a>prop_gt_km <span class="op">=</span> n_gt_km <span class="op">/</span> <span class="bu">len</span>(deviations_in_stds)</span>
+<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Proportion of districts further from mean than KM:"</span>,</span>
+<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(prop_gt_km, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Proportion of districts further from mean than KM: 0.82</code></pre>
+</div>
+</div>
+<p>A full 82% of districts are further from the mean than is KM’s district. KM’s district is richer than average, but not unusual. The benefit of the standard deviation distance is that we can see this directly from the value, without doing the calculation of proportions, because the standard deviation is a measure of typical spread, and KM’s district is well-within this measure.</p>
+<p>AOC’s district is -0.81 standard deviations from the mean. This is a little more unusual than KM’s score.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-107_c48fc0c6ae69d6480a1b9f2a219e7b8f">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number where distance greater than AOC distance.</span></span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Make AOC's distance positive to correspond to distance from the mean.</span></span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>n_gt_aoc <span class="op">=</span> np.<span class="bu">sum</span>(abs_std_devs <span class="op">&gt;</span> np.<span class="bu">abs</span>(aoc_std_devs))</span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>prop_gt_aoc <span class="op">=</span> n_gt_aoc <span class="op">/</span> <span class="bu">len</span>(deviations_in_stds)</span>
+<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Proportion of districts further from mean than AOC:"</span>,</span>
+<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(prop_gt_aoc, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Proportion of districts further from mean than AOC: 0.35</code></pre>
+</div>
+</div>
+<p>Only 35% of districts are further from the mean than AOC’s district, but this is still a reasonable proportion. We see from the standard score that AOC is within one standard deviation. AOC’s district is poorer than average, but not to a remarkable degree.</p>
+</section>
+<section id="standard-scores-to-compare-values-on-different-scales" class="level2" data-number="16.9">
+<h2 data-number="16.9" class="anchored" data-anchor-id="standard-scores-to-compare-values-on-different-scales"><span class="header-section-number">16.9</span> Standard scores to compare values on different scales</h2>
+<p>Why are standard scores so useful? They allow us to compare values on very different scales.</p>
+<p>Consider the values in <a href="#tbl-epl-points-wages" class="quarto-xref">Table&nbsp;<span>16.4</span></a>. Each row of the table corresponds to a team competing in the English Premier League (EPL) for the 2021-2022 season. For those of you with absolutely no interest in sports, the EPL is the league of the top 20 teams in English football, or <em>soccer</em> to our North American friends. The <code>points</code> column of the table gives the total number of points at the end of the 2021 season (from 38 games). The team gets 3 points for a win, and 1 point for a draw, so the maximum possible points from 38 games are <span class="math inline">\(3 * 38 = 114\)</span>. The <code>wages</code> column gives the estimated total wage bill in thousands of British Pounds (£1000).</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-110_9c22c6d8005cac6617feaf2f464c8464">
+<div class="cell-output-display">
+<div id="tbl-epl-points-wages" class="anchored">
+<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Table&nbsp;16.4: 2021 points and wage bills (£1000s) for EPL teams </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">team</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">points</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">wages</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Manchester City</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">168572</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Liverpool</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">148772</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chelsea</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">187340</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tottenham Hotspur</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">110416</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Arsenal</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">118074</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Manchester United</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">238780</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">West Ham United</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">77936</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Leicester City</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">81590</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brighton and Hove Albion</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">49820</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wolverhampton Wanderers</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">62756</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Newcastle United</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">73308</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Crystal Palace</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">71910</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Brentford</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">28606</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Aston Villa</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">85330</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Southampton</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">58657</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Everton</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">110202</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Leeds United</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">37354</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Burnley</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">40830</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Watford</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">42030</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Norwich City</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">31750</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+</div>
+<p>Let’s say we own <a href="https://en.wikipedia.org/wiki/Crystal_Palace_F.C.">Crystal Palace Football Club</a>. Crystal Palace was a bit below average in the league in terms of points. Now we are thinking about whether we should invest in higher-paid players for the coming season, to improve our points score, and therefore, league position.</p>
+<p>One thing we might like to know is whether there is an association between the wage bill and the points scored.</p>
+<p>To look at that, we can do a scatter plot. This is a plot with — say — wages on the x-axis, and points on the y-axis. For each team we have a pair of values — their wage bill and their points scored. For each team, we put a marker on the scatter plot at the coordinates given by the wage value (on the x-axis) and the points value (on the y-axis).</p>
+<p>Here is that plot for our EPL data in <a href="#tbl-epl-points-wages" class="quarto-xref">Table&nbsp;<span>16.4</span></a>, with the Crystal Palace marker picked out in red.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-111_45f8b3e57dbc76bf6bf148b1c110dbc2">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-111-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It looks like there is a rough association of wages and points; teams that spend more in wages tend to have more points.</p>
+<p>At the moment, the points and wages are in very different units. Points are on a possible scale of 0 (lose every game) to 38 * 3 = 114 (win every game). Wages are in thousands of pounds. Maybe we are not interested in the values in these units, but in how unusual the values are, in terms of wages, and in terms of points.</p>
+<p>This is a good application of standard scores. Standard scores convert the original values to values on a standard scale, where 0 corresponds to an average value, 1 to a value one standard deviation above the mean, and -1 to a value one standard deviation below the mean. If we follow the standard score process for both points and wages, the values will be in the same standard units.</p>
+<p>To do this calculation, we need the values from the table. We follow the same recipe as before, in loading the data with <span class="python">Pandas, and converting to arrays</span>.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-112_1e832706221638a5761cd85620ae1bd1">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>points_wages <span class="op">=</span> pd.read_csv(<span class="st">'data/premier_league.csv'</span>)</span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> np.array(points_wages[<span class="st">'points'</span>])</span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>wages <span class="op">=</span> np.array(points_wages[<span class="st">'wages'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As you recall, the standard deviation is the square root of the mean squared deviation. In code:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-114_058ecbf0f6445d6dc993f0f48606af80">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The standard deviation is the square root of the</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mean squared deviation.</span></span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>wage_deviations <span class="op">=</span> wages <span class="op">-</span> np.mean(wages)</span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a>wage_std <span class="op">=</span> np.sqrt(np.mean(wage_deviations <span class="op">**</span> <span class="dv">2</span>))</span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>wage_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>55523.946071289814</code></pre>
+</div>
+</div>
+<p>Now we can apply the standard score procedure to wages. We divide the deviations by the standard deviation.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-116_00c8762088b7a2b27f70f4b9d7a7dad1">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>standard_wages <span class="op">=</span> (wages <span class="op">-</span> np.mean(wages)) <span class="op">/</span> wage_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We apply the same procedure to the points:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-118_c8fb52baddb759752564534c76d6af5e">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>point_deviations <span class="op">=</span> points <span class="op">-</span> np.mean(points)</span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>point_std <span class="op">=</span> np.sqrt(np.mean(point_deviations <span class="op">**</span> <span class="dv">2</span>))</span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>standard_points <span class="op">=</span> point_deviations <span class="op">/</span> point_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, when we plot the standard score version of the points against the standard score version of the wages, we see that they are in comparable units, each with a mean of 0, and a spread (a standard deviation) of 1.</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-120_301de927dbbd30e922c337f72dcefb23">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-120-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let us go back to our concerns as the owners of Crystal Palace. Counting down from the top in the table above, we see that Crystal Palace is the 12th row. Therefore, we can get the Crystal Palace wage value with:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-121_ddbba86e3df2b4e5dce08462574d85d9">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In Python the 12th value is at position (index) 11</span></span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>cp_index <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>cp_wages <span class="op">=</span> wages[cp_index]</span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>cp_wages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>71910</code></pre>
+</div>
+</div>
+<p>We can get our wage bill in standard units in the same way:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-123_d4a1f682dabfa242b7ae8753d219cb85">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>cp_standard_wages <span class="op">=</span> standard_wages[cp_index]</span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>cp_standard_wages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-0.3474473873890471</code></pre>
+</div>
+</div>
+<p>Our wage bill is a below average, but its still within striking distance of the mean.</p>
+<p>We know that we are comparing ourselves against the other teams, so perhaps we want to increase our wage bill by one standard deviation, to push us above the mean, and somewhat away from the center of the pack. If we add one standard deviation to our wage bill, that increases the standard score of our wages by 1.</p>
+<p>But — if we increase our wages by one standard deviation — how much can we expect that to increase our points — in standard units.</p>
+<p>That is question about the strength of the association between two measures — here wages and points — and we will cover that topic in much more detail in <a href="correlation_causation.html" class="quarto-xref"><span>Chapter&nbsp;29</span></a>. But, racing ahead — here is the answer to the question we have just posed — the amount we expect to gain in points, in standard units, if we increase our wages by one standard deviation (and therefore, 1 in standard units).</p>
+<p>For reasons we won’t justify now, we calculate the <span class="math inline">\(r\)</span> value of association between wages and points, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-125_c81ed19fcb5c156dff21f61a1d0d2ed5">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>standards_multiplied <span class="op">=</span> standard_wages <span class="op">*</span> standard_points</span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.mean(standards_multiplied)</span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.7080086644844557</code></pre>
+</div>
+</div>
+<p>The <span class="math inline">\(r\)</span> value is the answer to our question. For every one unit increase in standard scores in wages, we expect an increase of <span class="math inline">\(r\)</span> (0.708) standard score units in points.</p>
+</section>
+<section id="conclusion" class="level2" data-number="16.10">
+<h2 data-number="16.10" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">16.10</span> Conclusion</h2>
+<p>When we look at a set of values, we often ask questions about whether individual values are unusual or surprising. One way of doing that is to look at where the values are in the sorted order — for example, using the raw rank of values, or the proportion of values below this value — the quantiles or percentiles of a value. Another measure of interest is where a value is in comparison to the spread of all values either side of the mean. We use the term “deviations” to refer to the original values after we have subtracted the mean of the values. We can measure spread either side of the mean with metrics such as the mean of the absolute deviations (MAD) and the square root of the mean squared deviations (the standard deviation). One common use of the deviations and the standard deviation is to transform values into <em>standard scores</em>. These are the deviations divided by the standard deviation, and they transform values to have a standard mean (zero) and spread (standard deviation of 1). This can make it easier to compare sets of values with very different ranges and means.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-hyndman1996sample" class="csl-entry" role="listitem">
+Hyndman, Rob J, and Yanan Fan. 1996. <span>“Sample Quantiles in Statistical Packages.”</span> <em>The American Statistician</em> 50 (4): 361–65. <a href="https://www.jstor.org/stable/pdf/2684934.pdf">https://www.jstor.org/stable/pdf/2684934.pdf</a>.
+</div>
+<div id="ref-piketty2018brahmin" class="csl-entry" role="listitem">
+Piketty, Thomas. 2018. <span>“Brahmin Left Vs Merchant Right: Rising Inequality &amp; the Changing Structure of Political Conflict.”</span> 2018. <a href="https://www.prsinstitute.org/downloads/related/economics/RisingInequalityandtheChangingStructureofPoliticalConflict1.pdf">https://www.prsinstitute.org/downloads/related/economics/RisingInequalityandtheChangingStructureofPoliticalConflict1.pdf</a>.
+</div>
+</div>
+</section>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>To get ranks we have to be able to sort our values in some reasonable way from low to high. This usually makes sense for measured data, where the measurement gives a number in the same unit for each observation, but may not make sense for other data, such as names or labels. For example, it may or may not be meaningful to rank names alphabetically. As usual, this is a matter of judgment.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>For now, let us define the median value <span class="math inline">\(M\)</span> as the value such that (as close as possible to) half of the households in the district have a lower income than <span class="math inline">\(M\)</span>, and (as close as possible to) half have a higher income. We will give more detail on the median later in the chapter.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./monte_carlo.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./inference_ideas.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

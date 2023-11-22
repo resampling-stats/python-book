@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.51">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Resampling statistics - 27&nbsp; Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./reliability_average.html" rel="next">
+<link href="./confidence_1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table").addClass('lightable-paper lightable-striped lightable-hover')
+  });
+</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./confidence_2.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Resampling statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_third.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_second.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_is_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about_technology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introducing Python and the Jupyter notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more_sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_2_compound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_4_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monte_carlo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard_scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./point_estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framing_questions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_measured.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reliability_average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_big_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#approach-1-the-distance-between-sample-and-population-mean" id="toc-approach-1-the-distance-between-sample-and-population-mean" class="nav-link active" data-scroll-target="#approach-1-the-distance-between-sample-and-population-mean"><span class="header-section-number">27.1</span> Approach 1: The distance between sample and population mean</a>
+  <ul class="collapse">
+  <li><a href="#example-counted-data-the-accuracy-of-political-polls" id="toc-example-counted-data-the-accuracy-of-political-polls" class="nav-link" data-scroll-target="#example-counted-data-the-accuracy-of-political-polls"><span class="header-section-number">27.1.1</span> Example: Counted Data: The Accuracy of Political Polls</a></li>
+  </ul></li>
+  <li><a href="#conventional-calculational-methods" id="toc-conventional-calculational-methods" class="nav-link" data-scroll-target="#conventional-calculational-methods"><span class="header-section-number">27.2</span> Conventional Calculational Methods</a></li>
+  <li><a href="#confidence-intervals-empirically-with-resampling" id="toc-confidence-intervals-empirically-with-resampling" class="nav-link" data-scroll-target="#confidence-intervals-empirically-with-resampling"><span class="header-section-number">27.3</span> Confidence Intervals Empirically — With Resampling</a>
+  <ul class="collapse">
+  <li><a href="#example-measured-data-example-the-bootstrap" id="toc-example-measured-data-example-the-bootstrap" class="nav-link" data-scroll-target="#example-measured-data-example-the-bootstrap"><span class="header-section-number">27.3.1</span> Example: Measured Data Example — the Bootstrap</a></li>
+  <li><a href="#example-measured-data-example-estimating-tree-diameters" id="toc-example-measured-data-example-estimating-tree-diameters" class="nav-link" data-scroll-target="#example-measured-data-example-estimating-tree-diameters"><span class="header-section-number">27.3.2</span> Example: Measured Data Example: Estimating Tree Diameters</a></li>
+  <li><a href="#example-determining-a-confidence-interval-for-the-median-aluminum-content-in-theban-jars" id="toc-example-determining-a-confidence-interval-for-the-median-aluminum-content-in-theban-jars" class="nav-link" data-scroll-target="#example-determining-a-confidence-interval-for-the-median-aluminum-content-in-theban-jars"><span class="header-section-number">27.3.3</span> Example: Determining a Confidence Interval for the Median Aluminum Content in Theban Jars</a></li>
+  <li><a href="#example-confidence-interval-for-the-median-price-elasticity-of-demand-for-cigarettes" id="toc-example-confidence-interval-for-the-median-price-elasticity-of-demand-for-cigarettes" class="nav-link" data-scroll-target="#example-confidence-interval-for-the-median-price-elasticity-of-demand-for-cigarettes"><span class="header-section-number">27.3.4</span> Example: Confidence Interval for the Median Price Elasticity of Demand for Cigarettes</a></li>
+  </ul></li>
+  <li><a href="#measured-data-example-confidence-intervals-for-a-difference-between-two-means" id="toc-measured-data-example-confidence-intervals-for-a-difference-between-two-means" class="nav-link" data-scroll-target="#measured-data-example-confidence-intervals-for-a-difference-between-two-means"><span class="header-section-number">27.4</span> Measured Data Example: Confidence Intervals For a Difference Between Two Means</a></li>
+  <li><a href="#count-data-example-confidence-limit-on-a-proportion-framingham-cholesterol-data" id="toc-count-data-example-confidence-limit-on-a-proportion-framingham-cholesterol-data" class="nav-link" data-scroll-target="#count-data-example-confidence-limit-on-a-proportion-framingham-cholesterol-data"><span class="header-section-number">27.5</span> Count Data Example: Confidence Limit on a Proportion, Framingham Cholesterol Data</a></li>
+  <li><a href="#approach-2-probability-of-various-universes-producing-this-sample" id="toc-approach-2-probability-of-various-universes-producing-this-sample" class="nav-link" data-scroll-target="#approach-2-probability-of-various-universes-producing-this-sample"><span class="header-section-number">27.6</span> Approach 2: Probability of various universes producing this sample</a>
+  <ul class="collapse">
+  <li><a href="#example-approach-2-for-counted-data-the-bush-dukakis-poll" id="toc-example-approach-2-for-counted-data-the-bush-dukakis-poll" class="nav-link" data-scroll-target="#example-approach-2-for-counted-data-the-bush-dukakis-poll"><span class="header-section-number">27.6.1</span> Example: Approach 2 for Counted Data: the Bush-Dukakis Poll</a></li>
+  <li><a href="#example-approach-2-for-measured-data-the-diameters-of-trees" id="toc-example-approach-2-for-measured-data-the-diameters-of-trees" class="nav-link" data-scroll-target="#example-approach-2-for-measured-data-the-diameters-of-trees"><span class="header-section-number">27.6.2</span> Example: Approach 2 for Measured Data: The Diameters of Trees</a></li>
+  </ul></li>
+  <li><a href="#interpretation-of-approach-2" id="toc-interpretation-of-approach-2" class="nav-link" data-scroll-target="#interpretation-of-approach-2"><span class="header-section-number">27.7</span> Interpretation of Approach 2</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">27.8</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1"><span class="header-section-number">27.8.1</span> Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">27.8.2</span> Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3"><span class="header-section-number">27.8.3</span> Exercise 3</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-confidence-two-approaches" class="quarto-section-identifier"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>There are two broad conceptual approaches to the question at hand: 1) Study the probability of various distances between the sample mean and the <em>likeliest</em> population mean; and 2) study the behavior of particular <em>border</em> universes. Computationally, both approaches often yield the same result, but their interpretations differ. Approach 1 follows the conventional logic although carrying out the calculations with resampling simulation.</p>
+<section id="approach-1-the-distance-between-sample-and-population-mean" class="level2" data-number="27.1">
+<h2 data-number="27.1" class="anchored" data-anchor-id="approach-1-the-distance-between-sample-and-population-mean"><span class="header-section-number">27.1</span> Approach 1: The distance between sample and population mean</h2>
+<p>If the study of probability can tell us the probability that a given population will produce a sample with a mean at a given distance x from the population mean, and if a sample is an unbiased estimator of the population, then it seems natural to turn the matter around and interpret the same sort of data as telling us the probability that the estimate of the population mean is that far from the “actual” population mean. A fly in the ointment is our lack of knowledge of the dispersion, but we can safely put that aside for now. (See below, however.)</p>
+<p>This first approach begins by assuming that the universe that actually produced the sample has the same amount of dispersion (but not necessarily the same mean) that one would estimate from the sample. One then produces (either with resampling or with Normal distribution theory) the distribution of sample means that would occur with repeated sampling from that designated universe with samples the size of the observed sample. One can then compute the distance between the (assumed) population mean and (say) the inner 45 percent of sample means on each side of the actually observed sample mean.</p>
+<p>The crucial step is to shift vantage points. We look from the sample to the universe, instead of <em>from a hypothesized universe to simulated samples</em> (as we have done so far). This same interval as computed above must be the relevant distance as when one looks from the sample to the universe. Putting this algebraically, we can state (on the basis of either simulation or formal calculation) that for any given population S, and for any given distance <span class="math inline">\(d\)</span> from its mean <span class="math inline">\(\mu\)</span>, that <span class="math inline">\(P((\mu - \bar{x}) &lt; d) = \alpha\)</span>, where <span class="math inline">\(\bar{x}\)</span> is a randomly generated sample mean and <span class="math inline">\(\alpha\)</span> is the probability resulting from the simulation or calculation.</p>
+<p>The above equation focuses on the deviation of various sample means (<span class="math inline">\(\bar{x}\)</span>) from a stated population mean (<span class="math inline">\(\mu\)</span>). But we are logically entitled to read the algebra in another fashion, focusing on the deviation of <span class="math inline">\(\mu\)</span> from a randomly generated sample mean. This implies that for any given randomly generated sample mean we observe, the same probability (<span class="math inline">\(\alpha\)</span>) describes the probability that <span class="math inline">\(\mu\)</span> will be at a distance <span class="math inline">\(d\)</span> or less from the observed <span class="math inline">\(\bar{x}\)</span>. (I believe that this is the logic underlying the conventional view of confidence intervals, but I have yet to find a clear-cut statement of it; in any case, it appears to be logically correct.)</p>
+<p>To repeat this difficult idea in slightly different words: If one draws a sample (large enough to not worry about sample size and dispersion), one can say in advance that there is a probability <span class="math inline">\(p\)</span> that the sample mean (<span class="math inline">\(\bar{x}\)</span>) will fall within <span class="math inline">\(z\)</span> standard deviations of the population mean (<span class="math inline">\(\mu\)</span>). One estimates the population dispersion from the sample. If there is a probability <span class="math inline">\(p\)</span> that <span class="math inline">\(\bar{x}\)</span> is within <span class="math inline">\(z\)</span> standard deviations of <span class="math inline">\(\mu\)</span>, then with probability <span class="math inline">\(p\)</span>, <span class="math inline">\(\mu\)</span> must be within that same <span class="math inline">\(z\)</span> standard deviations of <span class="math inline">\(\bar{x}\)</span>. To repeat, this is, I believe, the heart of the standard concept of the confidence interval, to the extent that there is thought through consensus on the matter.</p>
+<p>So we can state for such populations the probability that the distance between the population and sample means will be <span class="math inline">\(d\)</span> or less. Or with respect to a given distance, we can say that the probability that the population and sample means will be that close together is <span class="math inline">\(p\)</span>.</p>
+<p>That is, we start by focusing on how much the sample mean diverges from the known population mean. But then — and to repeat once more this key conceptual step — we refocus our attention to <em>begin with the sample mean</em> and then discuss the probability that the population mean will be within a given distance. The resulting distance is what we call the “confidence interval.”</p>
+<p>Please notice that the distribution (universe) assumed at the beginning of this approach did not include the assumption that the distribution is centered on the sample mean or anywhere else. It is true that the sample mean is used <em>for purposes of reporting the location of the estimated universe mean</em> . But despite how the subject is treated in the conventional approach, the estimated population mean is not part of the work of constructing confidence intervals. Rather, the calculations apply in the same way to <em>all universes in the neighborhood of the sample</em> (which are assumed, for the purpose of the work, to have the same dispersion). And indeed, it must be so, because the probability that the universe from which the sample was drawn is centered exactly at the sample mean is very small.</p>
+<p>This independence of the confidence-intervals construction from the mean of the sample (and the mean of the estimated universe) is surprising at first, but after a bit of thought it makes sense.</p>
+<p>In this first approach, as noted more generally above, we do <em>not</em> make estimates of the confidence intervals on the basis of any logical inference from any one particular sample to any one particular universe, because <em>this cannot be done in principle</em> ; it is the futile search for this connection that for decades roiled the brains of so many statisticians and now continues to trouble the minds of so many students. Instead, we investigate the behavior of (in this first approach) the universe that has a higher probability of producing the observed sample than does any other universe (in the absence of any additional evidence to the contrary), and whose characteristics are chosen on the basis of its resemblance to the sample. In this way the estimation of confidence intervals is like all other statistical inference: One investigates the probabilistic behavior of one or more hypothesized universes, the universe(s) being implicitly suggested by the sample evidence but not logically implied by that evidence. And there are no grounds for dispute about exactly what is being done — only about how to interpret the results.</p>
+<p>One difficulty with the above approach is that the estimate of the population <em>dispersion</em> does not rest on sound foundations; this matter will be discussed later, but it is not likely to lead to a seriously misleading conclusion.</p>
+<p>A second difficulty with this approach is in interpreting the result. What is the justification for focusing our attention on a universe centered on the sample mean? While this particular universe may be more likely than any other, it undoubtedly has a low probability. And indeed, the statement of the confidence intervals refers to the probabilities that the sample has come from universes <em>other than</em> the universe centered at the sample mean, and quite a distance from it.</p>
+<p>My answer to this question does not rest on a set of meaningful mathematical axioms, and I assert that a meaningful axiomatic answer is impossible in principle. Rather, I reason that we should consider the behavior of this universe because other universes near it will produce much the same results, differing only in dispersion from this one, and this difference is not likely to be crucial; this last assumption is all-important, of course. True, we do not know what the dispersion might be for the “true” universe. But elsewhere (Simon, forthcoming) I argue that the concept of the “true universe” is not helpful — or maybe even worse than nothing — and should be forsworn. And we can postulate a dispersion for any <em>other</em> universe we choose to investigate. That is, for this postulation we unabashedly bring in any other knowledge we may have. The defense for such an almost-arbitrary move would be that this is a second-order matter relative to the location of the estimated universe mean, and therefore it is not likely to lead to serious error. (This sort of approximative guessing sticks in the throats of many trained mathematicians, of course, who want to feel an unbroken logic leading backwards into the mists of axiom formation. But the axioms themselves inevitably are chosen arbitrarily just as there is arbitrariness in the practice at hand, though the choice process for axioms is less obvious and more hallowed by having been done by the masterminds of the past. (See <span class="citation" data-cites="simon1998philosophy">Simon (<a href="references.html#ref-simon1998philosophy" role="doc-biblioref">1998</a>)</span>, on the necessity for judgment.) The absence of a sequence of equations leading from some first principles to the procedure described in the paragraph above is evidence of what is felt to be missing by those who crave logical justification. The key equation in this approach is formally unassailable, but it seems to come from nowhere.)</p>
+<p>In the examples in the following chapter may be found computations for two population distributions — one binomial and one quantitative — of the histograms of the sample means produced with this procedure.</p>
+<p>Operationally, we use the observed sample mean, together with an estimate of the dispersion from the sample, to estimate a mean and dispersion for the population. Then with reference to the sample mean we state a combination of a distance (on each side) and a probability pertaining to the population mean. The computational examples will illustrate this procedure.</p>
+<p>Once we have obtained a numerical answer, we must decide how to interpret it. There is a natural and almost irresistible tendency to talk about the probability that the mean of the universe lies within the intervals, but this has proven confusing and controversial. Interpretation in terms of a repeated process is not very satisfying intuitively.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>In my view, it is not worth arguing about any “true” interpretation of these computations. One could sensibly interpret the computations in terms of the odds a decision maker, given the evidence, would reasonably offer about the relative probabilities that the sample came from one of two specified universes (one of them probably being centered on the sample); this does provide some information on reliability, but this procedure departs from the concept of confidence intervals.</p>
+<section id="example-counted-data-the-accuracy-of-political-polls" class="level3" data-number="27.1.1">
+<h3 data-number="27.1.1" class="anchored" data-anchor-id="example-counted-data-the-accuracy-of-political-polls"><span class="header-section-number">27.1.1</span> Example: Counted Data: The Accuracy of Political Polls</h3>
+<p>Consider the reliability of a randomly selected 1988 presidential election poll, showing 840 intended votes for Bush and 660 intended votes for Dukakis out of 1500 <span class="citation" data-cites="wonnacott1990introductory">(<a href="references.html#ref-wonnacott1990introductory" role="doc-biblioref">Wonnacott and Wonnacott 1990, 5</a>)</span>. Let us work through the logic of this example.</p>
+<!---
+From the Wonnacott book text:
+
+Just before the 1998 presidential election, a Gallup poll of about 1500 voters
+showed ...
+
+.. multistage sampling ...
+-->
+<ul>
+<li><strong>What is the question?</strong> Stated technically, what are the 95% confidence limits for the proportion of Bush supporters in the population? (The proportion is the mean of a binomial population or sample, of course.) More broadly, within which bounds could one confidently believe that the population proportion was likely to lie? At this stage of the work, we must already have translated the conceptual question (in this case, a decision-making question from the point of view of the candidates) into a statistical question. (See <a href="framing_questions.html" class="quarto-xref"><span>Chapter&nbsp;20</span></a> on translating questions into statistical form.)</li>
+<li><strong>What is the purpose</strong> to be served by answering this question? There is no sharp and clear answer in this case. The goal could be to satisfy public curiosity, or strategy planning for a candidate (though a national proportion is not as helpful for planning strategy as state data would be). A secondary goal might be to help guide decisions about the sample size of subsequent polls.</li>
+<li><strong>Is this a “probability” or a “probability-statistics” question?</strong> The latter; we wish to infer from sample to population rather than the converse.</li>
+<li><strong>Given that this is a statistics question: What is the form of the statistics question — confidence limits or hypothesis testing?</strong> Confidence limits.</li>
+<li><strong>Given that the question is about confidence limits: What is the description of the sample that has been observed?</strong> a) The raw sample data — the observed numbers of interviewees are 840 for Bush and 660 for Dukakis — constitutes the best description of the universe. The <em>statistics of the sample</em> are the given proportions — 56 percent for Bush, 44 percent for Dukakis.</li>
+<li><strong>Which universe?</strong> (Assuming that the observed sample is representative of the universe from which it is drawn, what is your <em>best guess about the properties</em> of the universe about whose parameter you wish to make statements? The best guess is that the population proportion is the sample proportion — that is, the population contains 56 percent Bush votes, 44 percent Dukakis votes.</li>
+<li><strong>Possibilities for Bayesian analysis?</strong> Not in this case, unless you believe that the sample was biased somehow.</li>
+<li><strong>Which parameter(s) do you wish to make statements about?</strong> Mean, median, standard deviation, range, interquartile range, other? We wish to estimate the proportion in favor of Bush (or Dukakis).</li>
+<li><strong>Which symbols for the observed entities?</strong> Perhaps 56 green and 44 yellow balls, if a bucket is used, or “0” and “1” if the computer is used.</li>
+<li><strong>Discrete or continuous distribution?</strong> In principle, discrete. (<em>All</em> distributions must be discrete <em>in practice</em>.)</li>
+<li><strong>What values or ranges of values?</strong>* “0” or “1.”</li>
+<li><strong>Finite or infinite?</strong> Infinite — the sample is small relative to the population.</li>
+<li><strong>If the universe is what you guess it to be, for which samples do you wish to estimate the variation?</strong> A sample the same size as the observed poll.</li>
+</ul>
+<p>Here one may continue either with resampling or with the conventional method. Everything done up to now would be the same whether continuing with resampling or with a standard parametric test.</p>
+</section>
+</section>
+<section id="conventional-calculational-methods" class="level2" data-number="27.2">
+<h2 data-number="27.2" class="anchored" data-anchor-id="conventional-calculational-methods"><span class="header-section-number">27.2</span> Conventional Calculational Methods</h2>
+<p><em>Estimating the Distribution of Differences Between Sample and Population Means With the Normal Distribution</em>.</p>
+<p>In the conventional approach, one could in principle work from first principles with lists and sample space, but that would surely be too cumbersome. One could work with binomial proportions, but this problem has too large a sample for tree-drawing and <a href="https://en.wikipedia.org/wiki/Galton_board">quincunx</a> techniques; even the ordinary textbook table of binomial coefficients is too small for this job. Calculating binomial coefficients also is a big job. So instead one would use the Normal approximation to the binomial formula.</p>
+<p>(Note to the beginner: The distribution of means that we manipulate has the Normal shape because of the operation of the Law of Large Numbers (The Central Limit theorem). Sums and averages, when the sample is reasonably large, take on this shape even if the underlying distribution is not Normal. This is a truly astonishing property of randomly drawn samples — the distribution of their means quickly comes to resemble a “Normal” distribution, no matter the shape of the underlying distribution. We then standardize it with the standard deviation or other devices so that we can state the probability distribution of the sampling error of the mean for any sample of reasonable size.)</p>
+<p>The exercise of creating the Normal shape <em>empirically</em> is simply a generalization of particular cases such as we will later create here for the poll by resampling simulation. One can also go one step further and use the formula of de Moivre-Laplace-Gauss to describe the empirical distributions, and to serve instead of the empirical distributions. Looking ahead now, the difference between resampling and the conventional approach can be said to be that in the conventional approach we simply plot the Gaussian distribution very carefully, and use a formula instead of the empirical histograms, afterwards putting the results in a standardized table so that we can read them quickly without having to recreate the curve each time we use it. More about the nature of the Normal distribution may be found in Simon (forthcoming).</p>
+<p>All the work done above uses the information specified previously — the sample size of 1500, the drawing with replacement, the observed proportion as the criterion.</p>
+</section>
+<section id="confidence-intervals-empirically-with-resampling" class="level2" data-number="27.3">
+<h2 data-number="27.3" class="anchored" data-anchor-id="confidence-intervals-empirically-with-resampling"><span class="header-section-number">27.3</span> Confidence Intervals Empirically — With Resampling</h2>
+<p><em>Estimating the Distribution of Differences Between Sample and Population Means By Resampling</em></p>
+<ul>
+<li><strong>What procedure to produce entities?</strong>: Random selection from bucket or computer.</li>
+<li><strong>Simple (single step) or complex (multiple “if” drawings)?</strong>: Simple.</li>
+<li><strong>What procedure to produce resamples?</strong> That is, with or without replacement? With replacement.</li>
+<li><strong>Number of drawings observations in actual sample, and hence, number of drawings in resamples?</strong> 1500.</li>
+<li><strong>What to record as result of each resample drawing?</strong> Mean, median, or whatever of resample? The proportion is what we seek.</li>
+<li><strong>Stating the distribution of results</strong> <strong>:</strong> The distribution of proportions for the trial samples.</li>
+<li><strong>Choice of confidence bounds?</strong> <strong>:</strong> 95%, two tails (choice made by the textbook that posed the problem).</li>
+<li><strong>Computation of probabilities within chosen bounds</strong> <strong>:</strong> Read the probabilistic result from the histogram of results.</li>
+<li><strong>Computation of upper and lower confidence bounds:</strong> Locate the values corresponding to the 2.5<sup>th</sup> and 97.5<sup>th</sup> percentile of the resampled proportions.</li>
+</ul>
+<p>Because the theory of confidence intervals is so abstract (even with the resampling method of computation), let us now walk through this resampling demonstration slowly, using the conventional Approach 1 described previously. We first produce a sample, and then see how the process works in reverse to estimate the reliability of the sample, using the Bush-Dukakis poll as an example. The computer program follows below.</p>
+<ul>
+<li><strong>Step 1:</strong> Draw a sample of 1500 voters from a universe that, based on the observed sample, is 56 percent for Bush, 44 percent for Dukakis. The first such sample produced by the computer happens to be 53 percent for Bush; it might have been 58 percent, or 55 percent, or very rarely, 49 percent for Bush.</li>
+<li><strong>Step 2:</strong> Repeat step 1 perhaps 400 or 1000 times.</li>
+<li><strong>Step 3:</strong> Estimate the distribution of means (proportions) of samples of size 1500 drawn from this 56-44 percent Bush- Dukakis universe; the resampling result is shown below.</li>
+<li><strong>Step 4:</strong> In a fashion similar to what was done in steps 13, now compute the 95 percent confidence intervals for some <em>other</em> postulated universe mean — say 53% for Bush, 47% for Dukakis. This step produces a confidence interval that is not centered on the sample mean and the estimated universe mean, and hence it shows the independence of the procedure from that magnitude. And we now compare the breadth of the estimated confidence interval generated with the 53-47 percent universe against the confidence interval derived from the corresponding distribution of sample means generated by the “true” Bush-Dukakis population of 56 percent — 44 percent. If the procedure works well, the results of the two procedures should be similar.</li>
+</ul>
+<p>Now we interpret the results using this first approach. The histogram shows the probability that the difference between the sample mean and the population mean — the error in the sample result — will be about 2.5 percentage points too low. It follows that about 47.5 percent (half of 95 percent) of the time, a sample like this one will be between the population mean and 2.5 percent too low. We do not know the actual population mean. But for any observed sample like this one, we can say that there is a 47.5 percent chance that the distance between it and the mean of the population that generated it is minus 2.5 percent or less.</p>
+<p>Now a crucial step: We turn around the statement just above, and say that there is an 47.5 percent chance that the population mean is less than three percentage points higher than the mean of a sample drawn like this one, but at or above the sample mean. (And we do the same for the other side of the sample mean.) So to recapitulate: We observe a sample and its mean. We estimate the error by experimenting with one or more universes in that neighborhood, and we then give the probability that the population mean is within that margin of error from the sample mean.</p>
+<section id="example-measured-data-example-the-bootstrap" class="level3" data-number="27.3.1">
+<h3 data-number="27.3.1" class="anchored" data-anchor-id="example-measured-data-example-the-bootstrap"><span class="header-section-number">27.3.1</span> Example: Measured Data Example — the Bootstrap</h3>
+<p>A feed merchant decides to experiment with a new pig ration — ration A — on twelve pigs. To obtain a random sample, he provides twelve customers (selected at random) with sufficient food for one pig. After 4 weeks, the 12 pigs experience an average gain of 508 ounces. The weight gain of the individual pigs are as follows: 496, 544, 464, 416, 512, 560, 608, 544, 480, 466, 512, 496.</p>
+<p>The merchant sees that the ration produces results that are quite variable (from a low of 466 ounces to a high of 560 ounces) and is therefore reluctant to advertise an average weight gain of 508 ounces. He speculates that a different sample of pigs might well produce a different average weight gain.</p>
+<p>Unfortunately, it is impractical to sample additional pigs to gain additional information about the universe of weight gains. The merchant must rely on the data already gathered. How can these data be used to tell us more about the sampling variability of the average weight gain?</p>
+<p>Recalling that all we know about the universe of weight gains is the sample we have observed, we can replicate that sample millions of times, creating a “pseudo-universe” that embodies all our knowledge about the real universe. We can then draw additional samples from this pseudo-universe and see how they behave.</p>
+<p>More specifically, we replicate each observed weight gain millions of times — we can imagine writing each result that many times on separate pieces of paper — then shuffle those weight gains and pick out a sample of 12. Average the weight gain for that sample, and record the result. Take repeated samples, and record the result for each. We can then make a histogram of the results; it might look something like this:</p>
+<div class="cell" data-layout-align="center" data-hash="confidence_2_cache/html/unnamed-chunk-1_70ccbbd877ce7e66d94beff65a7ec29c">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="confidence_2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Though we do not know the true average weight gain, we can use this histogram to estimate the bounds within which it falls. The merchant can consider various weight gains for advertising purposes, and estimate the probability that the true weight gain falls below the value. For example, he might wish to advertise a weight gain of 500 ounces. Examining the histogram, we see that about 36% of our samples yielded weight gains less than 500 ounces. The merchant might wish to choose a lower weight gain to advertise, to reduce the risk of overstating the effectiveness of the ration.</p>
+<p>This illustrates the “bootstrap” method. By re-using our original sample many times (and using nothing else), we are able to make inferences about the population from which the sample came. This problem would conventionally be addressed with the “t-test.”</p>
+</section>
+<section id="example-measured-data-example-estimating-tree-diameters" class="level3" data-number="27.3.2">
+<h3 data-number="27.3.2" class="anchored" data-anchor-id="example-measured-data-example-estimating-tree-diameters"><span class="header-section-number">27.3.2</span> Example: Measured Data Example: Estimating Tree Diameters</h3>
+<ul>
+<li><p><strong>What is the question?</strong> A horticulturist is experimenting with a new type of tree. She plants 20 of them on a plot of land, and measures their trunk diameter after two years. She wants to establish a 90% confidence interval for the population average trunk diameter. For the data given below, calculate the mean of the sample and calculate (or describe a simulation procedure for calculating) a 90% confidence interval around the mean. Here are the 20 diameters, in centimeters and in no particular order (<a href="#tbl-tree-diameters" class="quarto-xref">Table&nbsp;<span>27.1</span></a>):</p>
+<div id="tbl-tree-diameters" class="anchored">
+<table class="table">
+<caption>Table&nbsp;27.1: Tree Diameters, in Centimeters</caption>
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 9%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>8.5</td>
+<td>7.6</td>
+<td>9.3</td>
+<td>5.5</td>
+<td>11.4</td>
+<td>6.9</td>
+<td>6.5</td>
+<td>12.9</td>
+<td>8.7</td>
+<td>4.8</td>
+</tr>
+<tr class="even">
+<td>4.2</td>
+<td>8.1</td>
+<td>6.5</td>
+<td>5.8</td>
+<td>6.7</td>
+<td>2.4</td>
+<td>11.1</td>
+<td>7.1</td>
+<td>8.8</td>
+<td>7.2</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+<li><p><strong>What is the purpose to be served by answering the question?</strong> Either research &amp; development, or pure science.</p></li>
+<li><p><strong>Is this a “probability” or a “statistics” question?</strong> Statistics.</p></li>
+<li><p><strong>What is the form of the statistics question?</strong> Confidence limits.</p></li>
+<li><p><strong>What is the description of the sample that has been observed?</strong> The raw data as shown above.</p></li>
+<li><p><strong>Statistics of the sample</strong> <strong>?</strong> Mean of the tree data.</p></li>
+<li><p><strong>Which universe?</strong> Assuming that the observed sample is representative of the universe from which it is drawn, what is your best guess about the properties of the universe whose parameter you wish to make statements about? Answer: The universe is like the sample above but much, much bigger. That is, in the absence of other information, we imagine this “bootstrap” universe as a collection of (say) one million trees of 8.5 centimeters width, one million of 7.2 centimeters, and so on. We’ll see in a moment that the device of sampling with replacement makes it unnecessary for us to work with such a large universe; by replacing each element after we draw it in a resample, we achieve the same effect as creating an almost-infinite universe from which to draw the resamples. (Are there possibilities for Bayesian analysis?) No Bayesian prior information will be included.</p></li>
+<li><p><strong>Which parameter do you wish to make statements about?</strong> The mean.</p></li>
+<li><p><strong>Which symbols for the observed entities?</strong> Cards or computer entries with numbers 8.5…7.2, sample of an infinite size.</p></li>
+<li><p><strong>If the universe is as guessed at, for which samples do you wish to estimate the variation?</strong> Samples of size 20.</p></li>
+</ul>
+<p>Here one may continue with the conventional method. Everything up to now is the same whether continuing with resampling or with a standard parametric test. The information listed above is the basis for a conventional test.</p>
+<p>Continuing with resampling:</p>
+<ul>
+<li><strong>What procedure will be used to produce the trial entities?</strong> Random selection: simple (single step), not complex (multiple “if”) sample drawings).</li>
+<li><strong>What procedure to produce resamples?</strong> With replacement. As noted above, sampling with replacement allows us to forego creating a very large bootstrap universe; replacing the elements after we draw them achieves the same effect as would an infinite universe.</li>
+<li><strong>Number of drawings?</strong> 20 trees</li>
+<li><strong>What to record as result of resample drawing?</strong> The mean.</li>
+<li><strong>How to state the distribution of results?</strong> See histogram.</li>
+<li><strong>Choice of confidence bounds?</strong> 90%, two-tailed.</li>
+<li><strong>Computation of values of the resample statistic corresponding to chosen confidence bounds?</strong> Read from histogram.</li>
+</ul>
+<p>As has been discussed in <a href="point_estimation.html" class="quarto-xref"><span>Chapter&nbsp;19</span></a>, it often is more appropriate to work with the median than with the mean. One reason is that the median is not so sensitive to the extreme observations as is the mean. Another reason is that one need not assume a Normal distribution for the universe under study: this consideration affects conventional statistics but usually does not affect resampling, but it is worth keeping mind when a statistician is making a choice between a parametric (that is, Normal-based) and a non-parametric procedure.</p>
+</section>
+<section id="example-determining-a-confidence-interval-for-the-median-aluminum-content-in-theban-jars" class="level3" data-number="27.3.3">
+<h3 data-number="27.3.3" class="anchored" data-anchor-id="example-determining-a-confidence-interval-for-the-median-aluminum-content-in-theban-jars"><span class="header-section-number">27.3.3</span> Example: Determining a Confidence Interval for the Median Aluminum Content in Theban Jars</h3>
+<p>Data for the percentages of aluminum content in a sample of 18 ancient Theban jars <span class="citation" data-cites="catling1977theban">(<a href="references.html#ref-catling1977theban" role="doc-biblioref">Catling and Jones 1977</a>)</span> are as follows, arranged in ascending order: 11.4, 13.4, 13.5, 13.8, 13.9, 14.4, 14.5, 15.0, 15.1, 15.8, 16.0, 16.3, 16.5, 16.9, 17.0, 17.2, 17.5, 19.0. Consider now putting a confidence interval around the median of 15.45 (halfway between the middle observations 15.1 and 15.8).</p>
+<p>One may simply estimate a confidence interval around the median with a bootstrap procedure by substituting the median for the mean in the usual bootstrap procedure for estimating a confidence limit around the mean, as follows:</p>
+<div class="cell" data-layout-align="center" data-hash="confidence_2_cache/html/unnamed-chunk-2_1125e93e4308a7c45ad132cecd926ec1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">11.4</span>, <span class="fl">13.4</span>, <span class="fl">13.5</span>, <span class="fl">13.8</span>, <span class="fl">13.9</span>, <span class="fl">14.4</span>, <span class="fl">14.5</span>, <span class="fl">15.0</span>, <span class="fl">15.1</span>, <span class="fl">15.8</span>, <span class="fl">16.0</span>, <span class="fl">16.3</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     <span class="fl">16.5</span>, <span class="fl">16.9</span>, <span class="fl">17.0</span>, <span class="fl">17.2</span>, <span class="fl">17.5</span>, <span class="fl">19.0</span>]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>observed_median <span class="op">=</span> np.median(data)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>medians <span class="op">=</span> np.zeros(n)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> rnd.choice(data, size<span class="op">=</span><span class="dv">18</span>, replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># In the line above, replace=True is the default, so we could leave it out to</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get the same result.  We added it just to emphasize that bootstrap samples</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># are samples _with_ replacement.</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    medians[i] <span class="op">=</span> np.median(sample)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>plt.hist(medians, bins<span class="op">=</span><span class="st">'auto'</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Observed median aluminum content:'</span>, observed_median)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Observed median aluminum content: 15.45</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> np.percentile(medians, (<span class="fl">2.5</span>, <span class="fl">97.5</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Estimate of 95 percent confidence interval:'</span>, pp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Estimate of 95 percent confidence interval: [14.15 16.7 ]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="confidence_2_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>(This problem would be approached conventionally with a binomial procedure leading to quite wide confidence intervals <span class="citation" data-cites="deshpande1995statistical">(<a href="references.html#ref-deshpande1995statistical" role="doc-biblioref">Deshpande, Gore, and Shanubhogue 1995, 32</a>)</span>).</p>
+<!---
+@deshpande1995statistical used the exact Theban jars problem they describe
+there.
+-->
+</section>
+<section id="example-confidence-interval-for-the-median-price-elasticity-of-demand-for-cigarettes" class="level3" data-number="27.3.4">
+<h3 data-number="27.3.4" class="anchored" data-anchor-id="example-confidence-interval-for-the-median-price-elasticity-of-demand-for-cigarettes"><span class="header-section-number">27.3.4</span> Example: Confidence Interval for the Median Price Elasticity of Demand for Cigarettes</h3>
+<p>The data for a measure of responsiveness of demand to a price change (the “elasticity” — percent change in demand divided by percent change in price) are shown for cigarette price changes as follows (<a href="#tbl-cigarette-price" class="quarto-xref">Table&nbsp;<span>27.2</span></a>). I (JLS) computed the data from cigarette sales data preceding and following a tax change in a state <span class="citation" data-cites="lyon1968price">(<a href="references.html#ref-lyon1968price" role="doc-biblioref">Lyon and Simon 1968</a>)</span>.</p>
+<div id="tbl-cigarette-price" class="anchored">
+<table class="table">
+<caption>Table&nbsp;27.2: Price elasticity of demand in various states at various dates</caption>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>1.725</td>
+<td>1.139</td>
+<td>.957</td>
+<td>.863</td>
+<td>.802</td>
+<td>.517</td>
+<td>.407</td>
+<td>.304</td>
+</tr>
+<tr class="even">
+<td>.204</td>
+<td>.125</td>
+<td>.122</td>
+<td>.106</td>
+<td>.031</td>
+<td>-.032</td>
+<td>-.1</td>
+<td>-.142</td>
+</tr>
+<tr class="odd">
+<td>-.174</td>
+<td>-.234</td>
+<td>-.240</td>
+<td>-.251</td>
+<td>-.277</td>
+<td>-.301</td>
+<td>-.302</td>
+<td>-.302</td>
+</tr>
+<tr class="even">
+<td>-.307</td>
+<td>-.328</td>
+<td>-.329</td>
+<td>-.346</td>
+<td>-.357</td>
+<td>-.376</td>
+<td>-.377</td>
+<td>-.383</td>
+</tr>
+<tr class="odd">
+<td>-.385</td>
+<td>-.393</td>
+<td>-.444</td>
+<td>-.482</td>
+<td>-.511</td>
+<td>-.538</td>
+<td>-.541</td>
+<td>-.549</td>
+</tr>
+<tr class="even">
+<td>-.554</td>
+<td>-.600</td>
+<td>-.613</td>
+<td>-.644</td>
+<td>-.692</td>
+<td>-.713</td>
+<td>-.724</td>
+<td>-.734</td>
+</tr>
+<tr class="odd">
+<td>-.749</td>
+<td>-.752</td>
+<td>-.753</td>
+<td>-.766</td>
+<td>-.805</td>
+<td>-.866</td>
+<td>-.926</td>
+<td>-.971</td>
+</tr>
+<tr class="even">
+<td>-.972</td>
+<td>-.975</td>
+<td>-1.018</td>
+<td>-1.024</td>
+<td>-1.066</td>
+<td>-1.118</td>
+<td>-1.145</td>
+<td>-1.146</td>
+</tr>
+<tr class="odd">
+<td>-1.157</td>
+<td>-1.282</td>
+<td>-1.339</td>
+<td>-1.420</td>
+<td>-1.443</td>
+<td>-1.478</td>
+<td>-2.041</td>
+<td>-2.092</td>
+</tr>
+<tr class="even">
+<td>-7.100</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The positive observations (implying an increase in demand when the price rises) run against all theory, but can be considered to be the result simply of measurement errors, and treated as they stand. Aside from this minor complication, the reader may work this example similarly to the case of the Theban jars. Consider this program:</p>
+<div class="cell" data-layout-align="center" data-hash="confidence_2_cache/html/unnamed-chunk-4_8a9b34bdbc9f9d97756b3cee814db542">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.725</span>, <span class="fl">1.139</span>, <span class="fl">0.957</span>, <span class="fl">0.863</span>, <span class="fl">0.802</span>, <span class="fl">0.517</span>, <span class="fl">0.407</span>, <span class="fl">0.304</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.204</span>, <span class="fl">0.125</span>, <span class="fl">0.122</span>, <span class="fl">0.106</span>, <span class="fl">0.031</span>, <span class="op">-</span><span class="fl">0.032</span>, <span class="op">-</span><span class="fl">0.1</span>,  <span class="op">-</span><span class="fl">0.142</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">0.174</span>, <span class="op">-</span><span class="fl">0.234</span>, <span class="op">-</span><span class="fl">0.240</span>, <span class="op">-</span><span class="fl">0.251</span>, <span class="op">-</span><span class="fl">0.277</span>, <span class="op">-</span><span class="fl">0.301</span>, <span class="op">-</span><span class="fl">0.302</span>, <span class="op">-</span><span class="fl">0.302</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">0.307</span>, <span class="op">-</span><span class="fl">0.328</span>, <span class="op">-</span><span class="fl">0.329</span>, <span class="op">-</span><span class="fl">0.346</span>, <span class="op">-</span><span class="fl">0.357</span>, <span class="op">-</span><span class="fl">0.376</span>, <span class="op">-</span><span class="fl">0.377</span>, <span class="op">-</span><span class="fl">0.383</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">0.385</span>, <span class="op">-</span><span class="fl">0.393</span>, <span class="op">-</span><span class="fl">0.444</span>, <span class="op">-</span><span class="fl">0.482</span>, <span class="op">-</span><span class="fl">0.511</span>, <span class="op">-</span><span class="fl">0.538</span>, <span class="op">-</span><span class="fl">0.541</span>, <span class="op">-</span><span class="fl">0.549</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">0.554</span>, <span class="op">-</span><span class="fl">0.600</span>, <span class="op">-</span><span class="fl">0.613</span>, <span class="op">-</span><span class="fl">0.644</span>, <span class="op">-</span><span class="fl">0.692</span>, <span class="op">-</span><span class="fl">0.713</span>, <span class="op">-</span><span class="fl">0.724</span>, <span class="op">-</span><span class="fl">0.734</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">0.749</span>, <span class="op">-</span><span class="fl">0.752</span>, <span class="op">-</span><span class="fl">0.753</span>, <span class="op">-</span><span class="fl">0.766</span>, <span class="op">-</span><span class="fl">0.805</span>, <span class="op">-</span><span class="fl">0.866</span>, <span class="op">-</span><span class="fl">0.926</span>, <span class="op">-</span><span class="fl">0.971</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">0.972</span>, <span class="op">-</span><span class="fl">0.975</span>, <span class="op">-</span><span class="fl">1.018</span>, <span class="op">-</span><span class="fl">1.024</span>, <span class="op">-</span><span class="fl">1.066</span>, <span class="op">-</span><span class="fl">1.118</span>, <span class="op">-</span><span class="fl">1.145</span>, <span class="op">-</span><span class="fl">1.146</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">1.157</span>, <span class="op">-</span><span class="fl">1.282</span>, <span class="op">-</span><span class="fl">1.339</span>, <span class="op">-</span><span class="fl">1.420</span>, <span class="op">-</span><span class="fl">1.443</span>, <span class="op">-</span><span class="fl">1.478</span>, <span class="op">-</span><span class="fl">2.041</span>, <span class="op">-</span><span class="fl">2.092</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span><span class="fl">7.100</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>data_median <span class="op">=</span> np.median(data)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>medians <span class="op">=</span> np.zeros(n)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> np.random.choice(data, size<span class="op">=</span><span class="dv">73</span>, replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    medians[i] <span class="op">=</span> np.median(sample)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>plt.hist(medians, bins<span class="op">=</span><span class="st">'auto'</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Observed median elasticity'</span>, data_median)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Observed median elasticity -0.511</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> np.percentile(medians, (<span class="fl">2.5</span>, <span class="fl">97.5</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Estimate of 95 percent confidence interval'</span>, pp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Estimate of 95 percent confidence interval [-0.692 -0.357]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="confidence_2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="measured-data-example-confidence-intervals-for-a-difference-between-two-means" class="level2" data-number="27.4">
+<h2 data-number="27.4" class="anchored" data-anchor-id="measured-data-example-confidence-intervals-for-a-difference-between-two-means"><span class="header-section-number">27.4</span> Measured Data Example: Confidence Intervals For a Difference Between Two Means</h2>
+<p>This is another example from the mice data.</p>
+<p>Returning to the data on the survival times of the two groups of mice in <a href="testing_measured.html#sec-eg-bootstrap-sampling" class="quarto-xref"><span>Section&nbsp;24.0.3</span></a>. It is the view of this book that confidence intervals should be calculated for a difference between two groups only if one is reasonably satisfied that the difference is not due to chance. Some statisticians might choose to compute a confidence interval in this case nevertheless, some because they believe that the confidence-interval machinery is more appropriate to deciding whether the difference is the likely outcome of chance than is the machinery of a hypothesis test in which you are concerned with the behavior of a benchmark or null universe. So let us calculate a confidence interval for these data, which will in any case demonstrate the technique for determining a confidence interval for a difference between two samples.</p>
+<p>Our starting point is our estimate for the difference in mean survival times between the two samples — 30.63 days. We ask “How much might this estimate be in error? If we drew additional samples from the control universe and additional samples from the treatment universe, how much might they differ from this result?”</p>
+<p>We do not have the ability to go back to these universes and draw more samples, but from the samples themselves we can create hypothetical universes that embody all that we know about the treatment and control universes. We imagine replicating each element in each sample millions of times to create a hypothetical control universe and (separately) a hypothetical treatment universe. Then we can draw samples (separately) from these hypothetical universes to see how reliable is our original estimate of the difference in means (30.63 days).</p>
+<p>Actually, we use a shortcut — instead of copying each sample element a million times, we simply replace it after drawing it for our resample, thus creating a universe that is effectively infinite.</p>
+<p>Here are the steps:</p>
+<ul>
+<li><strong>Step 1:</strong> Consider the two samples separately as the relevant universes.</li>
+<li><strong>Step 2:</strong> Draw a sample of 7 with replacement from the treatment group and calculate the mean.</li>
+<li><strong>Step 3:</strong> Draw a sample of 9 with replacement from the control group and calculate the mean.</li>
+<li><strong>Step 4:</strong> Calculate the difference in means (treatment minus control) &amp; record.</li>
+<li><strong>Step 5:</strong> Repeat steps 2-4 many times.</li>
+<li><strong>Step 6:</strong> Review the distribution of resample means; the 5<sup>th</sup> and 95<sup>th</sup> percentiles are estimates of the endpoints of a 90 percent confidence interval.</li>
+</ul>
+<p>Here is a Python example:</p>
+<div class="cell" data-layout-align="center" data-hash="confidence_2_cache/html/unnamed-chunk-6_a87ec0b948be8d12885dd16755105625">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>treatment <span class="op">=</span> np.array([<span class="dv">94</span>, <span class="dv">38</span>, <span class="dv">23</span>, <span class="dv">197</span>, <span class="dv">99</span>, <span class="dv">16</span>, <span class="dv">141</span>])</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>control <span class="op">=</span> np.array([<span class="dv">52</span>, <span class="dv">10</span>, <span class="dv">40</span>, <span class="dv">104</span>, <span class="dv">51</span>, <span class="dv">27</span>, <span class="dv">146</span>, <span class="dv">30</span>, <span class="dv">46</span>])</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>observed_diff <span class="op">=</span> np.mean(treatment) <span class="op">-</span> np.mean(control)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>mean_delta <span class="op">=</span> np.zeros(n)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    treatment_sample <span class="op">=</span> rnd.choice(treatment, size<span class="op">=</span><span class="dv">7</span>, replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    control_sample <span class="op">=</span> rnd.choice(control, size<span class="op">=</span><span class="dv">9</span>, replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    mean_delta[i] <span class="op">=</span> np.mean(treatment_sample) <span class="op">-</span> np.mean(control_sample)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>plt.hist(mean_delta, bins<span class="op">=</span><span class="st">'auto'</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Observed difference in means:'</span>, observed_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Observed difference in means: 30.63492063492064</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> np.percentile(mean_delta, (<span class="dv">5</span>, <span class="dv">95</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Estimate of 90 percent confidence interval:'</span>, pp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Estimate of 90 percent confidence interval: [-12.6515873  74.7484127]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="confidence_2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation:</strong> This means that one can be 90 percent confident that the mean of the difference (which is estimated to be 30.635) falls between -12.652) and 74.748). So the reliability of the estimate of the mean is very small.</p>
+</section>
+<section id="count-data-example-confidence-limit-on-a-proportion-framingham-cholesterol-data" class="level2" data-number="27.5">
+<h2 data-number="27.5" class="anchored" data-anchor-id="count-data-example-confidence-limit-on-a-proportion-framingham-cholesterol-data"><span class="header-section-number">27.5</span> Count Data Example: Confidence Limit on a Proportion, Framingham Cholesterol Data</h2>
+<p>The Framingham cholesterol data were used in <a href="testing_counts_1.html#sec-framingham-example" class="quarto-xref"><span>Section&nbsp;21.2.6</span></a> to illustrate the first classic question in statistical inference — interpretation of sample data for testing hypotheses. Now we use the same data for the other main theme in statistical inference — the estimation of confidence intervals. Indeed, the bootstrap method discussed above was originally devised for estimation of confidence intervals. The bootstrap method may also be used to calculate the appropriate sample size for experiments and surveys, another important topic in statistics.</p>
+<p>Consider for now just the data for the sub-group of 135 high-cholesterol men in <a href="testing_counts_1.html#tbl-framingham-data" class="quarto-xref">Table&nbsp;<span>21.4</span></a>. Our second classic statistical question is as follows: How much confidence should we have that if we were to take a much larger sample than was actually obtained, the sample mean (that is, the proportion 10/135 = .07) would be in some close vicinity of the observed sample mean? Let us first carry out a resampling procedure to answer the questions, waiting until afterwards to discuss the logic of the inference.</p>
+<ol type="1">
+<li>Construct a bucket containing 135 balls — 10 red (infarction) and 125 green (no infarction) to simulate the universe as we guess it to be.</li>
+<li>Mix, choose a ball, record its color, replace it, and repeat 135 times (to simulate a sample of 135 men).</li>
+<li>Record the number of red balls among the 135 balls drawn.</li>
+<li>Repeat steps 2-3 perhaps 10000 times, and observe how much the total number of reds varies from sample to sample. We arbitrarily denote the boundary lines that include 47.5 percent of the hypothetical samples on each side of the sample mean as the 95 percent “confidence limits” around the mean of the actual population.</li>
+</ol>
+<p>Here is a Python program:</p>
+<div class="cell" data-layout-align="center" data-hash="confidence_2_cache/html/unnamed-chunk-8_f657b3219eebce006868b35335818bb7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>men <span class="op">=</span> np.repeat([<span class="dv">1</span>, <span class="dv">0</span>], repeats<span class="op">=</span>[<span class="dv">10</span>, <span class="dv">125</span>])</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.zeros(n)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> rnd.choice(men, size<span class="op">=</span><span class="dv">135</span>, replace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    infarctions <span class="op">=</span> np.<span class="bu">sum</span>(sample <span class="op">==</span> <span class="dv">1</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    z[i] <span class="op">=</span> infarctions <span class="op">/</span> <span class="dv">135</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>plt.hist(z, bins<span class="op">=</span><span class="st">'auto'</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>pp <span class="op">=</span> np.percentile(z, (<span class="fl">2.5</span>, <span class="fl">97.5</span>))</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Estimate of 95 percent confidence interval'</span>, pp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Estimate of 95 percent confidence interval [0.02962963 0.11851852]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="confidence_2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>(The result is the 95 percent confidence interval, enclosing 95 percent of the resample results)</p>
+<p>The variation in the histogram above highlights the fact that a sample containing only 10 cases of infarction is very small, and the number of observed cases — or the proportion of cases — necessarily varies greatly from sample to sample. Perhaps the most important implication of this statistical analysis, then, is that we badly need to collect additional data.</p>
+<p>Again, this is a classic problem in confidence intervals, found in all subject fields. The language used in the cholesterol-infarction example is exactly the same as the language used for the Bush-Dukakis poll above except for labels and numbers.</p>
+<p>As noted above, the philosophic logic of confidence intervals is quite deep and controversial, less obvious than for the hypothesis test. The key idea is that we can estimate for any given universe the probability P that a sample’s mean will fall within any given distance D of the universe’s mean; we then turn this around and assume that if we know the sample mean, the probability is P that the universe mean is within distance D of it. This inversion is more slippery than it may seem. But the logic is exactly the same for the formulaic method and for resampling. The only difference is how one estimates the probabilities — either with a numerical resampling simulation (as here), or with a formula or other deductive mathematical device (such as counting and partitioning all the possibilities, as Galileo did when he answered a gambler’s question about three dice). And when one uses the resampling method, the probabilistic calculations are the least demanding part of the work. One then has mental capacity available to focus on the crucial part of the job — framing the original question soundly, choosing a model for the facts so as to properly resemble the actual situation, and drawing appropriate inferences from the simulation.</p>
+</section>
+<section id="approach-2-probability-of-various-universes-producing-this-sample" class="level2" data-number="27.6">
+<h2 data-number="27.6" class="anchored" data-anchor-id="approach-2-probability-of-various-universes-producing-this-sample"><span class="header-section-number">27.6</span> Approach 2: Probability of various universes producing this sample</h2>
+<p>A second approach to the general question of estimate accuracy is to analyze the behavior of a variety of universes centered at <em>other</em> points on the line, rather than the universe centered on the sample mean. One can ask the probability that a distribution centered away from the sample mean, with a given dispersion, would produce (say) a 10-apple scatter having a mean as far away from the given point as the observed sample mean. If we assume the situation to be symmetric, we can find a point at which we can say that a distribution centered there would have only a (say) 5 percent chance of producing the observed sample. And we can also say that a distribution <em>even further away from the sample mean</em> would have an even lower probability of producing the given sample. But we cannot turn the matter around and say that there is any particular chance that the distribution that <em>actually produced</em> the observed sample is between that point and the center of the sample.</p>
+<p>Imagine a situation where you are standing on one side of a canyon, and you are hit by a baseball, the only ball in the vicinity that day. Based on experiments, you can estimate that a baseball thrower who you see standing on the other side of the canyon has only a 5 percent chance of hitting you with a single throw. But this does not imply that the source of the ball that hit you was someone else standing in the middle of the canyon, because that is patently impossible. That is, your knowledge about the behavior of the “boundary” universe does not logically imply anything about the existence and behavior of any other universes. But just as in the discussion of testing hypotheses, if you know that one possibility is unlikely, it is reasonable that as a result you will draw conclusions about other possibilities in the context of your general knowledge and judgment.</p>
+<p>We can find the “boundary” distribution(s) we seek if we a) specify a measure of dispersion, and b) try every point along the line leading away from the sample mean, until we find that distribution that produces samples such as that observed with a (say) 5 percent probability or less.</p>
+<p>To estimate the dispersion, in many cases we can safely use an estimate based on the sample dispersion, using either resampling or Normal distribution theory. The hardest cases for resampling are a) a very small sample of data, and b) a proportion near 0 or near 1.0 (because the presence or absence in the sample of a small number of observations can change the estimate radically, and therefore a large sample is needed for reliability). In such situations one should use additional outside information, or Normal distribution theory, or both.</p>
+<p>We can also create a confidence interval in the following fashion: We can first estimate the dispersion for a universe in the general neighborhood of the sample mean, using various devices to be “conservative,” if we like.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Given the estimated dispersion, we then estimate the probability distribution of various amounts of error between observed sample means and the population mean. We can do this with resampling simulation as follows: a) Create other universes at various distances from the sample mean, but with other characteristics similar to the universe that we postulate for the immediate neighborhood of the sample, and b) experiment with those universes. One can also apply the same logic with a more conventional parametric approach, using general knowledge of the sampling distribution of the mean, based on Normal distribution theory or previous experience with resampling. We shall not discuss the latter method here.</p>
+<p>As with approach 1, we do not make any probability statements about where the population mean may be found. Rather, we discuss only what various hypothetical universes <em>might produce</em> , and make inferences about the “actual” population’s characteristics by comparison with those hypothesized universes.</p>
+<p>If we are interested in (say) a 95 percent confidence interval, we want to find the distribution on each side of the sample mean that would produce a sample with a mean that far away only 2.5 percent of the time (2 * .025 = 1-.95). A shortcut to find these “border distributions” is to plot the sampling distribution of the mean at the <em>center</em> of the sample, as in Approach 1. Then find the (say) 2.5 percent cutoffs at each end of that distribution. On the assumption of equal dispersion at the two points along the line, we now reproduce the previously-plotted distribution with its centroid (mean) at those 2.5 percent points on the line. The new distributions will have 2.5 percent of their areas on the other side of the mean of the sample.</p>
+<section id="example-approach-2-for-counted-data-the-bush-dukakis-poll" class="level3" data-number="27.6.1">
+<h3 data-number="27.6.1" class="anchored" data-anchor-id="example-approach-2-for-counted-data-the-bush-dukakis-poll"><span class="header-section-number">27.6.1</span> Example: Approach 2 for Counted Data: the Bush-Dukakis Poll</h3>
+<p>Let’s implement Approach 2 for counted data, using for comparison the Bush-Dukakis poll data discussed earlier in the context of Approach 1.</p>
+<p>We seek to state, for universes that we select on the basis that their results will interest us, the probability that they (or it, for a particular universe) would produce a sample as far or farther away from the mean of the universe in question as the mean of the observed sample — 56 percent for Bush. The most interesting universe is that which produces such a sample only about 5 percent of the time, simply because of the correspondence of this value to a conventional breakpoint in statistical inference. So we could experiment with various universes by trial and error to find this universe.</p>
+<p>We can learn from our previous simulations of the Bush — Dukakis poll in Approach 1 that about 95 percent of the samples fall within .025 on either side of the sample mean (which we had been implicitly assuming is the location of the population mean). If we assume (and there seems no reason not to) that the dispersions of the universes we experiment with are the same, we will find (by symmetry) that the universe we seek is centered on those points .025 away from .56, or .535 and .585.</p>
+<p>From the standpoint of Approach 2, then, the conventional sample formula that is centered at the mean can be considered a shortcut to estimating the boundary distributions. We say that the boundary is at the point that centers a distribution which has only a (say) 2.5 percent chance of producing the observed sample; it is that distribution which is the subject of the discussion, and not the distribution which is centered at <span class="math inline">\(\mu = \bar{x}\)</span>. Results of these simulations are shown in <a href="#fig-app-2-bush-duk" class="quarto-xref">Figure&nbsp;<span>27.1</span></a>.</p>
+<div id="fig-app-2-bush-duk" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/25-Chap-21_004.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;27.1: Approach 2 for Bush-Dukakis problem</figcaption>
+</figure>
+</div>
+<p>About these distributions centered at .535 and .585 — or more importantly for understanding an election situation, the universe centered at .535 — one can say: Even if the “true” value is as low as 53.5 percent for Bush, there is only a 2 ½ percent chance that a sample as high as 56 percent pro-Bush would be observed. (The values of a 2 ½ percent probability and a 2 ½ percent difference between 56 percent and 53.5 percent coincide only by chance in this case.) It would be even more revealing in an election situation to make a similar statement about the universe located at 50-50, but this would bring us almost entirely within the intellectual ambit of hypothesis testing.</p>
+<p>To restate, then: Moving progressively farther away from the sample mean, we can eventually find a universe that has only some (any) specified small probability of producing a sample like the one observed. One can then say that this point represents a “limit” or “boundary” so that the interval between it and the sample mean may be called a confidence interval.</p>
+</section>
+<section id="example-approach-2-for-measured-data-the-diameters-of-trees" class="level3" data-number="27.6.2">
+<h3 data-number="27.6.2" class="anchored" data-anchor-id="example-approach-2-for-measured-data-the-diameters-of-trees"><span class="header-section-number">27.6.2</span> Example: Approach 2 for Measured Data: The Diameters of Trees</h3>
+<p>To implement Approach 2 for measured data, one may proceed exactly as with Approach 1 above except that the output of the simulation with the sample mean as midpoint will be used for guidance about where to locate trial universes for Approach 2. The results for the tree diameter data (<a href="#tbl-tree-diameters" class="quarto-xref">Table&nbsp;<span>27.1</span></a>) are shown in <a href="#fig-app-2-trees" class="quarto-xref">Figure&nbsp;<span>27.2</span></a>.</p>
+<div id="fig-app-2-trees" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/25-Chap-21_005.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;27.2: Approach 2 for tree diameters</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="interpretation-of-approach-2" class="level2" data-number="27.7">
+<h2 data-number="27.7" class="anchored" data-anchor-id="interpretation-of-approach-2"><span class="header-section-number">27.7</span> Interpretation of Approach 2</h2>
+<p>Now to interpret the results of the second approach: Assume that the sample is not drawn in a biased fashion (such as the wind blowing all the apples in the same direction), and that the population has the same dispersion as the sample. We can then say that <em>distributions centered at the two endpoints of the 95 percent confidence interval (each of them including a tail in the direction of the observed sample mean with 2.5 percent of the area), or even further away from the sample mean, will produce the observed sample only 5 percent of the time or less</em> .</p>
+<p>The result of the second approach is more in the spirit of a hypothesis test than of the usual interpretation of confidence intervals. Another statement of the result of the second approach is: We postulate a given universe — say, a universe at (say) the two-tailed 95 percent boundary line. We then say: The probability that the observed sample would be produced by a universe with a mean as far (or further) from the observed sample’s mean as the universe under investigation is only 2.5 percent. This is similar to the probability value interpretation of a hypothesis-test framework. It is not a direct statement about the location of the mean of the universe from which the sample has been drawn. But it is certainly reasonable to derive a betting-odds interpretation of the statement just above, to wit: The chances are 2½ in 100 (or, the odds are 2½ to 97½ ) that a population located here would generate a sample with a mean as far away as the observed sample. And it would seem legitimate to proceed to the further betting-odds statement that (assuming we have no additional information) the odds are 97 ½ to 2 ½ that the mean of the universe that generated this sample is no farther away from the sample mean than the mean of the boundary universe under discussion. About this statement there is nothing slippery, and its meaning should not be controversial.</p>
+<p>Here again the tactic for interpreting the statistical procedure is to restate the facts of the behavior of the universe that we are manipulating and examining at that moment. We use a heuristic device to find a particular distribution — the one that is at (say) the 97 ½ –2 ½ percent boundary — and simply state explicitly what the distribution tells us implicitly: The probability of this distribution generating the observed sample (or a sample even further removed) is 2 ½ percent. We could go on to say (if it were of interest to us at the moment) that because the probability of this universe generating the observed sample is as low as it is, we “reject” the “hypothesis” that the sample came from a universe this far away or further. Or in other words, we could say that because we would be very surprised if the sample were to have come from this universe, we instead believe that another hypothesis is true. The “other” hypothesis often is that the universe that generated the sample has a mean located at the sample mean or closer to it than the boundary universe.</p>
+<p>The behavior of the universe at the 97 ½ –2 ½ percent boundary line can also be interpreted in terms of our “confidence” about the location of the mean of the universe that generated the observed sample. We can say: At this boundary point lies the end of the region within which we would bet 97 ½ to 2 ½ that the mean of the universe that generated this sample lies to the (say) right of it.</p>
+<p>As noted in the preview to this chapter, we do not learn about the reliability of sample estimates of the population mean (and other parameters) by logical inference from any one particular sample to any one particular universe, because <em>in principle this cannot be done</em> . Instead, in this second approach we investigate the behavior of various universes at the borderline of the neighborhood of the sample, those universes being chosen on the basis of their resemblances to the sample. We seek, for example, to find the universes that would produce samples with the mean of the observed sample less than (say) 5 percent of the time. In this way the estimation of confidence intervals is like all other statistical inference: One investigates the probabilistic behavior of hypothesized universes, the hypotheses being implicitly suggested by the sample evidence but not logically implied by that evidence.</p>
+<p>Approaches 1 and 2 may (if one chooses) be seen as identical conceptually as well as (in many cases) computationally (except for the asymmetric distributions mentioned earlier). But as I see it, the interpretation of them is rather different, and distinguishing them helps one’s intuitive understanding.</p>
+</section>
+<section id="exercises" class="level2" data-number="27.8">
+<h2 data-number="27.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">27.8</span> Exercises</h2>
+<p>Solutions for problems may be found in the section titled, “Exercise Solutions” at the back of this book.</p>
+<section id="exercise-1" class="level3" data-number="27.8.1">
+<h3 data-number="27.8.1" class="anchored" data-anchor-id="exercise-1"><span class="header-section-number">27.8.1</span> Exercise 1</h3>
+<p>In a sample of 200 people, 7 percent are found to be unemployed. Determine a 95 percent confidence interval for the true population proportion.</p>
+</section>
+<section id="exercise-2" class="level3" data-number="27.8.2">
+<h3 data-number="27.8.2" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">27.8.2</span> Exercise 2</h3>
+<p>A sample of 20 batteries is tested, and the average lifetime is 28.85 months. Establish a 95 percent confidence interval for the true average value. The sample values (lifetimes in months) are listed below.</p>
+<p>30 32 31 28 31 29 29 24 30 31 28 28 32 31 24 23 31 27 27 31</p>
+</section>
+<section id="exercise-3" class="level3" data-number="27.8.3">
+<h3 data-number="27.8.3" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">27.8.3</span> Exercise 3</h3>
+<p>Suppose we have 10 measurements of Optical Density on a batch of HIV negative control:</p>
+<p>.02 .026 .023 .017 .022 .019 .018 .018 .017 .022</p>
+<p>Derive a 95 percent confidence interval for the sample mean. Are there enough measurements to produce a satisfactory answer?</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-catling1977theban" class="csl-entry" role="listitem">
+Catling, HW, and RE Jones. 1977. <span>“A Reinvestigation of the Provenance of the Inscribed Stirrup Jars Found at Thebes.”</span> <em>Archaeometry</em> 19 (2): 137–46.
+</div>
+<div id="ref-deshpande1995statistical" class="csl-entry" role="listitem">
+Deshpande, Jayant V, AP Gore, and A Shanubhogue. 1995. <em>Statistical Analysis of Nonnormal Data</em>. Taylor &amp; Francis. <a href="https://www.google.co.uk/books/edition/Statistical_Analysis_of_Nonnormal_Data/sS0on2XqwwoC">https://www.google.co.uk/books/edition/Statistical_Analysis_of_Nonnormal_Data/sS0on2XqwwoC</a>.
+</div>
+<div id="ref-lee2012bayesian" class="csl-entry" role="listitem">
+Lee, Peter M. 2012. <em>Bayesian Statistics: An Introduction</em>. 4th ed. Wiley Online Library. <a href="https://www.york.ac.uk/depts/maths/histstat/pml1/bayes/book.htm">https://www.york.ac.uk/depts/maths/histstat/pml1/bayes/book.htm</a>.
+</div>
+<div id="ref-lyon1968price" class="csl-entry" role="listitem">
+Lyon, Herbert L, and Julian Lincoln Simon. 1968. <span>“Price Elasticity of the Demand for Cigarettes in the United States.”</span> <em>American Journal of Agricultural Economics</em> 50 (4): 888–95.
+</div>
+<div id="ref-savage1972foundations" class="csl-entry" role="listitem">
+Savage, Leonard J. 1972. <em>The Foundations of Statistics</em>. New York: Dover Publications, Inc.
+</div>
+<div id="ref-simon1998philosophy" class="csl-entry" role="listitem">
+Simon, Julian Lincoln. 1998. <span>“The Philosophy and Practice of Resampling Statistics.”</span> 1998. <a href="http://www.juliansimon.org/writings/Resampling_Philosophy">http://www.juliansimon.org/writings/Resampling_Philosophy</a>.
+</div>
+<div id="ref-wonnacott1990introductory" class="csl-entry" role="listitem">
+Wonnacott, Thomas H, and Ronald J Wonnacott. 1990. <em>Introductory Statistics</em>. 5th ed. New York: John Wiley &amp; Sons.
+</div>
+</div>
+</section>
+</section>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>An example of this sort of interpretation is as follows. Let us say the actual (unknown) population mean is some number we will call <span class="math inline">\(\mu\)</span>. We have a specific sample, and that sample has a mean we will call <span class="math inline">\(\bar{x}\)</span>. The mean <span class="math inline">\(\bar{x}\)</span> that we happen to observe is almost certain to be a bit high or a bit low. Accordingly, if we want to be reasonably confident that our inference is correct, we cannot claim that <span class="math inline">\(\mu\)</span> is precisely equal to the observed <span class="math inline">\(\bar{x}\)</span>. Instead, we must construct an interval estimate or confidence interval of the form: <span class="math inline">\(\mu = \bar{x} \pm \text{sampling error}\)</span>.</p>
+<p>The crucial question is: How wide must this allowance for sampling error be? The answer, of course, will depend on how much <span class="math inline">\(\bar{x}\)</span> fluctuates…</p>
+<blockquote class="blockquote">
+<p>Constructing 95% confidence intervals is like pitching horseshoes. In each there is a fixed target, either the population <span class="math inline">\(\mu\)</span> or the stake. We are trying to bracket it with some chancy device, either the random interval or the horseshoe. …</p>
+<p>There are two important ways, however, that confidence intervals differ from pitching horseshoes. First, only one confidence interval is customarily constructed. Second, the target <span class="math inline">\(\mu\)</span> is not visible like a horseshoe stake. Thus, whereas the horseshoe player always knows the score (and specifically, whether or not the last toss bracketed the stake), the statistician does not. He continues to “throw in the dark,” without knowing whether or not a specific interval estimate has bracketed <span class="math inline">\(\mu\)</span>. All he has to go on is the statistical theory that assures him that, in the long run, he will succeed 95% of the time. <span class="citation" data-cites="wonnacott1990introductory">Wonnacott and Wonnacott (<a href="references.html#ref-wonnacott1990introductory" role="doc-biblioref">1990</a>)</span>, (p.&nbsp;258).</p>
+</blockquote>
+<p>Savage refers to this type of interpretation as follows: <span class="citation" data-cites="savage1972foundations">(<a href="references.html#ref-savage1972foundations" role="doc-biblioref">Savage 1972, 260–61</a>)</span>:</p>
+<blockquote class="blockquote">
+<p>… whenever its advocates talk of making assertions that have high probability, whether in connection with testing or estimation, they do not actually make such assertions themselves, but endlessly pass the buck, saying in effect, “This assertion has arisen according to a system that will seldom lead you to make false assertions, if you adopt it. As for myself, I assert nothing but the properties of the system.”</p>
+</blockquote>
+<p>Lee writes at greater length <span class="citation" data-cites="lee2012bayesian">(<a href="references.html#ref-lee2012bayesian" role="doc-biblioref">Lee 2012</a>, preface to the first edition)</span>:</p>
+<blockquote class="blockquote">
+<p>… the statement that a 95% confidence interval for an unknown parameter ran from -2 to +2 sounded as if the parameter lay in that interval with 95% probability and yet I was warned that all I could say was that if I carried out similar procedures time after time then the unknown parameters would lie in the confidence intervals I constructed 95% of the time. …</p>
+<p>Subsequently, I discovered that the whole theory had been worked out in very considerable detail in such books as Lehmann (1959 and 1986). But attempts such as those that Lehmann describes to put everything on a firm foundation raised even more questions.</p>
+</blockquote>
+<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn2"><p>More about this later; it is, as I said earlier, not of primary importance in estimating the accuracy of the confidence intervals; note, please, that as we talk about the accuracy of statements about accuracy, we are moving down the ladder of sizes of causes of error.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./confidence_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./reliability_average.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

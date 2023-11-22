@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.51">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Resampling statistics - 30&nbsp; How Large a Sample?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./bayes_simulation.html" rel="next">
+<link href="./correlation_causation.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table").addClass('lightable-paper lightable-striped lightable-hover')
+  });
+</script>
+
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./how_big_sample.html"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Resampling statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_third.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_second.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_is_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about_technology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introducing Python and the Jupyter notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more_sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_2_compound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_4_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monte_carlo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard_scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./point_estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framing_questions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_measured.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reliability_average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_big_sample.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#issues-in-determining-sample-size" id="toc-issues-in-determining-sample-size" class="nav-link active" data-scroll-target="#issues-in-determining-sample-size"><span class="header-section-number">30.1</span> Issues in determining sample size</a></li>
+  <li><a href="#some-practical-examples" id="toc-some-practical-examples" class="nav-link" data-scroll-target="#some-practical-examples"><span class="header-section-number">30.2</span> Some practical examples</a>
+  <ul class="collapse">
+  <li><a href="#sec-proportion-radio" id="toc-sec-proportion-radio" class="nav-link" data-scroll-target="#sec-proportion-radio"><span class="header-section-number">30.2.1</span> Example: what proportion of homes are listening to a radio station?</a></li>
+  <li><a href="#example-average-weight-gain-for-pig-rations" id="toc-example-average-weight-gain-for-pig-rations" class="nav-link" data-scroll-target="#example-average-weight-gain-for-pig-rations"><span class="header-section-number">30.2.2</span> Example: average weight gain for pig rations</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">30.2.3</span> Example:</a></li>
+  <li><a href="#example-how-large-a-sample-for-pig-rations" id="toc-example-how-large-a-sample-for-pig-rations" class="nav-link" data-scroll-target="#example-how-large-a-sample-for-pig-rations"><span class="header-section-number">30.2.4</span> Example: how large a sample for pig rations?</a></li>
+  </ul></li>
+  <li><a href="#step-wise-sample-size-determination" id="toc-step-wise-sample-size-determination" class="nav-link" data-scroll-target="#step-wise-sample-size-determination"><span class="header-section-number">30.3</span> Step-wise sample-size determination</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">30.4</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Draft page partially ported from original PDF
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is an automated and partial import from the <a href="https://resample.com/content/text/28-Chap-24.pdf">original second-edition PDF</a>.</p>
+<p>We are in the process of updating this page for formatting, and porting any code from the original <a href="http://www.statistics101.net">RESAMPLING-STATS language</a> to Python and R.</p>
+<p>Feel free to read this version for the sense, but expect there to be multiple issues with formatting.</p>
+<p>We will remove this warning when the page has adequate formatting, and we have ported the code.</p>
+</div>
+</div>
+<section id="issues-in-determining-sample-size" class="level2" data-number="30.1">
+<h2 data-number="30.1" class="anchored" data-anchor-id="issues-in-determining-sample-size"><span class="header-section-number">30.1</span> Issues in determining sample size</h2>
+<p>Sometime in the course of almost every study — preferably early in the planning stage — the researcher must decide how large a sample to take. Deciding the size of sample to take is likely to puzzle and distress you at the beginning of your research career. You have to decide somehow, but there are no simple, obvious guides for the decision.</p>
+<p>For example, one of the first studies I worked on was a study of library economics <span class="citation" data-cites="fussler1961patterns">(<a href="references.html#ref-fussler1961patterns" role="doc-biblioref">Fussler and Simon 1961</a>)</span>, which required taking a sample of the books from the library’s collections. Sampling was expensive, and we wanted to take a correctly sized sample. But how large should the sample be? The longer we searched the literature, and the more people we asked, the more frustrated we got because there just did not seem to be a clear-cut answer. Eventually we found out that, even though there are some fairly rational ways of fixing the sample size, most sample sizes in most studies are fixed simply (and irrationally) by the amount of money that is available or by the sample size that similar research has used in the past.</p>
+<p>The rational way to choose a sample size is by weighing the benefits you can expect in information against the cost of increasing the sample size. In principle you should continue to increase the sample size until the benefit and cost of an additional sampled unit are equal.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>The benefit of additional information is not easy to estimate even in applied research, and it is extraordinarily difficult to estimate in basic research. Therefore, it has been the practice of researchers to set up target goals of the <em>degree of accuracy</em> they wish to achieve, or to consider various degrees of accuracy that might be achieved with various sample sizes, and then to balance the degree of accuracy with the cost of achieving that accuracy. The bulk of this chapter is devoted to learning how the sample size is related to accuracy in simple situations.</p>
+<p>In complex situations, however, and even in simple situations for beginners, you are likely to feel frustrated by the difficulties of relating accuracy to sample size, in which case you cry out to a supervisor, “Don’t give me complicated methods, just give me a rough number based on your greatest experience.” My inclination is to reply to you, “Sometimes life is hard and there is no shortcut.” On the other hand, perhaps you can get more information than misinformation out of knowing sample sizes that have been used in other studies. Table 24-1 shows the middle (modal), 25th percentile, and 75th percentile scores for — please keep this in mind — <em>National Opinion Surveys</em> in the top panel. The bottom panel shows how subgroup analyses affect sample size.</p>
+<p>Pretest sample sizes are smaller, of course, perhaps 25-100 observations. Samples in research for Master’s and Ph.D.&nbsp;theses are likely to be closer to a pretest than to national samples.</p>
+<p>Table 24-1</p>
+<p><strong>Most Common Sample Sizes Used for National and Regional Studies By Subject Matter</strong></p>
+<p><strong>Subject Matter National Regional</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Subject Matter</td>
+<td><strong>Mode</strong></td>
+<td style="text-align: center;"><strong>Q3</strong></td>
+<td style="text-align: center;"><strong>Q1</strong></td>
+<td style="text-align: right;"><strong>Mode</strong></td>
+<td style="text-align: left;"><strong>Q3</strong></td>
+<td style="text-align: right;"><strong>Q1</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Financial</td>
+<td>1000+</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: right;">100 40</td>
+<td style="text-align: left;">0 50</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Medical</td>
+<td>1000+</td>
+<td style="text-align: center;">1000+</td>
+<td style="text-align: center;">500</td>
+<td style="text-align: right;">1000+ 10</td>
+<td style="text-align: left;">00+ 25</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Other Behavior</td>
+<td>1000+</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: right;">700 10</td>
+<td style="text-align: left;">00 30</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Attitudes</td>
+<td>1000+</td>
+<td style="text-align: center;">1000+</td>
+<td style="text-align: center;">500</td>
+<td style="text-align: right;">700 10</td>
+<td style="text-align: left;">00 40</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Laboratory Experiments</td>
+<td>—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: right;">100 20</td>
+<td style="text-align: left;">0 50</td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Typical Sample Sizes for Studies of Human and Institutional Populations</strong></p>
+<p><strong>People or Households Institutions</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td>People or house</td>
+<td style="text-align: left;">holds</td>
+<td style="text-align: left;">Institutions</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Subgroup Analyses</strong></td>
+<td><strong>National</strong></td>
+<td style="text-align: left;"><strong>Special</strong></td>
+<td style="text-align: left;"><strong>National</strong></td>
+<td><strong>Special</strong></td>
+</tr>
+<tr class="odd">
+<td>None or few</td>
+<td>1000-1500</td>
+<td style="text-align: left;">200-500</td>
+<td style="text-align: left;">200-500</td>
+<td>50-200</td>
+</tr>
+<tr class="even">
+<td>Average</td>
+<td>1500-2500</td>
+<td style="text-align: left;">500-1000</td>
+<td style="text-align: left;">500-1000</td>
+<td>200-500</td>
+</tr>
+<tr class="odd">
+<td>Many</td>
+<td>2500+</td>
+<td style="text-align: left;">1000+</td>
+<td style="text-align: left;">1000+</td>
+<td>500+</td>
+</tr>
+</tbody>
+</table>
+<p>SOURCE: From <em>Applied Sampling</em>, by Seymour Sudman <span class="citation" data-cites="sudman1976applied">(<a href="references.html#ref-sudman1976applied" role="doc-biblioref">1976, 86</a> — 87)</span> copyright Academic Press, reprinted by permission.</p>
+<p>Once again, the sample size ought to depend on the proportions of the sample that have the characteristics you are interested in, the extent to which you want to learn about subgroups as well as the universe as a whole, and of course the purpose of your study, the value of the information, and the cost. Also, keep in mind that the <em>added</em> information that you obtain from an additional sample observation tends to be smaller as the sample size gets larger. You must quadruple the sample to halve the error.</p>
+<p>Now let us consider some specific cases. The first examples taken up here are from the descriptive type of study, and the latter deal with sample sizes in relationship research.</p>
+</section>
+<section id="some-practical-examples" class="level2" data-number="30.2">
+<h2 data-number="30.2" class="anchored" data-anchor-id="some-practical-examples"><span class="header-section-number">30.2</span> Some practical examples</h2>
+<section id="sec-proportion-radio" class="level3" data-number="30.2.1">
+<h3 data-number="30.2.1" class="anchored" data-anchor-id="sec-proportion-radio"><span class="header-section-number">30.2.1</span> Example: what proportion of homes are listening to a radio station?</h3>
+<p>What proportion of the homes in Countryville are tuned into television station WCNT’s ten o’clock news program? That is the question your telephone survey aims to answer, and you want to know how many randomly selected homes you must telephone to obtain a sufficiently large sample.</p>
+<p>Begin by guessing the likeliest answer, say 30 percent in this case. Do not worry if you are off by 5 per cent or even 10 per cent; and you will probably not be further off than that. Select a first-approximation sample size of perhaps 400; this number is selected from my general experience, but it is just a starting point. Then proceed through the first 400 numbers in the random-number table, marking down a <em>yes</em> for numbers 1-3 and <em>no</em> for numbers 4-10 (because 3/10 was your estimate of the proportion listening). Then add the number of <em>yes</em> and <em>no</em> . Carry out perhaps ten sets of such trials, the results of which are in Table 24-2.</p>
+<p>Table 24-2</p>
+<p><strong>% DIFFERENCE FROM</strong></p>
+<p><strong>Trial Number “Yes” Number “No” Expected Mean of 30%</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;"><strong>(120 “Yes”)</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: left;">115</td>
+<td>285</td>
+<td>1.25</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td style="text-align: left;">119</td>
+<td>281</td>
+<td>0.25</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td style="text-align: left;">116</td>
+<td>284</td>
+<td>1.00</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td style="text-align: left;">114</td>
+<td>286</td>
+<td>1.50</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td style="text-align: left;">107</td>
+<td>293</td>
+<td>3.25</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td style="text-align: left;">116</td>
+<td>284</td>
+<td>1.00</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td style="text-align: left;">132</td>
+<td>268</td>
+<td>3.00</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td style="text-align: left;">123</td>
+<td>277</td>
+<td>0.75</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td style="text-align: left;">121</td>
+<td>279</td>
+<td>0.25</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td style="text-align: left;">114</td>
+<td>286</td>
+<td>1.50</td>
+</tr>
+<tr class="even">
+<td>Mean</td>
+<td style="text-align: left;"></td>
+<td></td>
+<td>1.37</td>
+</tr>
+</tbody>
+</table>
+<p>Based on these ten trials, you can estimate that if you take a sample of 400 and if the “real” viewing level is 30 percent, your average percentage error will be 1.375 percent on either side of 30 percent. That is, with a sample of 400, half the time your error will be greater than 1.375 percent if 3/10 of the universe is listening.</p>
+<p>Now you must decide whether the estimated error is small enough for your needs. If you want greater accuracy than a sample of 400 will give you, increase the sample size, using this important rule of thumb: To cut the error in half, you must <em>quadruple</em> the sample size. In other words, if you want a sample that will give you an error of only 0.55 percent on the average, you must increase the sample size to 1,600 interviews. Similarly, if you cut the sample size to 100, the average error will be only 2.75 percent (double 1.375 percent) on either side of 30 percent. If you distrust this rule of thumb, run ten or so trials on sample sizes of 100 or 1,600, and see what error you can expect to obtain on the average.</p>
+<p>If the “real” viewership is 20 percent or 40 percent, instead of 30 percent, the accuracy you will obtain from a sample size of 400 will not be very different from an “actual” viewership of 30 percent, so do not worry about that too much, as long as you are in the right general vicinity.</p>
+<p>Accuracy is <em>slightly</em> greater in smaller universes but <em>only</em> slightly. For example, a sample of 400 would give <em>perfect</em> accuracy if Countryville had only 400 residents. And a sample of 400 will give <em>slightly</em> greater accuracy for a town of 800 residents than for a city of 80,000 residents. But, beyond the point at which the sample is a <em>large fraction</em> of the total universe, there is no difference in accuracy with increases in the size of universe. This point is very important. For any given level of accuracy, <em>identical</em> sample sizes give the same level of accuracy for Podunk (population 8,000) or New York City (population 8 million). The <em>ratio</em> of the sample size to the population of Podunk or New York City means nothing at all, even though it intuitively seems to be important.</p>
+<p>The size of the sample must depend upon which population or subpopulations you wish to describe. For example, Alfred Kinsey’s sample size for the classic “Sexual Behavior in the Human Male” <span class="citation" data-cites="kinsey1948sexual">(<a href="references.html#ref-kinsey1948sexual" role="doc-biblioref">1948</a>)</span> would have seemed large, by customary practice, for generalizations about the United States population as a whole. But, as Kinsey explains: “… the chief concern of the present study is an understanding of the sexual behavior of <em>each segment of the population</em>, and that it is only secondarily concerned with generalization for the population as a whole.” <span class="citation" data-cites="kinsey1948sexual">(<a href="references.html#ref-kinsey1948sexual" role="doc-biblioref">1948, 82</a>, italics added)</span>. Therefore Kinsey’s sample had to include subsamples large enough to obtain the desired accuracy in <em>each</em> of these sub-universes. The U.S. Census offers a similar illustration. When the U.S. Bureau of the Census aims to estimate only a total or an average for the United States as a whole — as, for example, in the Current Population Survey estimate of unemployment — a sample of perhaps 50,000 is big enough. But the decennial census aims to make estimates for all the various communities in the country, estimates that require adequate subsamples in each of these sub-universes; such is the justification for the decennial census’ sample size of so many millions. Television ratings illustrate both types of purpose. Nielsen ratings, for example, are sold primarily to national network advertisers. These advertisers on national television networks usually sell their goods all across the country and are therefore interested primarily in the total United States viewership for a program, rather than in the viewership in various demographic subgroups. The appropriate calculations for Nielsen sample size will therefore refer to the total United States sample. But other organizations sell rating services to <em>local</em> television and radio stations for use in soliciting advertising over the local stations rather than over the network as a whole. Each local sample must then be large enough to provide reasonable accuracy, and, considered as a whole, the samples for the local stations therefore add up to a much larger sample than the Nielsen and other nationwide samples.</p>
+<p>The problem may be handled with the following Python program. This program represents viewers with the string <code>'viewers'</code> and non-viewers as <code>'not viewers'</code>. It then asks <span class="python"><code>rnd.choice</code></span> to choose randomly between <code>'viewer'</code> and <code>'not viewer'</code> with a 30% (p=0.3) chance of getting a <code>'viewer'</code> and a 70% chance of getting a <code>'not viewer'</code>. It gets a sample of 400 such numbers, counts (with <span class="python"><code>np.sum</code></span> the “viewers” then finds how much this sample diverges from the expected number of viewers (30% of 400 = 120). It repeats this procedure 10000 times, and then calculates the average divergence.</p>
+<div class="notebook" name="viewer_numbers" title="Number of viewers">
+<p>Start of <code>viewer_numbers</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/viewer_numbers.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/viewer_numbers.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="how_big_sample_cache/html/unnamed-chunk-1_2a7c2d69d64a1d0ee2c543242f03a4a2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the random number generator</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="how_big_sample_cache/html/unnamed-chunk-2_cbb20f2b87c39906d1a2d57cf06ae4a5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the number of trials</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># an empty array to store the scores</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># What are the options to choose from?</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>options <span class="op">=</span> [<span class="st">'viewer'</span>, <span class="st">'not viewer'</span>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># do n_trials trials</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Choose 'viewer' 30% of the time.</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> rnd.choice(options, size<span class="op">=</span><span class="dv">400</span>, p<span class="op">=</span>[<span class="fl">0.3</span>, <span class="fl">0.7</span>])</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count the viewers</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">==</span> <span class="st">'viewer'</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># how different from expected?</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="dv">120</span> <span class="op">-</span> b</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># absolute value of the difference</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> np.<span class="bu">abs</span>(c)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># express as a proportion of sample</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> d <span class="op">/</span> <span class="dv">400</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># keep score of the result</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    scores[i] <span class="op">=</span> e</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># find the mean divergence</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.mean(scores)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.018184000000000002</code></pre>
+</div>
+</div>
+<!---
+End of notebook.
+-->
+<p>End of <code>viewer_numbers</code> notebook</p>
+</div>
+<p>It is a simple matter to go back and try a sample size of (say) 1600 rather than 400, and examine the effect on the mean difference.</p>
+</section>
+<section id="example-average-weight-gain-for-pig-rations" class="level3" data-number="30.2.2">
+<h3 data-number="30.2.2" class="anchored" data-anchor-id="example-average-weight-gain-for-pig-rations"><span class="header-section-number">30.2.2</span> Example: average weight gain for pig rations</h3>
+<p>This example, like <a href="#sec-proportion-radio" class="quarto-xref"><span>Section&nbsp;30.2.1</span></a>, illustrates the choice of sample size for estimating a summarization statistic. Later examples deal with sample sizes for probability statistics.</p>
+<p>Hark back to the pig-ration problems presented earlier, and consider the following set of pig weight-gains recorded for ration A: 31, 34, 29, 26, 32, 35, 38, 34, 31, 29, 32, 30. Assume that our purpose now is to estimate the average weight gain for ration A, so that the feed company can advertise to farmers how much weight gain to expect from ration A. If the universe is made up of pig weight-gains like those we observed, we can simulate the universe with, say, 1 million weight gains of thirty-one pounds, 1 million of thirty-four pounds, and so on for the twelve observed weight gains. Or, more conveniently, as accuracy will not be affected much, we can make up a universe of say, thirty cards for each thirty-one-pound gain, thirty cards for each thirty-four-pound gains and so forth, yielding a deck of 30 x 12 = 360 cards. Then shuffle, and, just for a starting point, try sample sizes of twelve pigs. The means of the samples for twenty such trials are as in Table 24-3.</p>
+<p>Now ask yourself whether a sample size of twelve pigs gives you enough accuracy. There is a .5 chance that the mean for the sample will be more than .65 or .92 pound (the two median deviations) or (say) .785 pound (the midpoint of the two medians) from the mean of the universe that generates such samples, which in this situation is 31.75 pounds. Is this close enough? That is up to you to decide in light of the purposes for which you are running the experiment. (The logic of the inference you make here is inevitably murky, and use of the term “real mean” can make it even murkier, as is seen in the discussion in Chapters 20-22 on confidence intervals.)</p>
+<p>To see how accuracy is affected by larger samples, try a sample size of forty-eight “pigs” dealt from the same deck. (But, if the sample size were to be much larger than forty-eight, you might need a “universe” greater than 360 cards.) The results of twenty trials are in Table 24-4.</p>
+<p>In half the trials with a sample size of forty-eight the difference between the sample mean and the “real” mean of 31.75 will be .36 or .37 pound (the median deviations), smaller than with the values of .65 and .92 for samples of 12 pigs. Again, is this too little accuracy for you? If so, increase the sample size further.</p>
+<p>Table 24-3</p>
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Trial</strong></td>
+<td><strong>Mean</strong></td>
+<td><p><strong>Absolut e Devisatio n of Trial Mean</strong></p>
+<p><strong>from Actual Mean</strong></p></td>
+<td><strong>Trial</strong></td>
+<td><strong>Mean</strong></td>
+<td><p><strong>Absolut e Deviation of Trial Mean</strong></p>
+<p><strong>from Actual Mean</strong></p></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>31.77</td>
+<td>.02</td>
+<td>11</td>
+<td>32.10</td>
+<td>.35</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>32.27</td>
+<td>1.52</td>
+<td>12</td>
+<td>30.67</td>
+<td>1.08</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>31.75</td>
+<td>.00</td>
+<td>13</td>
+<td>32.42</td>
+<td>.67</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>30.83</td>
+<td>.92</td>
+<td>14</td>
+<td>30.67</td>
+<td>1.08</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>30.52</td>
+<td>1.23</td>
+<td>15</td>
+<td>32.25</td>
+<td>.50</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>31.60</td>
+<td>.15</td>
+<td>16</td>
+<td>31.60</td>
+<td>.15</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>32.46</td>
+<td>.71</td>
+<td>17</td>
+<td>32.33</td>
+<td>.58</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>31.10</td>
+<td>.65</td>
+<td>18</td>
+<td>33.08</td>
+<td>1.33</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>32.42</td>
+<td>.35</td>
+<td>19</td>
+<td>33.01</td>
+<td>1.26</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>30.60</td>
+<td>1.15</td>
+<td>20</td>
+<td>30.60</td>
+<td>1.15</td>
+</tr>
+<tr class="even">
+<td>Mean</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>31.75</td>
+</tr>
+</tbody>
+</table>
+<p>The attentive reader of this example may have been troubled by this question: How do you know what kind of a distribution of values is contained in the universe before the sample is taken? The answer is that you guess, just as in <a href="#sec-proportion-radio" class="quarto-xref"><span>Section&nbsp;30.2.1</span></a> you guessed at the mean of the universe. If you guess wrong, you will get either more accuracy or less accuracy than you expected from a given sample size, but the results will not be fatal; if you obtain more accuracy than you wanted, you have wasted some money, and, if you obtain less accuracy, your sample dispersion will tell you so, and you can then augment the sample to boost the accuracy. But an error in guessing will not introduce error into your final results.</p>
+<p>Table 24-4</p>
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Trial</strong></td>
+<td><strong>Mean</strong></td>
+<td><p><strong>Absolut e Deviation of Trial Mean</strong></p>
+<p><strong>from Actual Mean</strong></p></td>
+<td><strong>Trial</strong></td>
+<td><strong>Mean</strong></td>
+<td><p><strong>Absolut e Deviation of Trial Mean</strong></p>
+<p><strong>from Actual Mean</strong></p></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>31.80</td>
+<td>.05</td>
+<td>11</td>
+<td>31.93</td>
+<td>.18</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>32.27</td>
+<td>.52</td>
+<td>12</td>
+<td>32.40</td>
+<td>.65</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>31.82</td>
+<td>.07</td>
+<td>13</td>
+<td>31.32</td>
+<td>.43</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>31.39</td>
+<td>.36</td>
+<td>14</td>
+<td>32.07</td>
+<td>.68</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>31.22</td>
+<td>.53</td>
+<td>15</td>
+<td>32.03</td>
+<td>.28</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>31.88</td>
+<td>.13</td>
+<td>16</td>
+<td>31.95</td>
+<td>.20</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>31.37</td>
+<td>.38</td>
+<td>17</td>
+<td>31.75</td>
+<td>.00</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>31.48</td>
+<td>.27</td>
+<td>18</td>
+<td>31.11</td>
+<td>.64</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>31.20</td>
+<td>.55</td>
+<td>19</td>
+<td>31.96</td>
+<td>.21</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>32.01</td>
+<td>.26</td>
+<td>20</td>
+<td>31.32</td>
+<td>.43</td>
+</tr>
+<tr class="even">
+<td>Mean</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>31.75</td>
+</tr>
+</tbody>
+</table>
+<p>The guess should be based on something, however. One source for guessing is your general knowledge of the likely dispersion; for example, if you were estimating male heights in Rhode Island, you would be able to guess what proportion of observations would fall within 2 inches, 4 inches, 6 inches, and 8 inches, perhaps, of the real value. Or, much better yet, a very small pretest will yield quite satisfactory estimates of the dispersion.</p>
+<p>Here is a RESAMPLING STATS program that will let you try different sample sizes, and then take bootstrap samples to determine the range of sampling error. You set the sample size with the DATA command, and the NUMBERS command records the data. Above I noted that we could sample without replacement from a “deck” of thirty “31”’s, thirty “34”’s, etc, as a substitute for creating a universe of a million “31”’s, a million “34”’s, etc. We can achieve the same effect if we replace each card after we sample it; this is equivalent to creating a “deck” of an infinite number of “31”’s, “34”’s, etc. That is what the SAMPLE command does, below. Note that the sample size is determined by the value of the “sampsize” variable, which you set at the beginning. From here on the program takes the MEAN of each sample, keeps SCORE of that result, and produces a HISTOGRAM. The PERCENTILE command will also tell you what values enclose 90% of all sample results, excluding those below the 5th percentile and above the 95th percentile.</p>
+<p>Here is a program for a sample size of 12.</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb4"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "how_big_sample_01.rss"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="va">DATA</span> (<span class="fl">12</span>) <span class="va">sampsize</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="va">NUMBERS</span> (<span class="fl">31</span> <span class="fl">34</span> <span class="fl">29</span> <span class="fl">26</span> <span class="fl">32</span> <span class="fl">35</span> <span class="fl">38</span> <span class="fl">34</span> <span class="fl">32</span> <span class="fl">31</span> <span class="fl">30</span> <span class="fl">29</span>) <span class="va">a</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span> <span class="va">sampsize</span> <span class="va">a</span> <span class="va">b</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">b</span> <span class="va">c</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">c</span> <span class="va">z</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">z</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="va">PERCENTILE</span> <span class="va">z</span> (<span class="fl">5</span> <span class="fl">95</span>) <span class="va">k</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">k</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="er">' **Bin Center Freq Pct Cum Pct**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/28-Chap-24_000.png" class="img-fluid"></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">29.0</td>
+<td></td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">0.2</td>
+<td style="text-align: left;">0.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">29.5</td>
+<td></td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">0.4</td>
+<td style="text-align: left;">0.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">30.0</td>
+<td></td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">3.0</td>
+<td style="text-align: left;">3.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">30.5</td>
+<td></td>
+<td style="text-align: left;">71</td>
+<td style="text-align: left;">7.1</td>
+<td style="text-align: left;">10.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">31.0</td>
+<td></td>
+<td style="text-align: left;">162</td>
+<td style="text-align: left;">16.2</td>
+<td style="text-align: left;">26.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31.5</td>
+<td></td>
+<td style="text-align: left;">209</td>
+<td style="text-align: left;">20.9</td>
+<td style="text-align: left;">47.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">32.0</td>
+<td></td>
+<td style="text-align: left;">237</td>
+<td style="text-align: left;">23.7</td>
+<td style="text-align: left;">71.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">32.5</td>
+<td></td>
+<td style="text-align: left;">143</td>
+<td style="text-align: left;">14.3</td>
+<td style="text-align: left;">85.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">33.0</td>
+<td></td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">9.0</td>
+<td style="text-align: left;">94.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">33.5</td>
+<td></td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">3.7</td>
+<td style="text-align: left;">98.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">34.0</td>
+<td></td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">1.2</td>
+<td style="text-align: left;">99.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">34.5</td>
+<td></td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">0.3</td>
+<td style="text-align: left;">100.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">k = 30.417</td>
+<td>33.25</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example 24-3</strong></p>
+<p>This is the first example of sample-size estimation for <em>probability</em> (testing) statistics, rather than the summarization statistics dealt with above.</p>
+<p>Recall the problem of the sex of fruit-fly offspring discussed in Example 15-1. The question now is, how large a sample is needed to determine whether the radiation treatment results in a sex ratio other than a 50-50 male-female split?</p>
+<p>The first step is, as usual, difficult but necessary. As the researcher, you must <em>guess</em> what the sex ratio will be if the treatment <em>does</em> have an effect. Let’s say that you use all your general knowledge of genetics and of this treatment and that you guess the sex ratio will be 75 percent males and 25 percent females <em>if</em> the treatment alters the ratio from 50-50.</p>
+<p>In the random-number table let “01-25” stand for females and “26-00” for males. Take twenty successive pairs of numbers for each trial, and run perhaps fifty trials, as in Table 24-5.</p>
+<p>Table 24-5</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">34</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">38</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">23</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">39</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">41</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">42</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">43</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">49</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">15</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Trial Females Males Trial Females Males Trial Females Males</strong></p>
+<p>In Example 15-1 with a sample of twenty flies that contained fourteen or more males, we found only an 8% probability that such an extreme sample would result from a 50-50 universe. Therefore, if we observe such an extreme sample, we rule out a 50-50 universe.</p>
+<p>Now Table 24-5 tells us that, if the ratio is <em>really</em> 75 to 25, then a sample of twenty will show fourteen or more males forty-two of fifty times (84 percent of the time). If we take a sample of twenty flies and if the ratio is really 75-25, we will make the correct decision by deciding that the split is not 50-50 84 percent of the time.</p>
+<p>Perhaps you are not satisfied with reaching the right conclusion only 84 percent of the time. In that case, still assuming that the ratio will really be 75-25 if it is not 50-50, you need to take a sample larger than twenty flies. How much larger? That depends on how much surer you want to be. Follow the same procedure for a sample size of perhaps eighty flies. First work out for a sample of eighty, as was done in Example 15-1 for a sample of twenty, the number of males out of eighty that you would need to find for the odds to be, say, 9 to 1 that the universe is not 50-50; your estimate turns out to be forty-eight males. Then run fifty trials of eighty flies each on the basis of 75-25 probability, and see how often you would not get as many as forty-eight males in the sample. Table 24-6 shows the results we got. No trial was anywhere near as low as forty-eight, which suggests that a sample of eighty is larger than necessary if the split is really 75-25.</p>
+<p>Table 24-6</p>
+<p><img src="images/28-Chap-24_001.png" class="img-fluid"></p>
+<p><img src="images/28-Chap-24_002.png" class="img-fluid"></p>
+<p><strong>Trial Females Males Trial Females Males Trial Females Males</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">67</td>
+<td style="text-align: left;">34</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">58</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">67</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">63</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">58</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">65</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">63</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">58</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">62</td>
+<td style="text-align: left;">38</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+<td style="text-align: left;">23</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">54</td>
+<td style="text-align: left;">39</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">67</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">60</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">56</td>
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">41</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">58</td>
+<td style="text-align: left;">42</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">62</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;">43</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">60</td>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">58</td>
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">67</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">63</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">58</td>
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">68</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">68</td>
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">49</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">63</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">59</td>
+</tr>
+</tbody>
+</table>
+<p>Table 24-7</p>
+<p><strong>Trial Females Males Trial Females Males Trial Females Males</strong></p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">34</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">52</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">51</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">21</td>
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">43</td>
+<td style="text-align: left;">38</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">44</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;">23</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;">39</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">49</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">49</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">51</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">34</td>
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">53</td>
+<td style="text-align: left;">41</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">34</td>
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">42</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">51</td>
+<td style="text-align: left;">27</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">49</td>
+<td style="text-align: left;">43</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">51</td>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">43</td>
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">51</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">49</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">49</td>
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;">52</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">34</td>
+<td style="text-align: left;">64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">34</td>
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">49</td>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;">51</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">43</td>
+</tr>
+</tbody>
+</table>
+<p><img src="images/28-Chap-24_003.png" class="img-fluid"></p>
+<p>It is obvious that, if the split you guess at is 60 to 40 rather than 75 to 25, you will need a bigger sample to obtain the “correct” result with the same probability. For example, run some eighty-fly random-number trials with 1-40 representing males and 51-100 representing females. Table 24-7 shows that only twenty-four of fifty (48 percent) of the trials reach the necessary cut-off at which one would judge that a sample of eighty really does not come from a universe that is split 50-50; therefore, a sample of eighty is not big enough if the split is 60-40.</p>
+<p>To review the main principles of this example: First, the closer together the two possible universes from which you think the sample might have come (50-50 and 60-40 are closer together than are 50-50 and 75-25), the larger the sample needed to distinguish between them. Second, the surer you want to be that you reach the right decision based upon the sample evidence, the larger the sample you need.</p>
+<p>The problem may be handled with the following RESAMPLING STATS program. We construct a benchmark universe that is 60-40 male-female, and take samples of size 80, observing whether the numbers of males and females differs enough in these resamples to rule out a 50-50 universe. Recall that we need at least 48 males to say that the proportion of males is <em>not</em> 50%.</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "how_big_sample_02.rss"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Do 1000 trials</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">GENERATE</span> <span class="fl">80</span> <span class="fl">1</span><span class="op">,</span><span class="fl">10</span> <span class="va">a</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Generate 80 "flies," each represented by a number between 1 and 10 where</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="er">' \&lt;= 6 is a male</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">a</span> <span class="op">&lt;=</span><span class="fl">6</span> <span class="va">b</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Count the males</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">b</span> <span class="va">z</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Keep score</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&gt;=</span><span class="fl">48</span> <span class="va">k</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="er">' How many of the trials produced more than 48 males?</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">kk</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="er">' Convert to a proportion</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">kk</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="er">' If the result "kk" is close to 1, we then know that samples of size 80</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="er">' will almost always produce samples with enough males to avoid misleading</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="er">' us into thinking that they could have come from a universe in which</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="er">' males and females are split 50-50.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example" class="level3" data-number="30.2.3">
+<h3 data-number="30.2.3" class="anchored" data-anchor-id="example"><span class="header-section-number">30.2.3</span> Example:</h3>
+<p>Referring back to <a href="testing_counts_1.html#sec-contract-poll" class="quarto-xref"><span>Section&nbsp;21.2.2</span></a>, on the internet provider poll, how large a sample <em>should</em> you have taken? Pretend that the data have not yet been collected. You need <em>some</em> estimate of how the results will turn out before you can select a sample size. But you have not the foggiest idea how the results will turn out. Therefore, go out and take a very small sample, maybe ten people, to give you some idea of whether people will split quite evenly or unevenly. Seven of your ten initial interviews say they are for CATV. How large a sample do you now need to provide an answer of which you can be fairly sure?</p>
+<p>Using the techniques of the previous chapter, we estimate roughly that from a sample of fifty people at least thirty-two would have to vote the same way for you to believe that the odds are at least 19 to 1 that the sample does not misrepresent the universe, that is, that the sample does not show a majority different from that of the whole universe if you polled everyone. This estimate is derived from the resampling experiment described in example 15-3. The table shows that if half the people (or more) are against cable television, only one in twenty times will thirty-two (or more) people of a sample of fifty say that they are for cable television; that is, only one of twenty trials with a 50-50 universe will produce as many as thirty-two <em>yeses</em> if a majority of the population is against it.</p>
+<p>Therefore, designate numbers 1-30 as <em>no</em> and 31-00 as <em>yes</em> in the random-number table (that is, 70 percent, as in your estimate based on your presample of ten), work through a trial sample size of fifty, and count the number of <em>yeses</em> . Run through perhaps ten or fifteen trials, and reckon how often the observed number of <em>yeses</em> exceeds thirty-two, the number you must exceed for a result you can rely on. In Table 24-8 we see that a sample of fifty respondents, from a universe split 70-30, will show that many <em>yeses</em> a preponderant proportion of the time — in fact, in fifteen of fifteen experiments; therefore, the sample size of fifty is large enough if the split is “really” 70-30.</p>
+<p>Table 24-8</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Trial</strong></td>
+<td style="text-align: left;"><strong>No</strong></td>
+<td style="text-align: left;"><strong>Yes</strong></td>
+<td style="text-align: left;"><strong>Trial</strong></td>
+<td style="text-align: left;"><strong>No</strong></td>
+<td style="text-align: left;"><strong>Yes</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">41</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">35</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">33</td>
+</tr>
+</tbody>
+</table>
+<p>The following RESAMPLING STATS program takes samples of size 50 from a universe that is 70% “yes.” It then observes how often such samples produce more than 32 “yeses” — the number we must get if we are to be sure that the sample is not from a 50/50 universe.</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb6"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "how_big_sample_03.rss"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Do 1000 trials</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">GENERATE</span> <span class="fl">50</span> <span class="fl">1</span><span class="op">,</span><span class="fl">10</span> <span class="va">a</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Generate 50 numbers between 1 and 10, let 1-7 = yes.</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">a</span> <span class="op">&lt;=</span><span class="fl">7</span> <span class="va">b</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Count the "yeses"</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">b</span> <span class="va">z</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Keep score of the result</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&gt;=</span><span class="fl">32</span> <span class="va">k</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="er">' Count how often the sample result \&gt;= our 32 cutoff (recall that samples</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="er">' with 32 or fewer "yeses" cannot be ruled out of a 50/50 universe)</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">kk</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="er">' Convert to a proportion</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If “kk” is close to 1, we can be confident that this sample will be large enough to avoid a result that we might mistakenly think comes from a 50/50 universe (provided that the real universe is 70% favorable).</p>
+</section>
+<section id="example-how-large-a-sample-for-pig-rations" class="level3" data-number="30.2.4">
+<h3 data-number="30.2.4" class="anchored" data-anchor-id="example-how-large-a-sample-for-pig-rations"><span class="header-section-number">30.2.4</span> Example: how large a sample for pig rations?</h3>
+<p>How large a sample is needed to determine whether there is any difference between the two pig rations in <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section&nbsp;21.2.7</span></a>? The first step is to guess the results of the tests. You estimate that the average for ration A will be a weight gain of thirty-two pounds. You further guess that twelve pigs on ration A might gain thirty-six, thirty-five, thirty-four, thirty-three, thirty-three, thirty-two, thirty-two, thirty-one, thirty-one, thirty, twenty-nine, and twenty-eight pounds. This set of guesses has an equal number of pigs above and below the average and more pigs close to the average than farther away. That is, there are more pigs at 33 and 31 pounds than at 36 and 28 pounds. This would seem to be a reasonable distribution of pigs around an average of 32 pounds. In similar fashion, you guess an average weight gain of 28 pounds for ration B and a distribution of 32, 31, 30, 29, 29, 28, 28, 27, 27, 26, 25, and 24 pounds.</p>
+<p>Let us review the basic strategy. We want to find a sample size large enough so that a large proportion of the time it will reveal a difference between groups big enough to be accepted as not attributable to chance. First, then, we need to find out how big the difference must be to be accepted as evidence that the difference is not attributable to chance. We do so from trials with samples that size from the benchmark universe. We state that a difference larger than the benchmark universe will usually produce is not attributable to chance.</p>
+<p>In this case, let us try samples of 12 pigs on each ration. First we draw two samples from a combined benchmark universe made up of the results that we have guessed will come from ration A and ration B. (The procedure is the same as was followed in Example 15-7.) We find that in 19 out of 20 trials the difference between the two observed groups of 12 pigs was 3 pounds or less. Now we investigate how often samples of 12 pigs, drawn from the <em>separate</em> universes, will show a mean difference as large as 3 pounds. We do so by making up a deck of 25 or 50 cards for <em>each</em> of the 12 hypothesized A’s and each of the 12 B’s, with the ration name and the weight gain written on it — that is, a deck of, say, 300 cards for each ration. Then from each deck we draw a set of 12 cards at random, record the group averages, and find the difference.</p>
+<p>Here is the same work done with more runs on the computer:</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb7"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "how_big_sample_04.rss"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">NUMBERS</span> (<span class="fl">31</span> <span class="fl">34</span> <span class="fl">29</span> <span class="fl">26</span> <span class="fl">32</span> <span class="fl">35</span> <span class="fl">38</span> <span class="fl">34</span> <span class="fl">32</span> <span class="fl">31</span> <span class="fl">30</span> <span class="fl">29</span>) <span class="va">a</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="va">NUMBERS</span> (<span class="fl">32</span> <span class="fl">32</span> <span class="fl">31</span> <span class="fl">30</span> <span class="fl">29</span> <span class="fl">29</span> <span class="fl">29</span> <span class="fl">28</span> <span class="fl">28</span> <span class="fl">26</span> <span class="fl">26</span> <span class="fl">24</span>) <span class="va">b</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span> <span class="fl">12</span> <span class="va">a</span> <span class="va">aa</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">aa</span> <span class="va">aaa</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span> <span class="fl">12</span> <span class="va">b</span> <span class="va">bb</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">bb</span> <span class="va">bbb</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">SUBTRACT</span> <span class="va">aaa</span> <span class="va">bbb</span> <span class="va">c</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">c</span> <span class="va">z</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">z</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="er">' **Difference in mean weights between resamples**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="images/28-Chap-24_004.png" class="img-fluid"></p>
+<p>Therefore, two samples of twelve pigs each are clearly large enough, and, in fact, even smaller samples might be sufficient if the universes are really like those we guessed at. If, on the other hand, the differences in the guessed universes had been smaller, then twelve-pig groups would have seemed too small and we would then have had to try out larger sample sizes, say forty-eight pigs in each group and perhaps 200 pigs in each group if forty-eight were not enough. And so on until the sample size is large enough to promise the accuracy we want. (In that case, the decks would also have to be much larger, of course.)</p>
+<p>If we had guessed different universes for the two rations, then the sample sizes required would have been larger or smaller. If we had guessed the averages for the two samples to be closer together, then we would have needed larger samples. Also, if we had guessed the weight gains <em>within</em> each universe to be less spread out, the samples could have been smaller and vice versa.</p>
+<p>The following RESAMPLING STATS program first records the data from the two samples, and then draws from decks of infinite size by sampling with replacement from the original samples.</p>
+<!--- Resampling stats file; Matlab syntax closeish -->
+<div class="sourceCode" id="cb8"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="er">' Program file: "how_big_sample_05.rss"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="va">DATA</span> (<span class="fl">36</span> <span class="fl">35</span> <span class="fl">34</span> <span class="fl">33</span> <span class="fl">33</span> <span class="fl">32</span> <span class="fl">32</span> <span class="fl">31</span> <span class="fl">31</span> <span class="fl">30</span> <span class="fl">29</span> <span class="fl">28</span>) <span class="va">a</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="va">DATA</span> (<span class="fl">32</span> <span class="fl">31</span> <span class="fl">30</span> <span class="fl">29</span> <span class="fl">29</span> <span class="fl">28</span> <span class="fl">28</span> <span class="fl">27</span> <span class="fl">27</span> <span class="fl">26</span> <span class="fl">25</span> <span class="fl">24</span>) <span class="va">b</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span> <span class="fl">12</span> <span class="va">a</span> <span class="va">aa</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Draw a sample of 12 from ration a with replacement (this is like drawing</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="er">' from a large deck made up of many replicates of the elements in a)</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span> <span class="fl">12</span> <span class="va">b</span> <span class="va">bb</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Same for b</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">aa</span> <span class="va">aaa</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Find the averages of the resamples</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">bb</span> <span class="va">bbb</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="va">SUBTRACT</span> <span class="va">aaa</span> <span class="va">bbb</span> <span class="va">c</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Find the difference</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">c</span> <span class="va">z</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&gt;=</span><span class="fl">3</span> <span class="va">k</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="er">' How often did the difference exceed the cutoff point for our</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="er">' significance test of 3 pounds?</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">kk</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">kk</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="er">' If kk is close to zero, we know that the sample size is large enough</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="er">' that samples drawn from the universes we have hypothesized will not</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="er">' mislead us into thinking that they could come from the same universe.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="step-wise-sample-size-determination" class="level2" data-number="30.3">
+<h2 data-number="30.3" class="anchored" data-anchor-id="step-wise-sample-size-determination"><span class="header-section-number">30.3</span> Step-wise sample-size determination</h2>
+<p>Often it is wisest to determine the sample size as you go along, rather than fixing it firmly in advance. In sequential sampling, you <em>continue</em> sampling until the split is sufficiently even to make you believe you have a reliable answer.</p>
+<p>Related techniques work in a series of jumps from sample size to sample size. Step-wise sampling makes it less likely that you will take a sample that is much larger than necessary. For example, in the cable-television case, if you took a sample of perhaps fifty you could see whether the split was as wide as 32-18, which you figure you need for 9 to 1 odds that your answer is right. If the split were not that wide, you would sample another fifty, another 100, or however large a sample you needed until you reached a split wide enough to satisfy you that your answer was reliable and that you really knew which way the entire universe would vote.</p>
+<p>Step-wise sampling is not always practical, however, and the cable-television telephone-survey example is unusually favorable for its use. One major pitfall is that the <em>early</em> responses to a mail survey, for example, do <em>not</em> provide a random sample of the whole, and therefore it is a mistake simply to look at the early returns when the split is not wide enough to justify a verdict. If you have listened to early radio or television reports of election returns, you know how misleading the reports from the first precincts can be if we regard them as a fair sample of the whole.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Stratified sampling is another device that helps reduce the sample size required, by balancing the amounts of information you obtain in the various strata. (Cluster sampling does not reduce the sample size. Rather, it aims to reduce the cost of obtaining a sample that will produce a given level of accuracy.)</p>
+</section>
+<section id="summary" class="level2" data-number="30.4">
+<h2 data-number="30.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">30.4</span> Summary</h2>
+<p>Sample sizes are too often determined on the basis of convention or of the available budget. A more rational method of choosing the size of the sample is by balancing the diminution of error expected with a larger sample, and its value, against the cost of increasing the sample size. The relationship of various sample sizes to various degrees of accuracy can be estimated with resampling methods, which are illustrated here.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-fussler1961patterns" class="csl-entry" role="listitem">
+Fussler, Herman Howe, and Julian Lincoln Simon. 1961. <em>Patterns in the Use of Books in Large Research Libraries</em>. Chicago: University of Chicago Library.
+</div>
+<div id="ref-hansen1953sample" class="csl-entry" role="listitem">
+Hansen, Morris H, William N Hurwitz, and William G Madow. 1953. <span>“Sample Survey Methods and Theory. Vol. I. Methods and Applications.”</span> <a href="https://archive.org/details/SampleSurveyMethodsAndTheoryVol1">https://archive.org/details/SampleSurveyMethodsAndTheoryVol1</a>.
+</div>
+<div id="ref-kinsey1948sexual" class="csl-entry" role="listitem">
+Kinsey, Alfred C, Wardell B Pomeroy, and Clyde E Martin. 1948. <span>“Sexual Behavior in the Human Male.”</span> <em>W. B. Saunders Company</em>. <a href="https://books.google.co.uk/books?id=pfMKrY3VvigC">https://books.google.co.uk/books?id=pfMKrY3VvigC</a>.
+</div>
+<div id="ref-lorie1951basic" class="csl-entry" role="listitem">
+Lorie, James Hirsch, and Harry V Roberts. 1951. <em>Basic Methods of Marketing Research</em>. McGraw-Hill.
+</div>
+<div id="ref-schlaifer1961introduction" class="csl-entry" role="listitem">
+Schlaifer, Robert. 1961. <em>Introduction to Statistics for Business Decisions</em>. New York: MacGraw-Hill. <a href="https://archive.org/details/introductiontost00schl">https://archive.org/details/introductiontost00schl</a>.
+</div>
+<div id="ref-sudman1976applied" class="csl-entry" role="listitem">
+Sudman, Seymour. 1976. <em>Applied Sampling</em>. New <span>Y</span>ork: Academic Press. <a href="https://archive.org/details/appliedsampling0000unse">https://archive.org/details/appliedsampling0000unse</a>.
+</div>
+</div>
+</section>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Schlaifer <span class="citation" data-cites="schlaifer1961introduction">(<a href="references.html#ref-schlaifer1961introduction" role="doc-biblioref">1961</a>)</span> attacks the sample-size problem in the wider context of decision making, costs, and benefits. The statistically knowledgeable reader can find an excellent discussion of sample size in Hansen <em>et al.</em> <span class="citation" data-cites="hansen1953sample">(<a href="references.html#ref-hansen1953sample" role="doc-biblioref">1953</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See J. Lorie and H. Roberts <span class="citation" data-cites="lorie1951basic">(<a href="references.html#ref-lorie1951basic" role="doc-biblioref">1951, 155–57</a>)</span> for more discussion of the limitations of sequential sampling. Hansen <em>et al</em> <span class="citation" data-cites="hansen1953sample">(<a href="references.html#ref-hansen1953sample" role="doc-biblioref">1953, 78</a>)</span>, warn against the danger of increasing the sample size in this fashion:</p>
+<blockquote class="blockquote">
+<p>A fairly obvious and flagrant way of arriving at biased results is to examine the returns from an initial sample to determine whether they appear acceptable to the investigator; if they do, he uses the results as they are; if they do not, he discards the sample results and draws a new sample, perhaps by a different method, in the hope that he will obtain a result more nearly like the one he expected. Such an approach can be utilized to obtain almost any results desired, or can “prove” any point even when unbiased or consistent methods of selecting the sample and making the individual estimates are used if the initial results are subject to relatively large sampling errors.</p>
+</blockquote>
+<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
+</ol>
+</aside>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./correlation_causation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./bayes_simulation.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

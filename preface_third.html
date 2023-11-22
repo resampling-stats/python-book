@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.51">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Resampling statistics - Preface to the third edition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./preface_second.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table").addClass('lightable-paper lightable-striped lightable-hover')
+  });
+</script>
+
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./preface_third.html">Preface to the third edition</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Resampling statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_third.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_second.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_is_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about_technology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introducing Python and the Jupyter notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more_sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_2_compound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_4_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monte_carlo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard_scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./point_estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framing_questions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_measured.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reliability_average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_big_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-simon-saw" id="toc-what-simon-saw" class="nav-link active" data-scroll-target="#what-simon-saw">What Simon saw</a></li>
+  <li><a href="#sec-resampling-data-science" id="toc-sec-resampling-data-science" class="nav-link" data-scroll-target="#sec-resampling-data-science">Resampling and data science</a></li>
+  <li><a href="#what-we-changed" id="toc-what-we-changed" class="nav-link" data-scroll-target="#what-we-changed">What we changed</a></li>
+  <li><a href="#who-should-read-this-book-and-when" id="toc-who-should-read-this-book-and-when" class="nav-link" data-scroll-target="#who-should-read-this-book-and-when">Who should read this book, and when</a></li>
+  <li><a href="#welcome-to-resampling" id="toc-welcome-to-resampling" class="nav-link" data-scroll-target="#welcome-to-resampling">Welcome to resampling</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Preface to the third edition</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>The book in your hands, or on your screen, is the third edition of a book originally called “Resampling: the new statistics”, by Julian Lincoln Simon <span class="citation" data-cites="simon1992resampling">(<a href="references.html#ref-simon1992resampling" role="doc-biblioref">1992</a>)</span>.</p>
+<p>One of the pleasures of writing an edition of someone else’s book is that we have some freedom to praise a previous version of our own book. We will do that, in the next section. Next we talk about the resampling methods in this book, and their place at the heart of “data science”, Finally, we discuss what we have changed, and why, and make some suggestions about where this book could fit into your learning and teaching.</p>
+<section id="what-simon-saw" class="level2">
+<h2 class="anchored" data-anchor-id="what-simon-saw">What Simon saw</h2>
+<p>Simon gives the early history of this book in the original preface. He starts with the following observation:</p>
+<blockquote class="blockquote">
+<p>In the mid-1960’s, I noticed that most graduate students — among them many who had had several advanced courses in statistics — were unable to apply statistical methods correctly…</p>
+</blockquote>
+<p>Simon then applied his striking capacity for independent thought to the problem — and came to two essential conclusions.</p>
+<p>The first was that introductory courses in statistics use far too much mathematics. Most students cannot follow along and quickly get lost, reducing the subject to — as Simon puts it — “mumbo-jumbo”.</p>
+<p>On its own, this was not a new realization. Simon quotes a classic textbook by Wallis and Roberts <span class="citation" data-cites="wallis1956statistics">(<a href="references.html#ref-wallis1956statistics" role="doc-biblioref">1956</a>)</span>, in which they compare teaching statistics through mathematics to teaching in a foreign language. More recently, other teachers of statistics have come to the same conclusion. Cobb <span class="citation" data-cites="cobb2007introductory">(<a href="references.html#ref-cobb2007introductory" role="doc-biblioref">2007</a>)</span> argues that it is practically impossible to teach students the level of mathematics they would need to understand standard introductory courses. As you will see below, Cobb also agrees with Simon about the solution.</p>
+<p>Simon’s great contribution was to see <em>how</em> we can replace the mathematics, to better reveal the true heart of statistical thinking. His starting point appears in the original preface: “Beneath the logic of a statistical inference there necessarily lies a physical process”. Drawing conclusions from noisy data means building a <em>model</em> of the noisy world, and seeing how that model behaves. That model can be physical, where we generate the noisiness of the world using physical devices like dice and spinners and coin-tosses. In fact, Simon used exactly these kinds of devices in his first experiments in teaching <span class="citation" data-cites="simon1969basic">(<a href="references.html#ref-simon1969basic" role="doc-biblioref">Simon 1969</a>)</span>. He then saw that it was much more efficient to build these models with simple computer code, and the result was the first and second editions of this book, with their associated software, the <em>Resampling Stats</em> language.</p>
+<p>Simon’s second conclusion follows from the first. Now that Simon had stripped away the unnecessary barrier of mathematics, he had got to the heart of what is interesting and difficult in statistics. Drawing conclusions from noisy data involves a lot of hard, clear thinking. We need to be honest with our students about that; statistics is hard, not because it is obscure (it need not be), but because it deals with difficult problems. It is exactly that hard logical thinking that can make statistics so interesting to our best students; “statistics” is just reasoning about the world when the world is noisy. Simon writes eloquently about this in a section in the introduction — “Why is statistics such a difficult subject” (<a href="intro.html#sec-stats-difficult" class="quarto-xref"><span>Section&nbsp;1.6</span></a>).</p>
+<p>We needed both of Simon’s conclusions to get anywhere. We cannot hope to teach two hard subjects at the same time; mathematics, and statistical reasoning. That is what Simon has done: he replaced the mathematics with something that is much easier to reason about. Then he can concentrate on the real, interesting problem — the hard thinking about data, and the world it comes from. To quote from a later section in this book (<a href="resampling_method.html#sec-resamp-differs" class="quarto-xref"><span>Section&nbsp;2.4</span></a>): “Once we get rid of the formulas and tables, we can see that statistics is a matter of <em>clear thinking, not fancy mathematics</em>.” Instead of asking “where would I look up the right recipe for this”, you find yourself asking “what kind of world do these data come from?” and “how can I reason about that world?”. Like Simon, we have found that this way of thinking and teaching is almost magically liberating and satisfying. We hope and believe that you will find the same.</p>
+</section>
+<section id="sec-resampling-data-science" class="level2">
+<h2 class="anchored" data-anchor-id="sec-resampling-data-science">Resampling and data science</h2>
+<p>The ideas in Simon’s book, first published in 1992, have found themselves at the center of the modern movement of <em>data science</em>.</p>
+<p>In the section above, we described Simon’s path in discovering physical models as a way of teaching and explaining statistical tests. He saw that code was the right way to express these physical models, and therefore, to build and explain statistical tests.</p>
+<p>Meanwhile, the wider world of data analysis has been coming to the same conclusion, but from the opposite direction. Simon saw the power of resampling for explanation, and then that code was the right way to express these explanations. The data science movement discovered first that code was essential for data analysis, and then that code was the right way to explain statistics.</p>
+<p>The modern use of the phrase “data science” comes from the technology industry. From around 2007, companies such as LinkedIn and Facebook began to notice that there was a new type of data analyst that was much more effective than their predecessors. They came to call these analysts “data scientists”, because they had learned how to deal with large and difficult data while working in scientific fields such as ecology, biology, or astrophysics. They had done this by learning to use code:</p>
+<blockquote class="blockquote">
+<p>Data scientists’ most basic, universal skill is the ability to write code. <span class="citation" data-cites="davenport2012data">(<a href="references.html#ref-davenport2012data" role="doc-biblioref">Davenport and Patil 2012</a>)</span></p>
+</blockquote>
+<p>Further reflection <span class="citation" data-cites="donoho201750_official">(<a href="references.html#ref-donoho201750_official" role="doc-biblioref">Donoho 2017</a>)</span> suggested that something deep was going on: that <em>data science</em> was the expression of a radical change in the way we analyze data, in academia, and in industry. At the center of this change — was code. Code is the language that allows us to tell the computer what it should do with data; it is the native language of data analysis.</p>
+<p>This insight transforms the way with think of code. In the past, we have thought of code as a separate, specialized skill, that some of us learn. We take coding courses — we “learn to code”. If code is the fundamental language for analyzing data, then we need code to express what data analysis does, and explain how it works. Here we “code to learn”. Code is not an aim in itself, but a language we can use to express the simple ideas behind data analysis and statistics.</p>
+<p>Thus the data science movement started from code as the foundation for data analysis, to using code to explain statistics. It ends at the same place as this book, from the other side of the problem.</p>
+<p>The growth of data science is the inevitable result of taking computing seriously in education and research. We have already cited Cobb <span class="citation" data-cites="cobb2007introductory">(<a href="references.html#ref-cobb2007introductory" role="doc-biblioref">2007</a>)</span> on the impossibility of teaching the mathematics students would need in order to understand traditional statistics courses. He goes on to explain why there is so much mathematics, and why we should remove it. In the age before ubiquitous computing, we needed mathematics to simplify calculations that we could not practically do by hand. Now we have great computing power in our phones and laptops, we do not have this constraint, and we can use simpler resampling methods to solve the same problems. As Simon shows, these are much easier to describe and understand. Data science, and teaching with resampling, are the obvious consequences of ubiquitous computing.</p>
+</section>
+<section id="what-we-changed" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-changed">What we changed</h2>
+<p>This diversion, through data science, leads us to the changes that we have made for the new edition. The previous edition of this book is still excellent, and you can read it free, online, at <a href="http://www.resample.com/intro-text-online" class="uri">http://www.resample.com/intro-text-online</a>. It continues to be ahead of its time, and ahead of our time. Its one major drawback is that Simon bases much of the book around code written in a special language that he developed with Dan Weidenfeld, called <em>Resampling Stats</em>. Resampling Stats is well designed for expressing the steps in simulating worlds that include elements of randomness, and it was a useful contribution at the time that it was written. Since then, and particularly in the last decade, there have been many improvements in more powerful and general languages, such as Python and R. These languages are particularly suitable for beginners in data analysis, and they come with a huge range of tools and libraries for a many tasks in data analysis, including the kinds of models and simulations you will see in this book. We have updated the book to use Python, instead of <em>Resampling Stats</em>. If you already know Python or a similar language, such as R, you will have a big head start in reading this book, but even if you do not, we have written the book so it will be possible to pick up the Python code that you need to understand and build the kind of models that Simon uses. The advantage to us, your authors, is that we can use the very powerful tools associated with Python to make it easier to run and explain the code. The advantage to you, our readers, is that you can also learn these tools, and the Python language. They will serve you well for the rest of your career in data analysis.</p>
+<!---
+* The true novelty of resampling as teaching method
+* Statistics without the agonizing pain
+* Simon's insight
+* The rise of resampling in data science
+* Programming and statistics
+-->
+<p>Our second major change is that we have added some content that Simon specifically left out. Simon knew that his approach was radical for its time, and designed his book as a commentary, correction, and addition to traditional courses in statistics. He assumes some familiarity with the older world of normal distributions, t-tests, Chi-squared tests, analysis of variance, and correlation. In the time that has passed since he wrote the book, his approach to explanation has reached the mainstream. It is now perfectly possible to teach an introductory statistics course without referring to the older statistical methods. This means that the earlier editions of this book can now serve on their own as an introduction to statistics — but, used this way, at the time we write, this will leave our readers with some gaps to fill. Simon’s approach will give you a deep understanding of the ideas of statistics, and resampling methods to apply them, but you will likely come across other teachers and researchers using the traditional methods. To bridge this gap, we have added new sections that explain how resampling methods relate to their corresponding traditional methods. Luckily, we find these explanations add deeper understanding to the traditional methods. Teaching resampling is the best foundation for statistics, including the traditional methods.</p>
+<p>Lastly, we have extended Simon’s explanation of Bayesian probability and inference. This is partly because Bayesian methods have become so important in statistical inference, and partly because Simon’s approach has such obvious application in explaining how Bayesian methods work.</p>
+</section>
+<section id="who-should-read-this-book-and-when" class="level2">
+<h2 class="anchored" data-anchor-id="who-should-read-this-book-and-when">Who should read this book, and when</h2>
+<p>As you have seen in the previous sections, this book uses a radical approach to explaining <em>statistical inference</em> — the science of drawing conclusions from noisy data. This approach is quickly becoming the standard in teaching of data science, partly because it is so much easier to explain, and partly because of the increasing role of code in data analysis.</p>
+<p>Our book teaches the basics of using the Python language, basic probability, statistical inference through simulation and resampling, confidence intervals, and basic Bayesian reasoning, all through the use of model building in simple code.</p>
+<p>Statistical inference is an important part of research methods for many subjects; so much so, that research methods courses may even be called “statistics” courses, or include “statistics” components. This book covers the basic ideas behind statistical inference, and how you can apply these ideas to draw practical statistical conclusions. We recommend it to you as an introduction to statistics. If you are a teacher, we suggest you consider this book as a primary text for first statistics courses. We hope you will find, as we have, that this method of explaining through building is much more productive and satisfying than the traditional method of trying to convey some “intuitive” understanding of fairly complicated mathematics. We explain the relationship of these resampling techniques to traditional methods. Even if you do need to teach your students t-tests, and analysis of variance, we hope you will share our experience that this way of explaining is much more compelling than the traditional approach.</p>
+<p>Simon wrote this book for students and teachers who were interested to discover a radical new method of explanation in statistics and probability. The book will still work well for that purpose. If you have done a statistics course, but you kept feeling that you did not really understand it, or there was something fundamental missing that you could not put your finger on — good for you! — then, please, read this book. There is a good chance that it will give you deeper understanding, and reveal the logic behind the often arcane formulations of traditional statistics.</p>
+<p>Our book is only part of a data science course. There are several important aspects to data science. A data science course needs all the elements we list above, but it should also cover the process of reading, cleaning, and reorganizing data using Python, or another language, such as</p>
+<p>R</p>
+<p>It may also go into more detail about the experimental design, and cover prediction techniques, such as classification with machine learning, and data exploration with plots, tables, and summary measures. We do not cover those here. If you are teaching a full data science course, we suggest that you use this book as your first text, as an introduction to code, and statistical inference, and then add some of the many excellent resources on these other aspects of data science that assume some knowledge of statistics and programming.</p>
+</section>
+<section id="welcome-to-resampling" class="level2">
+<h2 class="anchored" data-anchor-id="welcome-to-resampling">Welcome to resampling</h2>
+<p>We hope you will agree that Simon’s insights for understanding and explaining are — really extraordinary. We are catching up slowly. If you are like us, your humble authors, you will find that Simon has succeeded in explaining what statistics is, and <em>exactly</em> how it works, to anyone with the patience to work through the examples, and think hard about the problems. If you have that patience, the rewards are great. Not only will you understand statistics down to its deepest foundations, but you will be able to think of your own tests, for your own problems, and have the tools to implement them yourself.</p>
+<p>Matthew Brett</p>
+<p>Stéfan van der Walt</p>
+<p>Ian Nimmo-Smith</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-cobb2007introductory" class="csl-entry" role="listitem">
+Cobb, George W. 2007. <span>“The Introductory Statistics Course: A Ptolemaic Curriculum?”</span> <em>Technology Innovations in Statistics Education</em> 1 (1). <a href="https://escholarship.org/uc/item/6hb3k0nz">https://escholarship.org/uc/item/6hb3k0nz</a>.
+</div>
+<div id="ref-davenport2012data" class="csl-entry" role="listitem">
+Davenport, Thomas H, and DJ Patil. 2012. <span>“Data Scientist: The Sexiest Job of the 21st Century.”</span> <em>Harvard Business Review</em> 90 (10): 70–76. <a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century">https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century</a>.
+</div>
+<div id="ref-donoho201750_official" class="csl-entry" role="listitem">
+Donoho, David. 2017. <span>“50 Years of Data Science.”</span> <em>Journal of Computational and Graphical Statistics</em> 26 (4): 745–66. <a href="http://courses.csail.mit.edu/18.337/2015/docs/50YearsDataScience.pdf">http://courses.csail.mit.edu/18.337/2015/docs/50YearsDataScience.pdf</a>.
+</div>
+<div id="ref-simon1969basic" class="csl-entry" role="listitem">
+Simon, Julian Lincoln. 1969. <em>Basic Research Methods in Social Science</em>. 1st ed. New York: Random House.
+</div>
+<div id="ref-simon1992resampling" class="csl-entry" role="listitem">
+———. 1992. <em>Resampling: The New Statistics</em>. 1st ed. <span>Arlington, VA</span>: <span>Resampling Stats Inc.</span>
+</div>
+<div id="ref-wallis1956statistics" class="csl-entry" role="listitem">
+Wallis, Wilson Allen, and Harry V Roberts. 1956. <em>Statistics, a New Approach.</em> New York: The Free Press.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">R edition</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./preface_second.html" class="pagination-link">
+        <span class="nav-page-text">Preface to the second edition</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

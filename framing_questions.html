@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.51">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Resampling statistics - 20&nbsp; Framing Statistical Questions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./testing_counts_1.html" rel="next">
+<link href="./point_estimation.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("table").addClass('lightable-paper lightable-striped lightable-hover')
+  });
+</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./framing_questions.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Resampling statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_third.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the third edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preface_second.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface to the second edition</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_is_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about_technology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Introducing Python and the Jupyter notebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_1b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more_sampling_tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_2_compound.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_theory_4_finite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampling_variability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./monte_carlo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./standard_scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ranks, Quantiles and Standard Scores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_ideas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Basic Ideas in Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inference_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./point_estimation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./framing_questions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./significance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_counts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_measured.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./testing_procedures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 1: Assessing the Accuracy of Samples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./confidence_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Confidence Intervals, Part 2: The Two Approaches to Estimating Confidence Intervals</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reliability_average.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Some Last Words About the Reliability of Sample Averages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation_causation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_big_sample.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes_simulation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">20.1</span> Introduction</a></li>
+  <li><a href="#translating-scientific-questions-into-probabilistic-and-statistical-questions" id="toc-translating-scientific-questions-into-probabilistic-and-statistical-questions" class="nav-link" data-scroll-target="#translating-scientific-questions-into-probabilistic-and-statistical-questions"><span class="header-section-number">20.2</span> Translating scientific questions into probabilistic and statistical questions</a></li>
+  <li><a href="#the-three-types-of-questions" id="toc-the-three-types-of-questions" class="nav-link" data-scroll-target="#the-three-types-of-questions"><span class="header-section-number">20.3</span> The three types of questions</a>
+  <ul class="collapse">
+  <li><a href="#the-scientific-question" id="toc-the-scientific-question" class="nav-link" data-scroll-target="#the-scientific-question"><span class="header-section-number">20.3.1</span> The Scientific Question</a></li>
+  <li><a href="#the-operational-empirical-question" id="toc-the-operational-empirical-question" class="nav-link" data-scroll-target="#the-operational-empirical-question"><span class="header-section-number">20.3.2</span> The Operational-Empirical Question</a></li>
+  <li><a href="#the-statistical-question" id="toc-the-statistical-question" class="nav-link" data-scroll-target="#the-statistical-question"><span class="header-section-number">20.3.3</span> The Statistical Question</a></li>
+  </ul></li>
+  <li><a href="#illustrative-translations" id="toc-illustrative-translations" class="nav-link" data-scroll-target="#illustrative-translations"><span class="header-section-number">20.4</span> Illustrative translations</a>
+  <ul class="collapse">
+  <li><a href="#illustration-a-beliefs-about-smoking" id="toc-illustration-a-beliefs-about-smoking" class="nav-link" data-scroll-target="#illustration-a-beliefs-about-smoking"><span class="header-section-number">20.4.1</span> Illustration A — beliefs about smoking</a></li>
+  <li><a href="#illustration-b-is-it-a-cure" id="toc-illustration-b-is-it-a-cure" class="nav-link" data-scroll-target="#illustration-b-is-it-a-cure"><span class="header-section-number">20.4.2</span> Illustration B — is it a cure?</a></li>
+  <li><a href="#illustration-c-a-better-method-for-teaching-reading" id="toc-illustration-c-a-better-method-for-teaching-reading" class="nav-link" data-scroll-target="#illustration-c-a-better-method-for-teaching-reading"><span class="header-section-number">20.4.3</span> Illustration C — a better method for teaching reading</a></li>
+  <li><a href="#illustration-d-better-fertilizer" id="toc-illustration-d-better-fertilizer" class="nav-link" data-scroll-target="#illustration-d-better-fertilizer"><span class="header-section-number">20.4.4</span> Illustration D — better fertilizer</a></li>
+  </ul></li>
+  <li><a href="#generalizing-from-sample-to-universe" id="toc-generalizing-from-sample-to-universe" class="nav-link" data-scroll-target="#generalizing-from-sample-to-universe"><span class="header-section-number">20.5</span> Generalizing from sample to universe</a></li>
+  <li><a href="#the-steps-in-statistical-inference" id="toc-the-steps-in-statistical-inference" class="nav-link" data-scroll-target="#the-steps-in-statistical-inference"><span class="header-section-number">20.6</span> The steps in statistical inference</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">20.7</span> Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-framing-questions" class="quarto-section-identifier"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2" data-number="20.1">
+<h2 data-number="20.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">20.1</span> Introduction</h2>
+<p><a href="what_is_probability.html" class="quarto-xref"><span>Chapter&nbsp;3</span></a> - <a href="monte_carlo.html" class="quarto-xref"><span>Chapter&nbsp;15</span></a> discussed problems in probability theory. That is, we have been estimating the probability of a composite event <em>resulting from a system in which we know the probabilities of the simple events</em> — the “parameters” of the situation.</p>
+<p>Then <a href="inference_ideas.html" class="quarto-xref"><span>Chapter&nbsp;17</span></a> - <a href="point_estimation.html" class="quarto-xref"><span>Chapter&nbsp;19</span></a> discussed the underlying philosophy of statistical inference.</p>
+<p>Now we turn to inferential-statistical problems. Up until now, we have been estimating the complex probabilities of <em>known</em> universes — the topic of <em>probability</em> . Now as we turn to problems in <em>statistics</em> , we seek to learn the characteristics of an unknown system — the basic probabilities of its simple events and parameters. (Here we note again, however, that in the process of dealing with them, all statistical-inferential problems eventually are converted into problems of pure probability). To assess the characteristics of the system in such problems, we employ the characteristics of the sample(s) that have been drawn from it.</p>
+<p>For further discussion on the distinction between inferential statistics and probability theory, see <a href="resampling_method.html" class="quarto-xref"><span>Chapter&nbsp;2</span></a> - <a href="what_is_probability.html" class="quarto-xref"><span>Chapter&nbsp;3</span></a>.</p>
+<p>This chapter begins the topic of <em>hypothesis testing</em> . The issue is: whether to adjudge that a particular sample (or samples) come(s) from a particular universe. A two-outcome yes-no universe is discussed first. Then we move on to “measured-data” universes, which are more complex than yes-no outcomes because the variables can take on many values, and because we ask somewhat more complex questions about the relationships of the samples to the universes. This topic is continued in subsequent chapters.</p>
+<p>In a typical hypothesis-testing problem presented in this chapter, one sample of hospital patients is treated with a new drug and a second sample is not treated but rather given a “placebo.” After obtaining results from the samples, the “null” or “test” or “benchmark” hypothesis would be that the resulting drug and placebo samples are drawn from the same universe. This device of the null hypothesis is the equivalent of stating that the drug had no effect on the patients. It is a special intellectual strategy developed to handle such statistical questions.</p>
+<p>We start with the scientific question: Does the medicine have an effect? We then translate it into a testable statistical question: How likely is it that the sample means come from the same universe? This process of question-translation is the crucial step in hypothesis-testing and inferential statistics. The chapter then explains how to solve these problems using resampling methods after you have formulated the proper statistical question.</p>
+<p>Though the examples in the chapter mostly focus on tests of hypotheses, the procedures also apply to confidence intervals, which will be discussed later.</p>
+</section>
+<section id="translating-scientific-questions-into-probabilistic-and-statistical-questions" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="translating-scientific-questions-into-probabilistic-and-statistical-questions"><span class="header-section-number">20.2</span> Translating scientific questions into probabilistic and statistical questions</h2>
+<p>The first step in using probability and statistics is to translate the <em>scientific</em> question into a <em>statistical</em> question. Once you know exactly which prob-stats question you want to ask — that is, exactly which probability you want to determine — the rest of the work is relatively easy (though subtle). The stage at which you are most likely to make mistakes is in stating the question you want to answer in probabilistic terms.</p>
+<p>Though this translation is difficult, it involves no mathematics. Rather, this step requires only hard thought. You cannot beg off by saying, “I have no brain for math!” The need is for a brain that will do clear thinking, rather than a brain especially talented in mathematics. A person who uses conventional methods can avoid this hard thinking by simply grabbing the formula for some test without understanding why s/he chooses that test. But resampling pushes you to do this thinking explicitly.</p>
+<p>This crucial process of translating from a pre-statistical question to a statistical question takes place in all statistical inference. But its nature comes out most sharply with respect to testing hypotheses, so most of what will be said about it will be in that context.</p>
+</section>
+<section id="the-three-types-of-questions" class="level2" data-number="20.3">
+<h2 data-number="20.3" class="anchored" data-anchor-id="the-three-types-of-questions"><span class="header-section-number">20.3</span> The three types of questions</h2>
+<p>Let’s consider the natures of conceptual, operational, and statistical questions.</p>
+<section id="the-scientific-question" class="level3" data-number="20.3.1">
+<h3 data-number="20.3.1" class="anchored" data-anchor-id="the-scientific-question"><span class="header-section-number">20.3.1</span> The Scientific Question</h3>
+<p>A study for either scientific or decision-making purposes properly begins with a general question about the nature of the world — that is, a conceptual or theoretical question. One must then transform this question into an operational-empirical form that one can study scientifically. Thence comes the translation into a technical-statistical question.</p>
+<p>The scientific-conceptual-theoretical question can be an issue of theory, or a policy choice, or the result of curiosity at large.</p>
+<p>Examples include: Can a bioengineer increase the chance of female calves being born? Is copper becoming less scarce? Are the prices of liquor systematically different in states where the liquor stores are publicly owned compared to states where they are privately owned? Does a new formulation of pig rations lead to faster hog growth? Was the rate of unemployment higher last month than the long-run average, or was the higher figure likely to be the result of sampling error? What are the margins of probable error for an unemployment survey?</p>
+</section>
+<section id="the-operational-empirical-question" class="level3" data-number="20.3.2">
+<h3 data-number="20.3.2" class="anchored" data-anchor-id="the-operational-empirical-question"><span class="header-section-number">20.3.2</span> The Operational-Empirical Question</h3>
+<p><em>The operational-empirical question</em> is framed in measurable quantities in a meaningful design. Examples include: How likely is this state of affairs (say, the new pig-food formulation) to cause an event such as was observed (say, the observed increase in hog growth)? How likely is it that the mean unemployment rate of a sample taken from the universe of interest (say, the labor force, with an unemployment rate of 10 percent) will be between 11 percent and 12 percent? What is the probability of getting three girls in the first four children if the probability of a girl is .48? How unlikely is it to get nine females out of ten calves in an experiment on your farm? Did the price of copper fall between 1800 and the present? These questions are in the form of empirical questions, which have already been transformed by operationalizing from scientific-conceptual questions.</p>
+</section>
+<section id="the-statistical-question" class="level3" data-number="20.3.3">
+<h3 data-number="20.3.3" class="anchored" data-anchor-id="the-statistical-question"><span class="header-section-number">20.3.3</span> The Statistical Question</h3>
+<p>At this point one must decide whether the conceptual-scientific question is of the form of either a) or b):</p>
+<ol type="a">
+<li>A test about whether some sample will frequently happen by chance rather than being very surprising — a test of the “significance” of a hypothesis. Such hypothesis testing takes the following form: How likely is a given “universe” to produce <em>some</em> sample like x? This leads to interpretation about: How likely is a given universe to be the cause of <em>this observed</em> sample?</li>
+<li>A question about the accuracy of the estimate of a parameter of the population based upon sample evidence (an inquiry about “confidence intervals”). This sort of question is considered by some (but not by me) to be a question in estimation — that is, one’s best guess about (say) the magnitude and probable error of the mean or median of a population. This is the form of a question about confidence limits — how likely is the mean to be between x and y?</li>
+</ol>
+<p>Notice that the statistical question is framed as a question in probability.</p>
+</section>
+</section>
+<section id="illustrative-translations" class="level2" data-number="20.4">
+<h2 data-number="20.4" class="anchored" data-anchor-id="illustrative-translations"><span class="header-section-number">20.4</span> Illustrative translations</h2>
+<p>The best way to explain how to translate a scientific question into a statistical question is to illustrate the process.</p>
+<section id="illustration-a-beliefs-about-smoking" class="level3" data-number="20.4.1">
+<h3 data-number="20.4.1" class="anchored" data-anchor-id="illustration-a-beliefs-about-smoking"><span class="header-section-number">20.4.1</span> Illustration A — beliefs about smoking</h3>
+<p>Were doctors’ beliefs as of 1964 about the harmfulness of cigarette smoking (and doctors’ own smoking behavior) affected by the <em>social</em> groups among whom the doctors live <span class="citation" data-cites="simon1967doctors">(<a href="references.html#ref-simon1967doctors" role="doc-biblioref">Simon 1967</a>)</span>? That was the <em>theoretical</em> question. We decided to define the doctors’ <em>reference groups</em> as the <em>states</em> in which they live, because data about doctors and smoking were available state by state (<em>Modern Medicine</em>, 1964). We could then translate this question into an operational and testable <em>scientific</em> hypothesis by asking this question: Do doctors in tobacco-economy states differ from doctors in other states in their smoking, and in their beliefs about smoking?</p>
+<p>Which numbers would help us answer this question, and how do we interpret those numbers? We now were ready to ask the <em>statistical</em> question: Do doctors in tobacco-economy states “belong to the same universe” (with respect to smoking) as do other doctors? That is, do doctors in tobacco-economy states have the same characteristics — at least, those characteristics we are interested in, smoking in this case — as do other doctors? Later we shall see that the way to proceed is to consider the statistical hypothesis that these doctors do indeed belong to that same universe; that hypothesis and the universe will be called “benchmark hypothesis” and “benchmark universe” respectively — or in more conventional usage, the “null hypothesis.”</p>
+<p>If the tobacco-economy doctors do indeed belong to the benchmark universe — that is, if the benchmark hypothesis is correct — then there is a 49/50 chance that doctors in some state <em>other than</em> the state in which tobacco is most important will have the highest rate of cigarette smoking. But in fact we observe that the state in which tobacco accounts for the largest proportion of the state’s income — North Carolina — had (as of 1964) a higher proportion of doctors who smoked than any other state. (Furthermore, a lower proportion of doctors in North Carolina than in any other state said that they <em>believed</em> that smoking is a health hazard.)</p>
+<p>Of course, it is possible that it was just <em>chance</em> that North Carolina doctors smoked most, but the chance is only 1 in 50 if the benchmark hypothesis is correct. Obviously, <em>some</em> state had to have the highest rate, and the chance for any other state was also 1 in 50. But, because our original <em>scientific</em> hypothesis was that North Carolina doctors’ smoking rate would be highest, and we then observed that it was highest even though the chance was only 1 in 50, the observation became interesting and meaningful to us. It means that the chances are strong that there was a connection between the importance of tobacco in the economy of a state and the rate of cigarette smoking among doctors living there (as of 1964).</p>
+<p>To consider this problem from another direction, it would be rare for North Carolina to have the highest smoking rate for doctors if there were no special reason for it; in fact, it would occur only once in fifty times. But, if there <em>were</em> a special reason — and we hypothesize that the tobacco economy provides the reason — then it would <em>not</em> seem unusual or rare for North Carolina to have the highest rate; therefore we choose to believe in the not-so-unusual phenomenon, that the tobacco economy caused doctors to smoke cigarettes.</p>
+<p>Like many (most? all?) actual situations, the cigarettes and doctors’ smoking issue is a rather messy business. Did I have a clear-cut, theoretically-derived prediction before I began? Maybe I did a bit of “data dredging” — that is, maybe I started with a vague expectation, and only arrived at my sharp hypothesis after I saw the data. This would weaken the probabilistic interpretation of the test of significance — but this is something that a scientific investigator does not like to do because it weakens his/her claim for attention and chance of publication. On the other hand, if one were a Bayesian, one could claim that one had a prior probability that the observed effect would occur, and the observed data strengthens that prior; but this procedure would not seem proper to many other investigators. The only wholly satisfactory conclusion is to obtain more data — but as of 1993, there does not seem to have been another data set collected since 1964, and collecting a set by myself is not feasible.</p>
+<p>This clearly is a case of statistical inference that one could argue about, though perhaps it is true that <em>all</em> cases where the data are sufficiently ambiguous as to require a test of significance are also sufficiently ambiguous that they are properly subject to argument.</p>
+<p>For some decades the hypothetico-deductive framework was the leading point of view in empirical science. It insisted that the empirical and statistical investigation should be preceded by theory, and only propositions suggested by the theory should be tested. Investigators were not supposed to go back and forth from data to theory to testing. It is now clear that this is an ivory-tower irrelevance, and no one lived by the hypothetico-deductive strictures anyway — just pretended to. Furthermore, there is no sound reason to feel constrained by it, though it strengthens your conclusions if you had theoretical reason in advance to expect the finding you obtained.</p>
+</section>
+<section id="illustration-b-is-it-a-cure" class="level3" data-number="20.4.2">
+<h3 data-number="20.4.2" class="anchored" data-anchor-id="illustration-b-is-it-a-cure"><span class="header-section-number">20.4.2</span> Illustration B — is it a cure?</h3>
+<p>Does medicine CCC cure some particular cancer? That’s the scientific question. So you give the medicine to six patients who have the cancer and you do not give it to six similar patients who have the cancer. Your sample contains only twelve people because it is not feasible for you to obtain a larger sample. Five of six “medicine” patients get well, two of six “no medicine” patients get well. Does the medicine cure the cancer? That is, if future cancer patients take the medicine, will their rate of recovery be higher than if they did not take the medicine?</p>
+<p>One way to translate the scientific question into a statistical question is to ask: Do the “medicine” patients <em>belong to the same universe</em> as the “no medicine” patients? That is, we ask whether “medicine” patients still have the <em>same</em> chances of getting well from the cancer as do the “no medicine” patients, or whether the medicine has bettered the chances of those who took it and thus removed them from the original universe, with its original chances of getting well. The original universe, to which the “no medicine” patients must still belong, is the benchmark universe. Shortly we shall see that we proceed by comparing the observed results against the benchmark <em>hypothesis</em> that the “medicine” patients still belong to the benchmark <em>universe</em> — that is, they still have the same chance of getting well as the “no medicine” patients.</p>
+<p>We want to know whether or not the medicine does any good. This question is the same as asking whether patients who take medicine are still in the same population (universe) as “no medicine” patients, or whether they now belong to a different population in which patients have higher chances of getting well. To recapitulate our translations, we move from asking: Does the medicine cure the cancer? to, Do “medicine” patients have the same chance of getting well as “no medicine” patients?; and finally, to: Do “medicine” patients belong to the same universe (population) as “no medicine” patients? Remember that “population” in this sense does not refer to the population at large, but rather to a group of cancer sufferers (perhaps an infinitely large group) who have given chances of getting well, on the average. Groups with different chances of getting well are called “different populations” (universes). Shortly we shall see how to <em>answer</em> this statistical question. We must keep in mind that our ultimate concern in cases like this one is to <em>predict future results</em> of the medicine, that is, to predict whether use of the medicine will lead to a higher recovery rate than would be observed without the medicine.</p>
+</section>
+<section id="illustration-c-a-better-method-for-teaching-reading" class="level3" data-number="20.4.3">
+<h3 data-number="20.4.3" class="anchored" data-anchor-id="illustration-c-a-better-method-for-teaching-reading"><span class="header-section-number">20.4.3</span> Illustration C — a better method for teaching reading</h3>
+<p>Is method Alpha a better method of teaching reading than method Beta? That is, will method Alpha produce a higher average reading score in the future than will method Beta? Twenty children taught to read with method Alpha have an average reading score of 79, whereas children taught with method Beta have an average score of 84. To translate this <em>scientific</em> question into a <em>statistical</em> question we ask: Do children taught with method Alpha come from the same universe (population) as children taught with method Beta? Again, “universe” (population) does <em>not</em> mean the town or social group the children come from, and indeed the experiment will make sense only if the children <em>do</em> come from the same population, in that sense of “population.” What we want to know is whether or not the children belong to the same <em>statistical</em> population (universe), <em>defined according to their reading ability, after they have studied</em> with method Alpha or method Beta.</p>
+</section>
+<section id="illustration-d-better-fertilizer" class="level3" data-number="20.4.4">
+<h3 data-number="20.4.4" class="anchored" data-anchor-id="illustration-d-better-fertilizer"><span class="header-section-number">20.4.4</span> Illustration D — better fertilizer</h3>
+<p>If one plot of ground is treated with fertilizer, and another similar plot is not treated, the benchmark (null) hypothesis is that the corn raised on the treated plot is no different than the corn raised on the untreated lot — that is, that the corn from the treated plot comes from (“belongs to”) the same universe as the corn from the untreated plot. If our statistical test makes it seem very unlikely that a universe like that from which the untreated-plot corn comes would <em>also</em> produce corn such as came from the treated plot, then we are willing to believe that the fertilizer has an effect. For a psychological example, substitute the words “group of children” for “plot,” “special training” for “fertilizer,” and “I.Q. score” for “corn.”</p>
+<p>There is nothing sacred about the benchmark (null) hypothesis of “no difference.” You could just as well test the benchmark hypothesis that the corn comes from a universe that averages 110 bushels per acre, if you have reason to be especially interested in knowing whether or not the fertilizer produces more than 110 bushels per acre. But in many cases it is reasonable to test the probability that a sample comes from the population that does not receive the special treatment of medicine, fertilizer, or training.</p>
+</section>
+</section>
+<section id="generalizing-from-sample-to-universe" class="level2" data-number="20.5">
+<h2 data-number="20.5" class="anchored" data-anchor-id="generalizing-from-sample-to-universe"><span class="header-section-number">20.5</span> Generalizing from sample to universe</h2>
+<p>So far we have discussed the scientific question and the statistical question. Remember that there is always a generalization question, too: Do the statistical results from this particular sample of, say, rats apply to a universe of humans? This question can be answered only with wisdom, common sense, and general knowledge, and not with probability statistics.</p>
+<p>Translating from a scientific question into a statistical question is mostly a matter of asking the probability that some given benchmark universe (population) will produce one or more observed samples. Notice that we must (at least for general scientific testing purposes) ask about a <em>given</em> universe whose composition we assume to be <em>known</em> , rather than about a <em>range</em> of universes, or about a universe whose properties are unknown. In fact, there is really only one question that probability statistics can answer: Given some particular benchmark universe of some stated composition, what is the probability that an observed sample would come from it? (Please notice the subtle but all-important difference between the words “would come” in the previous sentence, and the word “came.”) A variation of this question is: Given two (or more) samples, what is the probability that they would come from the <em>same</em> universe — that is, that the same universe would produce both of them? In this latter case, the relevant benchmark universe is implicitly the universe whose composition is the two samples combined.</p>
+<p>The necessity for stating the characteristics of the universe in question becomes obvious when you think about it for a moment. Probability-statistical testing adds up to comparing a sample with a particular benchmark universe, and asking whether there probably is a difference between the sample and the universe. To carry out this comparison, we ask <em>how likely</em> it is that the benchmark universe would produce a sample like the observed sample.</p>
+<!---
+improve phrasing
+-->
+<p>But in order to find out whether or not a universe could produce a given sample, we must ask whether or not some <em>particular</em> universe — with stated characteristics — could produce the sample. There is no doubt that <em>some</em> universe could produce the sample by a random process; in fact, some universe did. The only sensible question, then, is whether or not a <em>particular</em> universe, with stated (or known) characteristics, is likely to produce such a sample. In the case of the medicine, the universe with which we compare the sample who took the medicine is the benchmark universe to which that sample would belong if the medicine had had no effect. This comparison leads to the benchmark (null) hypothesis that the sample comes from a population in which the medicine (or other experimental treatment) seems to have <em>no effect</em> . It is to avoid confusion inherent in the term “null hypothesis” that I replace it with the term “benchmark hypothesis.”</p>
+<p>The concept of the benchmark (null) hypothesis is not easy to grasp. The best way to learn its meaning is to see how it is used in practice. For example, we say we are willing to believe that the medicine has an effect if it seems very unlikely from the number who get well that the patients given the medicine still belong to the same benchmark universe as the patients given no medicine at all — that is, if the benchmark hypothesis is unlikely.</p>
+</section>
+<section id="the-steps-in-statistical-inference" class="level2" data-number="20.6">
+<h2 data-number="20.6" class="anchored" data-anchor-id="the-steps-in-statistical-inference"><span class="header-section-number">20.6</span> The steps in statistical inference</h2>
+<p>These are the steps in conducting statistical inference</p>
+<ul>
+<li><strong>Step 1.</strong> Frame a question in the form of: <em>What is the chance of getting the observed sample x from some specified population X?</em> For example, what is the probability of getting a sample of 9 females and one male from a population where the probability of getting a single female is .48?</li>
+<li><strong>Step 2.</strong> Reframe the question in the form of: <em>What kinds of samples does population X produce, with which probabilities?</em> That is, what is the probability of the observed sample x (9 females in 10 calves), given that a population is X (composed of 48 percent females)? Or in notation, what is <span class="math inline">\(P(x | X)\)</span>?</li>
+<li><strong>Step 3.</strong> Actually <em>investigate the behavior</em> of S with respect to S and other samples. This can be done in two ways:</li>
+</ul>
+<ol type="1">
+<li>Use the calculus of probability (the formulaic method), perhaps resorting to the Monte Carlo method if an appropriate formula does not exist. Or</li>
+<li>Resampling (in the larger sense), which equals the Monte Carlo method minus its use for approximations, investigation of complex functions in statistics and other theoretical mathematics, and non-resampling uses elsewhere in science. Resampling in the more restricted sense includes bootstrap, permutation, and other non-parametric methods. More about the resampling procedure follows in the paragraphs to come, and then in later chapters in the book. <!---
+Some repetition in para above?
+--></li>
+</ol>
+<ul>
+<li><strong>Step 4.</strong> Interpret the probabilities that result from step 3 in terms of acceptance or rejection of hypotheses, surety of conclusions, and as inputs to decision theory.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul>
+<p>The following short definition of statistical inference summarizes the previous four steps:</p>
+<blockquote class="blockquote">
+<p>Statistical inference equals the selection of a probabilistic model to resemble the process you wish to investigate, the investigation of that model’s behavior, and the interpretation of the results.</p>
+</blockquote>
+<p>Stating the steps to be followed in a procedure is an operational definition of the procedure. My belief in the clarifying power of this device (the operational definition) is embodied in the set of steps given in <a href="monte_carlo.html" class="quarto-xref"><span>Chapter&nbsp;15</span></a> for the various aspects of statistical inference. A canonical question-and-answer procedure for testing hypotheses will be found in <a href="testing_procedures.html" class="quarto-xref"><span>Chapter&nbsp;25</span></a>, and one for confidence intervals will be found in <a href="confidence_1.html" class="quarto-xref"><span>Chapter&nbsp;26</span></a>.</p>
+</section>
+<section id="summary" class="level2" data-number="20.7">
+<h2 data-number="20.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">20.7</span> Summary</h2>
+<p>We define resampling to include problems in inferential statistics as well as problems in probability as follows: <em>Using the entire set of data you have in hand, or using the given data-generating mechanism (such as a die) that is a model of the process you wish to understand, produce new samples of simulated data, and examine the results of those samples</em>. That’s it in a nutshell. In some cases, it may also be appropriate to amplify this procedure with additional assumptions.</p>
+<p>Problems in pure probability may at first seem different in nature than problems in statistical inference. But the same logic as stated in this definition applies to both varieties of problems. The difference is that in probability problems the “model” is known in advance — say, the model implicit in a deck of poker cards plus a game’s rules for dealing and counting the results — rather than the model being assumed to be best estimated by the observed data, as in resampling statistics.</p>
+<p>The hardest job in using probability statistics, and the most important, is to <em>translate</em> the scientific question into a form to which statistics can give a sensible answer. You must translate scientific questions into the appropriate form for <em>statistical operations</em> , so that you know which operations to perform. This is the part of the job that requires hard, clear thinking — though it is non-mathematical thinking — and it is the part that someone else usually cannot easily do for you.</p>
+<p>Once you know exactly which probability-statistical question you want to ask — that is, exactly which probability you want to determine — the rest of the work is relatively easy. The stage at which you are most likely to make mistakes is in stating the question you want to answer in probabilistic terms. Though this step is hard, <em>it involves no mathematics</em> . This step requires only <em>hard, clear thinking</em> . You cannot beg off by saying “I have no brain for math!” To flub this step is to admit that you have no brain for clear thinking, rather than no brain for mathematics.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-simon1967doctors" class="csl-entry" role="listitem">
+Simon, Julian Lincoln. 1967. <span>“Doctors, Smoking, and Reference Groups.”</span> <em>Public Opinion Quarterly</em> 31 (4): 646–47.
+</div>
+</div>
+</section>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>These steps are discussed in more philosophic depth in my (JLS’s) <a href="http://www.juliansimon.org/writings/Resampling_Philosophy">online book on the philosophy of statistics and resampling</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./point_estimation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./testing_counts_1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Hypothesis-Testing with Counted Data, Part 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
