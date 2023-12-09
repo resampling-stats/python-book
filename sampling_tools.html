@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 6&nbsp; Tools for samples and sampling</title>
+<title>Resampling statistics - 7&nbsp; Tools for samples and sampling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./resampling_with_code2.html" rel="next">
-<link href="./resampling_with_code.html" rel="prev">
+<link href="./probability_theory_1a.html" rel="next">
+<link href="./resampling_with_code2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sampling_tools.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sampling_tools.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -192,14 +192,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
+  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resampling_with_code2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span></a>
+  <a href="./sampling_tools.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -380,8 +380,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6.8</span> Conclusion</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7.8</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -390,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-sampling-tools" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></h1>
+<h1 class="title"><span id="sec-sampling-tools" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span></h1>
 </div>
 
 
@@ -405,8 +405,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="introduction" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
+<section id="introduction" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">7.1</span> Introduction</h2>
 <p>Now you have some experience with Python, probabilities and resampling, it is time to introduce some useful tools for our experiments and programs.</p>
 <div class="notebook" name="sampling_tools" title="Sampling tools">
 <p>Start of <code>sampling_tools</code> notebook</p>
@@ -415,10 +415,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/sampling_tools.ipynb">Interact</a>
 </div>
 
-<section id="samples-and-labels" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="samples-and-labels"><span class="header-section-number">6.2</span> Samples and labels</h2>
-<p>Thus far we have used numbers such as 1 and 0 and 10 to represent the elements we are sampling from. For example, in <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a>, we were simulating the chance of a particular juror being black, given that 26% of the eligible jurors in the county were black. We used <em>integers</em> for that task, where we started with all the integers from 0 through 99, and asked NumPy to select values at random from those integers. When NumPy selected an integer from 0 through 25, we chose to label the resulting simulated juror as black — there are 26 integers in the range 0 through 25, so there is a 26% chance that any one integer will be in that range. If the integer was from 26 through 99, the simulated juror was white (there are 74 integers in the range 26 through 99).</p>
-<p>Here is the process of simulating a single juror, adapted from <a href="resampling_with_code2.html#sec-random-zero-through-ninety-nine" class="quarto-xref"><span>Section&nbsp;7.3.3</span></a>:</p>
+<section id="samples-and-labels" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="samples-and-labels"><span class="header-section-number">7.2</span> Samples and labels</h2>
+<p>Thus far we have used numbers such as 1 and 0 and 10 to represent the elements we are sampling from. For example, in <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;6</span></a>, we were simulating the chance of a particular juror being black, given that 26% of the eligible jurors in the county were black. We used <em>integers</em> for that task, where we started with all the integers from 0 through 99, and asked NumPy to select values at random from those integers. When NumPy selected an integer from 0 through 25, we chose to label the resulting simulated juror as black — there are 26 integers in the range 0 through 25, so there is a 26% chance that any one integer will be in that range. If the integer was from 26 through 99, the simulated juror was white (there are 74 integers in the range 26 through 99).</p>
+<p>Here is the process of simulating a single juror, adapted from <a href="resampling_with_code2.html#sec-random-zero-through-ninety-nine" class="quarto-xref"><span>Section&nbsp;6.3.3</span></a>:</p>
 <div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-1_bad4738eb93152f4aea86bcb079d9c0a">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask NumPy for a random number generator.</span></span>
@@ -448,8 +448,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>However, Python can also store bits of text, called <em>strings</em>. Values that are bits of text can be very useful because the text values can be memorable labels for the entities we are sampling from, in our simulations.</p>
 <div class="python">
 <p>Before we get to strings, let us consider the different types of value we have seen so far.</p>
-<section id="types-of-values-in-python" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="types-of-values-in-python"><span class="header-section-number">6.3</span> Types of values in Python</h2>
+<section id="types-of-values-in-python" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="types-of-values-in-python"><span class="header-section-number">7.3</span> Types of values in Python</h2>
 <p>You have already come across the idea that Python values can be integers (positive or negative whole numbers), like this:</p>
 <div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-5_b24ffb5c1f38cc2efe8381b0bff4e590">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">10</span></span>
@@ -473,8 +473,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>&lt;class 'float'&gt;</code></pre>
 </div>
 </div>
-<section id="numpy-arrays" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="numpy-arrays"><span class="header-section-number">6.3.1</span> Numpy arrays</h3>
+<section id="numpy-arrays" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="numpy-arrays"><span class="header-section-number">7.3.1</span> Numpy arrays</h3>
 <p>You have also seen that Numpy contains another type, the <em>array</em>. An array is a value that contains a sequence of values. For example, here is an array of integers:</p>
 <div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-8_6638133ad2ff85e76eadf966c38f5881">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">99</span>, <span class="dv">4</span>])</span>
@@ -513,8 +513,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="sec-lists" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="sec-lists"><span class="header-section-number">6.3.2</span> Lists</h3>
+<section id="sec-lists" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="sec-lists"><span class="header-section-number">7.3.2</span> Lists</h3>
 <p>We have elided past another Python type, the <em>list</em>. In fact we have already used lists in making arrays. For example, here we make an array with four values:</p>
 <div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-13_545903a443abb0d5a737867b19e47d27">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.array([<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">99</span>, <span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -573,8 +573,8 @@ End of Python section
 </section>
 </div>
 </section>
-<section id="sec-intro-to-strings" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="sec-intro-to-strings"><span class="header-section-number">6.4</span> String values</h2>
+<section id="sec-intro-to-strings" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="sec-intro-to-strings"><span class="header-section-number">7.4</span> String values</h2>
 <p>So far, all the values you have seen in Python arrays have been numbers. Now we get on to values that are bits of text. These are called <em>strings</em>.</p>
 <p>Here is a single Python string value:</p>
 <div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-20_6bb7f2b2d9440218e610be06c0f7a760">
@@ -594,7 +594,7 @@ End of Python section
 <p>The Python <span class="python"><code>str</code></span> value is a bit of text, and therefore consists of a sequence of characters.</p>
 <p>As arrays are containers for other things, such as numbers, strings are containers for characters.</p>
 <div class="python">
-<p>As we can find the number of elements in an array (<a href="resampling_with_code2.html#sec-array-length" class="quarto-xref"><span>Section&nbsp;7.5</span></a>), we can find the number of characters in a string with the <code>len</code> function:</p>
+<p>As we can find the number of elements in an array (<a href="resampling_with_code2.html#sec-array-length" class="quarto-xref"><span>Section&nbsp;6.5</span></a>), we can find the number of characters in a string with the <code>len</code> function:</p>
 <div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-25_000c1217e184e3ef5d1b63e7160c1c5a">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of characters in s</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -604,7 +604,7 @@ End of Python section
 </div>
 </div>
 <div class="python">
-<p>As we can <em>index</em> into array values to get individual elements (<a href="resampling_with_code2.html#sec-array-indexing" class="quarto-xref"><span>Section&nbsp;7.6</span></a>), we can index into string values to get individual characters:</p>
+<p>As we can <em>index</em> into array values to get individual elements (<a href="resampling_with_code2.html#sec-array-indexing" class="quarto-xref"><span>Section&nbsp;6.6</span></a>), we can index into string values to get individual characters:</p>
 <div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-27_8553d92ec8e714731a35a0f557611116">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the second character of the string</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember, Python's index positions start at 0.</span></span>
@@ -616,8 +616,8 @@ End of Python section
 </div>
 </div>
 </section>
-<section id="strings-in-s" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="strings-in-s"><span class="header-section-number">6.5</span> Strings in arrays</h2>
+<section id="strings-in-s" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="strings-in-s"><span class="header-section-number">7.5</span> Strings in arrays</h2>
 <p>As we can store numbers as elements in arrays, we can also store strings as array elements.</p>
 <div class="cell" data-layout-align="center" data-hash="sampling_tools_cache/html/unnamed-chunk-29_3b17d186c456b10140d02d668ea7b0fb">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Just for clarity, make the list first.</span></span>
@@ -723,8 +723,8 @@ End of Python section
 </div>
 </div>
 </section>
-<section id="sec-repeating" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="sec-repeating"><span class="header-section-number">6.6</span> Repeating elements</h2>
+<section id="sec-repeating" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="sec-repeating"><span class="header-section-number">7.6</span> Repeating elements</h2>
 <p>Now let us go back to the problem of selecting black and white jurors.</p>
 <p>We started with the strategy of using numbers 0 through 25 to mean “black” jurors, and 26 through 99 to mean “white” jurors. We selected values at random from 0 through 99, and then worked out whether the number meant a “black” juror (was less than 26) or a “white” juror (was greater than 25).</p>
 <p>It would be good to use strings instead of numbers to identify the potential jurors. Then we would not have to remember our coding of 0 through 25 and 26 through 99.</p>
@@ -843,11 +843,11 @@ Using the <code>size</code> argument to <code>rnd.choice</code>
 </div>
 </div>
 </section>
-<section id="resampling-with-and-without-replacement" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="resampling-with-and-without-replacement"><span class="header-section-number">6.7</span> Resampling with and without replacement</h2>
-<p>Now let us return to the details of Robert Swain’s case, that you first saw in <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a>.</p>
+<section id="resampling-with-and-without-replacement" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="resampling-with-and-without-replacement"><span class="header-section-number">7.7</span> Resampling with and without replacement</h2>
+<p>Now let us return to the details of Robert Swain’s case, that you first saw in <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;6</span></a>.</p>
 <p>We looked at the composition of Robert Swain’s 12-person jury — but in fact, by law, that does not have to be representative of the eligible jurors. The 12-person jury is drawn from a jury <em>panel</em>, of 100 people, and this should, in turn, be drawn from the population of all eligible jurors in the county, consisting, at the time, of “all male citizens in the community over 21 who are reputed to be honest, intelligent men and are esteemed for their integrity, good character and sound judgment.” So, unless there was some bias against black jurors, we might expect the 100-person jury panel to be a plausibly random sample of the eligible jurors, of whom 26% were black. See <a href="https://supreme.justia.com/cases/federal/us/380/202">the Supreme Court case judgement</a> for details.</p>
-<p>In fact, in Robert Swain’s trial, there were 8 black members in the 100-person jury panel. We will leave it to you to adapt the simulation from <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a> to ask the question — is 8% surprising as a random sample from a population with 26% black people?</p>
+<p>In fact, in Robert Swain’s trial, there were 8 black members in the 100-person jury panel. We will leave it to you to adapt the simulation from <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;6</span></a> to ask the question — is 8% surprising as a random sample from a population with 26% black people?</p>
 <p>But we have a different question: given that 8 out of 100 of the jury panel were black, is it surprising that none of the 12-person jury were black? As usual, we can answer that question with simulation.</p>
 <p>Let’s think about what a single simulated jury selection would look like.</p>
 <p>First we compile a representation of the actual jury panel, using the tools we have used above.</p>
@@ -969,13 +969,13 @@ With or without replacement for the original jury selection
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You may have noticed in <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;7</span></a> that we were sampling Robert Swain’s jury from the eligible pool of jurors, <em>with replacement</em>. You might reasonably ask whether we should have selected from the eligible jurors <em>without replacement</em>, given that the same juror cannot serve more than once in the same jury, and therefore, the same argument applies there as here.</p>
+<p>You may have noticed in <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter&nbsp;6</span></a> that we were sampling Robert Swain’s jury from the eligible pool of jurors, <em>with replacement</em>. You might reasonably ask whether we should have selected from the eligible jurors <em>without replacement</em>, given that the same juror cannot serve more than once in the same jury, and therefore, the same argument applies there as here.</p>
 <p>The trick there was that we were selecting from a very large pool of many thousand eligible jurors, of whom 26% were black. Let’s say there were 10,000 eligible jurors, of whom 2,600 were black. When selecting the first juror, there is exactly a 2,600 in 10,000 chance of getting a black juror — 26%. If we do get a black juror first, then the chance that the second juror will be black has changed slightly, 2,599 in 9,999. But these changes are very small; even if we select eleven black jurors out of eleven, when we come to the twelfth juror, we still have a 2,589 out of 9,989 chance of getting another black juror, and that works out at a 25.92% chance — hardly changed from the original 26%. So yes, you’d be right, we really should have compiled our population of 2,600 black jurors and 7,400 white jurors, and then sampled without replacement from that population, but as the resulting sample probabilities will be very similar to the simpler sampling with replacement, we chose to try and slide that one quietly past you, in the hope you would forgive us when you realized.</p>
 </div>
 </div>
 </section>
-<section id="conclusion" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6.8</span> Conclusion</h2>
+<section id="conclusion" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7.8</span> Conclusion</h2>
 <p>This chapter introduced you to the idea of strings — values in Python that store bits of text. Strings are very useful as labels for the entities we are sampling from, when we do our simulations. Strings are particularly useful when we use them with arrays, and one way we often do that is to build up arrays of strings to sample from, using the <span class="python"><code>np.repeat</code></span> function.</p>
 <p>There is a fundamental distinction between two different types of sampling — sampling <em>with replacement</em>, where we draw an element from a larger pool, then put that element back before drawing again, and sampling <em>without replacement</em>, where we remove the element from the remaining pool when we draw it into the sample. As we will see later, it is often a judgment call which of these two types of sampling is a more reasonable model of the world you are trying to simulate.</p>
 
@@ -1218,13 +1218,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./resampling_with_code.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Resampling with code</span></span>
+      <a href="./resampling_with_code2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">More resampling with code</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./resampling_with_code2.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">More resampling with code</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./probability_theory_1a.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
