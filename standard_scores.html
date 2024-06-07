@@ -1255,11 +1255,28 @@ Calculating quantiles using the linear method
 <h2 data-number="16.7" class="anchored" data-anchor-id="the-standard-deviation"><span class="header-section-number">16.7</span> The standard deviation</h2>
 <p>We are interested in the average deviation, but we find that a simple average of the deviations from the mean always gives 0 (perhaps with some tiny calculation error), because the positive and negative deviations cancel exactly.</p>
 <p>The MAD calculation solves this problem by knocking the signs off the negative values before we take the mean.</p>
-<p>Another very popular way of solving the same problem is to precede the calculation by squaring all the deviations, like this:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-85_c80145f59b45eb77e96526d6c7e6fb1b">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>squared_deviations <span class="op">=</span> deviations <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first five values.</span></span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>squared_deviations[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Another very popular way of solving the same problem is to precede the calculation by squaring all the deviations. Python has an operator for the operation of taking values to the power of another value: it is <code>**</code>. For example, to square a single number, we take the number <em>to the power of</em> 2, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-85_5f979b3c4a4b38255ba7f0893ae8c68d">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 to the power of 2.</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>100</code></pre>
+</div>
+</div>
+<p>You can also use the power of <code>**</code> operator on an array, and, as usual, that works <em>elementwise</em>. The array you get back is the result of applying the to-the-power-of operation to all elements of the array in turn:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-87_b910b02ca0647e8a1b9da863b99d5d41">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>an_arr <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">12</span>])</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="co"># All the elements in the array, to the power of 2.</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>an_arr <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([  4, 100, 144])</code></pre>
+</div>
+</div>
+<p>We can therefore square the deviations we calculated above, like this:</p>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-89_755d4720b67cfc9248ce9876086c2d3b">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>squared_deviations <span class="op">=</span> deviations <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first five values.</span></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>squared_deviations[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([2.48701328e+09, 1.91449685e+09, 1.66015207e+09, 1.16943233e+09,
        1.16785980e+09])</code></pre>
@@ -1282,39 +1299,39 @@ m * 10^n
 \]</span></p>
 <p><span class="math inline">\(m\)</span> is a floating point number with one digit before the decimal point — so it can be any value from 1.0 through 9.9999… <span class="math inline">\(n\)</span> is an integer (positive or negative whole number).</p>
 <p>For example, the median household income of KM’s district is 77205 (dollars). We can express that same number in E-notation as <span class="math inline">\(7.7205 * 10^4\)</span> . Python writes this as <code>7.7205e4</code>, where the number before the <code>e</code> is <span class="math inline">\(m\)</span> and the number after the <code>e</code> is the exponent value <span class="math inline">\(n\)</span>. E-notation is another way of writing the number, because <span class="math inline">\(7.7205 * 10^4 = 77205\)</span>.</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-87_f8245d55726cf1998dae91090acdfdd4">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fl">7.7205e4</span> <span class="op">==</span> <span class="dv">77205</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-91_42370ed11fc3524e5bd6fee98d329c5a">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fl">7.7205e4</span> <span class="op">==</span> <span class="dv">77205</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
 </div>
 <p>It is no great advantage to use E-notation in this case; 77205 is probably easier to read and understand than <code>7.7205e4</code>. The notation comes into its own where you start to lose track of the powers of 10 when you read a number — and that does happen when the number becomes very long without E-notation. For example, <span class="math inline">\(77205^2 = 5960612025\)</span>. <span class="math inline">\(5960612025\)</span> is long enough that you start having to count the digits to see how large it is. In E-notation, that number is <code>5.960612025e9</code>. If you remember that <span class="math inline">\(10^9\)</span> is one US billion, then the E-notation tells you at a glance that the value is about <span class="math inline">\(5.9\)</span> billion.</p>
-<p>Python makes its own decision whether to print out numbers using E-notation. This only affects the display of the numbers; the underlying values remain the same whether NumPy chooses to show them in E-notation or not.</p>
+<p>Python makes its own decision whether to print out numbers using E-notation. This only affects the display of the numbers; the underlying values remain the same whether Python chooses to show them in E-notation or not.</p>
 </div>
 </div>
 <p>The process of squaring the deviations turns all the negative values into positive values.</p>
 <p>We can then take the average (mean) of the <em>squared deviations</em> to give a measure of the typical <em>squared</em> deviation:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-89_be6dd6ef69efd20618c9d01f66625b69">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>mean_squared_deviation <span class="op">=</span> np.mean(squared_deviations)</span>
-<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>mean_squared_deviation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-93_bfefff102b91302242f2f169ad2b3e55">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>mean_squared_deviation <span class="op">=</span> np.mean(squared_deviations)</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>mean_squared_deviation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>385971462.1165975</code></pre>
 </div>
 </div>
 <p>Rather confusingly, the field of statistics uses the term <em>variance</em> to refer to mean squared deviation value. Just to emphasize that naming, let’s do the same calculation but using “variance” as the variable name.</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-91_c1c154bc85443322392f89d3f9048112">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistics calls the mean squared deviation - the "variance"</span></span>
-<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>variance <span class="op">=</span> np.mean(squared_deviations)</span>
-<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-95_1990b3586157272fb2ad95590f7ba038">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistics calls the mean squared deviation - the "variance"</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>variance <span class="op">=</span> np.mean(squared_deviations)</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>385971462.1165975</code></pre>
 </div>
 </div>
 <div class="python">
 <p>It will come as no surprise to find that Numpy has a function to do the whole variance calculation — subtracting the mean, and returning the average squared deviation — <code>np.var</code>:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-93_7df19137166dfb1db28e86f1dfce0b6f">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use np.var to calculate the mean squared deviation directly.</span></span>
-<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>np.var(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-97_410a3de791e41871083e85d1edd76fae">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use np.var to calculate the mean squared deviation directly.</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>np.var(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>385971462.1165975</code></pre>
 </div>
@@ -1322,28 +1339,28 @@ m * 10^n
 </div>
 <p>The variance is the typical (in the sense of the mean) <em>squared</em> deviation. The units for the variance, in our case, would be <em>squared dollars</em>. But we are more interested in the typical <em>deviation</em>, in our original units – dollars rather than squared dollars.</p>
 <p>So we take the square root of the mean squared deviation (the square root of the variance), to get the <em>standard deviation</em>. It is the <em>standard</em> deviation in the sense that it a measure of <em>typical</em> deviation, in the specific sense of the square root of the mean squared deviations.</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-94_7dfa4efd29cac625b7d83adebf7ca1bf">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The standard deviation is the square root of the mean squared deviation.</span></span>
-<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (and therefore, the square root of the variance).</span></span>
-<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>standard_deviation <span class="op">=</span> np.sqrt(mean_squared_deviation)</span>
-<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>standard_deviation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-98_459cb6fc0a6ccc341386fb719ae42f07">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The standard deviation is the square root of the mean squared deviation.</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (and therefore, the square root of the variance).</span></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>standard_deviation <span class="op">=</span> np.sqrt(mean_squared_deviation)</span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>standard_deviation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>19646.156420954136</code></pre>
 </div>
 </div>
 <div class="python">
 <p>Again, Numpy has a function to do this calculation directly: <code>np.std</code>:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-96_93948e07a5014832952133f92d905e74">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use np.std to calculate the square root of the mean squared deviation</span></span>
-<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="co"># directly.</span></span>
-<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>np.std(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-100_aee3c844107e10e29b149e440c440b08">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use np.std to calculate the square root of the mean squared deviation</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co"># directly.</span></span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>np.std(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>19646.156420954136</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-97_db7e2562f9242257f06992f52f6c7492">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Of course, np.std(incomes) is the same as:</span></span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>np.sqrt(np.var(incomes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-101_c3e3510b73fd79485f3825e67f045fbc">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Of course, np.std(incomes) is the same as:</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>np.sqrt(np.var(incomes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>19646.156420954136</code></pre>
 </div>
@@ -1362,18 +1379,18 @@ m * 10^n
 </div>
 </div>
 <p>Now let us return to the question of how unusual our two congressional districts are in terms of the distribution. First we calculate the number of standard deviations of each district from the mean:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-98_c2644ec86d7385df749c0960e08b030c">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>km_std_devs <span class="op">=</span> deviations[km_index] <span class="op">/</span> standard_deviation</span>
-<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Deviation in standard deviation units for KM:'</span>,</span>
-<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(km_std_devs), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-102_38fb8c69a29b97cb0d08c5c5747e98b6">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>km_std_devs <span class="op">=</span> deviations[km_index] <span class="op">/</span> standard_deviation</span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Deviation in standard deviation units for KM:'</span>,</span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(km_std_devs, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Deviation in standard deviation units for KM: 0.0 2</code></pre>
+<pre><code>Deviation in standard deviation units for KM: 0.26</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>aoc_std_devs <span class="op">=</span> deviations[aoc_index] <span class="op">/</span> standard_deviation</span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Deviation in standard deviation units for AOC:'</span>,</span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(aoc_std_devs), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>aoc_std_devs <span class="op">=</span> deviations[aoc_index] <span class="op">/</span> standard_deviation</span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Deviation in standard deviation units for AOC:'</span>,</span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(aoc_std_devs, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Deviation in standard deviation units for AOC: -1.0 2</code></pre>
+<pre><code>Deviation in standard deviation units for AOC: -0.81</code></pre>
 </div>
 </div>
 <p>The values for each district are a re-expression of the income values in terms of the distribution. They give the distance from the mean (positive or negative) in units of standard deviation.</p>
@@ -1387,51 +1404,52 @@ m * 10^n
 </ul>
 <p>Let’s apply that procedure to all the <code>incomes</code> values.</p>
 <p>First we calculate the standard deviation:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-100_e73abe1a32c41d66af2fab2d55a40728">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>deviations <span class="op">=</span> incomes <span class="op">-</span> np.mean(incomes)</span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>income_std <span class="op">=</span> np.sqrt(np.mean(deviations <span class="op">**</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-104_7317bcafd4719f8331062fc64ce4c129">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>deviations <span class="op">=</span> incomes <span class="op">-</span> np.mean(incomes)</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>income_std <span class="op">=</span> np.sqrt(np.mean(deviations <span class="op">**</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we calculate standard scores:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-102_5c52a7b309012bcbc9255dd74f86f3dc">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>deviations_in_stds <span class="op">=</span> deviations <span class="op">/</span> income_std</span>
-<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>deviations_in_stds[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-106_1030c1cbb41481b58a7dac2aabbc8532">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>deviations_in_stds <span class="op">=</span> deviations <span class="op">/</span> income_std</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first five values.</span></span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>deviations_in_stds[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([-2.53840816, -2.22715135, -2.07394072, -1.74064397, -1.73947326])</code></pre>
 </div>
 </div>
 <p>This procedure converts the original data (here <code>incomes</code>) to deviations from the mean in terms of the standard deviation. The resulting values are called <a href="https://en.wikipedia.org/wiki/Standard_score">standard scores</a> or <em>z-scores</em>. One name for this procedure is “z-scoring”.</p>
 <p>If you plot a histogram of the standard scores, you will see they have a mean of (actually exactly) 0, and a standard deviation of (actually exactly) 1.</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-104_79994e77e4b36f769d404a74e9d4c032">
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-108_1a80bd4375de9f30008c516d2e34a987">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="standard_scores_files/figure-html/unnamed-chunk-104-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-108-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>With all this information — what should we conclude about the two districts in question? KM’s district is 0.26 standard deviations <em>above</em> the mean, but that’s not enough to conclude that it is unusual. We see from the histogram that a large proportion of the districts are at least this distance from the mean. We can calculate that proportion directly.</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-105_559c5626b4aae00500ed4260331a1d52">
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distances (negative or positive) from the mean.</span></span>
-<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>abs_std_devs <span class="op">=</span> np.<span class="bu">abs</span>(deviations_in_stds)</span>
-<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Number where distance greater than KM distance.</span></span>
-<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>n_gt_km <span class="op">=</span> np.<span class="bu">sum</span>(abs_std_devs <span class="op">&gt;</span> km_std_devs)</span>
-<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a>prop_gt_km <span class="op">=</span> n_gt_km <span class="op">/</span> <span class="bu">len</span>(deviations_in_stds)</span>
-<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Proportion of districts further from mean than KM:"</span>,</span>
-<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(prop_gt_km, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-109_1c793fdb4d441983437d3c7eeee4afed">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distances (negative or positive) from the mean.</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>abs_std_devs <span class="op">=</span> np.<span class="bu">abs</span>(deviations_in_stds)</span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Number where distance greater than KM distance.</span></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>n_gt_km <span class="op">=</span> np.<span class="bu">sum</span>(abs_std_devs <span class="op">&gt;</span> km_std_devs)</span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>prop_gt_km <span class="op">=</span> n_gt_km <span class="op">/</span> <span class="bu">len</span>(deviations_in_stds)</span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Proportion of districts further from mean than KM:"</span>,</span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(prop_gt_km, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Proportion of districts further from mean than KM: 0.82</code></pre>
 </div>
 </div>
 <p>A full 82% of districts are further from the mean than is KM’s district. KM’s district is richer than average, but not unusual. The benefit of the standard deviation distance is that we can see this directly from the value, without doing the calculation of proportions, because the standard deviation is a measure of typical spread, and KM’s district is well-within this measure.</p>
 <p>AOC’s district is -0.81 standard deviations from the mean. This is a little more unusual than KM’s score.</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-107_c48fc0c6ae69d6480a1b9f2a219e7b8f">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number where distance greater than AOC distance.</span></span>
-<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Make AOC's distance positive to correspond to distance from the mean.</span></span>
-<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>n_gt_aoc <span class="op">=</span> np.<span class="bu">sum</span>(abs_std_devs <span class="op">&gt;</span> np.<span class="bu">abs</span>(aoc_std_devs))</span>
-<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>prop_gt_aoc <span class="op">=</span> n_gt_aoc <span class="op">/</span> <span class="bu">len</span>(deviations_in_stds)</span>
-<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Proportion of districts further from mean than AOC:"</span>,</span>
-<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(prop_gt_aoc, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-111_6cb9343d15a70433a849be69c0f6f020">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number where distance greater than AOC distance.</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Make AOC's distance positive to correspond to distance from the mean.</span></span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>n_gt_aoc <span class="op">=</span> np.<span class="bu">sum</span>(abs_std_devs <span class="op">&gt;</span> np.<span class="bu">abs</span>(aoc_std_devs))</span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a>prop_gt_aoc <span class="op">=</span> n_gt_aoc <span class="op">/</span> <span class="bu">len</span>(deviations_in_stds)</span>
+<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Proportion of districts further from mean than AOC:"</span>,</span>
+<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(prop_gt_aoc, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Proportion of districts further from mean than AOC: 0.35</code></pre>
 </div>
@@ -1442,7 +1460,7 @@ m * 10^n
 <h2 data-number="16.9" class="anchored" data-anchor-id="standard-scores-to-compare-values-on-different-scales"><span class="header-section-number">16.9</span> Standard scores to compare values on different scales</h2>
 <p>Why are standard scores so useful? They allow us to compare values on very different scales.</p>
 <p>Consider the values in <a href="#tbl-epl-points-wages" class="quarto-xref">Table&nbsp;<span>16.4</span></a>. Each row of the table corresponds to a team competing in the English Premier League (EPL) for the 2021-2022 season. For those of you with absolutely no interest in sports, the EPL is the league of the top 20 teams in English football, or <em>soccer</em> to our North American friends. The <code>points</code> column of the table gives the total number of points at the end of the 2021 season (from 38 games). The team gets 3 points for a win, and 1 point for a draw, so the maximum possible points from 38 games are <span class="math inline">\(3 * 38 = 114\)</span>. The <code>wages</code> column gives the estimated total wage bill in thousands of British Pounds (£1000).</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-110_9c22c6d8005cac6617feaf2f464c8464">
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-114_ab259c1858781721297f5793b8b87b01">
 <div class="cell-output-display">
 <div id="tbl-epl-points-wages" class="anchored">
 <table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
@@ -1566,11 +1584,11 @@ m * 10^n
 <p>One thing we might like to know is whether there is an association between the wage bill and the points scored.</p>
 <p>To look at that, we can do a scatter plot. This is a plot with — say — wages on the x-axis, and points on the y-axis. For each team we have a pair of values — their wage bill and their points scored. For each team, we put a marker on the scatter plot at the coordinates given by the wage value (on the x-axis) and the points value (on the y-axis).</p>
 <p>Here is that plot for our EPL data in <a href="#tbl-epl-points-wages" class="quarto-xref">Table&nbsp;<span>16.4</span></a>, with the Crystal Palace marker picked out in red.</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-111_45f8b3e57dbc76bf6bf148b1c110dbc2">
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-115_a72dce446582d753cd35ee0aeaef50bd">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="standard_scores_files/figure-html/unnamed-chunk-111-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-115-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1579,59 +1597,59 @@ m * 10^n
 <p>At the moment, the points and wages are in very different units. Points are on a possible scale of 0 (lose every game) to 38 * 3 = 114 (win every game). Wages are in thousands of pounds. Maybe we are not interested in the values in these units, but in how unusual the values are, in terms of wages, and in terms of points.</p>
 <p>This is a good application of standard scores. Standard scores convert the original values to values on a standard scale, where 0 corresponds to an average value, 1 to a value one standard deviation above the mean, and -1 to a value one standard deviation below the mean. If we follow the standard score process for both points and wages, the values will be in the same standard units.</p>
 <p>To do this calculation, we need the values from the table. We follow the same recipe as before, in loading the data with <span class="python">Pandas, and converting to arrays</span>.</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-112_1e832706221638a5761cd85620ae1bd1">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>points_wages <span class="op">=</span> pd.read_csv(<span class="st">'data/premier_league.csv'</span>)</span>
-<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> np.array(points_wages[<span class="st">'points'</span>])</span>
-<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>wages <span class="op">=</span> np.array(points_wages[<span class="st">'wages'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-116_2b95fc9351743325bdefbcc91993ff4f">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a>points_wages <span class="op">=</span> pd.read_csv(<span class="st">'data/premier_league.csv'</span>)</span>
+<span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> np.array(points_wages[<span class="st">'points'</span>])</span>
+<span id="cb113-6"><a href="#cb113-6" aria-hidden="true" tabindex="-1"></a>wages <span class="op">=</span> np.array(points_wages[<span class="st">'wages'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>As you recall, the standard deviation is the square root of the mean squared deviation. In code:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-114_058ecbf0f6445d6dc993f0f48606af80">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The standard deviation is the square root of the</span></span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mean squared deviation.</span></span>
-<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>wage_deviations <span class="op">=</span> wages <span class="op">-</span> np.mean(wages)</span>
-<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a>wage_std <span class="op">=</span> np.sqrt(np.mean(wage_deviations <span class="op">**</span> <span class="dv">2</span>))</span>
-<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>wage_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-118_cc949b8c5c6505ac46690f13f132822d">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The standard deviation is the square root of the</span></span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mean squared deviation.</span></span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>wage_deviations <span class="op">=</span> wages <span class="op">-</span> np.mean(wages)</span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>wage_std <span class="op">=</span> np.sqrt(np.mean(wage_deviations <span class="op">**</span> <span class="dv">2</span>))</span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>wage_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>55523.946071289814</code></pre>
 </div>
 </div>
 <p>Now we can apply the standard score procedure to wages. We divide the deviations by the standard deviation.</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-116_00c8762088b7a2b27f70f4b9d7a7dad1">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>standard_wages <span class="op">=</span> (wages <span class="op">-</span> np.mean(wages)) <span class="op">/</span> wage_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-120_5ba7631994aa7670b289f3da23b6868c">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>standard_wages <span class="op">=</span> (wages <span class="op">-</span> np.mean(wages)) <span class="op">/</span> wage_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We apply the same procedure to the points:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-118_c8fb52baddb759752564534c76d6af5e">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>point_deviations <span class="op">=</span> points <span class="op">-</span> np.mean(points)</span>
-<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>point_std <span class="op">=</span> np.sqrt(np.mean(point_deviations <span class="op">**</span> <span class="dv">2</span>))</span>
-<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>standard_points <span class="op">=</span> point_deviations <span class="op">/</span> point_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-122_4731599c9ad19857c6bb8a18b02b90ce">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>point_deviations <span class="op">=</span> points <span class="op">-</span> np.mean(points)</span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>point_std <span class="op">=</span> np.sqrt(np.mean(point_deviations <span class="op">**</span> <span class="dv">2</span>))</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>standard_points <span class="op">=</span> point_deviations <span class="op">/</span> point_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, when we plot the standard score version of the points against the standard score version of the wages, we see that they are in comparable units, each with a mean of 0, and a spread (a standard deviation) of 1.</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-120_301de927dbbd30e922c337f72dcefb23">
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-124_99aa1fe520f63bcaba6d5d3ad659c742">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="standard_scores_files/figure-html/unnamed-chunk-120-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="standard_scores_files/figure-html/unnamed-chunk-124-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Let us go back to our concerns as the owners of Crystal Palace. Counting down from the top in the table above, we see that Crystal Palace is the 12th row. Therefore, we can get the Crystal Palace wage value with:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-121_ddbba86e3df2b4e5dce08462574d85d9">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In Python the 12th value is at position (index) 11</span></span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>cp_index <span class="op">=</span> <span class="dv">11</span></span>
-<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>cp_wages <span class="op">=</span> wages[cp_index]</span>
-<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>cp_wages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-125_546890d7ed7a4e0ad93c8f5b3f90ac0c">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In Python the 12th value is at position (index) 11</span></span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>cp_index <span class="op">=</span> <span class="dv">11</span></span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>cp_wages <span class="op">=</span> wages[cp_index]</span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>cp_wages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>71910</code></pre>
 </div>
 </div>
 <p>We can get our wage bill in standard units in the same way:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-123_d4a1f682dabfa242b7ae8753d219cb85">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>cp_standard_wages <span class="op">=</span> standard_wages[cp_index]</span>
-<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>cp_standard_wages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-127_b32d99e3ff4423d4ccd7983fc8405d02">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>cp_standard_wages <span class="op">=</span> standard_wages[cp_index]</span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>cp_standard_wages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>-0.3474473873890471</code></pre>
 </div>
@@ -1641,10 +1659,10 @@ m * 10^n
 <p>But — if we increase our wages by one standard deviation — how much can we expect that to increase our points — in standard units.</p>
 <p>That is question about the strength of the association between two measures — here wages and points — and we will cover that topic in much more detail in <a href="correlation_causation.html" class="quarto-xref"><span>Chapter&nbsp;29</span></a>. But, racing ahead — here is the answer to the question we have just posed — the amount we expect to gain in points, in standard units, if we increase our wages by one standard deviation (and therefore, 1 in standard units).</p>
 <p>For reasons we won’t justify now, we calculate the <span class="math inline">\(r\)</span> value of association between wages and points, like this:</p>
-<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-125_c81ed19fcb5c156dff21f61a1d0d2ed5">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>standards_multiplied <span class="op">=</span> standard_wages <span class="op">*</span> standard_points</span>
-<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.mean(standards_multiplied)</span>
-<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-129_f1aad1b20f56bf8a0350ce1b3340abf2">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>standards_multiplied <span class="op">=</span> standard_wages <span class="op">*</span> standard_points</span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.mean(standards_multiplied)</span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.7080086644844557</code></pre>
 </div>

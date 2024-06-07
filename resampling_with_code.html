@@ -410,7 +410,10 @@ div.csl-indent {
   <li><a href="#sec-ranges" id="toc-sec-ranges" class="nav-link" data-scroll-target="#sec-ranges"><span class="header-section-number">5.9</span> Ranges</a></li>
   <li><a href="#sec-python-range" id="toc-sec-python-range" class="nav-link" data-scroll-target="#sec-python-range"><span class="header-section-number">5.10</span> <code>range</code> in Python</a></li>
   <li><a href="#sec-random-choice" id="toc-sec-random-choice" class="nav-link" data-scroll-target="#sec-random-choice"><span class="header-section-number">5.11</span> Choosing values at random</a></li>
-  <li><a href="#sec-sampling-arrays" id="toc-sec-sampling-arrays" class="nav-link" data-scroll-target="#sec-sampling-arrays"><span class="header-section-number">5.12</span> Sampling into arrays</a></li>
+  <li><a href="#sec-sampling-arrays" id="toc-sec-sampling-arrays" class="nav-link" data-scroll-target="#sec-sampling-arrays"><span class="header-section-number">5.12</span> Sampling into arrays</a>
+  <ul class="collapse">
+  <li><a href="#sum-adding-all-the-values" id="toc-sum-adding-all-the-values" class="nav-link" data-scroll-target="#sum-adding-all-the-values"><span class="header-section-number">5.12.1</span> <code>sum</code> — adding all the values</a></li>
+  </ul></li>
   <li><a href="#counting-results" id="toc-counting-results" class="nav-link" data-scroll-target="#counting-results"><span class="header-section-number">5.13</span> Counting results</a>
   <ul class="collapse">
   <li><a href="#comparison" id="toc-comparison" class="nav-link" data-scroll-target="#comparison"><span class="header-section-number">5.13.1</span> Comparison</a></li>
@@ -931,7 +934,7 @@ Functions and methods
 <section id="sec-sampling-arrays" class="level2" data-number="5.12">
 <h2 data-number="5.12" class="anchored" data-anchor-id="sec-sampling-arrays"><span class="header-section-number">5.12</span> Sampling into arrays</h2>
 <div class="python">
-<p>In the code above, we asked Python to select a single number at random — because that is what <code>rnd.choice</code> does by default].</p>
+<p>In the code above, we asked Python to select a single number at random — because that is what <code>rnd.choice</code> does by default.</p>
 <p>In fact, the people who wrote <code>rnd.choice</code>, wrote it to be flexible in the work that it can do. In particular, we can tell <code>rnd.choice</code> to select <em>any number of values</em> at random, by adding a new <em>argument</em> to the function.</p>
 <p>In our case, we would like Numpy to select 17 numbers at random from the sequence of <code>some_integers</code>.</p>
 <p>To do this, we add an argument to the function that tells it <em>how many</em> numbers we want it to select.</p>
@@ -947,49 +950,62 @@ Functions and methods
 </div>
 </div>
 <p>As you can see, the function sent back (returned) 17 numbers. Because it is sending back more than one number, the thing it sends back is an array, where the array has 17 elements.</p>
+<section id="sum-adding-all-the-values" class="level3" data-number="5.12.1">
+<h3 data-number="5.12.1" class="anchored" data-anchor-id="sum-adding-all-the-values"><span class="header-section-number">5.12.1</span> <code>sum</code> — adding all the values</h3>
+<p>Bear with us for a short diversion. You will see why we made this diversion soon.</p>
+<p>NumPy has a function <span class="python"><code>np.sum</code></span> that will add up all the numbers in an array.</p>
+<p>You can see the contents of <code>a</code> above.</p>
+<p><span class="python"><code>np.sum</code></span> adds all the numbers in the array together, to give the <em>sum</em> of the array. The <em>sum</em> is just the result of adding the second element to the first, then adding third element to the result, and the fourth element to the result, and so on.</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-43_aaaebb8868545f69b4e50cd8ebf12f02">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>81</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="counting-results" class="level2" data-number="5.13">
 <h2 data-number="5.13" class="anchored" data-anchor-id="counting-results"><span class="header-section-number">5.13</span> Counting results</h2>
-<p>We now have the code to do the equivalent of throwing 17 10-sided dice. This is the basis for one simulated trial in the world of Saint Hypothetical General.</p>
+<p>We now have the code to do the equivalent of throwing 17 ten-sided dice. This is the basis for one simulated trial in the world of Saint Hypothetical General.</p>
 <p>Our next job is to get the code to count the number of numbers that are not zero in the array <code>a</code>. That will give us the number of patients who were cured in simulated trial.</p>
 <p>Another way of asking this question, is to ask how many elements in <code>a</code> are greater than zero.</p>
 <section id="comparison" class="level3" data-number="5.13.1">
 <h3 data-number="5.13.1" class="anchored" data-anchor-id="comparison"><span class="header-section-number">5.13.1</span> Comparison</h3>
 <p>To ask whether a number is greater than zero, we use <em>comparison</em>. Here is a <em>greater than zero</em> comparison on a single number:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-43_7363feaeba341210689d1562fb492478">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of n greater than 0?</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-45_e1d86a25c82ebb75d4502daea0e96cfd">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of n greater than 0?</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
 </div>
 <p><code>&gt;</code> is a <em>comparison</em> — it <em>asks a question</em> about the numbers either side of it. In this case <code>&gt;</code> is asking the question “is the value of <code>n</code> (on the left hand side) greater than 0 (on the right hand side)?” The value of <code>n</code> is 5, so the question becomes, “is 5 greater than 0?” The answer is Yes, and Python represents this Yes answer as the value <code>True</code>.</p>
 <p>In contrast, the comparison below boils down to “is 0 greater than 0?”, to which the answer is No, and Python represents this as <code>False</code>.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-45_d2fcaca68891a329c9b986d7fc61b955">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of p greater than 0?</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-47_3bb1ba042079f430864a74a2f73fa9ab">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of p greater than 0?</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>False</code></pre>
 </div>
 </div>
 <p>So far you have seen the results of comparison on a single number. Now say we do the same comparison on an array. For example, say we ask the question “is the value of <code>a</code> greater than 0”? Remember, <code>a</code> is an array containing 17 values. We are comparing 17 values to one value (0). What answer do you think NumPy will give? You may want to think a little about this before you read on.</p>
 <p>As a reminder, here is the current value for <code>a</code>:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-47_988fe7c638aaeb70c1b6214f16785b01">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the current value for "a"</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-49_8aa6e584303c8a6279eb3596078a2b70">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the current value for "a"</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([4, 5, 9, 8, 2, 9, 1, 5, 8, 2, 1, 8, 2, 6, 6, 5, 0])</code></pre>
 </div>
 </div>
 <p>Now you have had some time to think, here is what happens:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-49_70b9915588dd0bfef1868622edafce43">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of "a" greater than 0</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-51_f7bc3aacfa64c5e97af24f5cdcfda054">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of "a" greater than 0</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">&gt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
         True,  True,  True,  True,  True,  True,  True, False])</code></pre>
@@ -997,12 +1013,12 @@ Functions and methods
 </div>
 <p>There are 17 values in <code>a</code>, so the comparison to 0 means there are 17 comparisons, and 17 answers. NumPy therefore returns <em>an array</em> of 17 elements, containing these 17 answers. The first answer is the answer to the question “is the value of the <em>first</em> element of <code>a</code> greater than 0”, and the second is the answer to “is the value of the <em>second</em> element of <code>a</code> greater than 0”.</p>
 <p>Let us store the result of this comparison to work on:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-51_48eae652d995a68341308494d395130c">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of "a" greater than 0</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Store as another array "q".</span></span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> a <span class="op">&gt;</span> <span class="dv">0</span></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the value of r</span></span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-53_216508c97ce732c8c85807d86f1769e9">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of "a" greater than 0</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Store as another array "q".</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> a <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the value of r</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
         True,  True,  True,  True,  True,  True,  True, False])</code></pre>
@@ -1013,42 +1029,42 @@ Functions and methods
 <section id="sec-count-with-sum" class="level2" data-number="5.14">
 <h2 data-number="5.14" class="anchored" data-anchor-id="sec-count-with-sum"><span class="header-section-number">5.14</span> Counting <code>True</code> values with <code>sum</code></h2>
 <p>Notice above that there is one <code>True</code> element in <code>q</code> for every element in <code>a</code> that was greater than 0. It only remains to <em>count</em> the number of <code>True</code> values in <code>q</code>, to get the count of patients in our simulated trial who were cured.</p>
-<p>We can use the NumPy function <span class="python"><code>np.sum</code></span> to count the number of <code>True</code> elements in an array. As you can imagine, <span class="python"><code>np.sum</code></span> adds up all the elements in an array, to give a single number. This will work as we want for the <code>q</code> array, because Python counts <code>False</code> as equal to 0 and <code>True</code> as equal to 1:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-53_70d9f575b386cd66ccf7b320085e6b2b">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Question: is False equal to 0?</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer - Yes! (True)</span></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="op">==</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can use the NumPy function <span class="python"><code>np.sum</code></span> to count the number of <code>True</code> elements in an array. As you can saw above, <span class="python"><code>np.sum</code></span> adds up all the elements in an array, to give a single number. This will work as we want for the <code>q</code> array, because Python counts <code>False</code> as equal to 0 and <code>True</code> as equal to 1:</p>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-55_50b8daafc3a4c6ec23ebc14e07437edd">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Question: is False equal to 0?</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer - Yes! (True)</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="op">==</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-54_3418e71ea767d0b6c2d5dd9d798b5cea">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Question: is True equal to 1?</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer - Yes! (True)</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="op">==</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-56_b5852eaf3561adb30ab123570792d8ac">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Question: is True equal to 1?</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer - Yes! (True)</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="op">==</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
 </div>
 <p>Therefore, the function <code>sum</code>, when applied to an array of <code>True</code> and <code>False</code> values, will count the number of <code>True</code> values in the array.</p>
 <p>To see this in action we can make a new array of <code>True</code> and <code>False</code> values, and try using <span class="python"><code>np.sum</code></span> on the new array.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-57_e114cdbebd1e2c217596423178ea9e5b">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An array containing three True values and two False values.</span></span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>trues_and_falses <span class="op">=</span> np.array([<span class="va">True</span>, <span class="va">False</span>, <span class="va">True</span>, <span class="va">True</span>, <span class="va">False</span>])</span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the new array.</span></span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>trues_and_falses</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-59_260462e2ac86eb74090fbd56f11197ee">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An array containing three True values and two False values.</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>trues_and_falses <span class="op">=</span> np.array([<span class="va">True</span>, <span class="va">False</span>, <span class="va">True</span>, <span class="va">True</span>, <span class="va">False</span>])</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the new array.</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>trues_and_falses</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([ True, False,  True,  True, False])</code></pre>
 </div>
 </div>
 <p>The <code>sum</code> operation adds all the elements in the array. Because <code>True</code> counts as 1, and <code>False</code> counts as 0, adding all the elements in <code>trues_and_falses</code> is the same as adding up the values 1 + 0 + 1 + 1 + 0, to give 3.</p>
 <p>We can apply the same operation on <code>q</code> to count the number of <code>True</code> values.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-59_ab37826408f63ca8136dbc79c5580202">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of True values in "q"</span></span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the same as the number of values in "a" that are greater than 0.</span></span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(q)</span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-61_0e2deaf626b627ea4fa4b3660897c487">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of True values in "q"</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the same as the number of values in "a" that are greater than 0.</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(q)</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>16</code></pre>
 </div>
@@ -1057,18 +1073,18 @@ Functions and methods
 <section id="the-procedure-for-one-simulated-trial" class="level2" data-number="5.15">
 <h2 data-number="5.15" class="anchored" data-anchor-id="the-procedure-for-one-simulated-trial"><span class="header-section-number">5.15</span> The procedure for one simulated trial</h2>
 <p>We now have the whole procedure for one simulated trial. We can put the whole procedure in one cell:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-61_69054969ecf8f9bab27f970354ad7f52">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Procedure for one simulated trial</span></span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get 17 values from the *some_integers* array.</span></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the 17 numbers with the name "a"</span></span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> rnd.choice(some_integers, <span class="dv">17</span>)</span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of "a" greater than 0</span></span>
-<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> a <span class="op">&gt;</span> <span class="dv">0</span></span>
-<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of True values in "q"</span></span>
-<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(q)</span>
-<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of this simulated trial.</span></span>
-<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-63_807e02f17eec7753a40da445d1a360a8">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Procedure for one simulated trial</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get 17 values from the *some_integers* array.</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the 17 numbers with the name "a"</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> rnd.choice(some_integers, <span class="dv">17</span>)</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of "a" greater than 0</span></span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> a <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of True values in "q"</span></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(q)</span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of this simulated trial.</span></span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>17</code></pre>
 </div>
@@ -1080,10 +1096,10 @@ Functions and methods
 <p>Please forgive us as we race ahead again, as we did in the last chapter. As in the last chapter, we will use a <em>results</em> array called <code>z</code> to store the count for each trial. As in the last chapter, we will use a <code>for</code> loop to repeat the trial procedure many times. As in the last chapter, we will not explain the counts array of the <code>for</code> loop in any detail, because we are going to cover those in the next chapter.</p>
 <p>Let us now imagine that we want to do 100 simulated trials at Saint Hypothetical General. This will give us 100 counts. We will want to store the count for each trial.</p>
 <p>To do this, we make an array called <code>z</code> to hold the 100 counts. We have called the array <code>z</code>, but we could have called it anything we liked, such as <code>counts</code> or <code>results</code> or <code>cecilia</code>.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-63_983c7f6fcfc414b5f16a78142cfad38b">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An array to hold the 100 count values.</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Later, we will fill this in with real count values from simulated trials.</span></span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.zeros(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-65_75481e214fcf026389c693706454fdad">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An array to hold the 100 count values.</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Later, we will fill this in with real count values from simulated trials.</span></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.zeros(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next we use a <code>for</code> loop to <em>repeat the single trial procedure</em>.</p>
 <p>Notice that the single trial procedure, inside this <code>for</code> loop, is the same as the single trial procedure above — the only two differences are:</p>
@@ -1092,26 +1108,26 @@ Functions and methods
 <li>We are storing the count for each trial as we go.</li>
 </ul>
 <p>We will go into more detail on how this works in the next chapter.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-65_33d05942b2a745b5e02d58feeeb609ff">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Procedure for 100 simulated trials.</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="co"># An array to store the counts for each trial.</span></span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.zeros(<span class="dv">100</span>)</span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat the trial procedure 100 times.</span></span>
-<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">100</span>):</span>
-<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get 17 values from the *some_integers* array.</span></span>
-<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Store the 17 numbers with the name "a".</span></span>
-<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> rnd.choice(some_integers, <span class="dv">17</span>)</span>
-<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Is the value of "a" greater than 0.</span></span>
-<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> a <span class="op">&gt;</span> <span class="dv">0</span></span>
-<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count the number of True values in "q".</span></span>
-<span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.<span class="bu">sum</span>(q)</span>
-<span id="cb74-15"><a href="#cb74-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Store the result at the next position in the "z" array.</span></span>
-<span id="cb74-16"><a href="#cb74-16" aria-hidden="true" tabindex="-1"></a>    z[i] <span class="op">=</span> b</span>
-<span id="cb74-17"><a href="#cb74-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Now go back and do the next trial until finished.</span></span>
-<span id="cb74-18"><a href="#cb74-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of all 100 trials.</span></span>
-<span id="cb74-19"><a href="#cb74-19" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-67_7c47763300486f03425181665f271347">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Procedure for 100 simulated trials.</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="co"># An array to store the counts for each trial.</span></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.zeros(<span class="dv">100</span>)</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat the trial procedure 100 times.</span></span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">100</span>):</span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get 17 values from the *some_integers* array.</span></span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Store the 17 numbers with the name "a".</span></span>
+<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> rnd.choice(some_integers, <span class="dv">17</span>)</span>
+<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Is the value of "a" greater than 0.</span></span>
+<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> a <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count the number of True values in "q".</span></span>
+<span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.<span class="bu">sum</span>(q)</span>
+<span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Store the result at the next position in the "z" array.</span></span>
+<span id="cb76-16"><a href="#cb76-16" aria-hidden="true" tabindex="-1"></a>    z[i] <span class="op">=</span> b</span>
+<span id="cb76-17"><a href="#cb76-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Now go back and do the next trial until finished.</span></span>
+<span id="cb76-18"><a href="#cb76-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of all 100 trials.</span></span>
+<span id="cb76-19"><a href="#cb76-19" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([16., 15., 15., 16., 16., 12., 15., 11., 16., 13., 12., 16., 15.,
        16., 15., 16., 14., 15., 14., 15., 15., 15., 14., 15., 17., 15.,
@@ -1125,11 +1141,11 @@ Functions and methods
 </div>
 <p>Finally, we need to count how many of the trials results we stored in <code>z</code> gave a “cured” count of 17.</p>
 <p>We can ask the question whether a single number is equal to 17 using the <em>double equals</em> comparison: <code>==</code>.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-67_e575f926ca4e9a7bab401de30935373a">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">17</span></span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of s equal to 17?</span></span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>s <span class="op">==</span> <span class="dv">17</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-69_ced3aea2652dec93749c013901b8a55a">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of s equal to 17?</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>s <span class="op">==</span> <span class="dv">17</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
@@ -1153,11 +1169,11 @@ Functions and methods
 </div>
 </div>
 <p>We can ask this question of <em>all 100 counts</em> by asking the question: is the array <code>z</code> equal to 17, like this:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-69_2bfee930fdbecb54fa5fe9d01f686ff9">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of z equal to 17?</span></span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>were_cured <span class="op">=</span> z <span class="op">==</span> <span class="dv">17</span></span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
-<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>were_cured</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-71_ad677fba4add58db087d273ef7796726">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Is the value of z equal to 17?</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>were_cured <span class="op">=</span> z <span class="op">==</span> <span class="dv">17</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>were_cured</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([False, False, False, False, False, False, False, False, False,
        False, False, False, False, False, False, False, False, False,
@@ -1174,22 +1190,22 @@ Functions and methods
 </div>
 </div>
 <p>Finally we use <code>sum</code> to count the number of <code>True</code> values in the <code>were_cured</code> array, to give the number of trials where all 17 patients were cured.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-71_989cc4b62d65adfb62fc3e733f3d9ae4">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of True values in "were_cured"</span></span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the same as the number of values in "z" that are equal to 17.</span></span>
-<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>n_all_cured <span class="op">=</span> np.<span class="bu">sum</span>(were_cured)</span>
-<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
-<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>n_all_cured</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-73_a6347d83b02abda52b3e0d7172e11d4a">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of True values in "were_cured"</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the same as the number of values in "z" that are equal to 17.</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>n_all_cured <span class="op">=</span> np.<span class="bu">sum</span>(were_cured)</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>n_all_cured</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>15</code></pre>
 </div>
 </div>
 <p><code>n_all_cured</code> is the number of simulated trials for which all patients were cured. It only remains to get the proportion of trials for which this was true, and to do this, we divide by the number of trials.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-73_2ba255195574571c4ba9000d24dac121">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of trials where all patients were cured.</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> n_all_cured <span class="op">/</span> <span class="dv">100</span></span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
-<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-75_1bca8b265485af8baa61469e34d7256e">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of trials where all patients were cured.</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> n_all_cured <span class="op">/</span> <span class="dv">100</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.15</code></pre>
 </div>
