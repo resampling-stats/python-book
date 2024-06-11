@@ -412,7 +412,11 @@ div.csl-indent {
   <li><a href="#example-the-product-of-random-variables-theft-by-employees" id="toc-example-the-product-of-random-variables-theft-by-employees" class="nav-link" data-scroll-target="#example-the-product-of-random-variables-theft-by-employees"><span class="header-section-number">12.13</span> Example: The Product of Random Variables — Theft by Employees</a></li>
   <li><a href="#example-flipping-pennies-to-the-end" id="toc-example-flipping-pennies-to-the-end" class="nav-link" data-scroll-target="#example-flipping-pennies-to-the-end"><span class="header-section-number">12.14</span> Example: Flipping Pennies to the End</a></li>
   <li><a href="#example-a-drunks-random-walk" id="toc-example-a-drunks-random-walk" class="nav-link" data-scroll-target="#example-a-drunks-random-walk"><span class="header-section-number">12.15</span> Example: A Drunk’s Random Walk</a></li>
-  <li><a href="#sec-public-liquor" id="toc-sec-public-liquor" class="nav-link" data-scroll-target="#sec-public-liquor"><span class="header-section-number">12.16</span> Example: public and private liquor pricing</a></li>
+  <li><a href="#sec-public-liquor" id="toc-sec-public-liquor" class="nav-link" data-scroll-target="#sec-public-liquor"><span class="header-section-number">12.16</span> Example: public and private liquor pricing</a>
+  <ul class="collapse">
+  <li><a href="#sec-concatenate" id="toc-sec-concatenate" class="nav-link" data-scroll-target="#sec-concatenate"><span class="header-section-number">12.16.1</span> Concatenating arrays</a></li>
+  <li><a href="#price-simulation" id="toc-price-simulation" class="nav-link" data-scroll-target="#price-simulation"><span class="header-section-number">12.16.2</span> Price simulation</a></li>
+  </ul></li>
   <li><a href="#the-general-procedure" id="toc-the-general-procedure" class="nav-link" data-scroll-target="#the-general-procedure"><span class="header-section-number">12.17</span> The general procedure</a></li>
   </ul>
 </nav>
@@ -1200,7 +1204,7 @@ How does the <span class="python"><code>p</code></span> argument to <code>rnd.ch
 <h2 data-number="12.16" class="anchored" data-anchor-id="sec-public-liquor"><span class="header-section-number">12.16</span> Example: public and private liquor pricing</h2>
 <p>Let’s end this chapter with an actual example that will be used again in <a href="probability_theory_4_finite.html" class="quarto-xref"><span>Chapter&nbsp;13</span></a> when discussing probability in finite universes, and then at great length in the context of statistics in <a href="testing_measured.html" class="quarto-xref"><span>Chapter&nbsp;24</span></a>. This example also illustrates the close connection between problems in pure probability and those in statistical inference.</p>
 <p>As of 1963, there were 26 U.S. states in whose liquor systems the retail liquor stores are privately owned, and 16 “monopoly” states where the state government owns the retail liquor stores. (Some states were omitted for technical reasons.) These were the representative 1961 prices of a fifth of Seagram 7 Crown whiskey in the two sets of states (<a href="#tbl-whiskey-prices" class="quarto-xref">Table&nbsp;<span>12.4</span></a>):</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-38_d5f4c9b5b6fe35b1fe4757b12bab82a7">
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-38_201aa9b68f76b5770cbd75c905be684e">
 <div id="tbl-whiskey-prices" class="anchored">
 <table class="table table-sm table-striped small">
 <caption>Table&nbsp;12.4: Whiskey prices by state category</caption>
@@ -1366,7 +1370,7 @@ How does the <span class="python"><code>p</code></span> argument to <code>rnd.ch
 </table>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="probability_theory_3_cache/html/fig-whiskey-hist_6a928988f87c3772964342f3e9fb79d5">
+<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="probability_theory_3_cache/html/fig-whiskey-hist_eb8e866017d896fcc393636444a2bb50">
 <div class="cell-output-display">
 <div id="fig-whiskey-hist" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1385,6 +1389,32 @@ How does the <span class="python"><code>p</code></span> argument to <code>rnd.ch
 <li><strong>Step D:</strong> Repeat step B-C a hundred or a thousand times. Calculate the proportion “yes,” which estimates the probability we seek.</li>
 </ul>
 <p>The probability that the postulated universe would produce a difference between groups as large or larger than observed in 1961 is estimated by how frequently the mean of the group of randomly-chosen sixteen prices from the simulated state-ownership universe is less than (or equal to) the mean of the actual sixteen state-ownership prices. The following notebook performs the operations described above.</p>
+<section id="sec-concatenate" class="level3" data-number="12.16.1">
+<h3 data-number="12.16.1" class="anchored" data-anchor-id="sec-concatenate"><span class="header-section-number">12.16.1</span> Concatenating arrays</h3>
+<p>Before we start the simulation, we need a little extra NumPy machinery.</p>
+<p>In what follows, we are going to make an array for the 26 <em>private</em> prices, and another array for the 16 <em>government</em> prices, and then concatenate these two arrays to make a new array with 26 + 16 = 42 elements, where the first 26 elements are the private prices and the last 16 elements are the government prices.</p>
+<p>You will see that in action below, but this is what that <em>concatenation</em> looks like in NumPy for some example arrays.</p>
+<div class="python">
+<p>We use Numpy’s <code>concatenate</code> function to concatenate two arrays:</p>
+</div>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-39_93a8211b7f130b28df398b6f837766e6">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>arr_a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>arr_b <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>])</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use np.concatenate function to make new array consisting of elements in</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first array followed by elements in second array.</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> np.concatenate([arr_a, arr_b])</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result.</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>both</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([ 1,  2,  3, 10, 11, 12, 13])</code></pre>
+</div>
+</div>
+<!---
+End of R block.
+-->
+</section>
+<section id="price-simulation" class="level3" data-number="12.16.2">
+<h3 data-number="12.16.2" class="anchored" data-anchor-id="price-simulation"><span class="header-section-number">12.16.2</span> Price simulation</h3>
 <div class="notebook" name="liquor_prices" title="Public and private liquor prices">
 <p>Start of <code>liquor_prices</code> notebook</p>
 <div class="nb-links">
@@ -1392,60 +1422,60 @@ How does the <span class="python"><code>p</code></span> argument to <code>rnd.ch
 <a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/liquor_prices.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-39_2ab3d4087a881eae7ba5eba215ced591">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the plotting library</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-42_e2cba365a6a13053857bdeb156d55109">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the plotting library</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-40_09776c444d613f258c9e3e44d5ab8171">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fake_diffs <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>priv <span class="op">=</span> np.array([</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.82</span>, <span class="fl">5.29</span>, <span class="fl">4.89</span>, <span class="fl">4.95</span>, <span class="fl">4.55</span>, <span class="fl">4.90</span>, <span class="fl">5.25</span>, <span class="fl">5.30</span>, <span class="fl">4.29</span>, <span class="fl">4.85</span>, <span class="fl">4.54</span>, <span class="fl">4.75</span>,</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.85</span>, <span class="fl">4.85</span>, <span class="fl">4.50</span>, <span class="fl">4.75</span>, <span class="fl">4.79</span>, <span class="fl">4.85</span>, <span class="fl">4.79</span>, <span class="fl">4.95</span>, <span class="fl">4.95</span>, <span class="fl">4.75</span>, <span class="fl">5.20</span>, <span class="fl">5.10</span>,</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.80</span>, <span class="fl">4.29</span>])</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>govt <span class="op">=</span> np.array([</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.65</span>, <span class="fl">4.55</span>, <span class="fl">4.11</span>, <span class="fl">4.15</span>, <span class="fl">4.20</span>, <span class="fl">4.55</span>, <span class="fl">3.80</span>, <span class="fl">4.00</span>, <span class="fl">4.19</span>, <span class="fl">4.75</span>, <span class="fl">4.74</span>, <span class="fl">4.50</span>,</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.10</span>, <span class="fl">4.00</span>, <span class="fl">5.05</span>, <span class="fl">4.20</span>])</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>actual_diff <span class="op">=</span> np.mean(priv) <span class="op">-</span> np.mean(govt)</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the two vectors of data</span></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> np.concatenate((priv, govt))</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat 10000 simulation trials</span></span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample 26 with replacement for private group</span></span>
-<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>    fake_priv <span class="op">=</span> np.random.choice(both, size<span class="op">=</span><span class="dv">26</span>)</span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample 16 with replacement for govt. group</span></span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    fake_govt <span class="op">=</span> np.random.choice(both, size<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the mean of the "private" group.</span></span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> np.mean(fake_priv)</span>
-<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Mean of the "govt." group</span></span>
-<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> np.mean(fake_govt)</span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Difference in the means</span></span>
-<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>    diff <span class="op">=</span> p <span class="op">-</span> g</span>
-<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep score of the trials</span></span>
-<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>    fake_diffs[i] <span class="op">=</span> diff</span>
-<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Graph of simulation results to compare with the observed result.</span></span>
-<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>plt.hist(fake_diffs)</span>
-<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Difference in average prices (cents)'</span>)</span>
-<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average price difference (Actual difference = '</span></span>
-<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a><span class="ss">f'</span><span class="sc">{</span>actual_diff <span class="op">*</span> <span class="dv">100</span><span class="sc">:.0f}</span><span class="ss"> cents)'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="probability_theory_3_cache/html/unnamed-chunk-43_7e2e4e44debc974fdb8f667f4df1f7a7">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fake_diffs <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>priv <span class="op">=</span> np.array([</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.82</span>, <span class="fl">5.29</span>, <span class="fl">4.89</span>, <span class="fl">4.95</span>, <span class="fl">4.55</span>, <span class="fl">4.90</span>, <span class="fl">5.25</span>, <span class="fl">5.30</span>, <span class="fl">4.29</span>, <span class="fl">4.85</span>, <span class="fl">4.54</span>, <span class="fl">4.75</span>,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.85</span>, <span class="fl">4.85</span>, <span class="fl">4.50</span>, <span class="fl">4.75</span>, <span class="fl">4.79</span>, <span class="fl">4.85</span>, <span class="fl">4.79</span>, <span class="fl">4.95</span>, <span class="fl">4.95</span>, <span class="fl">4.75</span>, <span class="fl">5.20</span>, <span class="fl">5.10</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.80</span>, <span class="fl">4.29</span>])</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>govt <span class="op">=</span> np.array([</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.65</span>, <span class="fl">4.55</span>, <span class="fl">4.11</span>, <span class="fl">4.15</span>, <span class="fl">4.20</span>, <span class="fl">4.55</span>, <span class="fl">3.80</span>, <span class="fl">4.00</span>, <span class="fl">4.19</span>, <span class="fl">4.75</span>, <span class="fl">4.74</span>, <span class="fl">4.50</span>,</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.10</span>, <span class="fl">4.00</span>, <span class="fl">5.05</span>, <span class="fl">4.20</span>])</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>actual_diff <span class="op">=</span> np.mean(priv) <span class="op">-</span> np.mean(govt)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the two arrays of data into one array.</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> np.concatenate([priv, govt])</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat 10000 simulation trials</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample 26 with replacement for private group</span></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>    fake_priv <span class="op">=</span> np.random.choice(both, size<span class="op">=</span><span class="dv">26</span>)</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample 16 with replacement for govt. group</span></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>    fake_govt <span class="op">=</span> np.random.choice(both, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the mean of the "private" group.</span></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> np.mean(fake_priv)</span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Mean of the "govt." group</span></span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> np.mean(fake_govt)</span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Difference in the means</span></span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>    diff <span class="op">=</span> p <span class="op">-</span> g</span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep score of the trials</span></span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>    fake_diffs[i] <span class="op">=</span> diff</span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Graph of simulation results to compare with the observed result.</span></span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a>plt.hist(fake_diffs)</span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Difference in average prices (cents)'</span>)</span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average price difference (Actual difference = '</span></span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a><span class="ss">f'</span><span class="sc">{</span>actual_diff <span class="op">*</span> <span class="dv">100</span><span class="sc">:.0f}</span><span class="ss"> cents)'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="probability_theory_3_files/figure-html/unnamed-chunk-40-3.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="probability_theory_3_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1454,6 +1484,7 @@ How does the <span class="python"><code>p</code></span> argument to <code>rnd.ch
 </div>
 <p>The results shown above — not even one “success” in 10,000 trials — imply that there is only a very small probability that two groups with mean prices as different as were observed would happen by chance if drawn with replacement from the universe of 42 observed prices.</p>
 <p>Here we think of these states as if they came from a non-finite universe, which is one possible interpretation for one particular context. However, in <a href="probability_theory_4_finite.html" class="quarto-xref"><span>Chapter&nbsp;13</span></a> we will postulate a finite universe, which is appropriate if it is reasonable to consider that these observations constitute the entire universe (aside from those states excluded from the analysis because of data complexities).</p>
+</section>
 </section>
 <section id="the-general-procedure" class="level2" data-number="12.17">
 <h2 data-number="12.17" class="anchored" data-anchor-id="the-general-procedure"><span class="header-section-number">12.17</span> The general procedure</h2>

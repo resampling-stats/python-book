@@ -415,7 +415,11 @@ div.csl-indent {
   <li><a href="#unusual-values-compared-to-the-distribution" id="toc-unusual-values-compared-to-the-distribution" class="nav-link" data-scroll-target="#unusual-values-compared-to-the-distribution"><span class="header-section-number">16.4</span> Unusual values compared to the distribution</a></li>
   <li><a href="#on-deviations" id="toc-on-deviations" class="nav-link" data-scroll-target="#on-deviations"><span class="header-section-number">16.5</span> On deviations</a></li>
   <li><a href="#the-mean-absolute-deviation" id="toc-the-mean-absolute-deviation" class="nav-link" data-scroll-target="#the-mean-absolute-deviation"><span class="header-section-number">16.6</span> The mean absolute deviation</a></li>
-  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="header-section-number">16.7</span> The standard deviation</a></li>
+  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="header-section-number">16.7</span> The standard deviation</a>
+  <ul class="collapse">
+  <li><a href="#sec-squared-arrays" id="toc-sec-squared-arrays" class="nav-link" data-scroll-target="#sec-squared-arrays"><span class="header-section-number">16.7.1</span> Squares of arrays</a></li>
+  <li><a href="#calculating-the-standard-deviation" id="toc-calculating-the-standard-deviation" class="nav-link" data-scroll-target="#calculating-the-standard-deviation"><span class="header-section-number">16.7.2</span> Calculating the standard deviation</a></li>
+  </ul></li>
   <li><a href="#standard-scores" id="toc-standard-scores" class="nav-link" data-scroll-target="#standard-scores"><span class="header-section-number">16.8</span> Standard scores</a></li>
   <li><a href="#standard-scores-to-compare-values-on-different-scales" id="toc-standard-scores-to-compare-values-on-different-scales" class="nav-link" data-scroll-target="#standard-scores-to-compare-values-on-different-scales"><span class="header-section-number">16.9</span> Standard scores to compare values on different scales</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">16.10</span> Conclusion</a></li>
@@ -1255,6 +1259,8 @@ Calculating quantiles using the linear method
 <h2 data-number="16.7" class="anchored" data-anchor-id="the-standard-deviation"><span class="header-section-number">16.7</span> The standard deviation</h2>
 <p>We are interested in the average deviation, but we find that a simple average of the deviations from the mean always gives 0 (perhaps with some tiny calculation error), because the positive and negative deviations cancel exactly.</p>
 <p>The MAD calculation solves this problem by knocking the signs off the negative values before we take the mean.</p>
+<section id="sec-squared-arrays" class="level3" data-number="16.7.1">
+<h3 data-number="16.7.1" class="anchored" data-anchor-id="sec-squared-arrays"><span class="header-section-number">16.7.1</span> Squares of arrays</h3>
 <p>Another very popular way of solving the same problem is to precede the calculation by squaring all the deviations. Python has an operator for the operation of taking values to the power of another value: it is <code>**</code>. For example, to square a single number, we take the number <em>to the power of</em> 2, like this:</p>
 <div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-85_5f979b3c4a4b38255ba7f0893ae8c68d">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 to the power of 2.</span></span>
@@ -1272,6 +1278,9 @@ Calculating quantiles using the linear method
 <pre><code>array([  4, 100, 144])</code></pre>
 </div>
 </div>
+</section>
+<section id="calculating-the-standard-deviation" class="level3" data-number="16.7.2">
+<h3 data-number="16.7.2" class="anchored" data-anchor-id="calculating-the-standard-deviation"><span class="header-section-number">16.7.2</span> Calculating the standard deviation</h3>
 <p>We can therefore square the deviations we calculated above, like this:</p>
 <div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-89_755d4720b67cfc9248ce9876086c2d3b">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>squared_deviations <span class="op">=</span> deviations <span class="op">**</span> <span class="dv">2</span></span>
@@ -1394,6 +1403,7 @@ m * 10^n
 </div>
 </div>
 <p>The values for each district are a re-expression of the income values in terms of the distribution. They give the distance from the mean (positive or negative) in units of standard deviation.</p>
+</section>
 </section>
 <section id="standard-scores" class="level2" data-number="16.8">
 <h2 data-number="16.8" class="anchored" data-anchor-id="standard-scores"><span class="header-section-number">16.8</span> Standard scores</h2>
