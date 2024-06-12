@@ -510,7 +510,7 @@ Draft page partially ported from original PDF
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>k <span class="op">*</span> <span class="dv">100</span><span class="sc">:.2}</span><span class="ss">%'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5.5%</code></pre>
+<pre><code>5.7%</code></pre>
 </div>
 </div>
 <p>The answer looks to be somewhere between 5 and 6%. The code clearly follows the description step by step, but it is also quite slow. If we can improve the code, we may be able to do our simulation with more cars, and get a more accurate answer.</p>
@@ -562,7 +562,7 @@ Draft page partially ported from original PDF
 <span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>k <span class="op">*</span> <span class="dv">100</span><span class="sc">:.2}</span><span class="ss">%'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5.0%</code></pre>
+<pre><code>5.1%</code></pre>
 </div>
 </div>
 <p>The code now runs much faster, and with a larger number of cars we see that the answer is closer to a 5% chance of a car being broken after it has been approved by a mechanic.</p>
@@ -723,7 +723,7 @@ P(B | A) = P(B \text{ and } A) / P(A)
 <span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.006223820257531096</code></pre>
+<pre><code>0.006138814487723892</code></pre>
 </div>
 </div>
 <p>This gives around 0.006 or 0.6%.</p>
@@ -807,7 +807,7 @@ P(T^-) = P(T^- | C^-) * P(C^-) + P(T^- | C^+) * P(C^+)
 <span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>premium<span class="sc">:.0f}</span><span class="ss"> USD'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>4452 USD</code></pre>
+<pre><code>4460 USD</code></pre>
 </div>
 </div>
 <p>The answer should be around 4450 USD.</p>
@@ -927,15 +927,15 @@ P(T^-) = P(T^- | C^-) * P(C^-) + P(T^- | C^+) * P(C^+)
 <span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'p_BB = </span><span class="sc">{</span>p_BB<span class="sc">:.3f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>p_BB = 0.984</code></pre>
+<pre><code>p_BB = 0.985</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'p_Bb = </span><span class="sc">{</span>p_Bb<span class="sc">:.3f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>p_Bb = 0.016</code></pre>
+<pre><code>p_Bb = 0.015</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Ratio: </span><span class="sc">{</span>p_BB<span class="op">/</span>p_Bb<span class="sc">:.1f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Ratio: 61.4</code></pre>
+<pre><code>Ratio: 65.2</code></pre>
 </div>
 </div>
 <p>We see that all the offspring being black considerably changes the situation! We started with the odds being 2:1 in favor of Bb vs BB. The “posterior” or “after the evidence” ratio is closer to 64:1 in favor of <em>BB</em>! (1973, pp.&nbsp;12-14)</p>
