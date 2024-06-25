@@ -613,14 +613,14 @@ What is an integer?
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put in 3.2, round sends back 3.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(<span class="fl">3.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3.0</code></pre>
+<pre><code>np.float64(3.0)</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-8_0cd9b4d4c2bade25c13ce49a6e077920">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put in -2.7, round sends back -3.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(<span class="op">-</span><span class="fl">2.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>-3.0</code></pre>
+<pre><code>np.float64(-3.0)</code></pre>
 </div>
 </div>
 <p>Like many functions, <span class="python"><code>np.round</code></span> can take more than one argument (component). You can send <code>range</code> the number of digits you want to round to, after the number of you want it to work on, like this (see <a href="#fig-round_ndigits_pl" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>):</p>
@@ -629,7 +629,7 @@ What is an integer?
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># round sends back 3.14</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(<span class="fl">3.1415</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3.14</code></pre>
+<pre><code>np.float64(3.14)</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="resampling_with_code_cache/html/fig-round_ndigits_pl_33ea33af7338fdf53ed797dd467bf660">
@@ -654,7 +654,7 @@ What is an integer?
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># round sends back 3.14</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(<span class="fl">3.1415</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3.14</code></pre>
+<pre><code>np.float64(3.14)</code></pre>
 </div>
 </div>
 <p>In this call, we relied on the fact that we, the people writing the code, and you, the person reading the code, remembers that the second argument (2) means the number of decimal places it should round to. But, we can also specify the argument using its name, like this (see <span class="python"><a href="#fig-np_round_function_named" class="quarto-xref">Figure&nbsp;<span>5.5</span></a></span>):</p>
@@ -663,7 +663,7 @@ What is an integer?
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the name of the number-of-decimals argument for clarity:</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(<span class="fl">3.1415</span>, decimals<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3.14</code></pre>
+<pre><code>np.float64(3.14)</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="resampling_with_code_cache/html/fig-round_function_named_ec8b106f735075c77f43cb694a404458">
@@ -692,7 +692,7 @@ What is an integer?
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put in 3.1415, and the number of digits to round to (2).</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(a<span class="op">=</span><span class="fl">3.1415</span>, decimals<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3.14</code></pre>
+<pre><code>np.float64(3.14)</code></pre>
 </div>
 </div>
 <p>We don’t usually name both arguments for <code>round</code>, as we have above, because it is so obvious that the first argument is the thing we want to round, and so naming the argument does not make it any more clear what the code is doing. But — as so often in programming — whether to use the names, or let Python work out which argument is which by position, is a judgment call. The judgment you are making is about the way to write the code to be most clear for your reader, where your most important reader may be you, coming back to the code in a week or a year.</p>
@@ -884,7 +884,7 @@ More on <code>rnd.choice</code>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the value that results.</span></span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>my_integer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5</code></pre>
+<pre><code>np.int64(5)</code></pre>
 </div>
 </div>
 <p>Like <span class="python"><code>np.round</code></span> (above), <span class="python"><code>rnd.choice</code></span> is a <em>function</em>.</p>
@@ -927,7 +927,7 @@ Functions and methods
 <span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the value that results.</span></span>
 <span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>my_number</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>4</code></pre>
+<pre><code>np.int64(4)</code></pre>
 </div>
 </div>
 </section>
@@ -959,7 +959,7 @@ Functions and methods
 <div class="cell" data-layout-align="center" data-hash="resampling_with_code_cache/html/unnamed-chunk-43_aaaebb8868545f69b4e50cd8ebf12f02">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>81</code></pre>
+<pre><code>np.int64(81)</code></pre>
 </div>
 </div>
 </section>
@@ -1066,7 +1066,7 @@ Functions and methods
 <span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>16</code></pre>
+<pre><code>np.int64(16)</code></pre>
 </div>
 </div>
 </section>
@@ -1086,7 +1086,7 @@ Functions and methods
 <span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of this simulated trial.</span></span>
 <span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>17</code></pre>
+<pre><code>np.int64(17)</code></pre>
 </div>
 </div>
 </section>
@@ -1197,7 +1197,7 @@ Functions and methods
 <span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
 <span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>n_all_cured</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>15</code></pre>
+<pre><code>np.int64(15)</code></pre>
 </div>
 </div>
 <p><code>n_all_cured</code> is the number of simulated trials for which all patients were cured. It only remains to get the proportion of trials for which this was true, and to do this, we divide by the number of trials.</p>
@@ -1207,7 +1207,7 @@ Functions and methods
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.15</code></pre>
+<pre><code>np.float64(0.15)</code></pre>
 </div>
 </div>
 <p>From this experiment, we see that there is roughly a one-in-six chance that all 17 patients are cured when using a 90% effective treatment.</p>

@@ -433,7 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>59</code></pre>
+<pre><code>np.int64(59)</code></pre>
 </div>
 </div>
 <p>After that, we have to unpack our labeling of 0 through 25 as being “black” and 26 through 99 as being “white”. We might do that like this:</p>
@@ -441,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>this_juror_is_black <span class="op">=</span> a <span class="op">&lt;</span> <span class="dv">26</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>this_juror_is_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>False</code></pre>
+<pre><code>np.False_</code></pre>
 </div>
 </div>
 <p>This all works as we want it to, but it’s just a little bit difficult to remember the coding (less than 26 means “black”, greater than 25 means “white”). We had to use that coding because we committed ourselves to using random numbers to simulate the outcomes.</p>
@@ -712,7 +712,7 @@ End of Python section
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>middle_name <span class="op">=</span> arr_of_strings[<span class="dv">1</span>]</span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>middle_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'Lincoln'</code></pre>
+<pre><code>np.str_('Lincoln')</code></pre>
 </div>
 </div>
 <p>As for numbers, we can compare strings with, for example, the <code>==</code> operator, that asks whether the two strings are equal:</p>
@@ -769,7 +769,7 @@ End of Python section
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>one_juror <span class="op">=</span> rnd.choice(jury_pool)</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>one_juror</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'white'</code></pre>
+<pre><code>np.str_('white')</code></pre>
 </div>
 </div>
 <p>We can select our full jury of 12 jurors, and see the results in a more obvious form:</p>
@@ -820,7 +820,7 @@ Using the <code>size</code> argument to <code>rnd.choice</code>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>n_black <span class="op">=</span> np.<span class="bu">sum</span>(are_black)</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>n_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3</code></pre>
+<pre><code>np.int64(3)</code></pre>
 </div>
 </div>
 <p>Putting that all together, this is our new procedure to select one jury and count the number of black jurors:</p>
@@ -830,7 +830,7 @@ Using the <code>size</code> argument to <code>rnd.choice</code>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>n_black <span class="op">=</span> np.<span class="bu">sum</span>(are_black)</span>
 <span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>n_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3</code></pre>
+<pre><code>np.int64(3)</code></pre>
 </div>
 </div>
 <p>Or we can be even more compact by putting several statements together into one line:</p>
@@ -839,7 +839,7 @@ Using the <code>size</code> argument to <code>rnd.choice</code>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>n_black <span class="op">=</span> np.<span class="bu">sum</span>(rnd.choice(jury_pool, size<span class="op">=</span><span class="dv">12</span>) <span class="op">==</span> <span class="st">'black'</span>)</span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>n_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1</code></pre>
+<pre><code>np.int64(1)</code></pre>
 </div>
 </div>
 </section>
@@ -929,7 +929,7 @@ Comments at the end of lines
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>n_black <span class="op">=</span> np.<span class="bu">sum</span>(ok_jury <span class="op">==</span> <span class="st">'black'</span>)  <span class="co"># How many black jurors?</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>n_black</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1</code></pre>
+<pre><code>np.int64(1)</code></pre>
 </div>
 </div>
 <p>Now we have the procedure for one simulated trial, here is the procedure for 10000 simulated trials.</p>

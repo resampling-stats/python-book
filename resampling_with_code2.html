@@ -516,7 +516,7 @@ div.csl-indent {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>4</code></pre>
+<pre><code>np.int64(4)</code></pre>
 </div>
 </div>
 </section>
@@ -536,7 +536,7 @@ div.csl-indent {
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>4</code></pre>
+<pre><code>np.int64(4)</code></pre>
 </div>
 </div>
 </section>
@@ -631,7 +631,7 @@ More on arrays
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the value we got</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>99.0</code></pre>
+<pre><code>np.float64(99.0)</code></pre>
 </div>
 </div>
 <p>Read the first code line here as “v gets the value at position <span class="python">0</span> in the array”.</p>
@@ -658,7 +658,7 @@ More on arrays
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>4</code></pre>
+<pre><code>np.int64(4)</code></pre>
 </div>
 </div>
 <p>Now we have the result of a single trial, we can store it as the first number in the <code>z</code> array:</p>
@@ -849,7 +849,7 @@ The loop variable n is 3</code></pre>
 <div class="cell" data-layout-align="center" data-hash="resampling_with_code2_cache/html/unnamed-chunk-37_c622ec574e78c53c7f5ad653acf94e64">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>author_birth_years[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1964</code></pre>
+<pre><code>np.int64(1964)</code></pre>
 </div>
 </div>
 <div class="python">
@@ -930,7 +930,7 @@ Birth year of author position 3 is 1944</code></pre>
 <span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>4</code></pre>
+<pre><code>np.int64(4)</code></pre>
 </div>
 </div>
 <p>We found that we could use arrays to store the results of these trials, and that we could use <code>for</code> loops to repeat the same procedure many times.</p>
@@ -998,7 +998,7 @@ Birth year of author position 3 is 1944</code></pre>
 <span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result of the comparison.</span></span>
 <span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>n_all_white</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0</code></pre>
+<pre><code>np.int64(0)</code></pre>
 </div>
 </div>
 <p><code>n_all_white</code> is the number of simulated trials for which all the jury members were white. It only remains to get the proportion of trials for which this was true, and to do this, we divide by the number of trials.</p>
@@ -1008,7 +1008,7 @@ Birth year of author position 3 is 1944</code></pre>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0</code></pre>
+<pre><code>np.float64(0.0)</code></pre>
 </div>
 </div>
 <p>From this initial simulation, it seems there is around a 0% chance that a jury selected randomly from the population, which was 26% black, would have no black jurors.</p>
@@ -1034,7 +1034,7 @@ Birth year of author position 3 is 1944</code></pre>
 <span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> n_all_white <span class="op">/</span> <span class="dv">10000</span></span>
 <span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0305</code></pre>
+<pre><code>np.float64(0.0305)</code></pre>
 </div>
 </div>
 <p>We now have a new, more accurate estimate of the proportion of Hypothetical County juries with all-white juries. The proportion is 0.03, and so 3%.</p>

@@ -1787,7 +1787,7 @@ NumPy’s Random Number Generator
 <div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-7_1407662de82102fa2d94e4865e49f1be">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rnd.choice([<span class="st">'apple'</span>, <span class="st">'orange'</span>, <span class="st">'banana'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'orange'</code></pre>
+<pre><code>np.str_('orange')</code></pre>
 </div>
 </div></li>
 <li><p>Make five random choices of three words, using the “size=” argument:</p>
@@ -1844,7 +1844,7 @@ NumPy’s Random Number Generator
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1</code></pre>
+<pre><code>np.int64(1)</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1861,7 +1861,7 @@ Counting sequence elements
 <div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-15_507187b5f071e05861e283012c3bae7b">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(a <span class="op">==</span> <span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1</code></pre>
+<pre><code>np.int64(1)</code></pre>
 </div>
 </div>
 <p>What exactly happens here under the hood? First <code>a == 9</code> creates an sequence of values that only contains</p>

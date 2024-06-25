@@ -1459,7 +1459,7 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>actual_diff <span class="op">=</span> np.mean(priv) <span class="op">-</span> np.mean(govt)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>actual_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.49221153846153953</code></pre>
+<pre><code>np.float64(0.49221153846153953)</code></pre>
 </div>
 </div>
 <p>Concatenate the private and government values into one array:</p>
@@ -1752,7 +1752,7 @@ Discussion of fogginess that arises from uncertainty about maths.
 <span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the actual difference.</span></span>
 <span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>actual_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.8199999999999994</code></pre>
+<pre><code>np.float64(0.8199999999999994)</code></pre>
 </div>
 </div>
 <p>Proceed with the simulation:</p>
@@ -2204,7 +2204,7 @@ End of notebook
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sum_sq_d <span class="op">=</span> np.<span class="bu">sum</span>(squared_differences)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sum_sq_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5299</code></pre>
+<pre><code>np.int64(5299)</code></pre>
 </div>
 </div>
 <p>Squaring arrays squares <em>each element</em> of the array (see <a href="standard_scores.html#sec-squared-arrays" class="quarto-xref"><span>Section&nbsp;16.7.1</span></a>):</p>

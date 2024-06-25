@@ -605,7 +605,7 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The number of True values — so the number of "Gold" chests.</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(were_gold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5</code></pre>
+<pre><code>np.int64(5)</code></pre>
 </div>
 </div>
 </section>
@@ -776,7 +776,7 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First question, giving first element of result.</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>(ten_first_gold[<span class="dv">0</span>] <span class="op">&amp;</span> ten_second_gold[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>False</code></pre>
+<pre><code>np.False_</code></pre>
 </div>
 </div>
 <p>The second question is:</p>
@@ -784,7 +784,7 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Second question, giving second element of result.</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>(ten_first_gold[<span class="dv">1</span>] <span class="op">&amp;</span> ten_second_gold[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>False</code></pre>
+<pre><code>np.False_</code></pre>
 </div>
 </div>
 <p>and so on. We have ten elements on <em>each side</em>, and 10 answers, giving an array (<code>ten_both</code>) of 10 elements. Each element in <code>ten_both</code> is the answer to the <code>&amp;</code> question for the elements at the corresponding positions in <code>ten_first_gold</code> and <code>ten_second_gold</code>.</p>
@@ -827,7 +827,7 @@ Parentheses, arrays and comparisons
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>n_ten_both <span class="op">=</span> np.<span class="bu">sum</span>(ten_both)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>n_ten_both</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5</code></pre>
+<pre><code>np.int64(5)</code></pre>
 </div>
 </div>
 <p>We can answer the same question for <em>all</em> the trials, in the same way:</p>
@@ -837,7 +837,7 @@ Parentheses, arrays and comparisons
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>n_both_gold <span class="op">=</span> np.<span class="bu">sum</span>(first_gold <span class="op">&amp;</span> second_gold)</span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>n_both_gold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3369</code></pre>
+<pre><code>np.int64(3369)</code></pre>
 </div>
 </div>
 <p>We could also do the same calculation all in one line:</p>
@@ -846,7 +846,7 @@ Parentheses, arrays and comparisons
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>n_both_gold <span class="op">=</span> np.<span class="bu">sum</span>((first_chests <span class="op">==</span> <span class="st">'Gold'</span>) <span class="op">&amp;</span> (second_chests <span class="op">==</span> <span class="st">'Gold'</span>))</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>n_both_gold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3369</code></pre>
+<pre><code>np.int64(3369)</code></pre>
 </div>
 </div>
 <p>We can then count all the ships where the first chest was gold:</p>
@@ -854,7 +854,7 @@ Parentheses, arrays and comparisons
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>n_first_gold <span class="op">=</span> np.<span class="bu">sum</span>(first_chests <span class="op">==</span> <span class="st">'Gold'</span>)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>n_first_gold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5085</code></pre>
+<pre><code>np.int64(5085)</code></pre>
 </div>
 </div>
 <p>The final calculation is the proportion of second chests that are gold, given the first chest was also gold:</p>
@@ -862,7 +862,7 @@ Parentheses, arrays and comparisons
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>p_g_given_g <span class="op">=</span> n_both_gold <span class="op">/</span> n_first_gold</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>p_g_given_g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.6625368731563421</code></pre>
+<pre><code>np.float64(0.6625368731563421)</code></pre>
 </div>
 </div>
 <p>Of course we won’t get exactly the same results from the two simulations, in the same way that we won’t get exactly the same results from any two runs of the same simulation, because of the random values we are using. But the logic for the two simulations are the same, and we are doing many trials (10,000), so the results will be very similar.</p>
@@ -1359,7 +1359,7 @@ Parentheses, arrays and comparisons
 <span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>my_door</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2</code></pre>
+<pre><code>np.int64(2)</code></pre>
 </div>
 </div>
 <p>We choose one of the doors to be the door with the car behind it:</p>
@@ -1370,7 +1370,7 @@ Parentheses, arrays and comparisons
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>car_door</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2</code></pre>
+<pre><code>np.int64(2)</code></pre>
 </div>
 </div>
 <p>Now we need to decide which door Monty will open.</p>
@@ -1382,7 +1382,7 @@ Parentheses, arrays and comparisons
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>cant_open <span class="op">=</span> [my_door, car_door]</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>cant_open</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[2, 2]</code></pre>
+<pre><code>[np.int64(2), np.int64(2)]</code></pre>
 </div>
 </div>
 <p>We want to find the remaining doors from <code>doors</code> after removing the doors named in <code>cant_open</code>.</p>
@@ -1455,7 +1455,7 @@ Parentheses, arrays and comparisons
 <span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>    montys_door <span class="op">=</span> rnd.choice(montys_choices)</span>
 <span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>montys_door</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2</code></pre>
+<pre><code>np.int64(2)</code></pre>
 </div>
 </div>
 <div class="python">
@@ -1464,7 +1464,7 @@ Parentheses, arrays and comparisons
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rnd.choice on sequence with single element - always returns that element.</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>rnd.choice([<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2</code></pre>
+<pre><code>np.int64(2)</code></pre>
 </div>
 </div>
 <p>That means we can simplify the code above to:</p>
@@ -1473,7 +1473,7 @@ Parentheses, arrays and comparisons
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>montys_door <span class="op">=</span> rnd.choice(montys_choices)</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>montys_door</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3</code></pre>
+<pre><code>np.int64(3)</code></pre>
 </div>
 </div>
 </div>
@@ -1484,7 +1484,7 @@ Parentheses, arrays and comparisons
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>other_door <span class="op">=</span> remaining_doors[<span class="dv">0</span>]</span>
 <span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>other_door</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2</code></pre>
+<pre><code>np.int64(2)</code></pre>
 </div>
 </div>
 <p>The logic above gives us the full procedure for one trial.</p>
@@ -1632,7 +1632,7 @@ Parentheses, arrays and comparisons
 <span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb95-8"><a href="#cb95-8" aria-hidden="true" tabindex="-1"></a>montys_door</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2</code></pre>
+<pre><code>np.int64(2)</code></pre>
 </div>
 </div>
 <p>Now — let us say we happen to know that Monty is rather lazy, and he will always choose the left-most (lower-numbered) door of the two options.</p>
@@ -1647,7 +1647,7 @@ Parentheses, arrays and comparisons
 <span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a>montys_door</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>2</code></pre>
+<pre><code>np.int64(2)</code></pre>
 </div>
 </div>
 <p>It feels as if we have more information about where the car is, when we know this. Consider the situation where we have chosen door 1, and Monty opens door 3. We know that he would have preferred to open door 2, if he was allowed. We therefore know he wasn’t allowed to open door 2, and that means the car is definitely under door 2.</p>
@@ -1664,7 +1664,7 @@ Parentheses, arrays and comparisons
 <span id="cb99-10"><a href="#cb99-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb99-11"><a href="#cb99-11" aria-hidden="true" tabindex="-1"></a>montys_door</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3</code></pre>
+<pre><code>np.int64(3)</code></pre>
 </div>
 </div>
 <p>To take that into account, we might try a different strategy. We will stick to our own choice if Monty has chosen the left-most of the two doors he had available to him, because he might have chosen that door because there was a car underneath the other door, or because there was a car under neither, but he preferred the left door. But, if Monty chooses the right-most of the two-doors available to him, we will switch from our own choice to the other (unopened) door, because we can be sure that the car is under the other (unopened) door.</p>

@@ -415,13 +415,13 @@ div.csl-indent {
   <li><a href="#unusual-values-compared-to-the-distribution" id="toc-unusual-values-compared-to-the-distribution" class="nav-link" data-scroll-target="#unusual-values-compared-to-the-distribution"><span class="header-section-number">16.4</span> Unusual values compared to the distribution</a></li>
   <li><a href="#on-deviations" id="toc-on-deviations" class="nav-link" data-scroll-target="#on-deviations"><span class="header-section-number">16.5</span> On deviations</a></li>
   <li><a href="#the-mean-absolute-deviation" id="toc-the-mean-absolute-deviation" class="nav-link" data-scroll-target="#the-mean-absolute-deviation"><span class="header-section-number">16.6</span> The mean absolute deviation</a></li>
-  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="header-section-number">16.7</span> The standard deviation</a>
+  <li><a href="#sec-standard-deviation" id="toc-sec-standard-deviation" class="nav-link" data-scroll-target="#sec-standard-deviation"><span class="header-section-number">16.7</span> The standard deviation</a>
   <ul class="collapse">
   <li><a href="#sec-squared-arrays" id="toc-sec-squared-arrays" class="nav-link" data-scroll-target="#sec-squared-arrays"><span class="header-section-number">16.7.1</span> Squares of arrays</a></li>
   <li><a href="#calculating-the-standard-deviation" id="toc-calculating-the-standard-deviation" class="nav-link" data-scroll-target="#calculating-the-standard-deviation"><span class="header-section-number">16.7.2</span> Calculating the standard deviation</a></li>
   </ul></li>
   <li><a href="#standard-scores" id="toc-standard-scores" class="nav-link" data-scroll-target="#standard-scores"><span class="header-section-number">16.8</span> Standard scores</a></li>
-  <li><a href="#standard-scores-to-compare-values-on-different-scales" id="toc-standard-scores-to-compare-values-on-different-scales" class="nav-link" data-scroll-target="#standard-scores-to-compare-values-on-different-scales"><span class="header-section-number">16.9</span> Standard scores to compare values on different scales</a></li>
+  <li><a href="#sec-standard-scores" id="toc-sec-standard-scores" class="nav-link" data-scroll-target="#sec-standard-scores"><span class="header-section-number">16.9</span> Standard scores to compare values on different scales</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">16.10</span> Conclusion</a></li>
   </ul>
 </nav>
@@ -756,7 +756,7 @@ Sorting
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the element at position 0.</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>priv[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>4.82</code></pre>
+<pre><code>np.float64(4.82)</code></pre>
 </div>
 </div>
 <p>As you can index into strings and Numpy arrays, by using square brackets, so you can index into Pandas data frames. Instead of putting the <em>position</em> between the square brackets, we can put the <em>column name</em>. This fetches the data from that column, returning a new type of value called a Pandas <em>Series</em>.</p>
@@ -901,7 +901,7 @@ Need to introduce indexing with slices.
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>km_income <span class="op">=</span> incomes[km_index]</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>km_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>77205</code></pre>
+<pre><code>np.int64(77205)</code></pre>
 </div>
 </div>
 <p>Here is the corresponding index and <code>incomes</code> value for AOC:</p>
@@ -914,7 +914,7 @@ Need to introduce indexing with slices.
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>aoc_income <span class="op">=</span> incomes[aoc_index]</span>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>aoc_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>56129</code></pre>
+<pre><code>np.int64(56129)</code></pre>
 </div>
 </div>
 <p>Notice that we fetch the same value for median household income from <code>incomes</code> as you see in the corresponding rows.</p>
@@ -960,14 +960,14 @@ Need to introduce indexing with slices.
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>km_quantile_position <span class="op">=</span> quantile_positions[km_index]</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>km_quantile_position</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.6681818181818182</code></pre>
+<pre><code>np.float64(0.6681818181818182)</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-44_d0d9c54eab4e57690df162ed94414dcb">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>aoc_quantile_position <span class="op">=</span> quantile_positions[aoc_index]</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>aoc_quantile_position</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.18181818181818182</code></pre>
+<pre><code>np.float64(0.18181818181818182)</code></pre>
 </div>
 </div>
 <p>If we multiply the QP by 100, we get the <em>percentile positions</em> — so the percentile position ranges from 0 through 100.</p>
@@ -1006,7 +1006,7 @@ Need to introduce indexing with slices.
 <div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-52_9e29ab8ef525c66eb4cdfd2eb1c7cdc6">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>np.quantile(incomes, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>67407.0</code></pre>
+<pre><code>np.float64(67407.0)</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1027,7 +1027,7 @@ Need to introduce indexing with slices.
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Quantile still gives the same value.</span></span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>np.quantile(incomes, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>67407.0</code></pre>
+<pre><code>np.float64(67407.0)</code></pre>
 </div>
 </div>
 </div>
@@ -1037,7 +1037,7 @@ Need to introduce indexing with slices.
 <div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-56_445ae35fdcd989e4674b77f08f8b3bd2">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>np.median(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>67407.0</code></pre>
+<pre><code>np.float64(67407.0)</code></pre>
 </div>
 </div>
 <p>Another interesting QP is 0.25. We find the QP of 0.25 at rank:</p>
@@ -1105,7 +1105,7 @@ Need to introduce indexing with slices.
 <div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-66_42510a40469f7897eca8f15662d35120">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>np.quantile(incomes, <span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>38887.4</code></pre>
+<pre><code>np.float64(38887.4)</code></pre>
 </div>
 </div>
 <p>This is called the <em>linear</em> method — because it uses straight lines joining the points to estimate the quantile value for a QP that does not correspond to a whole-number rank.</p>
@@ -1203,7 +1203,7 @@ Calculating quantiles using the linear method
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the mean of the deviations, rounded to 8 decimal places.</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(np.mean(deviations), <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0</code></pre>
+<pre><code>np.float64(0.0)</code></pre>
 </div>
 </div>
 </section>
@@ -1239,7 +1239,7 @@ Calculating quantiles using the linear method
 <span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>mad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>15101.657570662428</code></pre>
+<pre><code>np.float64(15101.657570662428)</code></pre>
 </div>
 </div>
 <p>This is the Mean Absolute Deviation (MAD). It is one measure of the typical spread. MAD is the average distance (regardless of positive or negative) of a value from the mean of the values.</p>
@@ -1255,8 +1255,8 @@ Calculating quantiles using the linear method
 </div>
 </div>
 </section>
-<section id="the-standard-deviation" class="level2" data-number="16.7">
-<h2 data-number="16.7" class="anchored" data-anchor-id="the-standard-deviation"><span class="header-section-number">16.7</span> The standard deviation</h2>
+<section id="sec-standard-deviation" class="level2" data-number="16.7">
+<h2 data-number="16.7" class="anchored" data-anchor-id="sec-standard-deviation"><span class="header-section-number">16.7</span> The standard deviation</h2>
 <p>We are interested in the average deviation, but we find that a simple average of the deviations from the mean always gives 0 (perhaps with some tiny calculation error), because the positive and negative deviations cancel exactly.</p>
 <p>The MAD calculation solves this problem by knocking the signs off the negative values before we take the mean.</p>
 <section id="sec-squared-arrays" class="level3" data-number="16.7.1">
@@ -1324,7 +1324,7 @@ m * 10^n
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>mean_squared_deviation <span class="op">=</span> np.mean(squared_deviations)</span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>mean_squared_deviation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>385971462.1165975</code></pre>
+<pre><code>np.float64(385971462.1165975)</code></pre>
 </div>
 </div>
 <p>Rather confusingly, the field of statistics uses the term <em>variance</em> to refer to mean squared deviation value. Just to emphasize that naming, let’s do the same calculation but using “variance” as the variable name.</p>
@@ -1333,7 +1333,7 @@ m * 10^n
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>variance <span class="op">=</span> np.mean(squared_deviations)</span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>variance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>385971462.1165975</code></pre>
+<pre><code>np.float64(385971462.1165975)</code></pre>
 </div>
 </div>
 <div class="python">
@@ -1342,7 +1342,7 @@ m * 10^n
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use np.var to calculate the mean squared deviation directly.</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>np.var(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>385971462.1165975</code></pre>
+<pre><code>np.float64(385971462.1165975)</code></pre>
 </div>
 </div>
 </div>
@@ -1354,7 +1354,7 @@ m * 10^n
 <span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>standard_deviation <span class="op">=</span> np.sqrt(mean_squared_deviation)</span>
 <span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>standard_deviation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>19646.156420954136</code></pre>
+<pre><code>np.float64(19646.156420954136)</code></pre>
 </div>
 </div>
 <div class="python">
@@ -1364,14 +1364,14 @@ m * 10^n
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co"># directly.</span></span>
 <span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>np.std(incomes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>19646.156420954136</code></pre>
+<pre><code>np.float64(19646.156420954136)</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-101_c3e3510b73fd79485f3825e67f045fbc">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Of course, np.std(incomes) is the same as:</span></span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>np.sqrt(np.var(incomes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>19646.156420954136</code></pre>
+<pre><code>np.float64(19646.156420954136)</code></pre>
 </div>
 </div>
 </div>
@@ -1466,8 +1466,8 @@ m * 10^n
 </div>
 <p>Only 35% of districts are further from the mean than AOC’s district, but this is still a reasonable proportion. We see from the standard score that AOC is within one standard deviation. AOC’s district is poorer than average, but not to a remarkable degree.</p>
 </section>
-<section id="standard-scores-to-compare-values-on-different-scales" class="level2" data-number="16.9">
-<h2 data-number="16.9" class="anchored" data-anchor-id="standard-scores-to-compare-values-on-different-scales"><span class="header-section-number">16.9</span> Standard scores to compare values on different scales</h2>
+<section id="sec-standard-scores" class="level2" data-number="16.9">
+<h2 data-number="16.9" class="anchored" data-anchor-id="sec-standard-scores"><span class="header-section-number">16.9</span> Standard scores to compare values on different scales</h2>
 <p>Why are standard scores so useful? They allow us to compare values on very different scales.</p>
 <p>Consider the values in <a href="#tbl-epl-points-wages" class="quarto-xref">Table&nbsp;<span>16.4</span></a>. Each row of the table corresponds to a team competing in the English Premier League (EPL) for the 2021-2022 season. For those of you with absolutely no interest in sports, the EPL is the league of the top 20 teams in English football, or <em>soccer</em> to our North American friends. The <code>points</code> column of the table gives the total number of points at the end of the 2021 season (from 38 games). The team gets 3 points for a win, and 1 point for a draw, so the maximum possible points from 38 games are <span class="math inline">\(3 * 38 = 114\)</span>. The <code>wages</code> column gives the estimated total wage bill in thousands of British Pounds (£1000).</p>
 <div class="cell" data-layout-align="center" data-hash="standard_scores_cache/html/unnamed-chunk-114_ab259c1858781721297f5793b8b87b01">
@@ -1623,7 +1623,7 @@ m * 10^n
 <span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>wage_std <span class="op">=</span> np.sqrt(np.mean(wage_deviations <span class="op">**</span> <span class="dv">2</span>))</span>
 <span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>wage_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>55523.946071289814</code></pre>
+<pre><code>np.float64(55523.946071289814)</code></pre>
 </div>
 </div>
 <p>Now we can apply the standard score procedure to wages. We divide the deviations by the standard deviation.</p>
@@ -1653,7 +1653,7 @@ m * 10^n
 <span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>cp_wages <span class="op">=</span> wages[cp_index]</span>
 <span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>cp_wages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>71910</code></pre>
+<pre><code>np.int64(71910)</code></pre>
 </div>
 </div>
 <p>We can get our wage bill in standard units in the same way:</p>
@@ -1661,7 +1661,7 @@ m * 10^n
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>cp_standard_wages <span class="op">=</span> standard_wages[cp_index]</span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>cp_standard_wages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>-0.3474473873890471</code></pre>
+<pre><code>np.float64(-0.3474473873890471)</code></pre>
 </div>
 </div>
 <p>Our wage bill is a below average, but its still within striking distance of the mean.</p>
@@ -1674,7 +1674,7 @@ m * 10^n
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.mean(standards_multiplied)</span>
 <span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.7080086644844557</code></pre>
+<pre><code>np.float64(0.7080086644844557)</code></pre>
 </div>
 </div>
 <p>The <span class="math inline">\(r\)</span> value is the answer to our question. For every one unit increase in standard scores in wages, we expect an increase of <span class="math inline">\(r\)</span> (0.708) standard score units in points.</p>
