@@ -427,10 +427,10 @@ div.csl-indent {
   </ul></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">29.7</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#exr-voter-participation" id="toc-exr-voter-participation" class="nav-link" data-scroll-target="#exr-voter-participation"><span class="header-section-number">29.7.1</span> Voter participation</a></li>
-  <li><a href="#exr-runs-strikeouts" id="toc-exr-runs-strikeouts" class="nav-link" data-scroll-target="#exr-runs-strikeouts"><span class="header-section-number">29.7.2</span> Association of runs and strikeouts</a></li>
-  <li><a href="#exr-runs-strikeout-correlation" id="toc-exr-runs-strikeout-correlation" class="nav-link" data-scroll-target="#exr-runs-strikeout-correlation"><span class="header-section-number">29.7.3</span> Runs, strikeouts, correlation</a></li>
-  <li><a href="#exr-money-exchange-rate" id="toc-exr-money-exchange-rate" class="nav-link" data-scroll-target="#exr-money-exchange-rate"><span class="header-section-number">29.7.4</span> Money and exchange rate</a></li>
+  <li><a href="#sec-exr-voter-participation" id="toc-sec-exr-voter-participation" class="nav-link" data-scroll-target="#sec-exr-voter-participation"><span class="header-section-number">29.7.1</span> Exercise: voter participation</a></li>
+  <li><a href="#sec-exr-runs-strikeouts" id="toc-sec-exr-runs-strikeouts" class="nav-link" data-scroll-target="#sec-exr-runs-strikeouts"><span class="header-section-number">29.7.2</span> Exercise: association of runs and strikeouts</a></li>
+  <li><a href="#sec-exr-runs-strikeouts-r" id="toc-sec-exr-runs-strikeouts-r" class="nav-link" data-scroll-target="#sec-exr-runs-strikeouts-r"><span class="header-section-number">29.7.3</span> Exercise: runs, strikeouts, correlation coefficient</a></li>
+  <li><a href="#sec-exr-money-exchange" id="toc-sec-exr-money-exchange" class="nav-link" data-scroll-target="#sec-exr-money-exchange"><span class="header-section-number">29.7.4</span> Exercise: money and exchange rate</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2299,9 +2299,9 @@ End of notebook
 </section>
 <section id="exercises" class="level2" data-number="29.7">
 <h2 data-number="29.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">29.7</span> Exercises</h2>
-<p>Solutions for problems may be found at <a href="exercise_solutions.html" class="quarto-xref"><span>Chapter&nbsp;32</span></a>.</p>
-<section id="exr-voter-participation" class="level3" data-number="29.7.1">
-<h3 data-number="29.7.1" class="anchored" data-anchor-id="exr-voter-participation"><span class="header-section-number">29.7.1</span> Voter participation</h3>
+<p>You can find solutions for problems at <a href="exercise_solutions.html" class="quarto-xref"><span>Chapter&nbsp;32</span></a>.</p>
+<section id="sec-exr-voter-participation" class="level3" data-number="29.7.1">
+<h3 data-number="29.7.1" class="anchored" data-anchor-id="sec-exr-voter-participation"><span class="header-section-number">29.7.1</span> Exercise: voter participation</h3>
 <p><a href="#tbl-voter-participation" class="quarto-xref">Table&nbsp;<span>29.11</span></a> shows voter participation rates in the various states in the 1844 presidential election. Should we conclude that there was a negative relationship between the participation rate and the vote spread between the parties in the election? (Adapted from <span class="citation" data-cites="noreen1989computer">(<a href="references.html#ref-noreen1989computer" role="doc-biblioref">Noreen 1989, 20</a>, Table 2-4)</span>:</p>
 <div class="cell" data-layout-align="center" data-hash="correlation_causation_cache/html/unnamed-chunk-62_c0fad1a72849f344e809dfbc2e9502bf">
 <div class="cell-output-display">
@@ -2450,11 +2450,11 @@ End of notebook
 </div>
 <p>The observed correlation coefficient between voter participation and spread is -0.425. Is this more negative that what might occur by chance, if no correlation exists?</p>
 <p>Here’s a notebook to get you started.</p>
-<div class="notebook" name="voter_participation" title="Voter participation in 1844 election">
-<p>Start of <code>voter_participation</code> notebook</p>
+<div class="notebook" name="voter_participation_exercise" title="Voter participation in 1844 election">
+<p>Start of <code>voter_participation_exercise</code> notebook</p>
 <div class="nb-links">
-<a class="notebook-link" href="notebooks/voter_participation.ipynb">Download notebook</a>
-<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/voter_participation.ipynb">Interact</a>
+<a class="notebook-link" href="notebooks/voter_participation_exercise.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/voter_participation_exercise.ipynb">Interact</a>
 </div>
 
 <div class="cell" data-layout-align="center" data-hash="correlation_causation_cache/html/unnamed-chunk-63_577252a3f7637b4debaa4edb2019a9fe">
@@ -2467,21 +2467,22 @@ End of notebook
 <span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>participation <span class="op">=</span> np.array(voter_df[<span class="st">'Participation'</span>])</span>
 <span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>spread <span class="op">=</span> np.array(voter_df[<span class="st">'Spread'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>End of <code>voter_participation</code> notebook</p>
+<p>End of <code>voter_participation_exercise</code> notebook</p>
 </div>
 <!---
 End of notebook
 -->
+<p>See: <a href="exercise_solutions.html#sec-soln-voter-participation" class="quarto-xref"><span>Section&nbsp;32.6</span></a>.</p>
 </section>
-<section id="exr-runs-strikeouts" class="level3" data-number="29.7.2">
-<h3 data-number="29.7.2" class="anchored" data-anchor-id="exr-runs-strikeouts"><span class="header-section-number">29.7.2</span> Association of runs and strikeouts</h3>
-<p>We would like to know whether, among major-league baseball players, home runs (per 500 at-bats) and strikeouts (per 500 at-bat’s) are correlated. We first use the procedure as used above for I.Q. and athletic ability — multiplying the elements within each pair. (We will later use a more “sophisticated” measure, the correlation coefficient.)</p>
-<p>The data for 18 randomly-selected players in the 1989 season are as follows, as they would appear in the first lines of the program.</p>
-<div class="notebook" name="homerun_correlation" title="Homeruns and strikeout correlation">
-<p>Start of <code>homerun_correlation</code> notebook</p>
+<section id="sec-exr-runs-strikeouts" class="level3" data-number="29.7.2">
+<h3 data-number="29.7.2" class="anchored" data-anchor-id="sec-exr-runs-strikeouts"><span class="header-section-number">29.7.2</span> Exercise: association of runs and strikeouts</h3>
+<p>We would like to know whether, among major-league baseball players, home runs (per 500 at-bats) and strikeouts (per 500 at-bat’s) are correlated. For this exercise, you should use the sum-of-products procedure as used above for I.Q. and athletic ability — multiplying the elements within each pair. The next exercise uses the more “sophisticated” measure, the correlation coefficient.</p>
+<p>The data for 18 randomly-selected players in the 1989 season are as follows, as they would appear in the first lines of the notebook.</p>
+<div class="notebook" name="homerun_sop_exercise" title="Homeruns and strikeout sum of products.">
+<p>Start of <code>homerun_sop_exercise</code> notebook</p>
 <div class="nb-links">
-<a class="notebook-link" href="notebooks/homerun_correlation.ipynb">Download notebook</a>
-<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/homerun_correlation.ipynb">Interact</a>
+<a class="notebook-link" href="notebooks/homerun_sop_exercise.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/homerun_sop_exercise.ipynb">Interact</a>
 </div>
 
 <div class="cell" data-layout-align="center" data-hash="correlation_causation_cache/html/unnamed-chunk-65_5098513be6e003db6caa3290ba08ca9d">
@@ -2496,19 +2497,21 @@ End of notebook
 <span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise - complete this program.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>End of <code>homerun_correlation</code> notebook</p>
+<p>End of <code>homerun_sop_exercise</code> notebook</p>
 </div>
 <!---
 End of notebook.
 -->
+<p>See: <a href="exercise_solutions.html#sec-soln-runs-strikeouts" class="quarto-xref"><span>Section&nbsp;32.7</span></a>.</p>
 </section>
-<section id="exr-runs-strikeout-correlation" class="level3" data-number="29.7.3">
-<h3 data-number="29.7.3" class="anchored" data-anchor-id="exr-runs-strikeout-correlation"><span class="header-section-number">29.7.3</span> Runs, strikeouts, correlation</h3>
+<section id="sec-exr-runs-strikeouts-r" class="level3" data-number="29.7.3">
+<h3 data-number="29.7.3" class="anchored" data-anchor-id="sec-exr-runs-strikeouts-r"><span class="header-section-number">29.7.3</span> Exercise: runs, strikeouts, correlation coefficient</h3>
 <p>In the previous example relating strikeouts and home runs, we used the procedure of multiplying the elements within each pair. Now we use a more “sophisticated” measure, the correlation coefficient, which is simply a standardized form of the multiplicands, but sufficiently well known that we calculate it with a pre-set command.</p>
-<p>Exercise: Write a program that uses the correlation coefficient to test the significance of the association between home runs and strikeouts.</p>
+<p>Exercise: Write a program that uses the correlation coefficient to test the significance of the association between home runs and strikeouts. You can use the starting notebook for the previous exercise.</p>
+<p>See: <a href="exercise_solutions.html#sec-soln-runs-strikeouts-r" class="quarto-xref"><span>Section&nbsp;32.8</span></a>.</p>
 </section>
-<section id="exr-money-exchange-rate" class="level3" data-number="29.7.4">
-<h3 data-number="29.7.4" class="anchored" data-anchor-id="exr-money-exchange-rate"><span class="header-section-number">29.7.4</span> Money and exchange rate</h3>
+<section id="sec-exr-money-exchange" class="level3" data-number="29.7.4">
+<h3 data-number="29.7.4" class="anchored" data-anchor-id="sec-exr-money-exchange"><span class="header-section-number">29.7.4</span> Exercise: money and exchange rate</h3>
 <p>All the other things equal, an increase in a country’s money supply is inflationary and should have a negative impact on the exchange rate for the country’s currency. The data in the following table (<a href="#tbl-exchange" class="quarto-xref">Table&nbsp;<span>29.12</span></a>) were computed using data from tables in the 1983/1984 <em>Statistical Yearbook of the United Nations</em>. The table shows the first 15 rows.</p>
 <div class="cell" data-layout-align="center" data-hash="correlation_causation_cache/html/unnamed-chunk-67_d6ff84dcff5591cfd7839ca510bb8b5a">
 <div class="cell-output-display">
@@ -2867,11 +2870,11 @@ be.
 <li>Write a Python program to implement those steps.</li>
 </ol>
 <p>Here’s a notebook to get you started on part 2:</p>
-<div class="notebook" name="exchange_rates" title="Exchange rates and money supply">
-<p>Start of <code>exchange_rates</code> notebook</p>
+<div class="notebook" name="exchange_rates_exercise" title="Exchange rates and money supply">
+<p>Start of <code>exchange_rates_exercise</code> notebook</p>
 <div class="nb-links">
-<a class="notebook-link" href="notebooks/exchange_rates.ipynb">Download notebook</a>
-<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/exchange_rates.ipynb">Interact</a>
+<a class="notebook-link" href="notebooks/exchange_rates_exercise.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/exchange_rates_exercise.ipynb">Interact</a>
 </div>
 
 <div class="cell" data-layout-align="center" data-hash="correlation_causation_cache/html/unnamed-chunk-68_1d0a80608aecb21ecb276572436108e2">
@@ -2884,11 +2887,12 @@ be.
 <span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>exchange_rates <span class="op">=</span> np.array(exchange_df[<span class="st">'exchange_rate'</span>])</span>
 <span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>money_supply <span class="op">=</span> np.array(exchange_df[<span class="st">'money_supply'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>End of <code>exchange_rates</code> notebook</p>
+<p>End of <code>exchange_rates_exercise</code> notebook</p>
 </div>
 <!---
 End of notebook.
 -->
+<p>See: <a href="exercise_solutions.html#sec-soln-money-exchange" class="quarto-xref"><span>Section&nbsp;32.8.1</span></a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">

@@ -101,6 +101,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="font-awesome.min.css">
@@ -378,14 +380,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#solution-18-2" id="toc-solution-18-2" class="nav-link active" data-scroll-target="#solution-18-2"><span class="header-section-number">32.1</span> Solution 18-2</a></li>
-  <li><a href="#solution-21-1" id="toc-solution-21-1" class="nav-link" data-scroll-target="#solution-21-1"><span class="header-section-number">32.2</span> Solution 21-1</a></li>
-  <li><a href="#solution-21-2" id="toc-solution-21-2" class="nav-link" data-scroll-target="#solution-21-2"><span class="header-section-number">32.3</span> Solution 21-2</a></li>
-  <li><a href="#solution-21-3" id="toc-solution-21-3" class="nav-link" data-scroll-target="#solution-21-3"><span class="header-section-number">32.4</span> Solution 21-3</a></li>
-  <li><a href="#solution-23-1" id="toc-solution-23-1" class="nav-link" data-scroll-target="#solution-23-1"><span class="header-section-number">32.5</span> Solution 23-1</a></li>
-  <li><a href="#solution-23-2" id="toc-solution-23-2" class="nav-link" data-scroll-target="#solution-23-2"><span class="header-section-number">32.6</span> Solution 23-2</a></li>
-  <li><a href="#solution-23-3" id="toc-solution-23-3" class="nav-link" data-scroll-target="#solution-23-3"><span class="header-section-number">32.7</span> Solution 23-3</a></li>
-  <li><a href="#solution-23-4" id="toc-solution-23-4" class="nav-link" data-scroll-target="#solution-23-4"><span class="header-section-number">32.8</span> Solution 23-4</a></li>
+  <li><a href="#sec-soln-paired-differences" id="toc-sec-soln-paired-differences" class="nav-link active" data-scroll-target="#sec-soln-paired-differences"><span class="header-section-number">32.1</span> Solution: paired differences exercise&nbsp;<span>24.3.1</span></a></li>
+  <li><a href="#sec-soln-seatbelt-proportions" id="toc-sec-soln-seatbelt-proportions" class="nav-link" data-scroll-target="#sec-soln-seatbelt-proportions"><span class="header-section-number">32.2</span> Solution to seatbelt proportions exercise&nbsp;<span>24.3.2</span></a></li>
+  <li><a href="#sec-soln-unemployment-percent" id="toc-sec-soln-unemployment-percent" class="nav-link" data-scroll-target="#sec-soln-unemployment-percent"><span class="header-section-number">32.3</span> Solution: unemployment percentage&nbsp;<span>27.8.1</span></a></li>
+  <li><a href="#sec-soln-battery-lifetime" id="toc-sec-soln-battery-lifetime" class="nav-link" data-scroll-target="#sec-soln-battery-lifetime"><span class="header-section-number">32.4</span> Solution: battery lifetime&nbsp;<span>27.8.2</span></a></li>
+  <li><a href="#sec-soln-optical-density" id="toc-sec-soln-optical-density" class="nav-link" data-scroll-target="#sec-soln-optical-density"><span class="header-section-number">32.5</span> Solution: optical density&nbsp;<span>27.8.3</span></a></li>
+  <li><a href="#sec-soln-voter-participation" id="toc-sec-soln-voter-participation" class="nav-link" data-scroll-target="#sec-soln-voter-participation"><span class="header-section-number">32.6</span> Solution: voter participation&nbsp;<span>29.7.1</span></a></li>
+  <li><a href="#sec-soln-runs-strikeouts" id="toc-sec-soln-runs-strikeouts" class="nav-link" data-scroll-target="#sec-soln-runs-strikeouts"><span class="header-section-number">32.7</span> Solution: association of runs and strikeouts&nbsp;<span>29.7.2</span></a></li>
+  <li><a href="#sec-soln-runs-strikeouts-r" id="toc-sec-soln-runs-strikeouts-r" class="nav-link" data-scroll-target="#sec-soln-runs-strikeouts-r"><span class="header-section-number">32.8</span> Solution: runs, strikeouts and correlation coefficient&nbsp;<span>29.7.3</span></a>
+  <ul class="collapse">
+  <li><a href="#sec-soln-money-exchange" id="toc-sec-soln-money-exchange" class="nav-link" data-scroll-target="#sec-soln-money-exchange"><span class="header-section-number">32.8.1</span> Solution: money and exchange rate&nbsp;<span>29.7.4</span></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -409,209 +414,576 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="sec-soln-paired-differences" class="level2" data-number="32.1">
+<h2 data-number="32.1" class="anchored" data-anchor-id="sec-soln-paired-differences"><span class="header-section-number">32.1</span> Solution: <a href="testing_measured.html#sec-exr-paired-differences" class="quarto-xref">paired differences exercise&nbsp;<span>24.3.1</span></a></h2>
+<p>We suggested that you ignored the pairing of the before and after samples, and that is what we will do here. Then we will extend the treatment to take the pairing into account.</p>
+<div class="notebook" name="paired_differences_solution" title="Paired differences solution">
+<p>Start of <code>paired_differences_solution</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/paired_differences_solution.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/paired_differences_solution.ipynb">Interact</a>
 </div>
-<div class="callout-title-container flex-fill">
-Draft page partially ported from original PDF
+
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-1_0a6f186137b95335a6cc374d4549d98c">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/hamilton.csv'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>before <span class="op">=</span> np.array(df[<span class="st">'score_before'</span>])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>after <span class="op">=</span> np.array(df[<span class="st">'score_after'</span>])</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>observed_diff <span class="op">=</span> np.mean(after) <span class="op">-</span> np.mean(before)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Let us start with a permutation test.</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> np.concatenate([before, after])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>n_before <span class="op">=</span> <span class="bu">len</span>(before)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Samples in the null world.</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    shuffled <span class="op">=</span> rnd.permuted(both)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    fake_before <span class="op">=</span> shuffled[:n_before]</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    fake_after <span class="op">=</span> shuffled[n_before:]</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    fake_diff <span class="op">=</span> np.mean(fake_after) <span class="op">-</span> np.mean(fake_before)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> fake_diff</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># We are interested in fake differences that are larger</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># in magnitude than the observed difference (hence "abs").</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we have no prior hypothesis about which direction the difference</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># will go.</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(results) <span class="op">&gt;=</span> np.<span class="bu">abs</span>(observed_diff))</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Permutation p null-world abs &gt;= abs observed:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Permutation p null-world abs &gt;= abs observed: 0.2554</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Next a bootstrap test.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n_after <span class="op">=</span> <span class="bu">len</span>(after)  <span class="co"># Of course, in our case, this will be == n_before</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    fake_before <span class="op">=</span> rnd.choice(both, size<span class="op">=</span>n_before)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    fake_after <span class="op">=</span> rnd.choice(both, size<span class="op">=</span>n_after)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    fake_diff <span class="op">=</span> np.mean(fake_after) <span class="op">-</span> np.mean(fake_before)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> fake_diff</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(results) <span class="op">&gt;=</span> np.<span class="bu">abs</span>(observed_diff))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Bootstrap p null-world abs &gt;= abs observed:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bootstrap p null-world abs &gt;= abs observed: 0.2217</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>This page is an automated and partial import from the <a href="https://resample.com/content/text/30-Exercise-sol.pdf">original second-edition PDF</a>.</p>
-<p>We are in the process of updating this page for formatting, and porting any code from the original <a href="http://www.statistics101.net">RESAMPLING-STATS language</a> to Python and R.</p>
-<p>Feel free to read this version for the sense, but expect there to be multiple issues with formatting.</p>
-<p>We will remove this warning when the page has adequate formatting, and we have ported the code.</p>
+<p>Finally we consider the pairs. Here we <em>do</em> take the pairs into account. We have some reason to think that the patients or cars vary in some substantial way in their level of depression, or their tendency to break down, but we believe that the patients’ <em>response</em> to treatment or the difference between the mechanics is the value of interest.</p>
+<p>In that case, we are interested in the <em>differences</em> between the pairs. In the null world, these before / after (mechanic A / mechanic B) differences are randomly — if there is no difference, then we can flip the before / after (A / B) pairs and be in the same world.</p>
+<p>Notice though the flipping the before / after or A / B in the pair just changes the sign of the difference.</p>
+<p>So we will simulate that effect, of flipping the values in the pair, by choosing a random sign for the pair, where -1 means pair is flipped, and 1 means pair is in original order. We recalculated the mean difference with these random signs (flips) applied, and these will be our values in the null-world.</p>
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-3_10721b1507fb465dbe5aa868f7079b22">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A test of paired difference with sign flips for the null world.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>differences <span class="op">=</span> after <span class="op">-</span> before</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>observed_mdiff <span class="op">=</span> np.mean(differences)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>n_both <span class="op">=</span> <span class="bu">len</span>(differences)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Choose random signs to perform random flips of the pairs.</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    signs <span class="op">=</span> rnd.choice([<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>], size<span class="op">=</span>n_both)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Do flips.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    fake_differences <span class="op">=</span> signs <span class="op">*</span> differences</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate mean difference and store result.</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> np.mean(fake_differences)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(np.<span class="bu">abs</span>(results) <span class="op">&gt;=</span> np.<span class="bu">abs</span>(observed_mdiff))</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Sign-flip p null-world abs &gt;= abs observed:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sign-flip p null-world abs &gt;= abs observed: 0.0271</code></pre>
 </div>
 </div>
-<section id="solution-18-2" class="level2" data-number="32.1">
-<h2 data-number="32.1" class="anchored" data-anchor-id="solution-18-2"><span class="header-section-number">32.1</span> Solution 18-2</h2>
-<!--- Resampling stats script; slightly Matlab-like -->
-<div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">URN</span> <span class="fl">36</span>#<span class="fl">1</span> <span class="fl">36</span>#<span class="fl">0</span> <span class="va">pit</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">URN</span> <span class="fl">77</span>#<span class="fl">1</span> <span class="fl">52</span>#<span class="fl">0</span> <span class="va">chi</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span> <span class="fl">72</span> <span class="va">pit</span> <span class="va">pit</span>$</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span> <span class="fl">129</span> <span class="va">chi</span> <span class="va">chi</span>$</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">pit</span>$ <span class="va">p</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">chi</span>$ <span class="va">c</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">SUBTRACT</span> <span class="va">p</span> <span class="va">c</span> <span class="va">d</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">d</span> <span class="va">scrboard</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">scrboard</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="va">PERCENTILE</span> <span class="va">scrboard</span> (<span class="fl">2.5</span> <span class="fl">97.5</span>) <span class="va">interval</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">interval</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/30-Exercise-sol_000.png" class="img-fluid"></p>
-<p>Results:</p>
-<p>INTERVAL = -0.25921 0.039083 (estimated 95 percent confidence interval).</p>
+<p>Notice that the sign-flip test, in which we preserve the information about the patients / cars, is much more convincing than the permutation or bootstrap tests above, where we choose to ignore that information.</p>
+<p>This can occur when the values within the pairs (rows) are similar to each other, but less similar across different pairs (rows).</p>
+<p>End of <code>paired_differences_solution</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
 </section>
-<section id="solution-21-1" class="level2" data-number="32.2">
-<h2 data-number="32.2" class="anchored" data-anchor-id="solution-21-1"><span class="header-section-number">32.2</span> Solution 21-1</h2>
-<!--- Resampling stats script; slightly Matlab-like -->
-<div class="sourceCode" id="cb2"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">GENERATE</span> <span class="fl">200</span>  <span class="fl">1</span><span class="op">,</span><span class="fl">100</span> <span class="va">a</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">COUNT</span> <span class="va">a</span> <span class="op">&lt;=</span> <span class="fl">7</span> <span class="va">b</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">DIVIDE</span> <span class="va">b</span> <span class="fl">200</span> <span class="va">c</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">c</span> <span class="va">scrboard</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">scrboard</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">PERCENTILE</span> <span class="va">z</span> (<span class="fl">2.5</span> <span class="fl">97.5</span>) <span class="va">interval</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">interval</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/30-Exercise-sol_001.png" class="img-fluid"></p>
-<p>Result:</p>
-<p>INTERVAL = 0.035 0.105 [estimated 95 percent confidence interval]</p>
+<section id="sec-soln-seatbelt-proportions" class="level2" data-number="32.2">
+<h2 data-number="32.2" class="anchored" data-anchor-id="sec-soln-seatbelt-proportions"><span class="header-section-number">32.2</span> Solution to <a href="testing_measured.html#sec-exr-seatbelt-proportions" class="quarto-xref">seatbelt proportions exercise&nbsp;<span>24.3.2</span></a></h2>
+<div class="notebook" name="seatbelt_proportion_solution" title="Seatbelt proportion solution">
+<p>Start of <code>seatbelt_proportion_solution</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/seatbelt_proportion_solution.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/seatbelt_proportion_solution.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-5_b106199658f36277e64503d5a5079721">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>pittsburgh <span class="op">=</span> np.repeat([<span class="st">'seatbelt'</span>, <span class="st">'none'</span>], [<span class="dv">36</span>, <span class="dv">36</span>])</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>n_pitts <span class="op">=</span> <span class="bu">len</span>(pittsburgh)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>chicago <span class="op">=</span> np.repeat([<span class="st">'seatbelt'</span>, <span class="st">'none'</span>], [<span class="dv">77</span>, <span class="dv">52</span>])</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>n_chicago <span class="op">=</span> <span class="bu">len</span>(chicago)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    fake_pitts <span class="op">=</span> rnd.choice(pittsburgh, size<span class="op">=</span>n_pitts)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    fake_chicago <span class="op">=</span> rnd.choice(chicago, size<span class="op">=</span>n_chicago)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    fake_p_pitts <span class="op">=</span> np.<span class="bu">sum</span>(fake_pitts <span class="op">==</span> <span class="st">'seatbelt'</span>) <span class="op">/</span> n_pitts</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    fake_p_chicago <span class="op">=</span> np.<span class="bu">sum</span>(fake_chicago <span class="op">==</span> <span class="st">'seatbelt'</span>) <span class="op">/</span> n_chicago</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    fake_p_diff <span class="op">=</span> fake_p_pitts <span class="op">-</span> fake_p_chicago</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> fake_p_diff</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Bootstrap distribution of p differences'</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Bootstrap p differences'</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>p_limits <span class="op">=</span> np.quantile(results, [<span class="fl">0.025</span>, <span class="fl">0.975</span>])</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'95% percent limits for p differences:'</span>, p_limits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>95% percent limits for p differences: [-0.24386305  0.04521964]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_solutions_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>End of <code>seatbelt_proportion_solution</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
 </section>
-<section id="solution-21-2" class="level2" data-number="32.3">
-<h2 data-number="32.3" class="anchored" data-anchor-id="solution-21-2"><span class="header-section-number">32.3</span> Solution 21-2</h2>
+<section id="sec-soln-unemployment-percent" class="level2" data-number="32.3">
+<h2 data-number="32.3" class="anchored" data-anchor-id="sec-soln-unemployment-percent"><span class="header-section-number">32.3</span> Solution: <a href="confidence_2.html#sec-exr-unemployment-percent" class="quarto-xref">unemployment percentage&nbsp;<span>27.8.1</span></a></h2>
+<p>In a sample of 200 people, 7 percent are found to be unemployed. Determine a 95 percent confidence interval for the true population proportion.</p>
+<div class="notebook" name="unemployment_percent_solution" title="Unemployment percent solution">
+<p>Start of <code>unemployment_percent_solution</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/unemployment_percent_solution.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/unemployment_percent_solution.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-7_71a0fca39215b054af0969ee0486e679">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    fake_people <span class="op">=</span> rnd.choice([<span class="st">'no job'</span>, <span class="st">'job'</span>], size<span class="op">=</span><span class="dv">200</span>, p<span class="op">=</span>[<span class="fl">0.07</span>, <span class="fl">0.93</span>])</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    p_unemployed <span class="op">=</span> np.<span class="bu">sum</span>(fake_people <span class="op">==</span> <span class="st">'no job'</span>) <span class="op">/</span> <span class="dv">200</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> p_unemployed</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Bootstrap distribution p unemployed'</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Bootstrap p unemployed'</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>p_limits <span class="op">=</span> np.quantile(results, [<span class="fl">0.025</span>, <span class="fl">0.975</span>])</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'95% percent limits for p differences:'</span>, p_limits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>95% percent limits for p differences: [0.035 0.105]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_solutions_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>End of <code>unemployment_percent_solution</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
+</section>
+<section id="sec-soln-battery-lifetime" class="level2" data-number="32.4">
+<h2 data-number="32.4" class="anchored" data-anchor-id="sec-soln-battery-lifetime"><span class="header-section-number">32.4</span> Solution: <a href="confidence_2.html#sec-exr-battery-lifetime" class="quarto-xref">battery lifetime&nbsp;<span>27.8.2</span></a></h2>
+<blockquote class="blockquote">
+<p>A sample of 20 batteries is tested, and the average lifetime is 28.85 months. Establish a 95 percent confidence interval for the true average value. The sample values (lifetimes in months) are listed below.</p>
+</blockquote>
 <p>We use the “bootstrap” technique of drawing many bootstrap re-samples with replacement from the original sample, and observing how the re-sample means are distributed.</p>
-<!--- Resampling stats script; slightly Matlab-like -->
-<div class="sourceCode" id="cb3"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">NUMBERS</span> (<span class="fl">30</span> <span class="fl">32</span> <span class="fl">31</span> <span class="fl">28</span> <span class="fl">31</span> <span class="fl">29</span> <span class="fl">29</span> <span class="fl">24</span> <span class="fl">30</span> <span class="fl">31</span> <span class="fl">28</span> <span class="fl">28</span> <span class="fl">32</span> <span class="fl">31</span> <span class="fl">24</span> <span class="fl">23</span> <span class="fl">31</span> <span class="fl">27</span> <span class="fl">27</span> <span class="fl">31</span>) <span class="va">a</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Do 1000 trials or simulations</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span> <span class="fl">20</span> <span class="va">a</span> <span class="va">b</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Draw 20 lifetimes from a, randomly and with replacement</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">b</span> <span class="va">c</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Find the average lifetime of the 20</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">c</span> <span class="va">scrboard</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="er">' Keep score</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">scrboard</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="er">' Graph the experiment results</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="va">PERCENTILE</span> <span class="va">scrboard</span> (<span class="fl">2.5</span> <span class="fl">97.5</span>) <span class="va">interval</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="er">' Identify the 2.5th and 97.5th percentiles. These percentiles will</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="er">' enclose 95 percent of the resample means.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/30-Exercise-sol_002.png" class="img-fluid"></p>
-<p>Result:</p>
-<p>INTERVAL = 27.7 30.05 [estimated 95 percent confidence interval]</p>
+<div class="notebook" name="battery_lifetime_solution" title="Battery lifetime solution">
+<p>Start of <code>battery_lifetime_solution</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/battery_lifetime_solution.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/battery_lifetime_solution.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-9_846822a64392a2f2bd712fd701ff58cf">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>lifetimes <span class="op">=</span> np.array([<span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">31</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">29</span>, <span class="dv">29</span>, <span class="dv">24</span>, <span class="dv">30</span>, <span class="dv">31</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">32</span>, <span class="dv">31</span>, <span class="dv">24</span>, <span class="dv">23</span>, <span class="dv">31</span>, <span class="dv">27</span>, <span class="dv">27</span>, <span class="dv">31</span>])</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean is:'</span>, np.mean(lifetimes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean is: 28.85</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>n_lifetimes <span class="op">=</span> <span class="bu">len</span>(lifetimes)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Draw 20 lifetimes from "lifetimes, randomly and with replacement.</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    fake_lifetimes <span class="op">=</span> rnd.choice(lifetimes, size<span class="op">=</span>n_lifetimes)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the average lifetime of the 20.</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    fake_mean <span class="op">=</span> np.mean(fake_lifetimes)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep score.</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> fake_mean</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Bootstrap distribution of mean battery lifetimes'</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Bootstrap mean battery lifetime'</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>mean_limits <span class="op">=</span> np.quantile(results, [<span class="fl">0.025</span>, <span class="fl">0.975</span>])</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'95% percent limits for mean lifetimes:'</span>, mean_limits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>95% percent limits for mean lifetimes: [27.65 29.95]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_solutions_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>End of <code>battery_lifetime_solution</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
 </section>
-<section id="solution-21-3" class="level2" data-number="32.4">
-<h2 data-number="32.4" class="anchored" data-anchor-id="solution-21-3"><span class="header-section-number">32.4</span> Solution 21-3</h2>
-<!--- Resampling stats script; slightly Matlab-like -->
-<div class="sourceCode" id="cb4"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">NUMBERS</span> (<span class="fl">.02</span> <span class="fl">.026</span> <span class="fl">.023</span> <span class="fl">.017</span> <span class="fl">.022</span> <span class="fl">.019</span> <span class="fl">.018</span> <span class="fl">.018</span> <span class="fl">.017</span> <span class="fl">.022</span>) <span class="va">a</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span> <span class="fl">10</span> <span class="va">a</span> <span class="va">b</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">MEAN</span> <span class="va">b</span> <span class="va">c</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">c</span> <span class="va">scrboard</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">scrboard</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="va">PERCENTILE</span> <span class="va">scrboard</span> (<span class="fl">2.5</span> <span class="fl">97.5</span>) <span class="va">interval</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">interval</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/30-Exercise-sol_003.png" class="img-fluid"></p>
-<p>Result:</p>
-<p>INTERVAL = 0.0187 0.0219 [estimated 95 percent confidence interval]</p>
+<section id="sec-soln-optical-density" class="level2" data-number="32.5">
+<h2 data-number="32.5" class="anchored" data-anchor-id="sec-soln-optical-density"><span class="header-section-number">32.5</span> Solution: <a href="confidence_2.html#sec-exr-optical-density" class="quarto-xref">optical density&nbsp;<span>27.8.3</span></a></h2>
+<div class="notebook" name="optical_density_solution" title="Optical density solution">
+<p>Start of <code>optical_density_solution</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/optical_density_solution.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/optical_density_solution.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-11_93cccbdfa2deb6a4d67557a4bdb8a1ef">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Suppose we have 10 measurements of Optical Density on a batch of HIV negative control samples:</p>
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-12_278ad2d763edf2e04f4edcb15dfedd07">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>density <span class="op">=</span> np.array(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">.02</span>, <span class="fl">.026</span>, <span class="fl">.023</span>, <span class="fl">.017</span>, <span class="fl">.022</span>, <span class="fl">.019</span>, <span class="fl">.018</span>, <span class="fl">.018</span>, <span class="fl">.017</span>, <span class="fl">.022</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Derive a 95 percent confidence interval for the sample mean. Are there enough measurements to produce a satisfactory answer?</p>
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-14_1cd6f6668da35b2578127b232e3bae5a">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>n_density <span class="op">=</span> <span class="bu">len</span>(density)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    fake_density <span class="op">=</span> rnd.choice(density, size<span class="op">=</span>n_density)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> np.mean(fake_density)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Bootstrap distribution of density means'</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Bootstrap density means'</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>mean_limits <span class="op">=</span> np.quantile(results, [<span class="fl">0.025</span>, <span class="fl">0.975</span>])</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'95% percent limits for density mean:'</span>, mean_limits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>95% percent limits for density mean: [0.0185 0.022 ]</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_solutions_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>End of <code>optical_density_solution</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
 </section>
-<section id="solution-23-1" class="level2" data-number="32.5">
-<h2 data-number="32.5" class="anchored" data-anchor-id="solution-23-1"><span class="header-section-number">32.5</span> Solution 23-1</h2>
+<section id="sec-soln-voter-participation" class="level2" data-number="32.6">
+<h2 data-number="32.6" class="anchored" data-anchor-id="sec-soln-voter-participation"><span class="header-section-number">32.6</span> Solution: <a href="correlation_causation.html#sec-exr-voter-participation" class="quarto-xref">voter participation&nbsp;<span>29.7.1</span></a></h2>
+<p>The observed correlation coefficient between voter participation and spread is moderate and negative. Is this more negative that what might occur by chance, if no correlation exists in some underlying population, from which this sample was taken?</p>
 <ol type="1">
 <li>Create two groups of paper cards: 25 with participation rates, and 25 with the spread values. Arrange the cards in pairs in accordance with the table, and compute the correlation coefficient between the shuffled participation and spread variables.</li>
 <li>Shuffle one of the sets, say that with participation, and compute correlation between shuffled participation and spread.</li>
 <li>Repeat step 2 many, say 1000, times. Compute the proportion of the trials in which correlation was at least as negative as that for the original data.</li>
 </ol>
-<!--- Resampling stats script; slightly Matlab-like -->
-<div class="sourceCode" id="cb5"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">DATA</span> (<span class="fl">67.5</span>  <span class="fl">65.6</span>  <span class="fl">65.7</span>  <span class="fl">59.3</span> <span class="fl">39.8</span>  <span class="fl">76.1</span>  <span class="fl">73.6</span>  <span class="fl">81.6</span>  <span class="fl">75.5</span>  <span class="fl">85.0</span>  <span class="fl">80.3</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fl">54.5</span>  <span class="fl">79.1</span>  <span class="fl">94.0</span>  <span class="fl">80.3</span>  <span class="fl">89.6</span>  <span class="fl">44.7</span>  <span class="fl">82.7</span> <span class="fl">89.7</span>  <span class="fl">83.6</span> <span class="fl">84.9</span>  <span class="fl">76.3</span>  <span class="fl">74.7</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fl">68.8</span>  <span class="fl">79.3</span>) <span class="va">partic1</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="va">DATA</span> (<span class="fl">13</span> <span class="fl">19</span> <span class="fl">18</span> <span class="fl">12</span> <span class="fl">20</span> <span class="fl">5</span> <span class="fl">1</span> <span class="fl">1</span> <span class="fl">2</span> <span class="fl">3</span> <span class="fl">5</span> <span class="fl">6</span> <span class="fl">5</span> <span class="fl">4</span> <span class="fl">8</span> <span class="fl">1</span> <span class="fl">3</span> <span class="fl">18</span> <span class="fl">13</span> <span class="fl">2</span> <span class="fl">2</span> <span class="fl">12</span> <span class="fl">17</span> <span class="fl">26</span> <span class="fl">6</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="va">spread1</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="va">CORR</span> <span class="va">partic1</span> <span class="va">spread1</span> <span class="va">corr</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="er">' compute correlation - it’s -.37</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="va">SHUFFLE</span> <span class="va">partic1</span> <span class="va">partic2</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="er">' shuffle the participation rates</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="va">CORR</span> <span class="va">partic2</span> <span class="va">spread1</span> <span class="va">corrtria</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="er">' compute re-sampled correlation</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">corrtria</span> <span class="va">z</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="er">' keep the value in the scoreboard</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">z</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">z</span> <span class="op">&lt;=</span> <span class="op">-</span><span class="fl">.37</span> <span class="va">n</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="er">' count the trials when result  &lt;= -.37</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">n</span> <span class="fl">1000</span> <span class="va">prob</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="er">' compute the proportion of such trials</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">prob</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Conclusion: The results of 5 Monte Carlo experiments each of a thousand such simulations are as follows:</p>
-<p>prob = 0.028, 0.045, 0.036, 0.04, 0.025.</p>
-<p>From this we may conclude that the voter participation rates probably are negatively related to the vote spread in the election. The actual value of the correlation (-.37398) cannot be explained by chance alone. In our Monte Carlo simulation of the null-hypothesis a correlation that negative is found only 3 percent — 4 percent of the time.</p>
-<p>Distribution of the test statistic’s value in 1000 independent trials corresponding to the null-hypothesis:</p>
-<p><img src="images/30-Exercise-sol_004.png" class="img-fluid"></p>
+<div class="notebook" name="voter_participation_solution" title="Voter participation in 1844 election">
+<p>Start of <code>voter_participation_solution</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/voter_participation_solution.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/voter_participation_solution.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-16_cdd4761310ba300f7c8bd9cc3cb36bd6">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>voter_df <span class="op">=</span> pd.read_csv(<span class="st">'data/election_1844.csv'</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>participation <span class="op">=</span> np.array(voter_df[<span class="st">'Participation'</span>])</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>spread <span class="op">=</span> np.array(voter_df[<span class="st">'Spread'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-18_3f558b8756231775c26a989d86e2add0">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute correlation.  It's -0.425.</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>actual_r <span class="op">=</span> np.corrcoef(participation, spread)[<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>actual_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>np.float64(-0.4249067562318352)</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-20_766c11c1d4431ff3d0802547c1de715f">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Shuffle the participation rates.</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    shuffled <span class="op">=</span> rnd.permuted(participation)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute re-sampled correlation.</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    fake_r <span class="op">=</span> np.corrcoef(shuffled, spread)[<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep the value in the results.</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> fake_r</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of shuffled correlations'</span>)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Correlation with shuffled participation'</span>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the trials when result &lt;= observed.</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&lt;=</span> actual_r)</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the proportion of such trials.</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion of shuffled r &lt;= observed:'</span>, np.<span class="bu">round</span>(kk, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Proportion of shuffled r &lt;= observed: 0.03</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_solutions_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>End of <code>voter_participation_solution</code> notebook</p>
+</div>
+<!---
+End of notebook
+-->
+<p>From this we may conclude that the voter participation rates probably are negatively related to the vote spread in the election. The actual value of the correlation (-.425) cannot be explained by chance alone. In our Monte Carlo simulation of the null-hypothesis a correlation that negative is found only about 3 percent of the time.</p>
+<p>See: <a href="#sec-soln-voter-participation" class="quarto-xref"><span>Section&nbsp;32.6</span></a>.</p>
 </section>
-<section id="solution-23-2" class="level2" data-number="32.6">
-<h2 data-number="32.6" class="anchored" data-anchor-id="solution-23-2"><span class="header-section-number">32.6</span> Solution 23-2</h2>
-<!--- Resampling stats script; slightly Matlab-like -->
-<div class="sourceCode" id="cb6"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">NUMBERS</span> (<span class="fl">14</span> <span class="fl">20</span> <span class="fl">0</span> <span class="fl">38</span> <span class="fl">9</span> <span class="fl">38</span> <span class="fl">22</span> <span class="fl">31</span> <span class="fl">33</span> <span class="fl">11</span> <span class="fl">40</span> <span class="fl">5</span> <span class="fl">15</span> <span class="fl">32</span> <span class="fl">3</span> <span class="fl">29</span> <span class="fl">5</span> <span class="fl">32</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">homeruns</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="va">NUMBERS</span> (<span class="fl">135</span> <span class="fl">153</span> <span class="fl">120</span> <span class="fl">161</span> <span class="fl">138</span> <span class="fl">175</span> <span class="fl">126</span> <span class="fl">200</span> <span class="fl">205</span> <span class="fl">147</span> <span class="fl">165</span> <span class="fl">124</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fl">169</span> <span class="fl">156</span> <span class="fl">36</span> <span class="fl">98</span> <span class="fl">82</span> <span class="fl">131</span>) <span class="va">strikeout</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="va">MULTIPLY</span> <span class="va">homerun</span> <span class="va">strikeout</span> <span class="va">r</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="va">SUM</span> <span class="va">r</span> <span class="va">s</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">SHUFFLE</span> <span class="va">strikeout</span>  <span class="va">strikout2</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">MULTIPLY</span> <span class="va">strikout2</span> <span class="va">homeruns</span> <span class="va">c</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">SUM</span> <span class="va">c</span> <span class="va">cc</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">SUBTRACT</span> <span class="va">s</span> <span class="va">cc</span> <span class="va">d</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">d</span> <span class="va">scrboard</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">scrboard</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">scrboard</span> <span class="op">&gt;=</span><span class="va">s</span> <span class="va">k</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">kk</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">kk</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/30-Exercise-sol_005.png" class="img-fluid"></p>
-<p>Result: kk = 0</p>
-<p>Interpretation: In 1000 simulations, random shuffling never produced a value as high as observed. Therefore, we conclude that random chance could not be responsible for the observed degree of correlation.</p>
+<section id="sec-soln-runs-strikeouts" class="level2" data-number="32.7">
+<h2 data-number="32.7" class="anchored" data-anchor-id="sec-soln-runs-strikeouts"><span class="header-section-number">32.7</span> Solution: <a href="correlation_causation.html#sec-exr-runs-strikeouts" class="quarto-xref">association of runs and strikeouts&nbsp;<span>29.7.2</span></a></h2>
+<p>We are looking at the correlation of home runs and strikeouts for major-league baseball players.</p>
+<p>The instructions ask us to start here with the sum-of-products measure.</p>
+<div class="notebook" name="homerun_sop_solution" title="Homeruns and strikeout sum of products.">
+<p>Start of <code>homerun_sop_solution</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/homerun_sop_solution.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/homerun_sop_solution.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-22_6dcc84b161c4374b66d79b479d88732c">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>homeruns <span class="op">=</span> np.array([<span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">38</span>, <span class="dv">9</span>, <span class="dv">38</span>, <span class="dv">22</span>, <span class="dv">31</span>, <span class="dv">33</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">11</span>, <span class="dv">40</span>, <span class="dv">5</span>, <span class="dv">15</span>, <span class="dv">32</span>, <span class="dv">3</span>, <span class="dv">29</span>, <span class="dv">5</span>, <span class="dv">32</span>])</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>strikeout <span class="op">=</span> np.array([<span class="dv">135</span>, <span class="dv">153</span>, <span class="dv">120</span>, <span class="dv">161</span>, <span class="dv">138</span>, <span class="dv">175</span>, <span class="dv">126</span>, <span class="dv">200</span>, <span class="dv">205</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">147</span>, <span class="dv">165</span>, <span class="dv">124</span>, <span class="dv">169</span>, <span class="dv">156</span>, <span class="dv">36</span>, <span class="dv">98</span>, <span class="dv">82</span>, <span class="dv">131</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-24_bf7597ecb5dd78eaf6c3d096f8ef6839">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The sum of products approach.</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>actual_sop <span class="op">=</span> np.<span class="bu">sum</span>(homeruns <span class="op">*</span> strikeout)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    shuffled_runs <span class="op">=</span> rnd.permuted(homeruns)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    fake_sop <span class="op">=</span> np.<span class="bu">sum</span>(shuffled_runs <span class="op">*</span> strikeout)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> fake_sop</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of shuffled sum of products'</span>)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Sum of products for shuffled homeruns'</span>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&gt;=</span> actual_sop)</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p shuffled sum of products &gt;= actual:'</span>, np.<span class="bu">round</span>(kk, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>p shuffled sum of products &gt;= actual: 0.003</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_solutions_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretation: In 10,000 simulations, random shuffling very rarely produced a value as high as observed. Therefore, we conclude that random chance could not reasonably be responsible for the observed degree of correlation.</p>
+<p>End of <code>homerun_sop_solution</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
 </section>
-<section id="solution-23-3" class="level2" data-number="32.7">
-<h2 data-number="32.7" class="anchored" data-anchor-id="solution-23-3"><span class="header-section-number">32.7</span> Solution 23-3</h2>
-<!--- Resampling stats script; slightly Matlab-like -->
-<div class="sourceCode" id="cb7"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">NUMBERS</span> (<span class="fl">14</span> <span class="fl">20</span> <span class="fl">0</span> <span class="fl">38</span> <span class="fl">9</span> <span class="fl">38</span> <span class="fl">22</span> <span class="fl">31</span> <span class="fl">33</span> <span class="fl">11</span> <span class="fl">40</span> <span class="fl">5</span> <span class="fl">15</span> <span class="fl">32</span> <span class="fl">3</span> <span class="fl">29</span> <span class="fl">5</span> <span class="fl">32</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">homeruns</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">NUMBERS</span> (<span class="fl">135</span> <span class="fl">153</span> <span class="fl">120</span> <span class="fl">161</span> <span class="fl">138</span> <span class="fl">175</span> <span class="fl">126</span> <span class="fl">200</span> <span class="fl">205</span> <span class="fl">147</span> <span class="fl">165</span> <span class="fl">124</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fl">169</span> <span class="fl">156</span> <span class="fl">36</span> <span class="fl">98</span> <span class="fl">82</span> <span class="fl">131</span>) <span class="va">strikeou</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="va">CORR</span> <span class="va">homeruns</span> <span class="va">strikeou</span> <span class="va">r</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">REPEAT</span> <span class="fl">1000</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">SHUFFLE</span> <span class="va">strikeou</span>  <span class="va">strikou2</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">CORR</span> <span class="va">strikou2</span> <span class="va">homeruns</span> <span class="va">r</span>$</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">r</span>$ <span class="va">scrboard</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">scrboard</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">scrboard</span> <span class="op">&gt;=</span><span class="fl">0.62</span> <span class="va">k</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">kk</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">kk</span> <span class="va">r</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/30-Exercise-sol_006.png" class="img-fluid"></p>
-<p>Result: kk = .001</p>
-<p>Interpretation: A correlation coefficient as high as the observed value (.62) occurred only 1 out of 1000 times by chance. Hence, we rule out chance as an explanation for such a high value of the correlation coefficient.</p>
-</section>
-<section id="solution-23-4" class="level2" data-number="32.8">
-<h2 data-number="32.8" class="anchored" data-anchor-id="solution-23-4"><span class="header-section-number">32.8</span> Solution 23-4</h2>
-<!--- Resampling stats script; slightly Matlab-like -->
-<div class="sourceCode" id="cb8"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">READ</span> <span class="va">FILE</span> “<span class="va">noreen2</span>.<span class="va">dat</span>” <span class="va">exrate</span> <span class="va">msuppl</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="er">' read data from file</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="va">CORR</span> <span class="va">exrate</span> <span class="va">msuppl</span> <span class="va">stat</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="er">' compute correlation stat (it’s .419)</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="va">REPEAT</span> <span class="fl">1000</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">SHUFFLE</span> <span class="va">msuppl</span> <span class="va">msuppl</span>$</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="er">' shuffle money supply values</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">CORR</span> <span class="va">exrate</span> <span class="va">msuppl</span>$  <span class="va">stat</span>$</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="er">' compute correlation</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">SCORE</span> <span class="va">stat</span>$ <span class="va">scrboard</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="er">' keep the value in a scoreboard</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="va">END</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">stat</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="va">HISTOGRAM</span> <span class="va">scrboard</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span> <span class="va">scrboard</span> <span class="op">&gt;=</span><span class="fl">0.419</span> <span class="va">k</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="va">DIVIDE</span> <span class="va">k</span> <span class="fl">1000</span> <span class="va">prob</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="va">PRINT</span> <span class="va">prob</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Distribution of the correlation after permutation of the data:</p>
-<p><img src="images/30-Exercise-sol_007.png" class="img-fluid"></p>
-<p>Result: prob = .001</p>
-<p>Interpretation: The observed correlation (.419) between the exchange rate and the money supply is seldom exceeded by random experiments with these data. Thus, the observed result 0.419 cannot be explained by chance alone and we conclude that it is statistically significant.</p>
+<section id="sec-soln-runs-strikeouts-r" class="level2" data-number="32.8">
+<h2 data-number="32.8" class="anchored" data-anchor-id="sec-soln-runs-strikeouts-r"><span class="header-section-number">32.8</span> Solution: <a href="correlation_causation.html#sec-exr-runs-strikeouts-r" class="quarto-xref">runs, strikeouts and correlation coefficient&nbsp;<span>29.7.3</span></a></h2>
+<p>Again, we are looking at the correlation of home runs and strikeouts for major-league baseball players. This time we will use the correlation coefficient (<span class="math inline">\(r\)</span>) measure.</p>
+<div class="notebook" name="homerun_correlation_solution" title="Homeruns and strikeout correlation">
+<p>Start of <code>homerun_correlation_solution</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/homerun_correlation_solution.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/homerun_correlation_solution.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-26_8e807f532b63525267b5f9c585e2d8ab">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>homeruns <span class="op">=</span> np.array([<span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">0</span>, <span class="dv">38</span>, <span class="dv">9</span>, <span class="dv">38</span>, <span class="dv">22</span>, <span class="dv">31</span>, <span class="dv">33</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">11</span>, <span class="dv">40</span>, <span class="dv">5</span>, <span class="dv">15</span>, <span class="dv">32</span>, <span class="dv">3</span>, <span class="dv">29</span>, <span class="dv">5</span>, <span class="dv">32</span>])</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>strikeout <span class="op">=</span> np.array([<span class="dv">135</span>, <span class="dv">153</span>, <span class="dv">120</span>, <span class="dv">161</span>, <span class="dv">138</span>, <span class="dv">175</span>, <span class="dv">126</span>, <span class="dv">200</span>, <span class="dv">205</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">147</span>, <span class="dv">165</span>, <span class="dv">124</span>, <span class="dv">169</span>, <span class="dv">156</span>, <span class="dv">36</span>, <span class="dv">98</span>, <span class="dv">82</span>, <span class="dv">131</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-28_6b224a306846741154a7c613655c579e">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The correlation approach.</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>actual_r <span class="op">=</span> np.corrcoef(homeruns, strikeout)[<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    shuffled_runs <span class="op">=</span> rnd.permuted(homeruns)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    fake_r <span class="op">=</span> np.corrcoef(shuffled_runs, strikeout)[<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> fake_r</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of shuffled r'</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'r for shuffled homeruns'</span>)</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&gt;=</span> actual_r)</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p shuffled r &gt;= actual:'</span>, np.<span class="bu">round</span>(kk, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>p shuffled r &gt;= actual: 0.003</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_solutions_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interpretation: a correlation coefficient as high as the observed value (.62) occurred only about 0.3% of the time by chance. Hence, provisionally, we choose to reject chance as an explanation for such a high value of the correlation coefficient.</p>
+<p>Notice, we get the same answer for correlation coefficients as we do for sum of products. In fact, correlation coefficients must give us the same answer (apart from random variation from the permutation), as the tests of association are equivalent when we compare between different orderings of the same sequences.</p>
+<p>End of <code>homerun_correlation_solution</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
+<section id="sec-soln-money-exchange" class="level3" data-number="32.8.1">
+<h3 data-number="32.8.1" class="anchored" data-anchor-id="sec-soln-money-exchange"><span class="header-section-number">32.8.1</span> Solution: <a href="correlation_causation.html#sec-exr-money-exchange" class="quarto-xref">money and exchange rate&nbsp;<span>29.7.4</span></a></h3>
+<div class="notebook" name="exchange_rates_solution" title="Exchange rates and money supply">
+<p>Start of <code>exchange_rates_solution</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/exchange_rates_solution.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/exchange_rates_solution.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-30_79736067cf7769a97df0c26bef78b0fd">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>exchange_df <span class="op">=</span> pd.read_csv(<span class="st">'data/exchange_rates.csv'</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>exchange_rates <span class="op">=</span> np.array(exchange_df[<span class="st">'exchange_rate'</span>])</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>money_supply <span class="op">=</span> np.array(exchange_df[<span class="st">'money_supply'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-32_db0ecb58d95366f0144795a47d580c44">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation.</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>actual_r <span class="op">=</span> np.corrcoef(exchange_rates, money_supply)[<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>actual_r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>np.float64(0.4206068712932843)</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center" data-hash="exercise_solutions_cache/html/unnamed-chunk-33_c8a060f0a03aaf45fe3c1f15f9a7b4a1">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    shuffled_rates <span class="op">=</span> rnd.permuted(exchange_rates)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    fake_r <span class="op">=</span> np.corrcoef(shuffled_rates, money_supply)[<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> fake_r</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of shuffled exchange rates r values'</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'r for shuffled exchange rate'</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&gt;=</span> actual_r)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p shuffled r &gt;= actual:'</span>, np.<span class="bu">round</span>(kk, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>p shuffled r &gt;= actual: 0.0</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="exercise_solutions_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>End of <code>exchange_rates_solution</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
+<p>Interpretation: The observed correlation (.42) between the exchange rate and the money supply is seldom exceeded by random experiments with these data. Thus, the observed result 0.42 cannot be reasonably explained by chance alone and we conclude that it is statistically surprising.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

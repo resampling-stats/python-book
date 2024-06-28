@@ -414,8 +414,8 @@ div.csl-indent {
   <li><a href="#using-squared-differences" id="toc-using-squared-differences" class="nav-link" data-scroll-target="#using-squared-differences"><span class="header-section-number">24.2</span> Using Squared Differences</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">24.3</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#sec-measured-ex-mechanics" id="toc-sec-measured-ex-mechanics" class="nav-link" data-scroll-target="#sec-measured-ex-mechanics"><span class="header-section-number">24.3.1</span> Exercise 1</a></li>
-  <li><a href="#sec-measured-ex-taxis" id="toc-sec-measured-ex-taxis" class="nav-link" data-scroll-target="#sec-measured-ex-taxis"><span class="header-section-number">24.3.2</span> Exercise 2</a></li>
+  <li><a href="#sec-exr-paired-differences" id="toc-sec-exr-paired-differences" class="nav-link" data-scroll-target="#sec-exr-paired-differences"><span class="header-section-number">24.3.1</span> Exercise: paired differences</a></li>
+  <li><a href="#sec-exr-seatbelt-proportions" id="toc-sec-exr-seatbelt-proportions" class="nav-link" data-scroll-target="#sec-exr-seatbelt-proportions"><span class="header-section-number">24.3.2</span> Exercise: seatbelt proportions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1512,14 +1512,14 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 <p>End of <code>liquor_permutation</code> notebook</p>
 </div>
 <!---
-End os liquor_permutation notebook.
+End of liquor_permutation notebook.
 -->
 <p>The result — about zero percent of the simulations generated a value as large or larger than the actual difference — implies that there is a very small probability that two groups with mean prices as different as were observed would happen by chance if drawn from the universe of 42 observed prices. So we “reject the null hypothesis” and instead find persuasive the proposition that the type of liquor distribution system influences the prices that consumers pay.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<p>The logical framework of this resampling version of the permutation test differs greatly from the formulaic version, which relies on some sophisticated mathematics. The formula-method alternative would be a Student’s t-test, in which the user simply plugs into an unintuitive formula and reads the result from a table.</p>
+<p>The logical framework of this resampling version of the permutation test differs greatly from the formulaic version, which relies on some sophisticated mathematics. The formula-method alternative would be the <a href="https://en.wikipedia.org/wiki/Student's_t-test">Student’s t-test</a>, in which the user simply plugs into an unintuitive formula and reads the result from a table.</p>
 <!---
 Discussion of t-test?  Have we introduced the t-test?
 -->
-<p>A Python program to handle the liquor problem with an infinite-universe bootstrap distribution simply substitutes the random sampling command <code>rnd.choice</code> for the commands to do shuffling and splitting above. The results of the bootstrap test are indistinguishable from those in the permutation version of the program above — see: <span class="quarto-unresolved-ref">?sec-liquor-prices</span>.</p>
+<p>A Python program to handle the liquor problem with an infinite-universe bootstrap distribution simply substitutes the random sampling command <code>rnd.choice</code> for the commands to do shuffling and splitting above. The results of the bootstrap test are indistinguishable from those in the permutation version of the program above — see: <a href="probability_theory_3.html#sec-public-liquor" class="quarto-xref"><span>Section&nbsp;12.16</span></a>.</p>
 <p>Still another difficult question is whether <em>any</em> hypothesis test is appropriate, because the states were not randomly selected for inclusion in one group or another, and the results could be caused by factors other than the liquor system; this applies to both the above methods. The states constitute the entire universe in which we are interested, rather than being a sample taken from some larger universe as with a biological experiment or a small survey sample. But this objection pertains to a conventional test as well as to resampling methods. And a similar question arises throughout medical and social science — to the two water suppliers between which John Snow detected vast differences in cholera rates, to rates of lung cancer in human smokers, to analyses of changes in speeding laws, and so on.</p>
 <p>The appropriate question is not whether the units were assigned randomly, however, but whether there is strong reason to believe that the results are not meaningful because they are the result of a <em>particular</em> “hidden” variable.</p>
 <p>These debates about fundamentals illustrate the unsettled state of statistical thinking about basic issues. Other disciplines also have their controversies about fundamentals. But in statistics these issues arise as early as the introductory course, because all but the most contrived problems are shot through with these questions. Instructors and researchers usually gloss over these matters, as Gigerenzer et al., show ( <em>The Empire of Chance</em> ). Again, because with resampling one does not become immersed in the difficult mathematical techniques that underlie conventional methods, one is quicker to see these difficult questions, which apply equally to conventional methods and resampling.</p>
@@ -1969,7 +1969,7 @@ End of notebook
 <section id="example-differences-among-four-pig-rations" class="level3" data-number="24.1.1">
 <h3 data-number="24.1.1" class="anchored" data-anchor-id="example-differences-among-four-pig-rations"><span class="header-section-number">24.1.1</span> Example: differences among four pig rations</h3>
 <p><strong>Test for Differences Among Means of More Than Two Samples of Measured Data</strong>.</p>
-<p>In the examples of <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a> and <span class="quarto-unresolved-ref">?sec-female-calved</span> we investigated whether or not the results shown by a <em>single</em> sample are sufficiently different from a null (benchmark) hypothesis so that the sample is unlikely to have come from the null-hypothesis benchmark universe. In the examples of <a href="testing_counts_1.html#sec-cancer-cures" class="quarto-xref"><span>Section&nbsp;21.2.4</span></a>, <a href="testing_counts_2.html#sec-pig-pairs" class="quarto-xref"><span>Section&nbsp;23.2.1</span></a>, and <a href="#sec-pig-rations-measured" class="quarto-xref"><span>Section&nbsp;24.0.1</span></a> we then investigated whether or not the results shown by <em>two</em> samples suggest that both had come from the <em>same</em> universe, a universe that was assumed to be the composite of the two samples. Now, as in <a href="testing_counts_2.html#sec-fruitfly-four" class="quarto-xref"><span>Section&nbsp;23.1.1</span></a>, we investigate whether or not <em>several</em> samples come from the same universe, except that now we work with measured data rather than with counted data.</p>
+<p>In the examples of <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a> and <a href="testing_counts_1.html#sec-female-calves" class="quarto-xref"><span>Section&nbsp;21.2.1</span></a> we investigated whether or not the results shown by a <em>single</em> sample are sufficiently different from a null (benchmark) hypothesis so that the sample is unlikely to have come from the null-hypothesis benchmark universe. In the examples of <a href="testing_counts_1.html#sec-cancer-cures" class="quarto-xref"><span>Section&nbsp;21.2.4</span></a>, <a href="testing_counts_2.html#sec-pig-pairs" class="quarto-xref"><span>Section&nbsp;23.2.1</span></a>, and <a href="#sec-pig-rations-measured" class="quarto-xref"><span>Section&nbsp;24.0.1</span></a> we then investigated whether or not the results shown by <em>two</em> samples suggest that both had come from the <em>same</em> universe, a universe that was assumed to be the composite of the two samples. Now, as in <a href="testing_counts_2.html#sec-fruitfly-four" class="quarto-xref"><span>Section&nbsp;23.1.1</span></a>, we investigate whether or not <em>several</em> samples come from the same universe, except that now we work with measured data rather than with counted data.</p>
 <p>If one experiments with each of 100 different pig foods on twelve pigs, some of the foods will show much better results than will others <em>just by chance</em>, just as one family in sixteen is likely to have the very “high” number of 4 daughters in its first four children. Therefore, it is wrong reasoning to try out the 100 pig foods, select the food that shows the best results, and then compare it statistically with the average (sum) of all the other foods (or worse, with the poorest food). With such a procedure and enough samples, you will surely find one (or more) that seems very atypical statistically. A bridge hand with 12 or 13 spades seems very atypical, too, but if you deal enough bridge hands you will sooner or later get one with 12 or 13 spades — as a purely chance phenomenon, dealt randomly from a standard deck. Therefore we need a test that prevents our falling into such traps. Such a test usually operates by taking into account the differences among <em>all</em> the foods that were tried.</p>
 <p>The method of <a href="#sec-pig-rations-measured" class="quarto-xref"><span>Section&nbsp;24.0.1</span></a> can be extended to handle this problem. Assume that <em>four</em> foods were each tested on twelve pigs. The weight gains in pounds for the pigs fed on foods A and B were as before. <a href="#tbl-pig-cd-rations" class="quarto-xref">Table&nbsp;<span>24.6</span></a> has the weight gains for foods C and D. (Compare these with the weight gains for foods A and B in <a href="#tbl-pig-ab-rations" class="quarto-xref">Table&nbsp;<span>24.1</span></a>).</p>
 <div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-41_ad662f9051419c6c08a3609dea0c4d0c">
@@ -2315,76 +2315,109 @@ End of notebook
 <section id="exercises" class="level2" data-number="24.3">
 <h2 data-number="24.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">24.3</span> Exercises</h2>
 <p>Solutions for problems may be found in <a href="exercise_solutions.html" class="quarto-xref"><span>Chapter&nbsp;32</span></a>.</p>
-<section id="sec-measured-ex-mechanics" class="level3" data-number="24.3.1">
-<h3 data-number="24.3.1" class="anchored" data-anchor-id="sec-measured-ex-mechanics"><span class="header-section-number">24.3.1</span> Exercise 1</h3>
+<section id="sec-exr-paired-differences" class="level3" data-number="24.3.1">
+<h3 data-number="24.3.1" class="anchored" data-anchor-id="sec-exr-paired-differences"><span class="header-section-number">24.3.1</span> Exercise: paired differences</h3>
 <p>The data shown in <a href="#tbl-hamilton-scores" class="quarto-xref">Table&nbsp;<span>24.8</span></a> might be data for the outcomes of two different mechanics, showing the length of time until the next overhaul is needed for nine pairs of similar vehicles. Or they could be two readings made by different instruments on the same sample of rock. In fact, they represent data for two successive tests for depression on the Hamilton scale, before and after drug therapy.</p>
 <!---
 Note on source in Hollander: Salsburg (1970): Personal communication (with the cooperation of Pfizer and co, Groton, Conn.)
 -->
+<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-55_88c9c46b0c33f3c4b9ba09d6943df055">
+<div class="cell-output-display">
 <div id="tbl-hamilton-scores" class="anchored">
-<table class="table">
-<caption>Table&nbsp;24.8: Hamilton Depression Scale Values</caption>
+<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>Table&nbsp;24.8: Hamilton Depression Scale Values </caption>
 <thead>
 <tr class="header">
-<th>Patient #</th>
-<th>Score Before</th>
-<th>Score After</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Patient #</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Score before</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Score after</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>1.83</td>
-<td>.878</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.83</td>
+<td style="text-align: right;">0.878</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>.50</td>
-<td>.647</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.647</td>
 </tr>
 <tr class="odd">
-<td>3</td>
-<td>1.62</td>
-<td>.598</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">0.598</td>
 </tr>
 <tr class="even">
-<td>4</td>
-<td>2.48</td>
-<td>2.05</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2.48</td>
+<td style="text-align: right;">2.050</td>
 </tr>
 <tr class="odd">
-<td>5</td>
-<td>1.68</td>
-<td>1.06</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.68</td>
+<td style="text-align: right;">1.060</td>
 </tr>
 <tr class="even">
-<td>6</td>
-<td>1.88</td>
-<td>1.29</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.88</td>
+<td style="text-align: right;">1.290</td>
 </tr>
 <tr class="odd">
-<td>7</td>
-<td>1.55</td>
-<td>1.06</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1.55</td>
+<td style="text-align: right;">1.060</td>
 </tr>
 <tr class="even">
-<td>8</td>
-<td>3.06</td>
-<td>3.14</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3.06</td>
+<td style="text-align: right;">3.140</td>
 </tr>
 <tr class="odd">
-<td>9</td>
-<td>1.3</td>
-<td>1.29</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.30</td>
+<td style="text-align: right;">1.290</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The task is to perform a test that will help decide whether there is a difference in the depression scores at the two visits (or the performances of the two mechanics). Perform both a bootstrap test and a permutation test, and give some reason for preferring one to the other in principle. How much do they differ in practice?</p>
+
+
+</div>
+</div>
+<p>The task is to perform a test that will help decide whether there is a difference in the depression scores at the two visits (or the performances of the two mechanics). Perform both a bootstrap test and a permutation test, and give some reason for preferring one to the other in principle. How much do they differ in practice? (For this exercise, assume that we can treat the before and after scores as two different and independent samples and ignore the pairing between the before and after scores).</p>
+<p>Here’s a notebook to get you started:</p>
+<div class="notebook" name="paired_differences" title="Paired differences exercise">
+<p>Start of <code>paired_differences</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/paired_differences.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/paired_differences.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-56_25b1800712267602d0853f0731d525cb">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/hamilton.csv'</span>)</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>before <span class="op">=</span> np.array(df[<span class="st">'score_before'</span>])</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>after <span class="op">=</span> np.array(df[<span class="st">'score_after'</span>])</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>End of <code>paired_differences</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
+<p>See <a href="exercise_solutions.html#sec-soln-paired-differences" class="quarto-xref"><span>Section&nbsp;32.1</span></a> for a solution.</p>
 </section>
-<section id="sec-measured-ex-taxis" class="level3" data-number="24.3.2">
-<h3 data-number="24.3.2" class="anchored" data-anchor-id="sec-measured-ex-taxis"><span class="header-section-number">24.3.2</span> Exercise 2</h3>
+<section id="sec-exr-seatbelt-proportions" class="level3" data-number="24.3.2">
+<h3 data-number="24.3.2" class="anchored" data-anchor-id="sec-exr-seatbelt-proportions"><span class="header-section-number">24.3.2</span> Exercise: seatbelt proportions</h3>
 <p>Thirty-six of 72 (.5) taxis surveyed in Pittsburgh had visible seatbelts. Seventy-seven of 129 taxis in Chicago (.597) had visible seatbelts. Calculate a confidence interval for the difference in proportions, estimated at -.097. (Source: Peskun, Peter H., “A New Confidence Interval Method Based on the Normal Approximation for the Difference of Two Binomial Probabilities,” <em>Journal of the American Statistical Association</em> , 6/93 p.&nbsp;656).</p>
+<p>For solution, see <a href="exercise_solutions.html#sec-soln-seatbelt-proportions" class="quarto-xref"><span>Section&nbsp;32.2</span></a>}</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">

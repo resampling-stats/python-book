@@ -809,14 +809,14 @@ End of notebook
 </div>
 </div>
 <p>From this histogram, we see that in only about 1 percent of the cases did our trial sum of squared differences equal or exceed 54, confirming our conclusion that this is an unusual result. We can have Python calculate this proportion:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-11_50c6d6f512359f05fde4f394577527b6">
+<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-11_47690be7ace2781d558a29ae0810b6bb">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many of the trials yielded a maximum difference greater than the</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># observed maximum difference?</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(scores <span class="op">&gt;=</span> actual_sum_sq_deviations)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Proportion &gt;= </span><span class="sc">{</span>actual_sum_sq_deviations<span class="sc">}</span><span class="ss"> was:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion &gt;='</span>, actual_sum_sq_deviations, <span class="st">'was:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Proportion &gt;= 54.0 was: 0.0109</code></pre>
 </div>

@@ -421,9 +421,9 @@ div.csl-indent {
   <li><a href="#interpretation-of-approach-2" id="toc-interpretation-of-approach-2" class="nav-link" data-scroll-target="#interpretation-of-approach-2"><span class="header-section-number">27.7</span> Interpretation of Approach 2</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">27.8</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1"><span class="header-section-number">27.8.1</span> Exercise 1</a></li>
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">27.8.2</span> Exercise 2</a></li>
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3"><span class="header-section-number">27.8.3</span> Exercise 3</a></li>
+  <li><a href="#sec-exr-unemployment-percent" id="toc-sec-exr-unemployment-percent" class="nav-link" data-scroll-target="#sec-exr-unemployment-percent"><span class="header-section-number">27.8.1</span> Exercise: unemployment percentage</a></li>
+  <li><a href="#sec-exr-battery-lifetime" id="toc-sec-exr-battery-lifetime" class="nav-link" data-scroll-target="#sec-exr-battery-lifetime"><span class="header-section-number">27.8.2</span> Exercise: battery lifetime</a></li>
+  <li><a href="#sec-exr-optical-density" id="toc-sec-exr-optical-density" class="nav-link" data-scroll-target="#sec-exr-optical-density"><span class="header-section-number">27.8.3</span> Exercise: optical density</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -988,21 +988,79 @@ there.
 </section>
 <section id="exercises" class="level2" data-number="27.8">
 <h2 data-number="27.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">27.8</span> Exercises</h2>
-<p>Solutions for problems may be found in the section titled, “Exercise Solutions” at the back of this book.</p>
-<section id="exercise-1" class="level3" data-number="27.8.1">
-<h3 data-number="27.8.1" class="anchored" data-anchor-id="exercise-1"><span class="header-section-number">27.8.1</span> Exercise 1</h3>
+<p>You will find solutions for problems in <a href="exercise_solutions.html" class="quarto-xref"><span>Chapter&nbsp;32</span></a>.</p>
+<section id="sec-exr-unemployment-percent" class="level3" data-number="27.8.1">
+<h3 data-number="27.8.1" class="anchored" data-anchor-id="sec-exr-unemployment-percent"><span class="header-section-number">27.8.1</span> Exercise: unemployment percentage</h3>
+<p>::: {.notebook name=“unemployment_percent_exercise” title=“Unemployment percent exercise”}</p>
 <p>In a sample of 200 people, 7 percent are found to be unemployed. Determine a 95 percent confidence interval for the true population proportion.</p>
+<div class="cell" data-layout-align="center" data-hash="confidence_2_cache/html/unnamed-chunk-10_6365670100c93381c725f08baa32a431">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>See {<a href="exercise_solutions.html#sec-soln-unemployment-percent" class="quarto-xref"><span>Section&nbsp;32.3</span></a>}.</p>
 </section>
-<section id="exercise-2" class="level3" data-number="27.8.2">
-<h3 data-number="27.8.2" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">27.8.2</span> Exercise 2</h3>
+<section id="sec-exr-battery-lifetime" class="level3" data-number="27.8.2">
+<h3 data-number="27.8.2" class="anchored" data-anchor-id="sec-exr-battery-lifetime"><span class="header-section-number">27.8.2</span> Exercise: battery lifetime</h3>
+<div class="notebook" name="battery_lifetime_exercise" title="Battery lifetime exercise">
+<p>Start of <code>battery_lifetime_exercise</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/battery_lifetime_exercise.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/battery_lifetime_exercise.ipynb">Interact</a>
+</div>
+
 <p>A sample of 20 batteries is tested, and the average lifetime is 28.85 months. Establish a 95 percent confidence interval for the true average value. The sample values (lifetimes in months) are listed below.</p>
-<p>30 32 31 28 31 29 29 24 30 31 28 28 32 31 24 23 31 27 27 31</p>
+<div class="cell" data-layout-align="center" data-hash="confidence_2_cache/html/unnamed-chunk-12_2a1347e637e7a56b0dbb89fdd998384b">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>lifetimes <span class="op">=</span> np.array([<span class="dv">30</span>, <span class="dv">32</span>, <span class="dv">31</span>, <span class="dv">28</span>, <span class="dv">31</span>, <span class="dv">29</span>, <span class="dv">29</span>, <span class="dv">24</span>, <span class="dv">30</span>, <span class="dv">31</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                      <span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">32</span>, <span class="dv">31</span>, <span class="dv">24</span>, <span class="dv">23</span>, <span class="dv">31</span>, <span class="dv">27</span>, <span class="dv">27</span>, <span class="dv">31</span>])</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean is:'</span>, np.mean(lifetimes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean is: 28.85</code></pre>
+</div>
+</div>
+<p>End of <code>battery_lifetime_exercise</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
+<p>See <a href="exercise_solutions.html#sec-soln-battery-lifetime" class="quarto-xref"><span>Section&nbsp;32.4</span></a>.</p>
 </section>
-<section id="exercise-3" class="level3" data-number="27.8.3">
-<h3 data-number="27.8.3" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">27.8.3</span> Exercise 3</h3>
-<p>Suppose we have 10 measurements of Optical Density on a batch of HIV negative control:</p>
-<p>.02 .026 .023 .017 .022 .019 .018 .018 .017 .022</p>
+<section id="sec-exr-optical-density" class="level3" data-number="27.8.3">
+<h3 data-number="27.8.3" class="anchored" data-anchor-id="sec-exr-optical-density"><span class="header-section-number">27.8.3</span> Exercise: optical density</h3>
+<div class="notebook" name="optical_density_exercise" title="Optical density exercise">
+<p>Start of <code>optical_density_exercise</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/optical_density_exercise.ipynb">Download notebook</a>
+<a class="interact-button" href="https://mybinder.org/v2/gh/resampling-stats/resampling-with/gh-pages?filepath=python-book/notebooks/optical_density_exercise.ipynb">Interact</a>
+</div>
+
+<div class="cell" data-layout-align="center" data-hash="confidence_2_cache/html/unnamed-chunk-14_2ee17189b6efaa9ea4a56eab224218dc">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Suppose we have 10 measurements of Optical Density on a batch of HIV negative control samples:</p>
+<div class="cell" data-layout-align="center" data-hash="confidence_2_cache/html/unnamed-chunk-15_e65cfdb43b10e10dc688608471f75898">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>density <span class="op">=</span> np.array(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">.02</span>, <span class="fl">.026</span>, <span class="fl">.023</span>, <span class="fl">.017</span>, <span class="fl">.022</span>, <span class="fl">.019</span>, <span class="fl">.018</span>, <span class="fl">.018</span>, <span class="fl">.017</span>, <span class="fl">.022</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Derive a 95 percent confidence interval for the sample mean. Are there enough measurements to produce a satisfactory answer?</p>
+<p>End of <code>optical_density_exercise</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
+<p>See: <a href="exercise_solutions.html#sec-soln-optical-density" class="quarto-xref"><span>Section&nbsp;32.5</span></a>.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
