@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.973363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:35.177364Z",
+      "mimetype": "application/json",
+      "name": "kernel.v0.schema.json",
+      "path": "extensions/@jupyterlite/pyodide-kernel-extension/static/schema/kernel.v0.schema.json",
+      "size": 1463,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.973363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:35.177364Z",
+      "mimetype": "application/json",
+      "name": "piplite.v0.schema.json",
+      "path": "extensions/@jupyterlite/pyodide-kernel-extension/static/schema/piplite.v0.schema.json",
+      "size": 2657,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2024-07-10T20:43:37.973363Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2024-07-10T20:43:37.973363Z",
+  "mimetype": null,
+  "name": "schema",
+  "path": "extensions/@jupyterlite/pyodide-kernel-extension/static/schema",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

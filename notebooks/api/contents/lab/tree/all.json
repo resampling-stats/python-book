@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.985363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "1985-10-26T08:15:00Z",
+      "mimetype": "text/html",
+      "name": "index.html",
+      "path": "lab/tree/index.html",
+      "size": 290,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2024-07-10T20:43:37.985363Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2024-07-10T20:43:37.985363Z",
+  "mimetype": null,
+  "name": "tree",
+  "path": "lab/tree",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

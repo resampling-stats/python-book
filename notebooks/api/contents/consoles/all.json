@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.961363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "1985-10-26T08:15:00Z",
+      "mimetype": "application/json",
+      "name": "package.json",
+      "path": "consoles/package.json",
+      "size": 12959,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.957363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "1985-10-26T08:15:00Z",
+      "mimetype": "text/html",
+      "name": "index.html",
+      "path": "consoles/index.html",
+      "size": 1056,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.957363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "1985-10-26T08:15:00Z",
+      "mimetype": "image/vnd.microsoft.icon",
+      "name": "favicon.ico",
+      "path": "consoles/favicon.ico",
+      "size": 1150,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2024-07-10T20:43:37.957363Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2024-07-10T20:43:37.957363Z",
+  "mimetype": null,
+  "name": "consoles",
+  "path": "consoles",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

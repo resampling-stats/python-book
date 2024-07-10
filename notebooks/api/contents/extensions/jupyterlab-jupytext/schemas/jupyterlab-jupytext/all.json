@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.973363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:38:31.405499Z",
+      "mimetype": null,
+      "name": "package.json.orig",
+      "path": "extensions/jupyterlab-jupytext/schemas/jupyterlab-jupytext/package.json.orig",
+      "size": 2997,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.977363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:38:31.405499Z",
+      "mimetype": "application/json",
+      "name": "plugin.json",
+      "path": "extensions/jupyterlab-jupytext/schemas/jupyterlab-jupytext/plugin.json",
+      "size": 1319,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2024-07-10T20:43:37.977363Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2024-07-10T20:43:37.977363Z",
+  "mimetype": null,
+  "name": "jupyterlab-jupytext",
+  "path": "extensions/jupyterlab-jupytext/schemas/jupyterlab-jupytext",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

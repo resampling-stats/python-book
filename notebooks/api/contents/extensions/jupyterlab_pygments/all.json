@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.981363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:37.981363Z",
+      "mimetype": null,
+      "name": "static",
+      "path": "extensions/jupyterlab_pygments/static",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.981363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:33.793365Z",
+      "mimetype": "application/json",
+      "name": "package.json",
+      "path": "extensions/jupyterlab_pygments/package.json",
+      "size": 5919,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.981363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:33.797365Z",
+      "mimetype": "application/json",
+      "name": "install.json",
+      "path": "extensions/jupyterlab_pygments/install.json",
+      "size": 199,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2024-07-10T20:43:37.981363Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2024-07-10T20:43:37.981363Z",
+  "mimetype": null,
+  "name": "jupyterlab_pygments",
+  "path": "extensions/jupyterlab_pygments",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

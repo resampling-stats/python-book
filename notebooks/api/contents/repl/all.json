@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.989363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "1985-10-26T08:15:00Z",
+      "mimetype": "application/json",
+      "name": "package.json",
+      "path": "repl/package.json",
+      "size": 9732,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.989363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "1985-10-26T08:15:00Z",
+      "mimetype": "text/html",
+      "name": "index.html",
+      "path": "repl/index.html",
+      "size": 1028,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2024-07-10T20:43:37.989363Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2024-07-10T20:43:37.989363Z",
+  "mimetype": null,
+  "name": "repl",
+  "path": "repl",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

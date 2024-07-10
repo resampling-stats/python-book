@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.973363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:37.973363Z",
+      "mimetype": null,
+      "name": "static",
+      "path": "extensions/@jupyterlite/pyodide-kernel-extension/static",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.961363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:35.173364Z",
+      "mimetype": "application/json",
+      "name": "package.json",
+      "path": "extensions/@jupyterlite/pyodide-kernel-extension/package.json",
+      "size": 2609,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.961363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:35.177364Z",
+      "mimetype": "application/json",
+      "name": "install.json",
+      "path": "extensions/@jupyterlite/pyodide-kernel-extension/install.json",
+      "size": 213,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2024-07-10T20:43:37.961363Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2024-07-10T20:43:37.961363Z",
+  "mimetype": null,
+  "name": "pyodide-kernel-extension",
+  "path": "extensions/@jupyterlite/pyodide-kernel-extension",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.961363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:37.961363Z",
+      "mimetype": null,
+      "name": "pyodide-kernel-extension",
+      "path": "extensions/@jupyterlite/pyodide-kernel-extension",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    }
+  ],
+  "created": "2024-07-10T20:43:37.961363Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2024-07-10T20:43:37.961363Z",
+  "mimetype": null,
+  "name": "@jupyterlite",
+  "path": "extensions/@jupyterlite",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

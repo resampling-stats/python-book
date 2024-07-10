@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.961363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:37.961363Z",
+      "mimetype": null,
+      "name": "@jupyterlite",
+      "path": "extensions/@jupyterlite",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.981363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:37.981363Z",
+      "mimetype": null,
+      "name": "jupyterlab_pygments",
+      "path": "extensions/jupyterlab_pygments",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-10T20:43:37.977363Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-10T20:43:37.977363Z",
+      "mimetype": null,
+      "name": "jupyterlab-jupytext",
+      "path": "extensions/jupyterlab-jupytext",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    }
+  ],
+  "created": "2024-07-10T20:43:37.981363Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2024-07-10T20:43:37.981363Z",
+  "mimetype": null,
+  "name": "extensions",
+  "path": "extensions",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
