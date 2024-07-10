@@ -2,7 +2,7 @@
   "content": [
     {
       "content": null,
-      "created": "2024-07-10T21:18:08.491579Z",
+      "created": "2024-07-10T21:38:40.120883Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
@@ -15,11 +15,11 @@
       "writable": true
     }
   ],
-  "created": "2024-07-10T21:18:08.491579Z",
+  "created": "2024-07-10T21:38:40.120883Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2024-07-10T21:18:08.491579Z",
+  "last_modified": "2024-07-10T21:38:40.120883Z",
   "mimetype": null,
   "name": "workspaces",
   "path": "lab/workspaces",
