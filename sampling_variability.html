@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 14&nbsp; On Variability in Sampling</title>
+<title>14&nbsp; On Variability in Sampling – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,11 +116,12 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
@@ -131,12 +139,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sampling_variability.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sampling_variability.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">On Variability in Sampling</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -146,7 +154,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -390,7 +398,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -421,7 +429,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <blockquote class="blockquote">
 <p>[Debra said]: “I’ve had such good luck with Japanese cars and poor luck with American...”</p>
@@ -449,9 +459,13 @@ div.csl-indent {
 <p>How do statisticians ascertain that slumps and hot hands are very weak effects, or do not exist? In brief, in baseball we simulate a hitter with a given average — say .250 — and compare the results with actual hitters of that average, to see whether they have “slumps” longer than the computer. The method of investigation is roughly as follows. You program a computer or other machine to behave the way a player would, given the player’s long-run average, on the assumption that each trial is a random drawing. For example, if a player has a .250 season-long batting average, the machine is programmed like a bucket containing three black balls and one white ball. Then for each simulated at bat, the machine shuffles the “balls” and draws one; it then records whether the result is black or white, after which the ball is replaced in the bucket. To study a season with four hundred at-bats, a simulated ball is drawn four hundred times.</p>
 <p>The records of the player’s real season and the simulated season are then compared. If there really is such a thing as a non-random slump or streak, there will be fewer but longer “runs” of hits or outs in the real record than in the simulated record. On the other hand, if performance is independent from at-bat trial to at-bat trial, the actual record will change from hit to out and from out to hit as often as does the random simulated record. I suggested this sort of test for the existence of slumps in my 1969 book that first set forth the resampling method, a predecessor of this book.</p>
 <p>For example, <a href="#tbl-at-bats" class="quarto-xref">Table&nbsp;<span>14.1</span></a> shows the results of one 400 at-bat season for a simulated .250 hitter. (H = hit, O = out, sequential at-bats ordered vertically) Note the “slump” — 1 for 24 — in columns 7 &amp; 8 (in bold).</p>
-<div id="tbl-at-bats" class="anchored">
-<table class="table">
-<caption>Table&nbsp;14.1: 400 simulated at-bats (ordered vertically)</caption>
+<div id="tbl-at-bats" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-at-bats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;14.1: 400 simulated at-bats (ordered vertically)
+</figcaption>
+<div aria-describedby="tbl-at-bats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">O</td>
@@ -906,6 +920,8 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>Harry Roberts investigated the batting records of a sample of major leaguers.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> He compared players’ season-long records against the behavior of random-number drawings. If slumps existed rather than being a fiction of the imagination, the real players’ records would shift from a string of hits to a string of outs less frequently than would the random-number sequences. But in fact the number of shifts, and the average lengths of strings of hits and outs, are on average the same for players as for player-simulating random-number devices.</p>
 <p>Over long periods, averages may vary systematically, as Ty Cobb’s annual batting averages varied non-randomly from season to season, Roberts found. But in the short run, most individual and team performances have shown results similar to the outcomes that a lottery-type random number machine would produce.</p>
 <p>Thomas Gilovich, Robert Vallone and Amos Twersky <span class="citation" data-cites="gilovich1985hot">(<a href="references.html#ref-gilovich1985hot" role="doc-biblioref">1985</a>)</span> performed a similar study of basketball shooting. They examined the records of shots from the floor by the Philadelphia 76’ers, foul shots by the Boston Celtics, and a shooting experiment of Cornell University teams. They found that “basketball players and fans alike tend to believe that a player’s chance of hitting a shot are greater following a hit than following a miss on the previous shot. However, detailed analyses…provided no evidence for a positive correlation between the outcomes of successive shots.”</p>
@@ -922,46 +938,66 @@ div.csl-indent {
 <p>One of the scientific strands leading into research on variability was the body of studies that considers the behavior of stock prices as a “random walk.” That body of work asserts that a stock broker or chartist who claims to be able to find patterns in past price movements of stocks that will predict future movements should be listened to with about the same credulity as a racetrack tout or an astrologer. A second strand was the work in psychology in the last decade or two which has recognized that people’s estimates of uncertain events are systematically biased in a variety of interesting and knowable ways.</p>
 <p>The U.S. government has made — and continues to make — blunders costing the public scores of billions of dollars, using slump-type fallacious reasoning about resources and energy. Forecasts are issued and policies are adopted based on the belief that a short-term increase in price constitutes a long-term trend. But the “experts” employed by the government to make such forecasts do no better on average than do private forecasters, and often the system of forecasting that they use is much more misleading than would be a random-number generating machine of the sort used in the baseball slump experiments.</p>
 <p>Please look at the data in <a href="#fig-nile_height" class="quarto-xref">Figure&nbsp;<span>14.1</span></a> for the height of the Nile River over about half a century. Is it not natural to think that those data show a decline in the height of the river? One can imagine that if our modern communication technology existed then, the Cairo newspapers would have been calling for research to be done on the fall of the Nile, and the television anchors would have been warning the people to change their ways and use less water.</p>
-<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="sampling_variability_cache/html/fig-nile_height_05c03482f61bab4bc5a959fcd77b8d44">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-nile_height" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="diagrams/nile_height.svg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;14.1: Height of the Nile River Over Half of a Century</figcaption>
+<div id="fig-nile_height" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nile_height-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/nile_height.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nile_height-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.1: Height of the Nile River Over Half of a Century
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Let’s look at <a href="#fig-nile_long" class="quarto-xref">Figure&nbsp;<span>14.2</span></a> which represents the data over an even longer period. What now would you say about the height of the Nile? Clearly the “threat” was non-existent, and only appeared threatening because the time span represented by the data was too short. The point of this display is that looking at too-short a segment of experience frequently leads us into error. And “too short” may be as long as a century.</p>
-<div id="fig-nile_long" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/nile_levels.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;14.2: Variations in the height of Nile Flood in centimeters. The sloping line indicates the secular raising of the bed of the Nile by deposition of silt. From <span class="citation" data-cites="brooks1928periodicities">Brooks (<a href="references.html#ref-brooks1928periodicities" role="doc-biblioref">1928</a>)</span></figcaption>
+<div id="fig-nile_long" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nile_long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/nile_levels.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nile_long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.2: Variations in the height of Nile Flood in centimeters. The sloping line indicates the secular raising of the bed of the Nile by deposition of silt. From <span class="citation" data-cites="brooks1928periodicities">Brooks (<a href="references.html#ref-brooks1928periodicities" role="doc-biblioref">1928</a>)</span>
+</figcaption>
 </figure>
 </div>
 <p>Another example is the price of mercury, which is representative of all metals. <a href="#fig-mercury_prediction" class="quarto-xref">Figure&nbsp;<span>14.3</span></a> shows a forecast made in 1976 by natural-scientist Earl Cook <span class="citation" data-cites="cook1976limits">(<a href="references.html#ref-cook1976limits" role="doc-biblioref">1976</a>)</span>. He combined a then-recent upturn in prices with the notion that there is a finite amount of mercury on the earth’s surface, plus the mathematical charm of plotting a second-degree polynomial with the computer. <a href="#fig-mercury_reserves" class="quarto-xref">Figure&nbsp;<span>14.4</span></a> and <a href="#fig-mercury_price_indexes" class="quarto-xref">Figure&nbsp;<span>14.5</span></a> show how the forecast was almost immediately falsified, and the price continued its long-run decline.</p>
-<div id="fig-mercury_prediction" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/mercury_prices.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;14.3: The Price of Mercury from <span class="citation" data-cites="cook1976limits">Cook (<a href="references.html#ref-cook1976limits" role="doc-biblioref">1976</a>)</span></figcaption>
+<div id="fig-mercury_prediction" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mercury_prediction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/mercury_prices.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mercury_prediction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.3: The Price of Mercury from <span class="citation" data-cites="cook1976limits">Cook (<a href="references.html#ref-cook1976limits" role="doc-biblioref">1976</a>)</span>
+</figcaption>
 </figure>
 </div>
-<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="sampling_variability_cache/html/fig-mercury_reserves_4c3879ab2bc413987201a6c2ec2790f6">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-mercury_reserves" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="diagrams/mercury_reserves.svg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;14.4: Mercury Reserves, 1950-1990</figcaption>
+<div id="fig-mercury_reserves" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mercury_reserves-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/mercury_reserves.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mercury_reserves-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.4: Mercury Reserves, 1950-1990
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="sampling_variability_cache/html/fig-mercury_price_indexes_3d87d7db3061c5a5c0e711b098176987">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-mercury_price_indexes" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="diagrams/mercury_price_indexes.svg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;14.5: Mercury Price Indexes, 1950-1990</figcaption>
+<div id="fig-mercury_price_indexes" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mercury_price_indexes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/mercury_price_indexes.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mercury_price_indexes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.5: Mercury Price Indexes, 1950-1990
+</figcaption>
 </figure>
 </div>
 </div>
@@ -978,9 +1014,13 @@ div.csl-indent {
 <p>It is a well-known fact that the Rookie of the Year in a sport such as baseball seldom has as outstanding a season in their sophomore year. Why is this so? Let’s use the knowledge we have acquired of probability and simulation to explain this phenomenon.</p>
 <p>The matter at hand might be thought of as a problem in pure probability — if one simply asks about the chance that a given player (the Rookie of the Year) will repeat. Or it could be considered a problem in statistics, as discussed in coming chapters. Let’s consider the matter in the context of baseball.</p>
 <p>Imagine 10 mechanical “ball players,” each a machine that has three white balls (hits) and 7 black balls. Every time the machine goes to bat, you take a ball out of the machine, look to see if it is a hit or an out, and put it back. For each “ball player” you do this 100 times. One of them is going to do better than the others, and that one becomes the Rookie of the Year. See <a href="#tbl-rookie-seasons" class="quarto-xref">Table&nbsp;<span>14.2</span></a>.</p>
-<div id="tbl-rookie-seasons" class="anchored">
-<table class="table">
-<caption>Table&nbsp;14.2: Rookie Seasons (100 at bats)</caption>
+<div id="tbl-rookie-seasons" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rookie-seasons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;14.2: Rookie Seasons (100 at bats)
+</figcaption>
+<div aria-describedby="tbl-rookie-seasons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th># of Hits</th>
@@ -1031,10 +1071,16 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>Would you now expect that the player who happened to be the best among the top ten in the first year to again be the best among the top ten in the next year, also? The sports writers do. But of course this seldom happens. The Rookie of the Year in major-league baseball seldom has as outstanding a season in their sophomore year as in their rookie year. You can expect them to do better than the average of all sophomores, but not necessarily better than all of the rest of the group of talented players who are now sophomores. (Please notice that we are not saying that there is no long-run difference among the top ten rookies. But suppose there is. <a href="#tbl-true-rookie" class="quarto-xref">Table&nbsp;<span>14.3</span></a> shows the season’s performance for ten batters of differing performances).</p>
-<div id="tbl-true-rookie" class="anchored">
-<table class="table">
-<caption>Table&nbsp;14.3: Simulated season’s performance for 10 batters of differing “true” averages</caption>
+<div id="tbl-true-rookie" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-true-rookie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;14.3: Simulated season’s performance for 10 batters of differing “true” averages
+</figcaption>
+<div aria-describedby="tbl-true-rookie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>“True”</th>
@@ -1085,6 +1131,8 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>We see from <a href="#tbl-true-rookie" class="quarto-xref">Table&nbsp;<span>14.3</span></a> that we have ten batters whose “true” batting averages range from .270 to .330. Their rookie year performance (400 at bats), simulated on the basis of their “true”average is on the right. Which one is the rookie of the year? It’s #6, who hit .420 during the rookie session. Will they do as well next year? Not likely — their “true” average is only .300.</p>
 <div class="notebook" name="sampling_variability" title="Experiment in sampling variability">
 <p>Start of <code>sampling_variability</code> notebook</p>
@@ -1094,12 +1142,12 @@ div.csl-indent {
 </div>
 
 <p>Try generating some rookie “seasons” yourself with the following commands, ranging the batter’s “true” performance by changing the value of <code>p_hit</code> (the probability of a hit).</p>
-<div class="cell" data-layout-align="center" data-hash="sampling_variability_cache/html/unnamed-chunk-1_5a4a368d6067825547e69640277dd83c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="sampling_variability_cache/html/unnamed-chunk-2_e14cba4f1e5e0caf0caa9be42eb5b5a5">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate a rookie season of 400 at-bats.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># You might try changing the value below and rerunning.</span></span>
@@ -1134,7 +1182,7 @@ div.csl-indent {
 <p>A great benefit to using simulations rather than formulas to deal with problems in probability and statistics is that the presence and importance of variability becomes manifest in the course of the simulation work.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-brooks1928periodicities" class="csl-entry" role="listitem">
 Brooks, Charles Ernest Pelham. 1928. <span>“Periodicities in the Nile Floods.”</span> <em>Memoirs of the Royal Meteorological Society</em> 2 (12): 9--26. <a href="https://www.rmets.org/sites/default/files/papers/brooksmem2-12.pdf">https://www.rmets.org/sites/default/files/papers/brooksmem2-12.pdf</a>.
 </div>
@@ -1149,13 +1197,13 @@ Gilovich, Thomas, Robert Vallone, and Amos Tversky. 1985. <span>“The Hot Hand 
 </div>
 </div>
 </section>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>We are simplifying here; the Hot-Hand is a controversial topic, and it has its own Wikipedia page with information and discussion: <a href="https://en.wikipedia.org/wiki/Hot_hand" class="uri">https://en.wikipedia.org/wiki/Hot_hand</a>. It may be overstating to say the effect does not exist, but if it does exist, the effect is much smaller than most sports fans believe it to be.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>See Simon’s description of these experiments in <a href="https://www.washingtonpost.com/archive/opinions/1987/08/09/batters-slump-other-illusions/72964746-cd59-4e0b-a941-e1cdfca917d6/">Batter’s slump and other illusions</a>, Washington Post, August 9th, 1987.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1193,18 +1241,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1236,11 +1273,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1250,8 +1326,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1263,7 +1348,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1307,6 +1515,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1332,6 +1541,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1393,17 +1628,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./probability_theory_4_finite.html" class="pagination-link">
+      <a href="./probability_theory_4_finite.html" class="pagination-link" aria-label="Probability Theory, Part 4: Estimating Probabilities from Finite Universes">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability Theory, Part 4: Estimating Probabilities from Finite Universes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./monte_carlo.html" class="pagination-link">
+      <a href="./monte_carlo.html" class="pagination-link" aria-label="The Procedures of Monte Carlo Simulation (and Resampling)">
         <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Procedures of Monte Carlo Simulation (and Resampling)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

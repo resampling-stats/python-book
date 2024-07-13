@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - Preface to the third edition</title>
+<title>Preface to the third edition – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -66,7 +67,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -75,11 +82,12 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
@@ -97,12 +105,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./preface_third.html">Preface to the third edition</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./preface_third.html">Preface to the third edition</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -112,7 +120,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -356,7 +364,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -389,7 +397,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p>The book in your hands, or on your screen, is the third edition of a book originally called “Resampling: the new statistics”, by Julian Lincoln Simon <span class="citation" data-cites="simon1992resampling">(<a href="references.html#ref-simon1992resampling" role="doc-biblioref">1992</a>)</span>.</p>
 <p>One of the pleasures of writing an edition of someone else’s book is that we have some freedom to praise a previous version of our own book. We will do that, in the next section. Next we talk about the resampling methods in this book, and their place at the heart of “data science”, Finally, we discuss what we have changed, and why, and make some suggestions about where this book could fit into your learning and teaching.</p>
@@ -403,8 +413,8 @@ div.csl-indent {
 <p>The first was that introductory courses in statistics use far too much mathematics. Most students cannot follow along and quickly get lost, reducing the subject to — as Simon puts it — “mumbo-jumbo”.</p>
 <p>On its own, this was not a new realization. Simon quotes a classic textbook by Wallis and Roberts <span class="citation" data-cites="wallis1956statistics">(<a href="references.html#ref-wallis1956statistics" role="doc-biblioref">1956</a>)</span>, in which they compare teaching statistics through mathematics to teaching in a foreign language. More recently, other teachers of statistics have come to the same conclusion. Cobb <span class="citation" data-cites="cobb2007introductory">(<a href="references.html#ref-cobb2007introductory" role="doc-biblioref">2007</a>)</span> argues that it is practically impossible to teach students the level of mathematics they would need to understand standard introductory courses. As you will see below, Cobb also agrees with Simon about the solution.</p>
 <p>Simon’s great contribution was to see <em>how</em> we can replace the mathematics, to better reveal the true heart of statistical thinking. His starting point appears in the original preface: “Beneath the logic of a statistical inference there necessarily lies a physical process”. Drawing conclusions from noisy data means building a <em>model</em> of the noisy world, and seeing how that model behaves. That model can be physical, where we generate the noisiness of the world using physical devices like dice and spinners and coin-tosses. In fact, Simon used exactly these kinds of devices in his first experiments in teaching <span class="citation" data-cites="simon1969basic">(<a href="references.html#ref-simon1969basic" role="doc-biblioref">Simon 1969</a>)</span>. He then saw that it was much more efficient to build these models with simple computer code, and the result was the first and second editions of this book, with their associated software, the <em>Resampling Stats</em> language.</p>
-<p>Simon’s second conclusion follows from the first. Now that Simon had stripped away the unnecessary barrier of mathematics, he had got to the heart of what is interesting and difficult in statistics. Drawing conclusions from noisy data involves a lot of hard, clear thinking. We need to be honest with our students about that; statistics is hard, not because it is obscure (it need not be), but because it deals with difficult problems. It is exactly that hard logical thinking that can make statistics so interesting to our best students; “statistics” is just reasoning about the world when the world is noisy. Simon writes eloquently about this in a section in the introduction — “Why is statistics such a difficult subject” (<a href="intro.html#sec-stats-difficult" class="quarto-xref"><span>Section&nbsp;1.6</span></a>).</p>
-<p>We needed both of Simon’s conclusions to get anywhere. We cannot hope to teach two hard subjects at the same time; mathematics, and statistical reasoning. That is what Simon has done: he replaced the mathematics with something that is much easier to reason about. Then he can concentrate on the real, interesting problem — the hard thinking about data, and the world it comes from. To quote from a later section in this book (<a href="resampling_method.html#sec-resamp-differs" class="quarto-xref"><span>Section&nbsp;2.4</span></a>): “Once we get rid of the formulas and tables, we can see that statistics is a matter of <em>clear thinking, not fancy mathematics</em>.” Instead of asking “where would I look up the right recipe for this”, you find yourself asking “what kind of world do these data come from?” and “how can I reason about that world?”. Like Simon, we have found that this way of thinking and teaching is almost magically liberating and satisfying. We hope and believe that you will find the same.</p>
+<p>Simon’s second conclusion follows from the first. Now that Simon had stripped away the unnecessary barrier of mathematics, he had got to the heart of what is interesting and difficult in statistics. Drawing conclusions from noisy data involves a lot of hard, clear thinking. We need to be honest with our students about that; statistics is hard, not because it is obscure (it need not be), but because it deals with difficult problems. It is exactly that hard logical thinking that can make statistics so interesting to our best students; “statistics” is just reasoning about the world when the world is noisy. Simon writes eloquently about this in a section in the introduction — “Why is statistics such a difficult subject” (<a href="intro.html#sec-stats-difficult" class="quarto-xref"><span>1.6 Why is Statistics Such a Difficult Subject?</span></a>).</p>
+<p>We needed both of Simon’s conclusions to get anywhere. We cannot hope to teach two hard subjects at the same time; mathematics, and statistical reasoning. That is what Simon has done: he replaced the mathematics with something that is much easier to reason about. Then he can concentrate on the real, interesting problem — the hard thinking about data, and the world it comes from. To quote from a later section in this book (<a href="resampling_method.html#sec-resamp-differs" class="quarto-xref"><span>2.4 How resampling differs from the conventional approach</span></a>): “Once we get rid of the formulas and tables, we can see that statistics is a matter of <em>clear thinking, not fancy mathematics</em>.” Instead of asking “where would I look up the right recipe for this”, you find yourself asking “what kind of world do these data come from?” and “how can I reason about that world?”. Like Simon, we have found that this way of thinking and teaching is almost magically liberating and satisfying. We hope and believe that you will find the same.</p>
 </section>
 <section id="sec-resampling-data-science" class="level2">
 <h2 class="anchored" data-anchor-id="sec-resampling-data-science">Resampling and data science</h2>
@@ -451,7 +461,7 @@ div.csl-indent {
 <p>Ian Nimmo-Smith</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-cobb2007introductory" class="csl-entry" role="listitem">
 Cobb, George W. 2007. <span>“The Introductory Statistics Course: A Ptolemaic Curriculum?”</span> <em>Technology Innovations in Statistics Education</em> 1 (1). <a href="https://escholarship.org/uc/item/6hb3k0nz">https://escholarship.org/uc/item/6hb3k0nz</a>.
 </div>
@@ -509,18 +519,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -552,11 +551,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -566,8 +604,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -579,7 +626,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -623,6 +793,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -648,6 +819,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -709,17 +906,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
+      <a href="./index.html" class="pagination-link" aria-label="{{< var lang >}} edition">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Python edition</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./preface_second.html" class="pagination-link">
+      <a href="./preface_second.html" class="pagination-link" aria-label="Preface to the second edition">
         <span class="nav-page-text">Preface to the second edition</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

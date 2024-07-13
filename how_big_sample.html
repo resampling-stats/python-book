@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 30&nbsp; How Large a Sample?</title>
+<title>30&nbsp; How Large a Sample? – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,11 +116,12 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
@@ -131,12 +139,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./how_big_sample.html"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./how_big_sample.html"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -146,7 +154,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -390,7 +398,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -431,7 +439,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="issues-in-determining-sample-size" class="level2" data-number="30.1">
 <h2 data-number="30.1" class="anchored" data-anchor-id="issues-in-determining-sample-size"><span class="header-section-number">30.1</span> Issues in determining sample size</h2>
@@ -441,9 +451,13 @@ div.csl-indent {
 <p>The benefit of additional information is not easy to estimate even in applied research, and it is extraordinarily difficult to estimate in basic research. Therefore, it has been the practice of researchers to set up target goals of the <em>degree of accuracy</em> they wish to achieve, or to consider various degrees of accuracy that might be achieved with various sample sizes, and then to balance the degree of accuracy with the cost of achieving that accuracy. The bulk of this chapter is devoted to learning how the sample size is related to accuracy in simple situations.</p>
 <p>In complex situations, however, and even in simple situations for beginners, you are likely to feel frustrated by the difficulties of relating accuracy to sample size, in which case you cry out to a supervisor, “Don’t give me complicated methods, just give me a rough number based on your greatest experience.” My inclination is to reply to you, “Sometimes life is hard and there is no shortcut.” On the other hand, perhaps you can get more information than misinformation out of knowing sample sizes that have been used in other studies. <a href="#tbl-sample-sizes-opinion" class="quarto-xref">Table&nbsp;<span>30.1</span></a> shows the middle (modal), 25th percentile, and 75th percentile scores for — please keep this in mind — <em>National Opinion Surveys</em> <a href="#tbl-sample-sizes-subgroup" class="quarto-xref">Table&nbsp;<span>30.2</span></a> shows how subgroup analyses affect sample size. The source for both tables is <em>Applied Sampling</em>, by Seymour Sudman <span class="citation" data-cites="sudman1976applied">(<a href="references.html#ref-sudman1976applied" role="doc-biblioref">1976, 86–87</a>)</span> copyright Academic Press, reprinted by permission.</p>
 <p>Pretest sample sizes are smaller, of course, perhaps 25-100 observations. Samples in research for Master’s and Ph.D.&nbsp;theses are likely to be closer to a pretest than to national samples.</p>
-<div id="tbl-sample-sizes-opinion" class="anchored">
-<table class="table">
-<caption>Table&nbsp;30.1: Common sample sizes for national and regional studies by subject</caption>
+<div id="tbl-sample-sizes-opinion" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sample-sizes-opinion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;30.1: Common sample sizes for national and regional studies by subject
+</figcaption>
+<div aria-describedby="tbl-sample-sizes-opinion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 30%">
 <col style="width: 10%">
@@ -517,9 +531,15 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<div id="tbl-sample-sizes-subgroup" class="anchored">
-<table class="table">
-<caption>Table&nbsp;30.2: Typical sample sizes for studies of human and institutional populations</caption>
+</figure>
+</div>
+<div id="tbl-sample-sizes-subgroup" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sample-sizes-subgroup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;30.2: Typical sample sizes for studies of human and institutional populations
+</figcaption>
+<div aria-describedby="tbl-sample-sizes-subgroup-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 28%">
 <col style="width: 17%">
@@ -565,6 +585,8 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>Once again, the sample size ought to depend on the proportions of the sample that have the characteristics you are interested in, the extent to which you want to learn about subgroups as well as the universe as a whole, and of course the purpose of your study, the value of the information, and the cost. Also, keep in mind that the <em>added</em> information that you obtain from an additional sample observation tends to be smaller as the sample size gets larger. You must quadruple the sample to halve the error.</p>
 <p>Now let us consider some specific cases. The first examples taken up here are from the descriptive type of study, and the latter deal with sample sizes in relationship research.</p>
 </section>
@@ -574,9 +596,13 @@ div.csl-indent {
 <h3 data-number="30.2.1" class="anchored" data-anchor-id="sec-proportion-radio"><span class="header-section-number">30.2.1</span> Example: what proportion of homes are listening to a radio station?</h3>
 <p>What proportion of the homes in Countryville watch television station WCNT’s ten o’clock news program? That is the question your phone survey aims to answer, and you want to know how many randomly selected homes you must phone to obtain a sufficiently large sample.</p>
 <p>Begin by guessing the likeliest answer, say 30 percent in this case. Do not worry if you are off by 5 per cent or even 10 per cent; and you will probably not be further off than that. Select a first-approximation sample size of perhaps 400; this number is selected from my general experience, but it is just a starting point. Then proceed through the first 400 numbers in a random-number table, marking down a <em>yes</em> for numbers 1-3 and <em>no</em> for numbers 4-10 (because 3/10 was your estimate of the proportion listening). Then add the number of <em>yes</em> and <em>no</em> . Carry out perhaps ten sets of such trials, the results of which are in <a href="#tbl-phone-trials" class="quarto-xref">Table&nbsp;<span>30.3</span></a>.</p>
-<div id="tbl-phone-trials" class="anchored">
-<table class="table">
-<caption>Table&nbsp;30.3: Ten example trials from phone survey simulation</caption>
+<div id="tbl-phone-trials" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-phone-trials-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;30.3: Ten example trials from phone survey simulation
+</figcaption>
+<div aria-describedby="tbl-phone-trials-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
 <col style="width: 20%">
@@ -661,6 +687,8 @@ div.csl-indent {
 
 </table>
 </div>
+</figure>
+</div>
 <p>Based on these ten trials, you can estimate that if you take a sample of 400 and if the “real” viewing level is 30 percent, your average percentage error will be 1.375 percent on either side of 30 percent. That is, with a sample of 400, half the time your error will be greater than 1.375 percent if 3/10 of the universe is listening.</p>
 <p>Now you must decide whether the estimated error is small enough for your needs. If you want greater accuracy than a sample of 400 will give you, increase the sample size, using this important rule of thumb: To cut the error in half, you must <em>quadruple</em> the sample size. In other words, if you want a sample that will give you an error of only 0.6875 percent on the average, you must increase the sample size to 1,600 interviews. Similarly, if you cut the sample size to 100, the average error will be only 2.75 percent (double 1.375 percent) on either side of 30 percent. If you distrust this rule of thumb, run ten or so trials on sample sizes of 100 or 1,600, and see what error you can expect to obtain on the average.</p>
 <p>If the “real” viewership is 20 percent or 40 percent, instead of 30 percent, the accuracy you will obtain from a sample size of 400 will not be very different from an “actual” viewership of 30 percent, so do not worry about that too much, as long as you are in the right general vicinity.</p>
@@ -674,13 +702,13 @@ div.csl-indent {
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=viewer_numbers.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="how_big_sample_cache/html/unnamed-chunk-1_2a7c2d69d64a1d0ee2c543242f03a4a2">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the random number generator</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="how_big_sample_cache/html/unnamed-chunk-2_4cd2d2e237f972b4b254bd97fcbb1338">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the number of trials</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10000</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -729,11 +757,15 @@ End of notebook.
 </section>
 <section id="example-average-weight-gain-for-pig-rations" class="level3" data-number="30.2.2">
 <h3 data-number="30.2.2" class="anchored" data-anchor-id="example-average-weight-gain-for-pig-rations"><span class="header-section-number">30.2.2</span> Example: average weight gain for pig rations</h3>
-<p>This example, like <a href="#sec-proportion-radio" class="quarto-xref"><span>Section&nbsp;30.2.1</span></a>, illustrates the choice of sample size for estimating a summarization statistic. Later examples deal with sample sizes for probability statistics.</p>
-<p>Hark back to the pig-ration problems presented earlier (e.g. <a href="testing_measured.html#sec-pig-rations-measured" class="quarto-xref"><span>Section&nbsp;24.0.1</span></a>), and consider the following set of pig weight-gains recorded for ration A: 31, 34, 29, 26, 32, 35, 38, 34, 31, 29, 32, 30. Assume that our purpose now is to estimate the average weight gain for ration A, so that the feed company can advertise to farmers how much weight gain to expect from ration A. If the universe is made up of pig weight-gains like those we observed, we can simulate the universe with, say, 1 million weight gains of thirty-one pounds, 1 million of thirty-four pounds, and so on for the twelve observed weight gains. Or, more conveniently, as accuracy will not be affected much, we can make up a universe of say, thirty cards for each thirty-one-pound gain, thirty cards for each thirty-four-pound gains and so forth, yielding a deck of 30 x 12 = 360 cards. Then shuffle, and, just for a starting point, try sample sizes of twelve pigs. The means of the samples for twenty such trials are as in <a href="#tbl-weight-bootstrap" class="quarto-xref">Table&nbsp;<span>30.4</span></a>.</p>
-<div id="tbl-weight-bootstrap" class="anchored">
-<table class="table">
-<caption>Table&nbsp;30.4: Simulated average weight gains from pig ration A</caption>
+<p>This example, like <a href="#sec-proportion-radio" class="quarto-xref"><span>Section 30.2.1</span></a>, illustrates the choice of sample size for estimating a summarization statistic. Later examples deal with sample sizes for probability statistics.</p>
+<p>Hark back to the pig-ration problems presented earlier (e.g. <a href="testing_measured.html#sec-pig-rations-measured" class="quarto-xref"><span>Section 24.0.1</span></a>), and consider the following set of pig weight-gains recorded for ration A: 31, 34, 29, 26, 32, 35, 38, 34, 31, 29, 32, 30. Assume that our purpose now is to estimate the average weight gain for ration A, so that the feed company can advertise to farmers how much weight gain to expect from ration A. If the universe is made up of pig weight-gains like those we observed, we can simulate the universe with, say, 1 million weight gains of thirty-one pounds, 1 million of thirty-four pounds, and so on for the twelve observed weight gains. Or, more conveniently, as accuracy will not be affected much, we can make up a universe of say, thirty cards for each thirty-one-pound gain, thirty cards for each thirty-four-pound gains and so forth, yielding a deck of 30 x 12 = 360 cards. Then shuffle, and, just for a starting point, try sample sizes of twelve pigs. The means of the samples for twenty such trials are as in <a href="#tbl-weight-bootstrap" class="quarto-xref">Table&nbsp;<span>30.4</span></a>.</p>
+<div id="tbl-weight-bootstrap" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-weight-bootstrap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;30.4: Simulated average weight gains from pig ration A
+</figcaption>
+<div aria-describedby="tbl-weight-bootstrap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 15%">
 <col style="width: 15%">
@@ -842,11 +874,17 @@ End of notebook.
 
 </table>
 </div>
-<p>Now ask yourself whether a sample size of twelve pigs gives you enough accuracy. If we sort the absolute deviations, we find the middle two values (the 10th and 11th values) of 20 are 0.67 and 0.71, so the median is the average of these values: 0.69. There is a .5 chance that the mean for any given sample will be more than 0.69 points from the mean of the universe that generates such samples, which in this situation is 31.75 pounds. Is this close enough? That is up to you to decide in light of the purposes for which you are running the experiment. (The logic of the inference you make here is inevitably murky, and use of the term “real mean” can make it even murkier, as is seen in the discussion in <a href="confidence_1.html" class="quarto-xref"><span>Chapter&nbsp;26</span></a> — <a href="reliability_average.html" class="quarto-xref"><span>Chapter&nbsp;28</span></a> on confidence intervals.)</p>
+</figure>
+</div>
+<p>Now ask yourself whether a sample size of twelve pigs gives you enough accuracy. If we sort the absolute deviations, we find the middle two values (the 10th and 11th values) of 20 are 0.67 and 0.71, so the median is the average of these values: 0.69. There is a .5 chance that the mean for any given sample will be more than 0.69 points from the mean of the universe that generates such samples, which in this situation is 31.75 pounds. Is this close enough? That is up to you to decide in light of the purposes for which you are running the experiment. (The logic of the inference you make here is inevitably murky, and use of the term “real mean” can make it even murkier, as is seen in the discussion in <a href="confidence_1.html" class="quarto-xref"><span>Chapter 26</span></a> — <a href="reliability_average.html" class="quarto-xref"><span>Chapter 28</span></a> on confidence intervals.)</p>
 <p>To see how accuracy is affected by larger samples, try a sample size of forty-eight “pigs” dealt from the same deck. (But, if the sample size were to be much larger than forty-eight, you might need a “universe” greater than 360 cards.) The results of twenty trials are in <a href="#tbl-weight-forty-eight" class="quarto-xref">Table&nbsp;<span>30.5</span></a>.</p>
-<div id="tbl-weight-forty-eight" class="anchored">
-<table class="table">
-<caption>Table&nbsp;30.5: Simulated average weight gain from 48 pigs</caption>
+<div id="tbl-weight-forty-eight" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-weight-forty-eight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;30.5: Simulated average weight gain from 48 pigs
+</figcaption>
+<div aria-describedby="tbl-weight-forty-eight-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 15%">
 <col style="width: 15%">
@@ -955,8 +993,10 @@ End of notebook.
 
 </table>
 </div>
+</figure>
+</div>
 <p>The median of mean absolute deviations in <a href="#tbl-weight-forty-eight" class="quarto-xref">Table&nbsp;<span>30.5</span></a> is 0.32. In half the trials with a sample size of forty-eight the difference between the sample mean and the “real” mean of 31.75 will be .32 pound, smaller than with the 0.69 of samples of 12 pigs. Again, is this too little accuracy for you? If so, increase the sample size further.</p>
-<p>The attentive reader of this example may have been troubled by this question: How do you know what kind of a distribution of values is contained in the universe before the sample is taken? The answer is that you guess, just as in <a href="#sec-proportion-radio" class="quarto-xref"><span>Section&nbsp;30.2.1</span></a> you guessed at the mean of the universe. If you guess wrong, you will get either more accuracy or less accuracy than you expected from a given sample size, but the results will not be fatal; if you obtain more accuracy than you wanted, you have wasted some money, and, if you obtain less accuracy, your sample dispersion will tell you so, and you can then augment the sample to boost the accuracy. But an error in guessing will not introduce error into your final results.</p>
+<p>The attentive reader of this example may have been troubled by this question: How do you know what kind of a distribution of values is contained in the universe before the sample is taken? The answer is that you guess, just as in <a href="#sec-proportion-radio" class="quarto-xref"><span>Section 30.2.1</span></a> you guessed at the mean of the universe. If you guess wrong, you will get either more accuracy or less accuracy than you expected from a given sample size, but the results will not be fatal; if you obtain more accuracy than you wanted, you have wasted some money, and, if you obtain less accuracy, your sample dispersion will tell you so, and you can then augment the sample to boost the accuracy. But an error in guessing will not introduce error into your final results.</p>
 <p>The guess should be based on something, however. One source for guessing is your general knowledge of the likely dispersion; for example, if you were estimating male heights in Rhode Island, you would be able to guess what proportion of observations would fall within 2 inches, 4 inches, 6 inches, and 8 inches, perhaps, of the real value. Or, much better yet, a very small pretest will yield quite satisfactory estimates of the dispersion.</p>
 <p>Here is a Python program that will let you try different sample sizes, and then take bootstrap samples to determine the range of sampling error. You set the sample size by setting the <code>sampsize</code> variable. Above I noted that we could sample without replacement from a “deck” of thirty “31”’s, thirty “34”’s, etc, as a substitute for creating a universe of a million “31”’s, a million “34”’s, etc. We can achieve the same effect if we replace each card after we sample it; this is equivalent to creating a “deck” of an infinite number of “31”’s, “34”’s, etc. That is what the <code>rnd.choice</code> command does, below. Note that the sample size is determined by the value of the <code>sampsize</code> variable, which you set at the beginning. From here on the program takes the <code>mean</code> of each sample, keeps score of that result in the <code>results</code> array and produces a histogram. The <code>quantile</code> function will also tell you what values enclose 90% of all sample results, excluding those below the 5th percentile and above the 95th percentile.</p>
 <p>Here is a notebook for a sample size of 12.</p>
@@ -967,7 +1007,7 @@ End of notebook.
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=sampling_error_bootstrap.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="how_big_sample_cache/html/unnamed-chunk-4_ccc54d259f2b1c5e7ca570640e982b81">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1000,7 +1040,7 @@ End of notebook.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="how_big_sample_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="how_big_sample_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1015,12 +1055,16 @@ End of notebook.
 <section id="example-sample-size-for-inference-on-fruit-fly-sex-difference" class="level2" data-number="30.3">
 <h2 data-number="30.3" class="anchored" data-anchor-id="example-sample-size-for-inference-on-fruit-fly-sex-difference"><span class="header-section-number">30.3</span> Example: sample size for inference on fruit fly sex difference</h2>
 <p>This is the first example of sample-size estimation for <em>probability</em> (testing) statistics, rather than the summarization statistics dealt with above.</p>
-<p>Recall the problem of the sex of fruit-fly offspring discussed in <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a>. The question now is, how large a sample is needed to determine whether the radiation treatment results in a sex ratio other than a 50-50 male-female split?</p>
+<p>Recall the problem of the sex of fruit-fly offspring discussed in <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.0.1</span></a>. The question now is, how large a sample is needed to determine whether the radiation treatment results in a sex ratio other than a 50-50 male-female split?</p>
 <p>The first step is, as usual, difficult but necessary. As the researcher, you must <em>guess</em> what the sex ratio will be if the treatment <em>does</em> have an effect. Let’s say that you use all your general knowledge of genetics and of this treatment and that you guess the sex ratio will be 75 percent males and 25 percent females <em>if</em> the treatment alters the ratio from 50-50.</p>
 <p>In table of random numbers from 00-99 let “01-25” stand for females and “26-00” for males. Take twenty successive pairs of numbers for each trial, and run perhaps fifty trials, as in <a href="#tbl-flies-more-males" class="quarto-xref">Table&nbsp;<span>30.6</span></a>.</p>
-<div id="tbl-flies-more-males" class="anchored">
-<table class="table">
-<caption>Table&nbsp;30.6: Simulated numbers of males and females for 75/25% universe</caption>
+<div id="tbl-flies-more-males" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flies-more-males-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;30.6: Simulated numbers of males and females for 75/25% universe
+</figcaption>
+<div aria-describedby="tbl-flies-more-males-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 10%">
 <col style="width: 13%">
@@ -1236,12 +1280,18 @@ End of notebook.
 </tbody>
 </table>
 </div>
-<p>In <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a> with a sample of twenty flies that contained fourteen or more males, we found only an 8% probability that such an extreme sample would result from a 50-50 universe. Therefore, if we observe such an extreme sample, we rule out a 50-50 universe.</p>
+</figure>
+</div>
+<p>In <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.0.1</span></a> with a sample of twenty flies that contained fourteen or more males, we found only an 8% probability that such an extreme sample would result from a 50-50 universe. Therefore, if we observe such an extreme sample, we rule out a 50-50 universe.</p>
 <p>Now <a href="#tbl-flies-more-males" class="quarto-xref">Table&nbsp;<span>30.6</span></a> tells us that, if the ratio is <em>really</em> 75 to 25, then a sample of twenty will show fourteen or more males forty-two of fifty times (84 percent of the time). If we take a sample of twenty flies and if the ratio is really 75-25, we will make the correct decision by deciding that the split is not 50-50, 84 percent of the time.</p>
-<p>Perhaps you are not satisfied with reaching the right conclusion only 84 percent of the time. In that case, still assuming that the ratio will really be 75-25 if it is not 50-50, you need to take a sample larger than twenty flies. How much larger? That depends on how much surer you want to be. Follow the same procedure for a sample size of perhaps eighty flies. First work out for a sample of eighty, as was done in <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a> for a sample of twenty, the number of males out of eighty that you would need to find for the odds to be, say, 9 to 1 that the universe is not 50-50; your estimate turns out to be forty-eight males. Then run fifty trials of eighty flies each on the basis of 75-25 probability, and see how often you would not get as many as forty-eight males in the sample. <a href="#tbl-flies-morer-males" class="quarto-xref">Table&nbsp;<span>30.7</span></a> shows the results we got. No trial was anywhere near as low as forty-eight, which suggests that a sample of eighty is larger than necessary if the split is really 75-25.</p>
-<div id="tbl-flies-morer-males" class="anchored">
-<table class="table">
-<caption>Table&nbsp;30.7: Simulated males / females from 80 flies for 75/25% universe</caption>
+<p>Perhaps you are not satisfied with reaching the right conclusion only 84 percent of the time. In that case, still assuming that the ratio will really be 75-25 if it is not 50-50, you need to take a sample larger than twenty flies. How much larger? That depends on how much surer you want to be. Follow the same procedure for a sample size of perhaps eighty flies. First work out for a sample of eighty, as was done in <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.0.1</span></a> for a sample of twenty, the number of males out of eighty that you would need to find for the odds to be, say, 9 to 1 that the universe is not 50-50; your estimate turns out to be forty-eight males. Then run fifty trials of eighty flies each on the basis of 75-25 probability, and see how often you would not get as many as forty-eight males in the sample. <a href="#tbl-flies-morer-males" class="quarto-xref">Table&nbsp;<span>30.7</span></a> shows the results we got. No trial was anywhere near as low as forty-eight, which suggests that a sample of eighty is larger than necessary if the split is really 75-25.</p>
+<div id="tbl-flies-morer-males" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flies-morer-males-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;30.7: Simulated males / females from 80 flies for 75/25% universe
+</figcaption>
+<div aria-describedby="tbl-flies-morer-males-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 10%">
 <col style="width: 13%">
@@ -1457,10 +1507,16 @@ End of notebook.
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>It is obvious that, if the split you guess at is 60 to 40 rather than 75 to 25, you will need a bigger sample to obtain the “correct” result with the same probability. For example, run some eighty-fly random-number trials with 1-40 representing males and 51-100 representing females. <a href="#tbl-flies-moreish-males" class="quarto-xref">Table&nbsp;<span>30.8</span></a> shows that only twenty-four of fifty (48 percent) of the trials reach the necessary cut-off at which one would judge that a sample of eighty really does not come from a universe that is split 50-50; therefore, a sample of eighty is not big enough if the split is 60-40.</p>
-<div id="tbl-flies-moreish-males" class="anchored">
-<table class="table">
-<caption>Table&nbsp;30.8: Simulated males / females from 80 flies for 60/40% universe</caption>
+<div id="tbl-flies-moreish-males" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flies-moreish-males-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;30.8: Simulated males / females from 80 flies for 60/40% universe
+</figcaption>
+<div aria-describedby="tbl-flies-moreish-males-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 10%">
 <col style="width: 13%">
@@ -1676,6 +1732,8 @@ End of notebook.
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>To review the main principles of this example: First, the closer together the two possible universes from which you think the sample might have come (50-50 and 60-40 are closer together than are 50-50 and 75-25), the larger the sample needed to distinguish between them. Second, the surer you want to be that you reach the right decision based upon the sample evidence, the larger the sample you need.</p>
 <p>The problem may be handled with the following Python notebook. We construct a benchmark universe that is 60-40 male-female, and take samples of size 80, observing whether the numbers of males and females differs enough in these resamples to rule out a 50-50 universe. Recall that we need at least 48 of 80 males to say that the proportion of males is <em>not</em> 50%.</p>
 <div class="notebook" name="flies_sample_size" title="Sample size for detecting fruitfly sex difference">
@@ -1685,7 +1743,7 @@ End of notebook.
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=flies_sample_size.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="how_big_sample_cache/html/unnamed-chunk-6_06627451b46bda5b8b30dae8178267c3">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
@@ -1722,9 +1780,9 @@ End of notebook.
 -->
 <section id="example-sample-size-for-an-internet-provider-poll" class="level3" data-number="30.3.1">
 <h3 data-number="30.3.1" class="anchored" data-anchor-id="example-sample-size-for-an-internet-provider-poll"><span class="header-section-number">30.3.1</span> Example: sample size for an internet-provider poll</h3>
-<p>Referring back to <a href="testing_counts_1.html#sec-contract-poll" class="quarto-xref"><span>Section&nbsp;21.2.2</span></a>, on the internet provider poll, how large a sample <em>should</em> you have taken? Pretend that the data have not yet been collected. You need <em>some</em> estimate of how the results will turn out before you can select a sample size. But you have not the foggiest idea how the results will turn out. Therefore, go out and take a very small sample, maybe ten people, to give you some idea of whether people will split quite evenly or unevenly. Seven of your ten initial interviews say they are for the internet provider contract. How large a sample do you now need to provide an answer of which you can be fairly sure?</p>
+<p>Referring back to <a href="testing_counts_1.html#sec-contract-poll" class="quarto-xref"><span>Section 21.2.2</span></a>, on the internet provider poll, how large a sample <em>should</em> you have taken? Pretend that the data have not yet been collected. You need <em>some</em> estimate of how the results will turn out before you can select a sample size. But you have not the foggiest idea how the results will turn out. Therefore, go out and take a very small sample, maybe ten people, to give you some idea of whether people will split quite evenly or unevenly. Seven of your ten initial interviews say they are for the internet provider contract. How large a sample do you now need to provide an answer of which you can be fairly sure?</p>
 <p>Using the techniques of the previous chapter, we can estimate that from a sample of fifty people at least thirty-two would have to vote the same way for you to believe that the odds are at least 19 to 1 that the sample does not misrepresent the universe, that is, that the sample does not show a majority different from that of the whole universe if you polled everyone.</p>
-<p>We do this by repeating the experiment in <a href="testing_counts_1.html#sec-contract-poll" class="quarto-xref"><span>Section&nbsp;21.2.2</span></a>. In that experiment, we were doing simulated trials in the 50:50 world, and looking at the proportion of simulated trials where the count of yes votes was &gt;= 30. We found the proportion of trials was about 10%. We are interested to know the count for which we get less than 5%. We can do this by checking the proportions for &gt;=31, &gt;= 32, and so on. It turns out that counts &gt;= 32 occur a bit less than 5% of the time in the 50:50 world.</p>
+<p>We do this by repeating the experiment in <a href="testing_counts_1.html#sec-contract-poll" class="quarto-xref"><span>Section 21.2.2</span></a>. In that experiment, we were doing simulated trials in the 50:50 world, and looking at the proportion of simulated trials where the count of yes votes was &gt;= 30. We found the proportion of trials was about 10%. We are interested to know the count for which we get less than 5%. We can do this by checking the proportions for &gt;=31, &gt;= 32, and so on. It turns out that counts &gt;= 32 occur a bit less than 5% of the time in the 50:50 world.</p>
 <div class="notebook" name="contract_poll_32" title="Contract poll looking for >=32">
 <p>Start of <code>contract_poll_32</code> notebook</p>
 <div class="nb-links">
@@ -1733,7 +1791,7 @@ End of notebook.
 </div>
 
 <p>This Python notebook generates samples of 50 simulated voters on the assumption that only 50 percent are in favor of the contract. Then it counts the number of generated samples where 32 or more of the 50 respondents said they were in favor of the contract.</p>
-<div class="cell" data-layout-align="center" data-hash="how_big_sample_cache/html/unnamed-chunk-8_828c8ed01d7a844c223c5119a02a5214">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1762,9 +1820,13 @@ End of notebook.
 -->
 <p>We know, therefore, that if we see a voter “yes” count &gt;= 32, there is only a small (&gt;5%) chance that arose from the 50:50 world.</p>
 <p>Therefore, designate numbers 1-30 as <em>no</em> and 31-00 as <em>yes</em> in the random-number table (that is, 70 percent, as in your estimate based on your presample of ten), work through a trial sample size of fifty, and count the number of <em>yeses</em> . Run through perhaps ten or fifteen trials, and reckon how often the observed number of <em>yeses</em> is &gt;= 32 (the number you must exceed for a result you can rely on). In <a href="#tbl-cable-yes" class="quarto-xref">Table&nbsp;<span>30.9</span></a> we see that a sample of fifty respondents, from a universe split 70-30, will show that many <em>yeses</em> a preponderant proportion of the time — in fact, in fifteen of fifteen experiments; therefore, the sample size of fifty is large enough if the split is “really” 70-30.</p>
-<div id="tbl-cable-yes" class="anchored">
-<table class="table">
-<caption>Table&nbsp;30.9: Number of “yes” votes out of 50 for 30% in favor universe</caption>
+<div id="tbl-cable-yes" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cable-yes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;30.9: Number of “yes” votes out of 50 for 30% in favor universe
+</figcaption>
+<div aria-describedby="tbl-cable-yes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Trial</th>
@@ -1835,6 +1897,8 @@ End of notebook.
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>The following Python program takes samples of size 50 from a universe that is 70% “yes.” It then observes how often such samples produce more than 31 “yeses” — the number we must get if we are to be sure enough that the sample is not from a 50/50 universe.</p>
 <div class="notebook" name="poll_sample_size" title="Sample size for an internet contract poll">
 <p>Start of <code>poll_sample_size</code> notebook</p>
@@ -1843,7 +1907,7 @@ End of notebook.
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=poll_sample_size.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="how_big_sample_cache/html/unnamed-chunk-10_868da95d8cac59b436ec4053f56644e3">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
@@ -1883,9 +1947,9 @@ End of notebook.
 </section>
 <section id="example-how-large-a-sample-for-pig-rations" class="level3" data-number="30.3.2">
 <h3 data-number="30.3.2" class="anchored" data-anchor-id="example-how-large-a-sample-for-pig-rations"><span class="header-section-number">30.3.2</span> Example: how large a sample for pig rations?</h3>
-<p>How large a sample is needed to determine whether there is any difference between the two pig rations in <a href="testing_measured.html#sec-pig-rations-measured" class="quarto-xref"><span>Section&nbsp;24.0.1</span></a>? The first step is to guess the results of the tests. You estimate that the average for ration A will be a weight gain of 32 pounds. You further guess that twelve pigs on ration A might gain 36, 35, 34, 33, 33, 32, 32, 31, 31, 30, 29 and 28 pounds. This set of guesses has an equal number of pigs above and below the average and more pigs close to the average than farther away. That is, there are more pigs at 33 and 31 pounds than at 36 and 28 pounds. This would seem to be a reasonable distribution of pigs around an average of 32 pounds. In similar fashion, you guess an average weight gain of 28 pounds for ration B and a distribution of 32, 31, 30, 29, 29, 28, 28, 27, 27, 26, 25, and 24 pounds.</p>
+<p>How large a sample is needed to determine whether there is any difference between the two pig rations in <a href="testing_measured.html#sec-pig-rations-measured" class="quarto-xref"><span>Section 24.0.1</span></a>? The first step is to guess the results of the tests. You estimate that the average for ration A will be a weight gain of 32 pounds. You further guess that twelve pigs on ration A might gain 36, 35, 34, 33, 33, 32, 32, 31, 31, 30, 29 and 28 pounds. This set of guesses has an equal number of pigs above and below the average and more pigs close to the average than farther away. That is, there are more pigs at 33 and 31 pounds than at 36 and 28 pounds. This would seem to be a reasonable distribution of pigs around an average of 32 pounds. In similar fashion, you guess an average weight gain of 28 pounds for ration B and a distribution of 32, 31, 30, 29, 29, 28, 28, 27, 27, 26, 25, and 24 pounds.</p>
 <p>Let us review the basic strategy. We want to find a sample size large enough so that a large proportion of the time it will reveal a difference between groups big enough to be accepted as not attributable to chance. First, then, we need to find out how big the difference must be to be accepted as evidence that the difference is not attributable to chance. We do so from trials with samples of the given size from the benchmark universe. We state that a difference larger than the benchmark universe will usually produce is not attributable to chance.</p>
-<p>In this case, let us try samples of 12 pigs on each ration. First we draw two samples from a <em>combined</em> benchmark universe made up of the results that we have guessed will come from ration A and ration B. (The procedure is the same as was followed in <a href="testing_measured.html#sec-pig-rations-measured" class="quarto-xref"><span>Section&nbsp;24.0.1</span></a>).</p>
+<p>In this case, let us try samples of 12 pigs on each ration. First we draw two samples from a <em>combined</em> benchmark universe made up of the results that we have guessed will come from ration A and ration B. (The procedure is the same as was followed in <a href="testing_measured.html#sec-pig-rations-measured" class="quarto-xref"><span>Section 24.0.1</span></a>).</p>
 <div class="notebook" name="sample_size_rations" title="Sample size for pig rations with bootstrap">
 <p>Start of <code>sample_size_rations</code> notebook</p>
 <div class="nb-links">
@@ -1894,7 +1958,7 @@ End of notebook.
 </div>
 
 <p>First we need to get the measured data from the data file using <span class="python">the Pandas library</span>:</p>
-<div class="cell" data-layout-align="center" data-hash="how_big_sample_cache/html/unnamed-chunk-12_da771b58c651fc6664dc14b4a14a10c8">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1954,14 +2018,14 @@ End of notebook.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="how_big_sample_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="how_big_sample_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>We find that in only of the trials the difference between the two observed groups of 12 pigs was more than 2. Now we investigate how often samples of 12 pigs, drawn from the <em>separate</em> universes, will show a mean difference larger than 2 pounds. We do so by making up a deck of 25 or 50 cards for <em>each</em> of the 12 hypothesized A’s and each of the 12 B’s, with the ration name and the weight gain written on it — that is, a deck of, say, 300 cards for each ration. Then from each deck we draw a set of 12 cards at random, record the group averages, and find the difference.</p>
 <p>Here is the same work done with more runs on the computer. In this version we are sampling from the separate A and B universes we have estimated.</p>
-<div class="cell" data-layout-align="center" data-hash="how_big_sample_cache/html/unnamed-chunk-14_cab34e1b5597a033a900462ace35bdc3">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A new empty array to store the trial results.</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_trials)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2000,7 +2064,7 @@ End of notebook.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="how_big_sample_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="how_big_sample_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -2027,7 +2091,7 @@ End of notebook
 <p>Sample sizes are too often determined on the basis of convention or of the available budget. A more rational method of choosing the size of the sample is by balancing the diminution of error expected with a larger sample, and its value, against the cost of increasing the sample size. The relationship of various sample sizes to various degrees of accuracy can be estimated with resampling methods, which are illustrated here.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-fussler1961patterns" class="csl-entry" role="listitem">
 Fussler, Herman Howe, and Julian Lincoln Simon. 1961. <em>Patterns in the Use of Books in Large Research Libraries</em>. Chicago: University of Chicago Library.
 </div>
@@ -2048,7 +2112,7 @@ Sudman, Seymour. 1976. <em>Applied Sampling</em>. New <span>Y</span>ork: Academi
 </div>
 </div>
 </section>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>Schlaifer <span class="citation" data-cites="schlaifer1961introduction">(<a href="references.html#ref-schlaifer1961introduction" role="doc-biblioref">1961</a>)</span> attacks the sample-size problem in the wider context of decision making, costs, and benefits. The statistically knowledgeable reader can find an excellent discussion of sample size in Hansen <em>et al.</em> <span class="citation" data-cites="hansen1953sample">(<a href="references.html#ref-hansen1953sample" role="doc-biblioref">1953</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -2058,7 +2122,7 @@ Sudman, Seymour. 1976. <em>Applied Sampling</em>. New <span>Y</span>ork: Academi
 </blockquote>
 <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
 </ol>
-</aside>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -2096,18 +2160,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2139,11 +2192,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2153,8 +2245,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2166,7 +2267,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2210,6 +2434,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2235,6 +2460,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2296,17 +2547,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./correlation_causation.html" class="pagination-link">
+      <a href="./correlation_causation.html" class="pagination-link" aria-label="Correlation and Causation">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bayes_simulation.html" class="pagination-link">
+      <a href="./bayes_simulation.html" class="pagination-link" aria-label="Bayesian Analysis by Simulation">
         <span class="nav-page-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

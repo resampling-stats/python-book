@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 23&nbsp; The Statistics of Hypothesis-Testing with Counted Data, Part 2</title>
+<title>23&nbsp; The Statistics of Hypothesis-Testing with Counted Data, Part 2 – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,17 +116,17 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
   });
 </script>
-
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
@@ -134,12 +141,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./testing_counts_2.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./testing_counts_2.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -149,7 +156,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -393,7 +400,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -433,7 +440,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p>Here’s the bad-news-good-news message again: The bad news is that the subject of inferential statistics is extremely difficult — not because it is complex but rather because it is subtle. The cause of the difficulty is that the world around us is difficult to understand, and spoon-fed mathematical simplifications which you manipulate mechanically simply mislead you into thinking you understand that about which you have not got a clue.</p>
 <p>The good news is that you — and that means <em>you</em> , even if you say you are “no good at mathematics” — can understand these problems with a layperson’s hard thinking, even if you have no mathematical background beyond arithmetic and you think that you have no mathematical capability. That’s because the difficulty lies in such matters as pin-pointing the right question, and understanding how to interpret your results.</p>
@@ -443,9 +452,9 @@ div.csl-indent {
 <section id="sec-fruitfly-four" class="level3" data-number="23.1.1">
 <h3 data-number="23.1.1" class="anchored" data-anchor-id="sec-fruitfly-four"><span class="header-section-number">23.1.1</span> Example: Do Any of Four Treatments Affect Sex Ratio in Fruit Flies?</h3>
 <p>This is an example of the general problem — <strong>when the benchmark universe proportion is known, is the proportion of the binomial population affected by any of the treatments?</strong></p>
-<p>Suppose that, instead of experimenting with just one type of radiation treatment on the flies (as in <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a>), you try <em>four</em> different treatments, which we shall label A, B, C, and D. Treatment A produces fourteen males and six females, but treatments B, C, and D produce ten, eleven, and ten males, respectively. It is immediately obvious that there is no reason to think that treatment B, C, or D affects the sex ratio. But what about treatment A?</p>
-<p>A frequent and dangerous mistake made by young scientists is to scrounge around in the data for the most extreme result, and then treat it as if it were the only result. In the context of this example, it would be fallacious to think that the probability of the fourteen-males-to-six females split observed for treatment A is the same as the probability that we figured for a <em>single</em> experiment in the example <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a>. Instead, we must consider that our benchmark universe is composed of <em>four sets</em> of twenty trials, each trial having a 50-50 probability of being male. We can consider that our previous trials 1-4 in <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a> constitute a <em>single</em> new trial, and each subsequent set of four previous trials constitute another new trial. We then ask how likely a new trial of our sets of twenty flips is to produce <em>one</em> set with fourteen or more of one or the other sex.</p>
-<p>Let us make the procedure explicit, starting at the procedure from <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a>. Again, we will check for 14 or more males, <em>or</em> 6 or fewer males (meaning, 14 or more females).</p>
+<p>Suppose that, instead of experimenting with just one type of radiation treatment on the flies (as in <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.0.1</span></a>), you try <em>four</em> different treatments, which we shall label A, B, C, and D. Treatment A produces fourteen males and six females, but treatments B, C, and D produce ten, eleven, and ten males, respectively. It is immediately obvious that there is no reason to think that treatment B, C, or D affects the sex ratio. But what about treatment A?</p>
+<p>A frequent and dangerous mistake made by young scientists is to scrounge around in the data for the most extreme result, and then treat it as if it were the only result. In the context of this example, it would be fallacious to think that the probability of the fourteen-males-to-six females split observed for treatment A is the same as the probability that we figured for a <em>single</em> experiment in the example <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.0.1</span></a>. Instead, we must consider that our benchmark universe is composed of <em>four sets</em> of twenty trials, each trial having a 50-50 probability of being male. We can consider that our previous trials 1-4 in <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.0.1</span></a> constitute a <em>single</em> new trial, and each subsequent set of four previous trials constitute another new trial. We then ask how likely a new trial of our sets of twenty flips is to produce <em>one</em> set with fourteen or more of one or the other sex.</p>
+<p>Let us make the procedure explicit, starting at the procedure from <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.0.1</span></a>. Again, we will check for 14 or more males, <em>or</em> 6 or fewer males (meaning, 14 or more females).</p>
 <ul>
 <li><strong>Step 1.</strong> Let tails = male, heads = female.</li>
 <li><strong>Step 2.</strong> Flip twenty coins and count the number of tails (males). Call this the count for group A. Repeat three more times to get counts for groups B, C and D.</li>
@@ -454,11 +463,15 @@ div.csl-indent {
 <li><strong>Step 5.</strong> Calculate the proportion of “yes” results in the 100 trials. This proportion estimates the probability that a fruit fly population with a proportion of 50 percent males will produce as many as 14 males, or as many as 14 females, in at least one of four groups of 20 flies.</li>
 </ul>
 <p>We begin the trials with data as in <a href="#tbl-fruitfly-4-groups" class="quarto-xref">Table&nbsp;<span>23.1</span></a>. In two of the six simulation trials, one or more one samples (groups) shows 14 or more males. Without even concerning ourselves about whether we should be looking at males or females, or just males, or needing to do more trials, we can see that it would be <em>very common indeed</em> to have one of four treatments show fourteen or more of one sex just by chance. This discovery clearly indicates that a result that would be fairly unusual (five in 25) for a single sample alone is commonplace in one of four observed samples.</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-2_4634110430ecf9dc6ffcac0385756929">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-fruitfly-4-groups" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;23.1: Results from 6 random trials for Fruitfly 4-group problem</caption>
+<div id="tbl-fruitfly-4-groups" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-fruitfly-4-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.1: Results from 6 random trials for Fruitfly 4-group problem
+</figcaption>
+<div aria-describedby="tbl-fruitfly-4-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">Trial no</th>
@@ -521,6 +534,8 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
@@ -535,7 +550,7 @@ div.csl-indent {
 <p>A key point of the notebook here is that each trial consists of <em>four groups</em> of 20 randomly generated hypothetical fruit flies. And if we consider 10,000 trials, we will be examining 40,000 sets of 20 fruit flies.</p>
 <p>In each trial we generate 4 random samples (groups) of 20 fruit flies, and for each, we count the number of males (“males”s) and then check whether that group has more than 13 of either sex (actually, more than 13 “males”s or less than 7 “males”). If it does, then we change a variable called <code>unusual</code> to 1, which informs us that for this sample, at least 1 group of 20 fruit flies had results as unusual as the results from the fruit flies exposed to the four treatments.</p>
 <p>After the 10,000 runs are made, we count the number of trials where one sample had a group of fruit flies with 14 or more of either sex, and show the results.</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-3_9cc53d5fed74209fd0880918baa31903">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -581,12 +596,16 @@ End of notebook
 <h3 data-number="23.1.2" class="anchored" data-anchor-id="sec-four-rehabs"><span class="header-section-number">23.1.2</span> Example: Do Four Psychological Treatments Differ in Effectiveness?</h3>
 <p><strong>Do Several Two-Outcome Samples Differ Among Themselves in Their Proportions?</strong></p>
 <p>Consider four different psychological treatments designed to rehabilitate young offenders. Instead of a numerical test score, there is only a “yes” or a “no” answer as to whether the young person has kept their record clean or has gotten into trouble again. Call a clean record “success”. Label the treatments P, R, S, and T, each of which is administered to a separate group of twenty young offenders. The number of “success” outcomes per group has been: P, 17; R, 10; S, 10; T, 7. Is it improbable that all four groups come from the same universe?</p>
-<p>This problem is like the placebo vs.&nbsp;cancer-cure problem, but now there are more than two samples. It is also like the four-sample irradiated-fruit flies example (<a href="#sec-fruitfly-four" class="quarto-xref"><span>Section&nbsp;23.1.1</span></a>), except that now we are <em>not</em> asking whether any or some of the samples differ from a <em>given universe</em> (50-50 sex ratio in that case). Rather, we are now asking whether there are differences <em>among</em> the samples themselves. Please keep in mind that we are still dealing with two-outcome (success-or-failure, yes-or-no, well-or-sick) problems. The outcomes fall into categories, to which we give labels (“success” or “failure”, “well” or “sick”). Later we shall take up problems that are similar except that the outcomes are “quantitative” — in that the outcomes are numbers rather than labels.</p>
+<p>This problem is like the placebo vs.&nbsp;cancer-cure problem, but now there are more than two samples. It is also like the four-sample irradiated-fruit flies example (<a href="#sec-fruitfly-four" class="quarto-xref"><span>Section 23.1.1</span></a>), except that now we are <em>not</em> asking whether any or some of the samples differ from a <em>given universe</em> (50-50 sex ratio in that case). Rather, we are now asking whether there are differences <em>among</em> the samples themselves. Please keep in mind that we are still dealing with two-outcome (success-or-failure, yes-or-no, well-or-sick) problems. The outcomes fall into categories, to which we give labels (“success” or “failure”, “well” or “sick”). Later we shall take up problems that are similar except that the outcomes are “quantitative” — in that the outcomes are numbers rather than labels.</p>
 <p>If all four groups were drawn from the same universe, that universe has an estimated success rate of 17/20 + 10/20 + 10/20 + 7/20 = 44/80 = 55/100 = 55%, because the observed data <em>taken as a whole</em> constitute our best guess as to the nature of the universe from which they come — again, <em>if</em> they all come from the same universe. (Please think this matter over a bit, because it is important and subtle. It may help you to notice the absence of any <em>other</em> information about the universe from which they have all come, if they have come from the same universe.)</p>
 <p>Therefore, select twenty two-digit numbers for each group from the random-number table, marking “success” for each number in the range 1 through 55 and “failure” for each number 56 through 100. Conduct a number of such trials. Then count the proportion of times that the difference between the highest and lowest groups is larger than the widest observed difference, the difference between P and T (17-7 = 10). In <a href="#tbl-offenders" class="quarto-xref">Table&nbsp;<span>23.2</span></a>, none of the first six trials shows anywhere near as large a difference as the observed range of 10, suggesting that it would be rare for four treatments that are “really” similar to show so great a difference. There is thus reason to believe that P and T differ in their effects.</p>
-<div id="tbl-offenders" class="anchored">
-<table class="table">
-<caption>Table&nbsp;23.2: Results of Six Random Trials for Problem “offenders”</caption>
+<div id="tbl-offenders" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-offenders-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.2: Results of Six Random Trials for Problem “offenders”
+</figcaption>
+<div aria-describedby="tbl-offenders-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Trial</th>
@@ -649,6 +668,8 @@ End of notebook
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>The strategy of the Python solution to “offenders” is similar to the strategy for previous problems in this chapter. The benchmark (null) hypothesis is that the treatments do not differ in their effects observed, and we estimate the probability that the observed results would occur by chance using the benchmark universe. The only new twist is that we must instruct the computer to find the groups with the highest and the lowest numbers of success rates.</p>
 <p>Using Python, we generate four “treatments,” each represented by 20 labels. We draw these 20 labels from the choices “success” or “failure”, with a 55% chance of getting “success” and a 45% chance of “failure”. Follow along in the program for the rest of the procedure:</p>
 <div class="notebook" name="offenders" title="Simulation of offender strategies">
@@ -658,7 +679,7 @@ End of notebook
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=offenders.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-5_1379309add40de6bc177cc6de82940f1">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -736,7 +757,7 @@ End of notebook
 </div>
 
 <p>The first step is to examine our data and calculate this measure: The mean is 11, the differences (call <em>deviations from the mean</em>) are 6, 1, 1, and 4, the squared deviations are 36, 1, 1, and 16, and their sum is 54. In Python:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-7_3e595f648617666412ae523f8a51a1cb">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The actual scores for each treatment.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>treat_scores <span class="op">=</span> np.array([<span class="dv">17</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">7</span>])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The mean.</span></span>
@@ -754,7 +775,7 @@ End of notebook
 </div>
 </div>
 <p>Our experiment will be, as before, to constitute four groups of 20 at random from a universe with a 55 percent rehabilitation rate. We then calculate this same measure for the random groups. If it is frequently larger than 54, then we conclude that a uniform cure rate of 55 percent could easily have produced the observed results. The program that follows also generates the four treatments by using a <code>for</code> loop, rather than spelling out the <code>rnd.choice</code> command 4 times as above. In Python:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-9_b06b08732aad8910dcb012e55af67b1e">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -803,13 +824,13 @@ End of notebook
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>From this histogram, we see that in only about 1 percent of the cases did our trial sum of squared differences equal or exceed 54, confirming our conclusion that this is an unusual result. We can have Python calculate this proportion:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-11_47690be7ace2781d558a29ae0810b6bb">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many of the trials yielded a maximum difference greater than the</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># observed maximum difference?</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(scores <span class="op">&gt;=</span> actual_sum_sq_deviations)</span>
@@ -848,7 +869,7 @@ End of notebook
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=bush_clinton.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-13_4a2ee367b68d8699188d0df7d87b1d99">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -903,7 +924,7 @@ End of notebook
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -923,7 +944,7 @@ End of notebook
 <h3 data-number="23.2.1" class="anchored" data-anchor-id="sec-pig-pairs"><span class="header-section-number">23.2.1</span> Example: the pig rations again, but comparing pairs of pigs</h3>
 <p>This is a <strong>Paired-Comparison Test</strong>.</p>
 <p>To illustrate how several different procedures can reasonably be used to deal with a given problem, here is another way to decide whether pig ration A is “really” better: We can assume that the order of the pig scores listed <em>within each ration group</em> is random — perhaps the order of the stalls the pigs were kept in, or their alphabetical-name order, or any other random order <em>not related to their weights</em> . Match the first pig eating ration A with the first pig eating ration B, and also match the second pigs, the third pigs, and so forth. Then count the number of matched pairs on which ration A does better. On nine of twelve pairings ration A does better, that is, 31.0 &gt; 26.0, 34.0 &gt; 24.0, and so forth.</p>
-<p>Now we can ask: <em>If</em> the two rations are equally good, how often will one ration exceed the other nine or more times out of twelve, just by chance? This is the same as asking how often either heads <em>or</em> tails will come up nine or more times in twelve tosses. (This is a “two-tailed” test because, as far as we know, either ration may be as good as or better than the other.) Once we have decided to treat the problem in this manner, it is quite similar to <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a> (the first fruitfly irradiation problem). We ask how likely it is that the outcome will be as far away as the observed outcome (9 “heads” of 12) from 6 of 12 (which is what we expect to get by chance in this case if the two rations are similar).</p>
+<p>Now we can ask: <em>If</em> the two rations are equally good, how often will one ration exceed the other nine or more times out of twelve, just by chance? This is the same as asking how often either heads <em>or</em> tails will come up nine or more times in twelve tosses. (This is a “two-tailed” test because, as far as we know, either ration may be as good as or better than the other.) Once we have decided to treat the problem in this manner, it is quite similar to <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.0.1</span></a> (the first fruitfly irradiation problem). We ask how likely it is that the outcome will be as far away as the observed outcome (9 “heads” of 12) from 6 of 12 (which is what we expect to get by chance in this case if the two rations are similar).</p>
 <p>So we conduct perhaps fifty trials as in <a href="#tbl-pigs-pair" class="quarto-xref">Table&nbsp;<span>23.3</span></a>, where an asterisk denotes nine or more heads or tails.</p>
 <ul>
 <li><strong>Step 1.</strong> Let odd numbers equal “A better” and even numbers equal “B better.”</li>
@@ -933,9 +954,13 @@ End of notebook
 </ul>
 <p>The results are shown in <a href="#tbl-pigs-pair" class="quarto-xref">Table&nbsp;<span>23.3</span></a>.</p>
 <p>In 8 of 50 simulation trials, one or the other ration had nine or more tosses in its favor. Therefore, we estimate the probability to be .16 (eight of fifty) that samples this different would be generated by chance if the samples came from the same universe.</p>
-<div id="tbl-pigs-pair" class="anchored">
-<table class="table">
-<caption>Table&nbsp;23.3: Results from fifty simulation trials of the paired pigs problem</caption>
+<div id="tbl-pigs-pair" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pigs-pair-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.3: Results from fifty simulation trials of the paired pigs problem
+</figcaption>
+<div aria-describedby="tbl-pigs-pair-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 15%">
 <col style="width: 15%">
@@ -1164,7 +1189,9 @@ End of notebook
 </tbody>
 </table>
 </div>
-<p>Now for a Python program and results. This notebook is different from the example at <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section&nbsp;21.2.7</span></a> in that it compares the weight-gain results of <em>pairs</em> of pigs, instead of simply looking at the <em>rankings</em> for weight gains.</p>
+</figure>
+</div>
+<p>Now for a Python program and results. This notebook is different from the example at <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.7</span></a> in that it compares the weight-gain results of <em>pairs</em> of pigs, instead of simply looking at the <em>rankings</em> for weight gains.</p>
 <p>The key to the pigs pair notebook is the <code>rnd.choice</code> line. If we assume that ration A does not have an effect on weight gain (which is the “benchmark” or “null” hypothesis), then the results of the actual experiment would be no different than if we randomly <code>rnd.choice</code> “A” and “B” and treat an “A” as a larger weight gain for the ration A pig, and a “B” as a larger weight gain for the ration B pig. Both events have a .5 chance of occurring for each pair of pigs because if the rations had no effect on weight gain (the null hypothesis), ration A pigs would have larger weight gains about half of the time. The next step is to count (<code>sum</code>) the number of times that the weight gains of one group (call it the group fed with ration A) were larger than the weight gains of the other (call it the group fed with ration B). The complete program follows:</p>
 <div class="notebook" name="pig_pairs" title="Paired test for pig rations">
 <p>Start of <code>pig_pairs</code> notebook</p>
@@ -1173,7 +1200,7 @@ End of notebook
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=pig_pairs.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-15_c26d8b97a690f90a4e220edb76658a14">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1212,7 +1239,7 @@ End of notebook
 <!---
 End of notebook
 -->
-<p>Notice how we proceeded in examples <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section&nbsp;21.2.7</span></a> and <a href="#sec-pig-pairs" class="quarto-xref"><span>Section&nbsp;23.2.1</span></a>. The data were originally quantitative — weight gains in pounds for each pig. But for simplicity we classified the data into simpler counted-data formats. The first format (<a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section&nbsp;21.2.7</span></a>) was a rank order, from highest to lowest. The second format (<a href="#sec-pig-pairs" class="quarto-xref"><span>Section&nbsp;23.2.1</span></a>) was simply higher-lower, obtained by randomly pairing the observations (using alphabetical letter, or pig’s stall number, or whatever was the cause of the order in which the data were presented to be random). Classifying the data in either of these ways loses some information and makes the subsequent tests somewhat cruder than more refined analysis could provide (as we shall see in the following chapter), but the loss of efficiency is not crucial in many such cases. We shall see how to deal directly with the quantitative data in <a href="testing_measured.html" class="quarto-xref"><span>Chapter&nbsp;24</span></a>.</p>
+<p>Notice how we proceeded in examples <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.7</span></a> and <a href="#sec-pig-pairs" class="quarto-xref"><span>Section 23.2.1</span></a>. The data were originally quantitative — weight gains in pounds for each pig. But for simplicity we classified the data into simpler counted-data formats. The first format (<a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.7</span></a>) was a rank order, from highest to lowest. The second format (<a href="#sec-pig-pairs" class="quarto-xref"><span>Section 23.2.1</span></a>) was simply higher-lower, obtained by randomly pairing the observations (using alphabetical letter, or pig’s stall number, or whatever was the cause of the order in which the data were presented to be random). Classifying the data in either of these ways loses some information and makes the subsequent tests somewhat cruder than more refined analysis could provide (as we shall see in the following chapter), but the loss of efficiency is not crucial in many such cases. We shall see how to deal directly with the quantitative data in <a href="testing_measured.html" class="quarto-xref"><span>Chapter 24</span></a>.</p>
 </section>
 <section id="example-merged-firms-compared-to-two-non-merged-groups" class="level3" data-number="23.2.2">
 <h3 data-number="23.2.2" class="anchored" data-anchor-id="example-merged-firms-compared-to-two-non-merged-groups"><span class="header-section-number">23.2.2</span> Example: merged firms compared to two non-merged groups</h3>
@@ -1226,11 +1253,15 @@ Example 17-5
 <li>a single firm that was roughly the same size as the merged entity <em>after</em> the merger.</li>
 </ol>
 <p>Here (<a href="#tbl-mergers-data" class="quarto-xref">Table&nbsp;<span>23.4</span></a>) are the data (provided by the authors):</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-17_d3246a84364007cd0b1f7bd5fd156aa7">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-mergers-data" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;23.4: Revenue Growth In Year 1 Following Merger </caption>
+<div id="tbl-mergers-data" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mergers-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.4: Revenue Growth In Year 1 Following Merger
+</figcaption>
+<div aria-describedby="tbl-mergers-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">Set #</th>
@@ -1441,17 +1472,23 @@ Example 17-5
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
 </div>
 <p>Comparisons were made in several years before and after the mergings to see whether the merged entities did better or worse than the non-merging entities they were matched with by the researchers, but for simplicity we may focus on just one of the more important years in which they were compared — say, the revenue growth rates in the year after the merger.</p>
 <p>Here are those average revenue growth rates for the three groups:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-18_97aa944938a49488803124267c44e28a">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-merger-means" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;23.5: Year's revenue growth</caption>
+<div id="tbl-merger-means" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-merger-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.5: Year's revenue growth
+</figcaption>
+<div aria-describedby="tbl-merger-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -1474,18 +1511,24 @@ Example 17-5
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
 </div>
-<p>We could do a general test to determine whether there are differences among the means of the three groups, as was done in the “Differences Among 4 Pig Rations” problem (<a href="testing_measured.html#sec-pig-rations-measured" class="quarto-xref"><span>Section&nbsp;24.0.1</span></a>). However, we note that there may be considerable variation from one matched set to another — variation which can obscure the overall results if we resample from a large general bucket.</p>
+<p>We could do a general test to determine whether there are differences among the means of the three groups, as was done in the “Differences Among 4 Pig Rations” problem (<a href="testing_measured.html#sec-pig-rations-measured" class="quarto-xref"><span>Section 24.0.1</span></a>). However, we note that there may be considerable variation from one matched set to another — variation which can obscure the overall results if we resample from a large general bucket.</p>
 <p>Therefore, we use the following resampling procedure that maintains the separation between matched sets by converting each observation into a rank (1, 2 or 3) within the matched set.</p>
 <p>Here (<a href="#tbl-merger-ranks" class="quarto-xref">Table&nbsp;<span>23.6</span></a>) are those ranks, where 1 = worst, 3 = best:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-19_94e9414257b7af9ab2d66de0cd1fa045">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-merger-ranks" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;23.6: Revenue growth ranked within matched set (1=best) </caption>
+<div id="tbl-merger-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-merger-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.6: Revenue growth ranked within matched set (1=best)
+</figcaption>
+<div aria-describedby="tbl-merger-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">Set #</th>
@@ -1696,16 +1739,22 @@ Example 17-5
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
 </div>
 <p>These (<a href="#tbl-merger-mean-ranks" class="quarto-xref">Table&nbsp;<span>23.7</span></a>) are the average ranks for the three groups (1 = worst, 3 = best):</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-20_67673bda21ce437a314805604d30e8a6">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-merger-mean-ranks" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;23.7: Mean rank of year revenue growth</caption>
+<div id="tbl-merger-mean-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-merger-mean-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.7: Mean rank of year revenue growth
+</figcaption>
+<div aria-describedby="tbl-merger-mean-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -1728,6 +1777,8 @@ Example 17-5
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
@@ -1747,7 +1798,7 @@ Example 17-5
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=merger_ranks.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-21_6efc0d954dc87cd3ef4a228390fc7cff">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1776,7 +1827,7 @@ Example 17-5
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1791,11 +1842,15 @@ End of notebook
 <p>For example, there have been several recent three-way tests of treatments for depression: drug therapy versus cognitive therapy versus combined drug and cognitive therapy. If we are interested in the combined drug-therapy treatment in particular, comparing it to standard existing treatments, we can proceed in the same fashion as in the merger problem.</p>
 <p>We might just as well consider the real data from the merger as hypothetical data for a proposed test in 33 triplets of people that have been matched within triplet by sex, age, and years of education. The three treatments were to be chosen randomly within each triplet.</p>
 <p>Assume that we now switch scales from the merger data, so that #1 = best and #3 = worst, and that the outcomes on a series of tests were ranked from best (#1) to worst (#3) within each triplet. Assume that the combined drug-and-therapy regime has the best average rank. How sure can we be that the observed result would not occur by chance? Here are the data from the merger study, seen here as <a href="#tbl-therapy-ranks" class="quarto-xref">Table&nbsp;<span>23.8</span></a>:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-23_ea13462481b1b426e7c4f6ce12707155">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-therapy-ranks" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;23.8: Ranked therapies within matched-patient triplets (1=best) </caption>
+<div id="tbl-therapy-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-therapy-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.8: Ranked therapies within matched-patient triplets (1=best)
+</figcaption>
+<div aria-describedby="tbl-therapy-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">Triplet #</th>
@@ -2006,16 +2061,22 @@ End of notebook
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
 </div>
 <p>These (<a href="#tbl-therapy-mean-ranks" class="quarto-xref">Table&nbsp;<span>23.9</span></a>) are the average ranks for the three groups (1 = best, 3 = worst):</p>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-24_d214ef7f4649f58c0d2a3a95d7ce6dcb">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-therapy-mean-ranks" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;23.9: Mean rank of therapy in matched triplets</caption>
+<div id="tbl-therapy-mean-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-therapy-mean-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;23.9: Mean rank of therapy in matched triplets
+</figcaption>
+<div aria-describedby="tbl-therapy-mean-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -2038,6 +2099,8 @@ End of notebook
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
@@ -2056,7 +2119,7 @@ End of notebook
 <li>Repeat steps 2-4, say, 10,000 times.</li>
 <li>Find out how often the minimum average rank for any treatment is as low as 1.48.</li>
 </ol>
-<div class="cell" data-layout-align="center" data-hash="testing_counts_2_cache/html/unnamed-chunk-25_2a81033d354e83118589106a6b4b2f60">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2111,7 +2174,7 @@ End of notebook
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -2128,18 +2191,18 @@ End of notebook
 <p>Some of the tests introduced in this chapter are similar to standard non-parametric rank and sign tests. They differ less in the structure of the test statistic than in the way in which significance is assessed (the comparison is to multiple simulations of a model based on the benchmark hypothesis, rather than to critical values calculated analytically).</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-simon1996mergers" class="csl-entry" role="listitem">
 Simon, Julian Lincoln, Manouchehr Mokhtari, and Daniel H Simon. 1996. <span>“Are Mergers Beneficial or Detrimental? Evidence from Advertising Agencies.”</span> <em>International Journal of the Economics of Business</em> 3 (1): 69–82.
 </div>
 </div>
 </section>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>We are interested in choosing the benchmark universe that a) has Bush with equal or lower percentage votes than another candidate and b) has the largest probability of giving rise to the observed vote proportions in the sample. We can show by trying all possible options that the 35, 35, 30 universe has the highest probability in giving rise to the (38.3%, 31.9%, 29.8%) sample percentages (270, 225, 210 vote counts). See <a href="https://github.com/resampling-stats/book-notes/blob/main/maximum_likelihood_for_election.ipynb">this Python notebook</a> for the simulation.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -2177,18 +2240,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2220,11 +2272,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2234,8 +2325,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2247,7 +2347,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2291,6 +2514,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2316,6 +2540,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2377,17 +2627,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./significance.html" class="pagination-link">
+      <a href="./significance.html" class="pagination-link" aria-label="The Concept of Statistical Significance in Testing Hypotheses">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">The Concept of Statistical Significance in Testing Hypotheses</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./testing_measured.html" class="pagination-link">
+      <a href="./testing_measured.html" class="pagination-link" aria-label="The Statistics of Hypothesis-Testing With Measured Data">
         <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

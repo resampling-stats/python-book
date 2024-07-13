@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 2&nbsp; The resampling method</title>
+<title>2&nbsp; The resampling method – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,17 +96,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
   });
 </script>
-
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
@@ -115,12 +121,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./resampling_method.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./resampling_method.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The resampling method</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -130,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -374,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -409,7 +415,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p>This chapter is a brief introduction to the resampling method of solving problems in probability and statistics. We’re going to dive right in and solve a problem hands-on.</p>
 <p>You will see that the resampling method is easy to understand and apply: all it requires is to understand the physical problem. You then simulate a statistical model of the physical problem with techniques that are intuitively obvious, and estimate the probability sought with repeated random sampling.</p>
@@ -417,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>After reading this chapter, you will understand why we are excited about the resampling method, and why it will allow you to approach even even hard problems without knowing sophisticated statistic techniques.</p>
 <section id="the-resampling-approach-in-action" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="the-resampling-approach-in-action"><span class="header-section-number">2.1</span> The resampling approach in action</h2>
-<p>Recall the problem from section <a href="intro.html#sec-what-problems" class="quarto-xref"><span>Section&nbsp;1.2</span></a> in which the contractor owns 20 ambulances:</p>
+<p>Recall the problem from section <a href="intro.html#sec-what-problems" class="quarto-xref"><span>Section 1.2</span></a> in which the contractor owns 20 ambulances:</p>
 <blockquote class="blockquote">
 <p><em>You are the manager and part owner</em> of one of several contractors providing ambulances to a hospital. You own 20 ambulances. Based on past experience, the chance that any one ambulance will be unfit for service on any given day is about one in ten. You want to know the chance on a particular day — tomorrow — that three or more of them will be out of action.</p>
 </blockquote>
@@ -431,17 +439,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A more direct way to answer this question would be to examine the firm’s actual records for the past 100 days or, better, 500 days (if that’s available) to determine how many days had three or more ambulances out of order. But the resampling procedure described above gives us an estimate even if we do not have such long-term information. This is realistic; it is frequently the case in the real world that we must make estimates on the basis of insufficient history about an event.</p>
 <p>A quicker resampling method than the coins could be obtained with 20 ten-sided dice or spinners (like those found in the popular Dungeons &amp; Dragons games). For each die, we identify one of its ten sides as “out-of-order”.</p>
 <p>Funnily enough, standard 10-sided dice have the numbers 0 through 9 on their faces, rather than 1 through 10. <a href="#fig-one-d10s" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> shows a standard 10-sided die:</p>
-<div id="fig-one-d10s" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/one_d10s.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.1: 10-sided die</figcaption>
+<div id="fig-one-d10s" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-one-d10s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/one_d10s.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-one-d10s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: 10-sided die
+</figcaption>
 </figure>
 </div>
 <p>We decide, arbitrarily, that the 9 side means “out-of-order”. We could even put a little bit of paint on the 9 side to remind us. The die represents an ambulance. If we roll the die, and get this face, this indicates that the ambulance was out of order. If we get any of the other faces — 0 through 8 — this ambulance was in working order. A single throw of all 20 dice will be our experimental trial that represents a single day; we just have to count whether three or more ambulances turn up “out of order”. <a href="#fig-20-d10s" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> show the result of one trial — throwing 20 dice:</p>
-<div id="fig-20-d10s" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="images/20_d10s.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2.2: 20 10-sided dice</figcaption>
+<div id="fig-20-d10s" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-20-d10s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/20_d10s.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-20-d10s-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: 20 10-sided dice
+</figcaption>
 </figure>
 </div>
 <p>As you can see, the trial in <a href="#fig-20-d10s" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> gave us a single 9, so there was only one ambulance out of order.</p>
@@ -461,7 +477,7 @@ What do we mean by random?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Random numbers are numbers where it is impossible to predict which number is coming next. If we ask the computer for a number between 0 and 9, we will get one of the numbers 0 though 9, but we cannot do any better than that in predicting <em>which</em> number it will give us. There is an equal (10%) chance we will get any of the numbers 0 through 9 — just as there is when we roll a fair 10-sided die. We will go into more detail about what exactly we mean by <em>random</em> and <em>chance</em> later in the book (<a href="what_is_probability.html#sec-what-is-chance" class="quarto-xref"><span>Section&nbsp;3.8</span></a>).</p>
+<p>Random numbers are numbers where it is impossible to predict which number is coming next. If we ask the computer for a number between 0 and 9, we will get one of the numbers 0 though 9, but we cannot do any better than that in predicting <em>which</em> number it will give us. There is an equal (10%) chance we will get any of the numbers 0 through 9 — just as there is when we roll a fair 10-sided die. We will go into more detail about what exactly we mean by <em>random</em> and <em>chance</em> later in the book (<a href="what_is_probability.html#sec-what-is-chance" class="quarto-xref"><span>Section 3.8</span></a>).</p>
 </div>
 </div>
 <!---
@@ -472,11 +488,15 @@ https://web.archive.org/web/20170712041017/http://www.rotten.com/library/conspir
 -->
 <p>We can use random numbers from computers to simulate our problem. For example, we can ask the computer to choose a random number between 0 and 9 to represent one ambulance. Let’s say the number 9 represents “out-of-order” and 0 through 8 “in operation”, then any one random number gives us a trial observation for a single ambulance. To get an experimental trial for a single day we look at 20 numbers and count how many of them are 9. We then look at, say, one hundred sets of 20 numbers and count the proportion of sets whose 20 numbers show three or more ambulances being “out-of-order”. Once again, that proportion estimates the probability that three or more ambulances will be out-of-order on any given day.</p>
 <p>Soon we will do all these steps with some Python code, but for now, consider Table <a href="#tbl-veh-numbers" class="quarto-xref">Table&nbsp;<span>2.1</span></a>. In each row, we placed 20 numbers, each one representing an ambulance. We added 25 such rows, each representing a simulation of one day.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/veh-numbers_3eb04ae5696c27eac0b9e6276acfaa50">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-veh-numbers" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;2.1: 25 simulations of 20 ambulances, with counts </caption>
+<div id="tbl-veh-numbers" class="lightable-paper lightable-striped lightable-hover table quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-veh-numbers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: 25 simulations of 20 ambulances, with counts
+</figcaption>
+<div aria-describedby="tbl-veh-numbers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -1081,16 +1101,22 @@ https://web.archive.org/web/20170712041017/http://www.rotten.com/library/conspir
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
 </div>
 <p>To know how many ambulances were “out of order” on any given day, we count number of ones in that row. We place the counts in the final column called “#9” (for “number of nines”):</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/veh-numbers-counts_5f730df6ee8daf7409b0823b92bfdf1c">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-veh-numbers-counts" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;2.2: 25 simulations of 20 ambulances, with counts </caption>
+<div id="tbl-veh-numbers-counts" class="lightable-paper lightable-striped lightable-hover table quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-veh-numbers-counts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: 25 simulations of 20 ambulances, with counts
+</figcaption>
+<div aria-describedby="tbl-veh-numbers-counts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover table caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -1721,6 +1747,8 @@ https://web.archive.org/web/20170712041017/http://www.rotten.com/library/conspir
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
@@ -1743,7 +1771,7 @@ Coming back to the example
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you are interested, you can come back to this example later, and run it for yourself. To do this, we recommend you read <a href="about_technology.html" class="quarto-xref"><span>Chapter&nbsp;4</span></a> that explains how to execute notebooks online or on your own computer.</p>
+<p>If you are interested, you can come back to this example later, and run it for yourself. To do this, we recommend you read <a href="about_technology.html" class="quarto-xref"><span>Chapter 4</span></a> that explains how to execute notebooks online or on your own computer.</p>
 </div>
 </div>
 <div class="notebook" name="ambulances" title="Ambulances">
@@ -1754,19 +1782,19 @@ Coming back to the example
 </div>
 
 <p>The first thing to say about the code you will see below is there are some lines that do not do anything; these are the lines beginning with a <code>#</code> character (read <code>#</code> as “hash”). Lines beginning with <code>#</code> are called <em>comments</em>. When Python sees a <code>#</code> at the start of a line, it ignores everything else on that line, and skips to the next. Here’s an example of a comment:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-3_0016e51dad512fceffa4c7736689c7a4">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python will completely ignore this text.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Because Python ignores lines beginning with <code>#</code>, the text after the <code>#</code> is just for us, the humans reading the code. The person writing the code will often use comments to explain what the code is doing.</p>
 <p>Our next task is to use Python to simulate a single day of ambulances. We will again represent each ambulance by a random number from 0 through 9. 20 of these numbers represents a simulation of all 20 ambulances available to the contractor. We call a simulation of all ambulances for a specific day one <em>trial</em>.</p>
 <div class="python">
 <p>Before we begin our first trial, we need to load some helpful routines from the NumPy software library. NumPy is a Python library that has many important functions for creating and working with numerical data. We will use routines from NumPy in almost all our examples.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-5_92a59c8dce5e197c148d611ba870121d">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the Numpy library, and call it "np" for short.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We also need to ask NumPy for an object that can generate random numbers. Such an object is known as a “random number generator”.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-6_e9a2900e246d26a342f7a7a156d0736d">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask NumPy for a random number generator.</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Name it `rnd` — short for "random"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1784,28 +1812,28 @@ NumPy’s Random Number Generator
 <p>Here are some examples of the random operations we can perform with NumPy:</p>
 <ol type="1">
 <li><p>Make a random choice between three words:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-7_1407662de82102fa2d94e4865e49f1be">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rnd.choice([<span class="st">'apple'</span>, <span class="st">'orange'</span>, <span class="st">'banana'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.str_('orange')</code></pre>
 </div>
 </div></li>
 <li><p>Make five random choices of three words, using the “size=” argument:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-8_6996332a592cb4930ec5e49fc5fced05">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rnd.choice([<span class="st">'apple'</span>, <span class="st">'orange'</span>, <span class="st">'banana'</span>], size<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array(['orange', 'orange', 'orange', 'banana', 'banana'], dtype='&lt;U6')</code></pre>
 </div>
 </div></li>
 <li><p>Shuffle a list of numbers:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-9_54eb34ae919bf3d53be1769bd103f149">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rnd.permutation([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([3, 5, 4, 2, 1])</code></pre>
 </div>
 </div></li>
 <li><p>Generate five random numbers between 1 and 10:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-10_53ed46bb0ff5c4cd973946ecc856f214">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rnd.integers(<span class="dv">1</span>, <span class="dv">11</span>, size<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([9, 3, 2, 9, 3])</code></pre>
@@ -1817,7 +1845,7 @@ NumPy’s Random Number Generator
 </div>
 <p>Recall that we want twenty 10-sided dice — one per ambulance. Our dice should be 10-sided, because each ambulance has a 1-in-10 chance of being out of order.</p>
 <p>The program to simulate one trial of the ambulances problem therefore begins with these commands:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-11_249ff89fec6b4751b75d6ab2b33be9e3">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask NumPy to generate 20 numbers from 0 through 9.</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># These are the numbers we will ask NumPy to select from.</span></span>
@@ -1836,7 +1864,7 @@ NumPy’s Random Number Generator
 </div>
 <p>The commands above ask the computer to store the results of the random drawing in a location in the computer’s memory to which we give a name such as “a” or “ambulances” or “aardvark” — the name is up to us.</p>
 <p>Next, we need to count the number of defective ambulances:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-13_bdacffe450fe789f5ae81c5f2942aa95">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of nines in the random numbers.</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The "a == 9" part identifies all the numbers equal to 9.</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The "sum" part counts how many numbers "a == 9" found.</span></span>
@@ -1858,7 +1886,7 @@ Counting sequence elements
 </div>
 <div class="callout-body-container callout-body">
 <p>We see that the code uses:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-15_507187b5f071e05861e283012c3bae7b">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(a <span class="op">==</span> <span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.int64(1)</code></pre>
@@ -1880,7 +1908,7 @@ Counting sequence elements
 <p>One of the great things about the computer is that it is very good at repeating tasks many times, so we do not have to. Our next task is to ask the computer to repeat the single trial many times — say 1000 times — and count up the results for us.</p>
 <p>Of course Python is very good at repeating things, but the instructions to tell Python to repeat things will take a little while to get used to. Soon, we will spend some time going over it in more detail. For now though, we show you how what it looks like, and ask you to take our word for it.</p>
 <p>The standard way to repeat steps in Python is a <code>for</code> loop. For example, let us say we wanted to display <span class="python">(<code>print</code>)</span> “Hello” five times. Here is how we would do that with a <code>for</code> loop:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-17_b4ab90598166b3eb9aa33a2f5914dfd5">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the next line as "repeat the following steps five times".</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">0</span>, <span class="dv">5</span>):</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The indented stuff is the code we repeat five times.</span></span>
@@ -1897,7 +1925,7 @@ Hello</code></pre>
 <p>You can probably see where we are going here. We are going to put the code for one trial inside a <code>for</code> loop, to repeat that trial code many times.</p>
 <p>Our next job is to <em>store</em> the results of each trial. If we are going to run 1000 trials, we need to store 1000 results.</p>
 <p>To do this, we start with a sequence of 1000 zeros, that we will fill in later, like this:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-19_46cd558de74b94bef737332903327967">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask NumPy to make a sequence of 1000 zeros that we will use</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to store the results of our 1000 trials.</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Call this sequence "z"</span></span>
@@ -1911,7 +1939,7 @@ Hello</code></pre>
 <p>This is our big moment! Here we will combine the elements shown above to perform our ambulance simulation over, say, 1000 days. Just a quick reminder: we do not expect you to understand all the detail of the code below; we will cover that later. For now, see if you can follow along with the gist of it.</p>
 <p>To solve resampling problems, we typically proceed as we have done above. We figure out the structure of a single trial and then place that trial in a <code>for</code> loop that executes it multiple times (once for each day, in our case).</p>
 <p>Now, let us apply this procedure to our ambulance problem. We simulate 1000 days. You will see that we have just taken the parts above, and put them together. The only new part here, is the step at the end, where we store the result of the trial. Bear with us for that; we will come to it soon.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-21_79df5f8dba0ab6bc29c340dbbea165fc">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask NumPy to make a sequence of 1000 zeros that we will use</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to store the results of our 1000 trials.</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Call this sequence "z"</span></span>
@@ -1941,7 +1969,7 @@ Hello</code></pre>
 <p>The <span class="python"><code>z[i] = b</code></span> statement that follows the <code>sum</code> <em>counting</em> operation simply keeps track of the results of each trial, placing the number of defective ambulances for each trial inside the sequence called <code>z</code>. The sequence has 1000 positions: one for each trial.</p>
 <p>When we have run the code above, we have stored 1000 trial results in the sequence <code>z</code>. These are 1000 counts of out-of-order ambulances, one for each of our simulated days. Our last task is to calculate the proportion of these days for which we had more than three broken-down ambulances.</p>
 <p>Since our aim is to count the number of days in which more than 3 (4 or more) defective ambulances occur, we use another <em>counting</em> <code>sum</code> command at the end of the 1000 trials. This command <em>counts</em> how many times more than 3 defects occurred in the 1000 days recorded in our <code>z</code> sequence, and we place the result in another location, <code>k</code>. This gives us the total number of days where 4 or more defective ambulances are seen to occur. Then we divide the number in <code>k</code> by 1000, the number of trials. Thus we obtain an estimate of the chance, expressed as a probability between 0 and 1, that 4 or more ambulances will be defective on a given day. And we store that result in a location that we call <code>kk</code>, which Python subsequently prints to the screen.</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-23_f20afd2eaec66d6478fb88e9dc1b9939">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many trials resulted in more than 3 ambulances out of order?</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(z <span class="op">&gt;</span> <span class="dv">3</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1956,7 +1984,7 @@ Hello</code></pre>
 </div>
 <p>This is the estimate we wanted; the proportion of days where more than three ambulances were out of action.</p>
 <p>We have crept up on the solution, so it might not be clear to you how few steps you needed to do this task. Here is the whole solution to the problem, without the comments:</p>
-<div class="cell" data-layout-align="center" data-hash="resampling_method_cache/html/unnamed-chunk-25_e6285895f1e8b51fbfe4d8c49b19bd5d">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2062,18 +2090,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2105,11 +2122,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2119,8 +2175,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2132,7 +2197,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2176,6 +2364,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2201,6 +2390,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2262,17 +2477,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link">
+      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./what_is_probability.html" class="pagination-link">
+      <a href="./what_is_probability.html" class="pagination-link" aria-label="What is probability?">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What is probability?</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

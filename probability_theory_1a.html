@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 8&nbsp; Probability Theory, Part 1</title>
+<title>8&nbsp; Probability Theory, Part 1 – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,19 +116,47 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
   });
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="font-awesome.min.css">
@@ -133,12 +168,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability_theory_1a.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability_theory_1a.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability Theory, Part 1</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -148,7 +183,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -392,7 +427,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -416,8 +451,6 @@ div.csl-indent {
   <li><a href="#multiplication-rule" id="toc-multiplication-rule" class="nav-link" data-scroll-target="#multiplication-rule"><span class="header-section-number">8.12</span> Multiplication rule</a></li>
   <li><a href="#sec-cond-uncond" id="toc-sec-cond-uncond" class="nav-link" data-scroll-target="#sec-cond-uncond"><span class="header-section-number">8.13</span> Conditional and unconditional probabilities</a></li>
   <li><a href="#sec-shuffling" id="toc-sec-shuffling" class="nav-link" data-scroll-target="#sec-shuffling"><span class="header-section-number">8.14</span> Shuffling with <span class="python"><code>rnd.permuted</code></span></a></li>
-  <li><a href="#code-answers-to-the-cards-and-pennies-problem" id="toc-code-answers-to-the-cards-and-pennies-problem" class="nav-link" data-scroll-target="#code-answers-to-the-cards-and-pennies-problem"><span class="header-section-number">8.15</span> Code answers to the cards and pennies problem</a></li>
-  <li><a href="#the-commanders-again-plus-leaving-the-game-early" id="toc-the-commanders-again-plus-leaving-the-game-early" class="nav-link" data-scroll-target="#the-commanders-again-plus-leaving-the-game-early"><span class="header-section-number">8.16</span> The Commanders again, plus leaving the game early</a></li>
   </ul>
 </nav>
     </div>
@@ -439,7 +472,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="introduction" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">8.1</span> Introduction</h2>
@@ -487,7 +522,7 @@ here or duck here, and defer.
 </section>
 <section id="theoretical-and-historical-methods-of-estimation" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="theoretical-and-historical-methods-of-estimation"><span class="header-section-number">8.3</span> Theoretical and historical methods of estimation</h2>
-<p>As introduced in <a href="what_is_probability.html#sec-probability-ways" class="quarto-xref"><span>Section&nbsp;3.5</span></a>, there are two general ways to tackle any probability problem: <em>theoretical-deductive</em> and <em>empirical</em> , each of which has two sub-types. These concepts have complicated links with the concept of “frequency series” discussed earlier.</p>
+<p>As introduced in <a href="what_is_probability.html#sec-probability-ways" class="quarto-xref"><span>Section 3.5</span></a>, there are two general ways to tackle any probability problem: <em>theoretical-deductive</em> and <em>empirical</em> , each of which has two sub-types. These concepts have complicated links with the concept of “frequency series” discussed earlier.</p>
 <ul>
 <li><p><em>Empirical Methods</em> . One empirical method is to look at <em>actual cases in nature</em> — for example, examine all (or a sample of) the families in Brazil that have four children and count the proportion that have three girls among them. (This is the most fundamental process in science and in information-getting generally. But in general we do not discuss it in this book and leave it to courses called “research methods.” I regard that as a mistake and a shame, but so be it.) In some cases, of course, we cannot get data in such fashion because it does not exist.</p>
 <p>Another empirical method is to manipulate the simple elements in such fashion as to produce hypothetical experience with how the simple elements behave. This is the heart of the resampling method, as well as of physical simulations such as wind tunnels.</p></li>
@@ -542,7 +577,8 @@ P(\text{rain}) = 0.2
 \]</span></p>
 <p>We can term “rain tomorrow” an <em>event</em> — the event may occur: <span class="math inline">\(\text{rain}\)</span>, or it may <em>not</em> occur: <span class="math inline">\(\text{no rain}\)</span>.</p>
 <p>We often shorten the <em>name</em> of our event — here <span class="math inline">\(\text{rain}\)</span> — to a single letter, such as <span class="math inline">\(R\)</span>. So, in this case, we could write <span class="math inline">\(P(\text{rain}) = 0.2\)</span> as <span class="math inline">\(P(R) = 0.2\)</span> — meaning the same thing. We tend to prefer single letters — as in <span class="math inline">\(P(R)\)</span> — to longer names — as in <span class="math inline">\(P(\text{rain})\)</span>. This is because the single letters can be easier to read in these compact formulae.</p>
-<p>Above we have written the probability of “rain tomorrow” event <em>not</em> occurring as <span class="math inline">\(P(\text{no rain})\)</span>. Another way of referring to an event <em>not</em> occurring is to suffix the event name with a <em>caret</em> (^) character like this: <span class="math inline">\(\ \hat{} R\)</span>. So read <span class="math inline">\(P(\ \hat{} R)\)</span> as “the probability that it will not rain”, and it is just another way of writing <span class="math inline">\(P(\text{no rain})\)</span>. We sometimes call <span class="math inline">\(\ \hat{} R\)</span> the <em>complement</em> of <span class="math inline">\(R\)</span>.</p>
+<p>Above we have written the probability of “rain tomorrow” event <em>not</em> occurring as <span class="math inline">\(P(\text{no rain})\)</span>. Another way of referring to an event <em>not</em> occurring is to suffix the event name with a <em>caret</em> (^) character like this: <span class="math inline">\(\ \hat{} R\)</span>. So read <span class="math inline">\(P(\ \hat{} R)\)</span> as “the probability that it will not rain”, and it is just another way of writing <span class="math inline">\(P(\text{no rain})\)</span>. We sometimes call <span class="math inline">\(\ \hat{}
+R\)</span> the <em>complement</em> of <span class="math inline">\(R\)</span>.</p>
 <p>We use <span class="math inline">\(\text{and}\)</span> between two events to mean <em>both</em> events occur.</p>
 <p>For example, say we call the event “Commanders win the game” as <span class="math inline">\(W\)</span>. One example of a <em>compound event</em> (see above) would be the event <span class="math inline">\(W \text{and} R\)</span>, meaning, the event where the Commanders won the game <em>and</em> it rained.</p>
 </div>
@@ -589,12 +625,16 @@ P(A) + P(\ \hat{} A) = 1
 <p>If we are shaky about the estimate of winning — as indeed we ought to be, because so much judgment and guesswork inevitably goes into it — we might proceed as follows: Take hold of a bucket and two bags of balls, green and red. Put into the bucket some number of green balls — say 10. Now add enough red balls to express your judgment that the <em>ratio</em> is the ratio of expected wins to losses on a nice day, adding or subtracting green balls as necessary to get the ratio you want. If you end up with 13 green and 7 red balls, then you are “modeling” a probability of 0.65, as stated above. If you end up with a different ratio of balls, then you have learned from this experiment with your own mind processes that you think that the probability of a win on a nice day is something other than 0.65.</p>
 <p>Don’t put away the bucket. We will be using it again shortly. And keep in mind how we have just been using it, because our use later will be somewhat different though directly related.</p>
 <p>One good way to begin the process of producing a compound estimate is by portraying the available data in a “tree diagram” like <a href="#fig-commanders-tree" class="quarto-xref">Figure&nbsp;<span>8.1</span></a>. The tree diagram shows the possible events in the order in which they might occur. A tree diagram is extremely valuable whether you will continue with either simulation or the formulaic method.</p>
-<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="probability_theory_1a_cache/html/fig-commanders-tree_c7bdd358a910e852152fb9464a4ac4a4">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-commanders-tree" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="diagrams/commanders_tree.svg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;8.1: Tree diagram</figcaption>
+<div id="fig-commanders-tree" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-commanders-tree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/commanders_tree.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-commanders-tree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: Tree diagram
+</figcaption>
 </figure>
 </div>
 </div>
@@ -627,7 +667,7 @@ P(A) + P(\ \hat{} A) = 1
 <p>Notice the structure. The first line is the <em>header</em> of the <code>if</code> statement. It has a <em>condition</em> — this is why <code>if</code> statements are often called <em>conditional</em> statements. The condition here is “you have drawn a blue ball from bucket A”. If this condition is met — it is True that you have drawn a blue ball from bucket A <em>then</em> we go on to do the stuff that is indented. Otherwise we do not do any of the stuff that is indented.</p>
 <p>The indented stuff above is the <em>body</em> of the <code>if</code> statement. It is the stuff we do <code>if</code> the <em>conditional</em> at the top is True.</p>
 <p>Now let’s see how we would write that in Python.</p>
-<p>Let’s make bucket A. Remember, this is the <em>weather</em> bucket. It has seven blue balls (for 70% fine days) and 3 yellow balls (for 30% rainy days). See <a href="sampling_tools.html#sec-repeating" class="quarto-xref"><span>Section&nbsp;7.6</span></a> for the <span class="python"><code>np.repeat</code></span> way of repeating elements multiple times.</p>
+<p>Let’s make bucket A. Remember, this is the <em>weather</em> bucket. It has seven blue balls (for 70% fine days) and 3 yellow balls (for 30% rainy days). See <a href="sampling_tools.html#sec-repeating" class="quarto-xref"><span>Section 7.6</span></a> for the <span class="python"><code>np.repeat</code></span> way of repeating elements multiple times.</p>
 <div class="notebook" name="fine_win" title="Fine day and win">
 <p>Start of <code>fine_win</code> notebook</p>
 <div class="nb-links">
@@ -635,14 +675,14 @@ P(A) + P(\ \hat{} A) = 1
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=fine_win.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-1_295282adc1cde9dbd41754f31727c32a">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the NumPy array library.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a random number generator</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-2_3cdd7e4248172a54db853d37877d4d55">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># blue means "nice day", yellow means "not nice".</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>bucket_A <span class="op">=</span> np.repeat([<span class="st">'blue'</span>, <span class="st">'yellow'</span>], [<span class="dv">7</span>, <span class="dv">3</span>])</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>bucket_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -652,7 +692,7 @@ P(A) + P(\ \hat{} A) = 1
 </div>
 </div>
 <p>Now let us draw a ball at random from bucket_A:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-4_13f42baf2d18dd96143de02e76c3c69f">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a_ball <span class="op">=</span> rnd.choice(bucket_A)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>a_ball</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -660,7 +700,7 @@ P(A) + P(\ \hat{} A) = 1
 </div>
 </div>
 <p>How we run our first <code>if</code> statement. Running this code will display “The ball was blue” if the ball was blue, otherwise it will not display anything:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-6_cd8f43fbc032fd29cdf9a0a3626798d5">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a_ball <span class="op">==</span> <span class="st">'blue'</span>:</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The ball was blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -671,11 +711,11 @@ P(A) + P(\ \hat{} A) = 1
 <p>Notice that the header line has <code>if</code>, followed by the conditional expression (question) <code>a_ball == 'blue'</code>. The header line finishes with a colon <code>:</code>. The <em>body</em> of the <code>if</code> statement is one or more <em>indented</em> lines. Here there is only one line: <code>print('The ball was blue')</code>. Python only runs the body of the if statement if the <em>condition</em> is <code>True</code>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 </div>
 <p>To confirm we see “The ball was blue” if <code>a_ball</code> is <code>'blue'</code> and nothing otherwise, we can set <code>a_ball</code> and re-run the code:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-8_c5fa4a602aecd17951602ee937251fda">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set value of a_ball so we know what it is.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>a_ball <span class="op">=</span> <span class="st">'blue'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-9_04f5f79e57c59db3f6f5f4b913260d43">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a_ball <span class="op">==</span> <span class="st">'blue'</span>:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The conditional statement is True in this case, so the body does run.</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The ball was blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -683,19 +723,19 @@ P(A) + P(\ \hat{} A) = 1
 <pre><code>The ball was blue</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-10_33f510b5b03aec64ef48c29fa0de7e1b">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>a_ball <span class="op">=</span> <span class="st">'yellow'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-11_23d1bd6f598a3d396f21945327a296b3">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a_ball <span class="op">==</span> <span class="st">'blue'</span>:</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The conditional statement is False, so the body does not run.</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The ball was blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can add an <code>else</code> clause to the <code>if</code> statement. Remember the <em>body</em> of the <code>if</code> statement runs if the <em>conditional expression</em> (here <code>a_ball == 'blue')</code> is <code>True</code>. The <code>else</code> clause runs if the conditional statement is <code>False</code>. This may be clearer with an example:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-16_1d60c8cba02aef0a63291cc89284e4b8">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>a_ball <span class="op">=</span> <span class="st">'blue'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-17_8089ba32711aebecfafd6886bfadb7b7">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a_ball <span class="op">==</span> <span class="st">'blue'</span>:</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The conditional expression is True in this case, so the body runs.</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The ball was blue'</span>)</span>
@@ -709,10 +749,10 @@ P(A) + P(\ \hat{} A) = 1
 <div class="python">
 <p>Notice that the <code>else</code> clause of the <code>if</code> statement starts with a header line — <code>else</code> — followed by a colon <code>:</code>. It then has its own indented <em>body</em> of indented code. The body of the <code>else</code> clause only runs if the initial conditional expression is <em>not</em> <code>True</code>.</p>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-18_ce819d2e07084e60b6aa6e96862ed91e">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a_ball <span class="op">=</span> <span class="st">'yellow'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-19_a5a52e4272eba2e6416ed2a4c06c2daf">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a_ball <span class="op">==</span> <span class="st">'blue'</span>:</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The conditional expression was False, so the body does not run.</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'The ball was blue'</span>)</span>
@@ -731,11 +771,11 @@ P(A) + P(\ \hat{} A) = 1
     otherwise:
         record "no".</code></pre>
 <p>Here is bucket B. Remember green means “win” (65% of the time) and red means “lose” (35% of the time). We could call this the “Commanders win when it is a nice day” bucket:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-24_43888de3dc9810407e5be46062643018">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>bucket_B <span class="op">=</span> np.repeat([<span class="st">'green'</span>, <span class="st">'red'</span>], [<span class="dv">65</span>, <span class="dv">35</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The full logic for step 4 is:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-26_dcc842b6c7b8bf81ada6ba8d958c7447">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default, say we have no result.</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="st">'No result'</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>a_ball <span class="op">=</span> rnd.choice(bucket_A)</span>
@@ -758,7 +798,7 @@ P(A) + P(\ \hat{} A) = 1
 </div>
 </div>
 <p>Now we have everything we need to run many trials with the same logic.</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-28_e92249514d3c63750c6fc00463b623dd">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The result of each trial.</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># To start with, say we have no result for all the trials.</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.repeat([<span class="st">'No result'</span>], <span class="dv">10000</span>)</span>
@@ -816,7 +856,7 @@ P(\text{nice day and win}) = P(\text{nice day}) * P(\text{winning | nice day})
 | rain}) = 0.65\)</span>, and it is read “The probability that the Commanders will win if (given that) it rains is 0.65.” It is the appropriate concept when there is one (or more) major event of interest in decision contexts.</p>
 <p>Let’s use another football example to explain conditional and unconditional probabilities. In the year this was being written, the University of Maryland had an unpromising football team. Someone may nevertheless ask what chance the team had of winning the post season game at the bowl to which only the best team in the University of Maryland’s league is sent. One may say that <em>if</em> by some miracle the University of Maryland does get to the bowl, its chance would be a bit less than 50- 50 — say, 0.40. That is, the probability of its winning, <em>conditional</em> on getting to the bowl is 0.40. But the chance of its getting to the bowl at all is very low, perhaps 0.01. If so, the unconditional probability of winning at the bowl is the probability of its getting there multiplied by the probability of winning <em>if</em> it gets there; that is, 0.01 x 0.40 = 0.004. (It would be even better to say that .004 is the probability of winning conditional only on having a team, there being a league, and so on, all of which seem almost sure things.) Every probability is conditional on many things — that war does not break out, that the sun continues to rise, and so on. But if all those unspecified conditions are very sure, and can be taken for granted, we talk of the probability as unconditional.</p>
 <p>A conditional probability is a statement that the probability of an event is such-and-such <em>if</em> something else is so-and-so; it is the “if” that makes a probability statement conditional. True, in <em>some</em> sense all probability statements are conditional; for example, the probability of an even-numbered spade is 6/52 <em>if</em> the deck is a poker deck and not necessarily if it is a pinochle deck or Tarot deck. But we ignore such conditions for most purposes.</p>
-<p>Most of the use of the concept of probability in the social sciences is conditional probability. All hypothesis-testing statistics (discussed starting in <a href="framing_questions.html" class="quarto-xref"><span>Chapter&nbsp;20</span></a>) are conditional probabilities.</p>
+<p>Most of the use of the concept of probability in the social sciences is conditional probability. All hypothesis-testing statistics (discussed starting in <a href="framing_questions.html" class="quarto-xref"><span>Chapter 20</span></a>) are conditional probabilities.</p>
 <p>Here is the typical conditional-probability question used in social-science statistics: What is the probability of obtaining this sample S (by chance) <em>if</em> the sample were taken from universe A? For example, what is the probability of getting a sample of five children with I.Q.s over 100 <em>by chance</em> in a sample randomly chosen from the universe of children whose average I.Q. is 100?</p>
 <p>One way to obtain such conditional-probability statements is by examination of the results generated by universes like the conditional universe. For example, assume that we are considering a universe of children where the average I.Q. is 100.</p>
 <p>Write down “over 100” and “under 100” respectively on many slips of paper, put them into a hat, draw five slips several times, and see how often the first five slips drawn are all over 100. This is the resampling (Monte Carlo simulation) method of estimating probabilities.</p>
@@ -840,15 +880,16 @@ P(\text{nice day and win}) = P(\text{nice day}) * P(\text{winning | nice day})
 <section id="sec-shuffling" class="level2" data-number="8.14">
 <h2 data-number="8.14" class="anchored" data-anchor-id="sec-shuffling"><span class="header-section-number">8.14</span> Shuffling with <span class="python"><code>rnd.permuted</code></span></h2>
 <p>In the recipe above, the array <code>N</code> has four values:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-30_408a0147bb94ead2586b7a749d774447">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numbers representing the slips in the hat.</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For the physical simulation, we specified that we would shuffle the slips of paper with these numbers, meaning that we would jumble them up into a random order. When we have done this, we will select two slips — say the first two — from the shuffled slips.</p>
 <p>As we will be discussing more in various places, this shuffle-then-draw procedure is also called <em>resampling without replacement</em>. The <em>without replacement</em> idea refers to the fact that, after shuffling, we take a first virtual slip of paper from the shuffled array, and then a second — but we do not replace the first slip of paper into the shuffled array before drawing the second. For example, say I drew a “1” from <code>N</code> for the first value. If I am sampling <em>without replacement</em> then, when I draw the next value, the candidates I am choosing from are now “1”, “2” and “2”, because I have removed the “1” I got as the first value. If I had instead been sampling <em>with replacement</em>, then I would put back the “1” I had drawn, and would draw the second sample from the full set of “1”, “1”, “2”, “2”.</p>
-<p>::: python You can use <code>rnd.permuted</code> to shuffle an array into a random order.</p>
+<div class="python">
+<p>You can use <code>rnd.permuted</code> to shuffle an array into a random order.</p>
 <p>Like <code>rnd.choice</code>, <code>rnd.permuted</code> is a function (actually, a method) of <code>rnd</code>, that takes an array as input, and produces a version of the array, where the elements are in random order.</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-34_a064b096e910b8923967458953972e6a">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The array N, shuffled into a random order.</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>shuffled <span class="op">=</span> rnd.permuted(N)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The "slips" are now in random order.</span></span>
@@ -857,8 +898,7 @@ P(\text{nice day and win}) = P(\text{nice day}) * P(\text{winning | nice day})
 <pre><code>array([2, 2, 1, 1])</code></pre>
 </div>
 </div>
-<p>See <a href="probability_theory_2_compound.html#sec-shuffling-deck" class="quarto-xref"><span>Section&nbsp;11.4</span></a> for some more discussion of shuffling and sampling without replacement.</p>
-</section>
+<p>See <a href="probability_theory_2_compound.html#sec-shuffling-deck" class="quarto-xref"><span>Section 11.4</span></a> for some more discussion of shuffling and sampling without replacement.</p>
 <section id="code-answers-to-the-cards-and-pennies-problem" class="level2" data-number="8.15">
 <h2 data-number="8.15" class="anchored" data-anchor-id="code-answers-to-the-cards-and-pennies-problem"><span class="header-section-number">8.15</span> Code answers to the cards and pennies problem</h2>
 <div class="notebook" name="cards_pennies" title="Cards and pennies">
@@ -868,11 +908,11 @@ P(\text{nice day and win}) = P(\text{nice day}) * P(\text{winning | nice day})
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=cards_pennies.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-35_70bebc4127a914f887aac3dd9ef6122a">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-36_b852076bf526359b97161fcf3f1c726d">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numbers representing the slips in the hat.</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>])</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -904,7 +944,7 @@ P(\text{nice day and win}) = P(\text{nice day}) * P(\text{winning | nice day})
 </div>
 </div>
 <p>Now let’s play the game differently, first picking one card and <em>putting it back and shuffling</em> before picking a second card. What are the results now? You can try it with the cards, but here is another program, similar to the last, to run that variation.</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_1a_cache/html/unnamed-chunk-38_fec81182eb9329a4c15f3bdabb9aa99e">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The cards / pennies game - but replacing the slip and re-shuffling, before</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># drawing again.</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -957,19 +997,21 @@ P(\text{nice day and win}) = P(\text{nice day}) * P(\text{winning | nice day})
 <p>The multiplication rule is very useful in everyday life. It fits closely to a great many situations such as “What is the chance that it will rain (.3) and that (if it does rain) the plane will not fly (.8)?” Hence the probability of your not leaving the airport today is 0.3 x 0.8 = 0.24.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+</section>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-gardner2001colossal" class="csl-entry" role="listitem">
 Gardner, Martin. 2001. <em>The Colossal Book of Mathematics</em>. W.W. Norton &amp; Company Inc., New York. <a href="https://archive.org/details/B-001-001-265">https://archive.org/details/B-001-001-265</a>.
 </div>
 </div>
 </section>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>“Universe” and “population” are perfect synonyms in scientific research. We choose to use “universe” because it seems to have fewer confusing associations.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>In this case, the result of the conditional expression is in fact either <code>True</code> or <code>False</code>. Python is more liberal on what it allows in the conditional expression; it will take whatever the result is, and then force the result into either <code>True</code> or <code>False</code>, in fact, by wrapping the result with the <span class="python"><code>bool</code></span> function, that takes anything as input, and returns either <code>True</code> or <code>False</code>. Therefore, we could refer to the result of the conditional expression as something “truthy” — that is - something that comes back as <code>True</code> or <code>False</code> from the <span class="python"><code>bool</code></span> function. In the case here, that does not arise, because the result is in fact either exactly <code>True</code> or exactly <code>False</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1007,18 +1049,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1050,11 +1081,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1064,8 +1134,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1077,7 +1156,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1121,6 +1323,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1146,6 +1349,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1207,17 +1436,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./sampling_tools.html" class="pagination-link">
+      <a href="./sampling_tools.html" class="pagination-link" aria-label="Tools for samples and sampling">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tools for samples and sampling</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./probability_theory_1b.html" class="pagination-link">
+      <a href="./probability_theory_1b.html" class="pagination-link" aria-label="Probability Theory Part I (continued)">
         <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

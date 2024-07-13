@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 19&nbsp; Point Estimation</title>
+<title>19&nbsp; Point Estimation – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -66,7 +67,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -75,19 +82,47 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
   });
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="font-awesome.min.css">
@@ -99,12 +134,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./point_estimation.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./point_estimation.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Point Estimation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -114,7 +149,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -358,7 +393,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -403,7 +438,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p>One of the great questions in statistical inference is: How big is it? This can mean — How long? How deep? How much time? At what angle?</p>
 <p>This question about size may pertain to a single object, of which there are many measurements; an example is the location of a star in the heavens. Or the question may pertain to a varied set of elements and their measurements; examples include the effect of treatment with a given drug, and the incomes of the people of the United States in 1994.</p>
@@ -438,12 +475,16 @@ div.csl-indent {
 <p>How about a bucket with 2 black and 18 whites? The probability is much higher than with the previous bucket, but it still is low — about .075.</p>
 <p>Let us now estimate the probabilities for all buckets across the range of probabilities. In <a href="#fig-white_balls_universe" class="quarto-xref">Figure&nbsp;<span>19.1</span></a> we see that the bucket with the highest probability of producing the observed sample has the same proportions of black and white balls as does the sample. This is called the “maximum likelihood universe.” Nor should this be very surprising, because that universe obviously has an equal chance of producing samples with proportions below and above that observed proportion — as was discussed in connection with the method of moments.</p>
 <p>We should note, however, that the probability that even such a maximum-likelihood universe would produce <em>exactly</em> the observed sample is very low (though it has an even lower probability of producing any <em>other</em> sample).</p>
-<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="point_estimation_cache/html/fig-white_balls_universe_8c3cd3419e102f4cc6961c8402763b87">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-white_balls_universe" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="diagrams/white_balls_universe.svg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;19.1: Number of White Balls in the Universe (N=20)</figcaption>
+<div id="fig-white_balls_universe" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-white_balls_universe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/white_balls_universe.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-white_balls_universe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.1: Number of White Balls in the Universe (N=20)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -491,15 +532,19 @@ div.csl-indent {
 </section>
 <section id="estimation-of-accuracy-of-the-point-estimate" class="level2" data-number="19.5">
 <h2 data-number="19.5" class="anchored" data-anchor-id="estimation-of-accuracy-of-the-point-estimate"><span class="header-section-number">19.5</span> Estimation of accuracy of the point estimate</h2>
-<p>So far we have discussed how to make a point estimate, and criteria of good estimators. We also are interested in estimating the accuracy of that estimate. That subject — which is harder to grapple with — is discussed in <a href="confidence_1.html" class="quarto-xref"><span>Chapter&nbsp;26</span></a> and <a href="confidence_2.html" class="quarto-xref"><span>Chapter&nbsp;27</span></a> on confidence intervals.</p>
+<p>So far we have discussed how to make a point estimate, and criteria of good estimators. We also are interested in estimating the accuracy of that estimate. That subject — which is harder to grapple with — is discussed in <a href="confidence_1.html" class="quarto-xref"><span>Chapter 26</span></a> and <a href="confidence_2.html" class="quarto-xref"><span>Chapter 27</span></a> on confidence intervals.</p>
 <p>Most important: One cannot sensibly talk about the accuracy of probabilities in the abstract, without reference to some set of facts. In the abstract, the notion of accuracy loses any meaning, and invites confusion and argument.</p>
 </section>
 <section id="sec-uses-of-mean" class="level2" data-number="19.6">
 <h2 data-number="19.6" class="anchored" data-anchor-id="sec-uses-of-mean"><span class="header-section-number">19.6</span> Uses of the mean</h2>
 <p>Let’s consider when the use of a device such as the mean is valuable, in the context of the data on marksmen in <a href="#tbl-marksmen-scores" class="quarto-xref">Table&nbsp;<span>19.1</span></a>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. If we wish to compare marksman A versus marksman B, we can immediately see that marksman A hit the bullseye (80 shots for 3 points each time) as many times as marksman B hit <em>either</em> the bullseye or simply got in the black (30 shots for 3 points and 50 shots for 2 points), and A hit the black (2 points) as many times as B just got in the white (1 point). From these two comparisons covering all the shots, in both of which comparisons A does better, it is immediately obvious that marksman A is better than marksman B. We can say that A’s score <em>dominates</em> B’s score.</p>
-<div id="tbl-marksmen-scores" class="anchored">
-<table class="table">
-<caption>Table&nbsp;19.1: Score percentages by marksman</caption>
+<div id="tbl-marksmen-scores" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-marksmen-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;19.1: Score percentages by marksman
+</figcaption>
+<div aria-describedby="tbl-marksmen-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 12%">
 <col style="width: 23%">
@@ -570,11 +615,19 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<p>When we turn to comparing marksman C to marksman D, however, we cannot say that one “dominates” the other as we could with the comparison of marksmen A and B. Therefore, we turn to a summarizing device. One such device that is useful here is the mean. For marksman C the mean score is <span class="math inline">\((40 * 1) + (10 * 2) + (50 * 3) = 210\)</span>, while for marksman D the mean score is <span class="math inline">\((10 * 1) + (60 * 2) + (30 * 3) = 220\)</span>. Hence we can say that D is better than C even though D’s score does not dominate C’s score in the bullseye category.</p>
+</figure>
+</div>
+<p>When we turn to comparing marksman C to marksman D, however, we cannot say that one “dominates” the other as we could with the comparison of marksmen A and B. Therefore, we turn to a summarizing device. One such device that is useful here is the mean. For marksman C the mean score is <span class="math inline">\((40 * 1) + (10 * 2) + (50 * 3) =
+210\)</span>, while for marksman D the mean score is <span class="math inline">\((10 * 1) + (60 * 2) + (30 * 3) =
+220\)</span>. Hence we can say that D is better than C even though D’s score does not dominate C’s score in the bullseye category.</p>
 <p>Another use of the mean <span class="citation" data-cites="gnedenko1962elementary">(<a href="references.html#ref-gnedenko1962elementary" role="doc-biblioref">Gnedenko, Aleksandr, and Khinchin 1962, 68</a>)</span> is shown in the estimation of the number of matches that we need to start fires for an operation carried out 20 times in a day (<a href="#tbl-matches-fires" class="quarto-xref">Table&nbsp;<span>19.2</span></a>). Let’s say that the number of cases where s/he needs 1, 2 … 5 matches to start a fire are as follows (along with their probabilities) based on the last 100 fires started:</p>
-<div id="tbl-matches-fires" class="anchored">
-<table class="table">
-<caption>Table&nbsp;19.2: Number of matches needed to start a fire</caption>
+<div id="tbl-matches-fires" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-matches-fires-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;19.2: Number of matches needed to start a fire
+</figcaption>
+<div aria-describedby="tbl-matches-fires-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Number of Matches</th>
@@ -611,14 +664,17 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<p>If you know that the operator will be lighting twenty fires, you can estimate the number of matches that s/he will need by multiplying the mean number of matches (which turns out be <span class="math inline">\(1 * .07 + 2 * 0.16 + 3 * 0.55 + 4 * 0.21 + 5 * 0.01 = 2.93\)</span>) in the observed experience by 20. Here you are using the mean as an indication of a representative case.</p>
+</figure>
+</div>
+<p>If you know that the operator will be lighting twenty fires, you can estimate the number of matches that s/he will need by multiplying the mean number of matches (which turns out be <span class="math inline">\(1 * .07 + 2 * 0.16 + 3 * 0.55 + 4 * 0.21 + 5 *
+0.01 = 2.93\)</span>) in the observed experience by 20. Here you are using the mean as an indication of a representative case.</p>
 <p>It is common for writers to immediately produce the data in the forms of percentages or probabilities. But I think it is important to include in our discussion the absolute numbers, because this is what one must begin with in practice. And keeping the absolute numbers in mind is likely to avoid some confusions that arise if one immediately goes to percentages or to probabilities.</p>
 <p>Still another use for the mean is when you have a set of observations with error in them. The mean of the observations probably is your best guess about which is the “right” one. Furthermore, the distance you are likely to be off the mark is less if you select the mean of the observations. An example might be a series of witnesses giving the police their guesses about the height of a man who overturned an outhouse. The mean probably is the best estimate to give to police officers as a description of the perpetrator (though it would be helpful to give the range of the observations as well).</p>
 <p>We use the mean so often, in so many different circumstances, that we become used to it and never think about its nature. So let’s do so a bit now.</p>
 <p>Different statistical ideas are appropriate for business and engineering decisions, biometrics, econometrics, scientific explanation (the philosophers’ case), and other fields. So nothing said here holds everywhere and always.</p>
 <p>One might ask: What is the “meaning” of a mean? But that is not a helpful question. Rather, we should ask about the <em>uses</em> of a mean. Usually a mean is used to summarize a set of data. As we saw with marksmen C and D, it often is difficult to look at a table of data and obtain an overall idea of how big or how small the observations are; the mean (or other measurements) can help. Or if you wish to compare two sets of data where the distributions of observations overlap each other, comparing the means of the two distributions can often help you better understand the matter.</p>
 <p>Another complication is the confusion between <em>description</em> and <em>estimation</em> , which makes it difficult to decide where to place the topic of descriptive statistics in a textbook. For example, compare the mean income of all men in the U. S., as measured by the decennial census. This mean of the universe can have a very different meaning from the mean of a sample of men with respect to the same characteristic. The sample mean is a point estimate, a statistical device, whereas the mean of the universe is a description. The use of the mean as an estimator is fraught with complications. Still, maybe it is no more complicated than deciding what describer to use for a population. This entire matter is much more complex than it appears at first glance.</p>
-<p>When the sample size approaches in size the entire population — when the sample becomes closer and closer to being the <em>same</em> as the population — the two issues blend. What does that tell us? Anything? What is the relationship between a baseball player’s average for two weeks, and his/her lifetime average? This is subtle stuff — rivaling the subtleness of arguments about inference versus probability, and about the nature of confidence limits (see <a href="confidence_1.html" class="quarto-xref"><span>Chapter&nbsp;26</span></a> and <a href="confidence_2.html" class="quarto-xref"><span>Chapter&nbsp;27</span></a> ). Maybe the only solid answer is to try to stay super-clear on what you are doing for what purpose, and to ask continually what job you want the statistic (or describer) to do for you.</p>
+<p>When the sample size approaches in size the entire population — when the sample becomes closer and closer to being the <em>same</em> as the population — the two issues blend. What does that tell us? Anything? What is the relationship between a baseball player’s average for two weeks, and his/her lifetime average? This is subtle stuff — rivaling the subtleness of arguments about inference versus probability, and about the nature of confidence limits (see <a href="confidence_1.html" class="quarto-xref"><span>Chapter 26</span></a> and <a href="confidence_2.html" class="quarto-xref"><span>Chapter 27</span></a> ). Maybe the only solid answer is to try to stay super-clear on what you are doing for what purpose, and to ask continually what job you want the statistic (or describer) to do for you.</p>
 <p>The issue of the relationship of sample size to population size arises here. If the sample size equals or approaches the population size, the very notion of estimation loses its meaning.</p>
 <p>The notion of “best estimator” makes no sense in some situations, including the following: a) You draw one black ball from a bucket. You cannot put confidence intervals around your estimate of the proportion of black balls, except to say that the proportion is somewhere between 1 and 0. No one would proceed without bringing in more information. That is, when there is almost no information, you simply cannot make much of an estimate — and the resampling method breaks down, too. It does not help much to shift the discussion to the models of the buckets, because then the issue is the unknown population of the buckets, in which case we need to bring in our general knowledge. b) When the sample size equals or is close to the population size, as discussed in this section, the data are a description rather than an estimate, because the sample is getting to be much the same as the universe; that is, if there are twelve people in your family, and you randomly take a sample of the amount of sugar used by eight members of the family, the results of the sample cannot be very different than if you compute the amount for all twelve family members. In such a case, the interpretation of the mean becomes complex.</p>
 <p>Underlying all estimation is the assumption of continuation, which follows from random sampling — that there is no reason to expect the next sample to be different from the present one in any <em>particular</em> fashion, mean or variation. But we do expect it to be different in <em>some</em> fashion because of sampling variability.</p>
@@ -628,7 +684,7 @@ div.csl-indent {
 <p>A <em>Newsweek</em> article says, “According to a recent reader’s survey in Bride’s magazine, the average blowout [wedding] will set you back about $16,000” (Feb 15, 1993, p.&nbsp;67). That use of the mean (I assume) for the average, rather than the median, could cost the parents of some brides a pretty penny. It could be that the cost for the average <em>person</em> — that is, the median expenditure — might be a lot less than $16,000. (A few million dollar weddings could have a huge effect on a survey mean.) An inappropriate standard of comparison might enter into some family discussions as a result of this article, and cause higher outlays than otherwise. This chapter helps one understand the nature of such estimates.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-gnedenko1962elementary" class="csl-entry" role="listitem">
 Gnedenko, Boris Vladimirovich, I Aleksandr, and Akovlevich Khinchin. 1962. <em>An Elementary Introduction to the Theory of Probability</em>. New York, NY, USA: Dover Publications, Inc. <a href="https://archive.org/details/gnedenko-khinchin-an-elementary-introduction-to-the-theory-of-probability">https://archive.org/details/gnedenko-khinchin-an-elementary-introduction-to-the-theory-of-probability</a>.
 </div>
@@ -637,13 +693,13 @@ Savage, Leonard J. 1972. <em>The Foundations of Statistics</em>. New York: Dover
 </div>
 </div>
 </section>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>Here I shall merely mention that the method of moments and the method of maximum likelihood serve most of our needs, and often agree in their conclusions; furthermore, we often know when the former may be inappropriate.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>This discussion follows <span class="citation" data-cites="gnedenko1962elementary">(<a href="references.html#ref-gnedenko1962elementary" role="doc-biblioref">Gnedenko, Aleksandr, and Khinchin 1962, chap. 8</a>)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -681,18 +737,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -724,11 +769,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -738,8 +822,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -751,7 +844,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -795,6 +1011,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -820,6 +1037,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -881,17 +1124,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./inference_intro.html" class="pagination-link">
+      <a href="./inference_intro.html" class="pagination-link" aria-label="Introduction to Statistical Inference">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Statistical Inference</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./framing_questions.html" class="pagination-link">
+      <a href="./framing_questions.html" class="pagination-link" aria-label="Framing Statistical Questions">
         <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Framing Statistical Questions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

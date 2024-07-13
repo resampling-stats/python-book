@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 11&nbsp; Probability Theory, Part 2: Compound Probability</title>
+<title>11&nbsp; Probability Theory, Part 2: Compound Probability – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,11 +96,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
@@ -112,12 +119,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability_theory_2_compound.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability_theory_2_compound.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -127,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -371,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -411,11 +418,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="introduction" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">11.1</span> Introduction</h2>
-<p>In this chapter we will deal with what are usually called “probability problems” rather than the “statistical inference problems” discussed in later chapters. The difference is that for probability problems we begin with a knowledge of the properties of the universe with which we are working. (See <a href="probability_theory_1a.html#sec-what-is-resampling" class="quarto-xref"><span>Section&nbsp;8.9</span></a> on the definition of resampling.)</p>
+<p>In this chapter we will deal with what are usually called “probability problems” rather than the “statistical inference problems” discussed in later chapters. The difference is that for probability problems we begin with a knowledge of the properties of the universe with which we are working. (See <a href="probability_theory_1a.html#sec-what-is-resampling" class="quarto-xref"><span>Section 8.9</span></a> on the definition of resampling.)</p>
 <p>We start with some basic problems in probability. To make sure we do know the properties of the universe we are working with, we start with poker, and a pack of cards. Working with some poker problems, we rediscover the fundamental distinction between sampling <em>with</em> and <em>without</em> replacement.</p>
 </section>
 <section id="sec-one-pair" class="level2" data-number="11.2">
@@ -425,10 +434,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>At this point, we must decide whether three of a kind, four of a kind or two pairs meet our criterion for a pair. Since our criterion is “two and only two,” we decide <em>not</em> to count them.</p>
 <p>Then replace the five cards in the deck, shuffle, and deal again. Again mark down whether the hand contains one pair of the same denomination. Do this many times. Then count the number of hands with one pair, and figure the proportion (as a percentage) of all hands.</p>
 <p><a href="#tbl-one-pair" class="quarto-xref">Table&nbsp;<span>11.1</span></a> has the results of 25 hands of this procedure.</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-3_84cc5918e634c024200db9e9f4fdb968">
-<div id="tbl-one-pair" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.1: Results of 25 hands for the problem “one pair”</caption>
+<div class="cell" data-layout-align="center">
+<div id="tbl-one-pair" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-one-pair-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.1: Results of 25 hands for the problem “one pair”
+</figcaption>
+<div aria-describedby="tbl-one-pair-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 12%">
@@ -696,6 +709,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 </div>
 <p>In this series of 25 experiments, 44 percent of the hands contained one pair, and therefore 0.44 is our estimate (for the time being) of the probability that one pair will turn up in a poker hand. But we must notice that this estimate is based on only 25 hands, and therefore might well be fairly far off the mark (as we shall soon see).</p>
 <p>This experimental “resampling” estimation does not require a deck of cards. For example, one might create a 52-sided die, one side for each card in the deck, and roll it five times to get a “hand.” But note one important part of the procedure: No single “card” is allowed to come up twice in the same set of five spins, just as no single card can turn up twice or more in the same hand. If the same “card” did turn up twice or more in a dice experiment, one could pretend that the roll had never taken place; this procedure is necessary to make the dice experiment analogous to the actual card-dealing situation under investigation. Otherwise, the results will be slightly in error. This type of sampling is “sampling without replacement,” because each card is <em>not replaced</em> in the deck prior to dealing the next card (that is, prior to the end of the hand).</p>
@@ -705,7 +720,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We could also approach this problem using random numbers from the computer to simulate the values.</p>
 <p>Let us first make some numbers from which to sample. We want to simulate a deck of playing cards analogous to the real cards we used previously. We don’t need to simulate all the features of a deck, but only the features that matter for the problem at hand. In our case, the feature that matters is the face value. We require a deck with four “1”s, four “2”s, etc., up to four “13”s, where 1 is an Ace, and 13 is a King. The suits don’t matter for our present purposes.</p>
 <p>We first first make an array to represent the face values in one suit.</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-4_4feee05a3bc19c177ba13d79ee86c200">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Card values 1 through 13 (1 up to, not including 14).</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>one_suit <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">14</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>one_suit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -714,7 +729,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We have the face values for one suit, but we need the face values for whole deck of cards — four suits. We do this by making a new array that consists of four repeats of <code>one_suit</code>:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-6_05243c3e6d51588688b672569ef236fb">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat the one_suit array four times</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>deck <span class="op">=</span> np.repeat(one_suit, <span class="dv">4</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>deck</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -732,7 +747,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="python">
 <p>So far, each of our uses of <code>rnd.choice</code> has done sampling <em>with replacement</em>, where you <em>can</em> get the same item more than once in a particular sample. Here we need <em>without replacement</em>. <code>rnd.choice</code> has an argument you can send, called <code>replace</code>, to tell it whether to replace values when drawing the sample. We have not used that argument so far, because the default is <code>True</code> — sampling <em>with replacement</em>. Here we need to use the argument — <code>replace=False</code> — to get sampling <em>without replacement</em>.</p>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-8_d46a8f23d30f88da60c88874bd9095a6">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One hand, sampling from the deck without replacement.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>hand <span class="op">=</span> rnd.choice(deck, size<span class="op">=</span><span class="dv">5</span>, replace<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>hand</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -740,8 +755,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>array([ 9,  4, 11,  9, 13])</code></pre>
 </div>
 </div>
-<p>The above is one way to get a random hand of five cards from the deck. Another way is to use <span class="python">the <code>rnd.permuted</code> function</span> to shuffle the whole <code>deck</code> of 52 “cards” into a random order, just as a dealer would shuffle the deck before dealing. Then we could take — for example — the first five cards from the shuffled deck to give a random hand. See <a href="probability_theory_1a.html#sec-shuffling" class="quarto-xref"><span>Section&nbsp;8.14</span></a> for more on <span class="python"><code>rnd.permuted</code></span>.</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-10_dcf892e3d18b8783b5be886297dbdb78">
+<p>The above is one way to get a random hand of five cards from the deck. Another way is to use <span class="python">the <code>rnd.permuted</code> function</span> to shuffle the whole <code>deck</code> of 52 “cards” into a random order, just as a dealer would shuffle the deck before dealing. Then we could take — for example — the first five cards from the shuffled deck to give a random hand. See <a href="probability_theory_1a.html#sec-shuffling" class="quarto-xref"><span>Section 8.14</span></a> for more on <span class="python"><code>rnd.permuted</code></span>.</p>
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffle the whole 52 card deck.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>shuffled <span class="op">=</span> rnd.permuted(deck)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The "cards" are now in random order.</span></span>
@@ -754,7 +769,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now we can get our <code>hand</code> by taking the first five cards from the <code>deck</code>:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-12_e074521078bb84e88f364122fb2ad042">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the first five "cards" from the shuffled deck.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>hand <span class="op">=</span> shuffled[:<span class="dv">5</span>]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>hand</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -771,7 +786,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-first-pass-computer-solution-to-the-one-pair-problem" class="level3" data-number="11.4.1">
 <h3 data-number="11.4.1" class="anchored" data-anchor-id="a-first-pass-computer-solution-to-the-one-pair-problem"><span class="header-section-number">11.4.1</span> A first-pass computer solution to the one-pair problem</h3>
 <p>Choosing the shuffle deal way, the cell to generate one hand is:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-14_c6bb965bdd92b50ad93bb72180d879d0">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>shuffled <span class="op">=</span> rnd.permuted(deck)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>hand <span class="op">=</span> shuffled[:<span class="dv">5</span>]</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>hand</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -781,10 +796,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Without doing anything further, we could run this cell many times, and each time, we could note down whether the particular <code>hand</code> had exactly one pair or not.</p>
 <p><a href="#tbl-one-pair-numbers" class="quarto-xref">Table&nbsp;<span>11.2</span></a> has the result of running that procedure 25 times:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-16_f5270b26010d6cb4e19c9ca8cf9e9379">
-<div id="tbl-one-pair-numbers" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;11.2: Results of 25 hands using random numbers</caption>
+<div class="cell" data-layout-align="center">
+<div id="tbl-one-pair-numbers" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-one-pair-numbers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11.2: Results of 25 hands using random numbers
+</figcaption>
+<div aria-describedby="tbl-one-pair-numbers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 13%">
 <col style="width: 12%">
@@ -1052,6 +1071,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 </div>
 </section>
 </section>
@@ -1068,12 +1089,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="finding-number-of-repeats-using" class="level2" data-number="11.6">
 <h2 data-number="11.6" class="anchored" data-anchor-id="finding-number-of-repeats-using"><span class="header-section-number">11.6</span> Finding number of repeats using <code>np.bincount</code></h2>
 <p>Consider the following 5-card “hand” of values:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-17_d98534fa180039735a3922afb34de94c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>hand <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This hand represents a pair of 5s and a pair of 7s.</p>
 <p>We want to detect the number of repeats for each possible card value, 1 through 13. Let’s say we are looking for 5s. We can detect which of the values are equal to 5 by making a Boolean array, where there is <code>True</code> for a value equal to 5, and <code>False</code> otherwise:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-19_ea04a1d1054805b3f9d751a58b196af4">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>is_5 <span class="op">=</span> (hand <span class="op">==</span> <span class="dv">5</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>is_5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1081,14 +1102,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can then count the number of 5s with:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-21_983cd6ff522b81b142ca17234ad7136b">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(is_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.int64(2)</code></pre>
 </div>
 </div>
 <p>In one cell:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-23_899d0069975a94c2d5f94615cc44e037">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>number_of_5s <span class="op">=</span> np.<span class="bu">sum</span>(hand <span class="op">==</span> <span class="dv">5</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>number_of_5s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1096,7 +1117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We could do this laborious task for every possible card value (1 through 13):</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-25_6c41699cd8b28cb149cf1ce52dc80c33">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>number_of_1s <span class="op">=</span> np.<span class="bu">sum</span>(hand <span class="op">==</span> <span class="dv">1</span>)  <span class="co"># Number of aces in hand</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>number_of_2s <span class="op">=</span> np.<span class="bu">sum</span>(hand <span class="op">==</span> <span class="dv">2</span>)  <span class="co"># Number of 2s in hand</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>number_of_3s <span class="op">=</span> np.<span class="bu">sum</span>(hand <span class="op">==</span> <span class="dv">3</span>)</span>
@@ -1112,7 +1133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>number_of_13s <span class="op">=</span> np.<span class="bu">sum</span>(hand <span class="op">==</span> <span class="dv">13</span>)  <span class="co"># Number of Kings in hand.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Above, we store the result for each card in a separate variable; this is inconvenient, because we would have to go through each variable checking for a pair (a value of 2). It would be more convenient to store these results in an array. One way to do that would be to store the result for card value 1 at position (index<span class="python">, offset</span>) 1, the result for value 2 at position 2, and so on, like this:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-27_cd35e22054285499c92d9fda5548e4f0">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make array length 14.  We don't use position (offset) 0, and the last</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># position (offset) in this array will be 13.</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>repeat_nos <span class="op">=</span> np.zeros(<span class="dv">14</span>)</span>
@@ -1136,7 +1157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You may recognize all this repetitive typing as a good sign we could use a <code>for</code> loop to do the work — er — for us.</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-29_d5f05665f20bb86a325fe70b76bfa977">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>repeat_nos <span class="op">=</span> np.zeros(<span class="dv">14</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">14</span>):  <span class="co"># Set i to be first 0, then 1, ... through 13.</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    repeat_nos[i] <span class="op">=</span> np.<span class="bu">sum</span>(hand <span class="op">==</span> i)</span>
@@ -1150,14 +1171,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Notice that we started our loop by checking for values equal to 0, and then values equal to 1 and so on. By our definition of the deck, no card can have value 0, so the first time through this loop, we will always get a count of 0. We could have saved ourselves a tiny amount of computing time if we had missed out that pointless step of checking 0, by using <code>for i in range(1, 14):</code> instead. In this case, we think the code is a little bit neater to read if we leave in the default start at 0, at a tiny cost in wasted computer effort.</p>
 </div>
 <p>In our particular <code>hand</code>, after we have done the count for 7s, we will always get 0 for card values 8, 9 … 13, because 7 was the highest card (maximum value) for our particular <code>hand</code>. As you might expect, there is a <span class="python">a Numpy</span> function <span class="python"><code>np.max</code></span> that will quickly tell us the maximum value in the hand:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-31_583e91325597b6a866c235cda992c17b">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">max</span>(hand)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.int64(7)</code></pre>
 </div>
 </div>
 <p>We can use <span class="python"><code>np.max</code></span> to make our loop more efficient, by stopping our checks when we’ve reached the maximum value, like this:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-33_1b2abef7fd5e26384686223a3e1247b4">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>max_value <span class="op">=</span> np.<span class="bu">max</span>(hand)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Only make an array large enough to house counts for the max value.</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>repeat_nos <span class="op">=</span> np.zeros(max_value <span class="op">+</span> <span class="dv">1</span>)</span>
@@ -1170,7 +1191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>In fact, this is exactly what the function <span class="python"><code>np.bincount</code></span> does, so we can use that function instead of our loop, to do the same job:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-35_9c2aad58f2e9f6e9b86e976b5876e037">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>repeat_nos <span class="op">=</span> np.bincount(hand)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>repeat_nos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1182,13 +1203,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="11.7" class="anchored" data-anchor-id="looking-for-hands-with-exactly-one-pair"><span class="header-section-number">11.7</span> Looking for hands with exactly one pair</h2>
 <p>Now we have <code>repeat_nos</code>, we can proceed with the rest of the steps above.</p>
 <p>We can count the number of cards that have exactly two repeats:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-37_286f39a57a0ef53a0d7214881de73984">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(repeat_nos <span class="op">==</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([False, False, False, False, False,  True, False,  True])</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-38_582e612b4c309aa0815dc841026d5b15">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>n_pairs <span class="op">=</span> np.<span class="bu">sum</span>(repeat_nos <span class="op">==</span> <span class="dv">2</span>)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>n_pairs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1197,7 +1218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The hand is of interest to us only if the number of pairs is exactly 1:</p>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-41_d675bc27010d86eb97c0c766a17b46dd">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check whether there is exactly one pair in this hand.</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>n_pairs <span class="op">==</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1223,11 +1244,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=one_pair.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-43_27b3c5ef675f4f988be2e26273f41417">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-44_32a25b8d5e1a910bb8742c179545f898">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bucket (vector) called a with four "1's," four "2's," four "3's,"</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># etc., to represent a deck of cards</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>one_suit <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">14</span>)</span>
@@ -1236,7 +1257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13])</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-45_7ee4c171234ad8ac6292f7230492bd81">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat values for one suit four times to make a 52 card deck of values.</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>deck <span class="op">=</span> np.repeat(one_suit, <span class="dv">4</span>)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>deck</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1247,7 +1268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
        13])</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-46_93626af76d6f735d0ecfe9e3e7345c81">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Array to store result of each trial.</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1304,18 +1325,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=three_of_a_kind.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-51_7994514913b52a8d7f6f0a7a733b8a22">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-52_a4298b293e8a2ad84c4be0b5ab8f9c5c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bucket (vector) called a with four "1's," four "2's," four "3's,"</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># etc., to represent a deck of cards</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>one_suit <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">14</span>)</span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat values for one suit four times to make a 52 card deck of values.</span></span>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>deck <span class="op">=</span> np.repeat(one_suit, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-53_b2785332eeb77ab2dca87716b2691f9b">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>triples_per_trial <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat the following steps 10000 times</span></span>
@@ -1354,14 +1375,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=two_pairs.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-56_3576bab6e71d2f589bc52abb0e8a7a77">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>one_suit <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">14</span>)</span>
 <span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>deck <span class="op">=</span> np.repeat(one_suit, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="probability_theory_2_compound_cache/html/unnamed-chunk-57_d8b8e80df1c18157cd321ad6e37ecd8c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>pairs_per_trial <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat the following steps 10000 times</span></span>
@@ -1398,20 +1419,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-concepts-of-replacement-and-non-replacement" class="level2" data-number="11.9">
 <h2 data-number="11.9" class="anchored" data-anchor-id="the-concepts-of-replacement-and-non-replacement"><span class="header-section-number">11.9</span> The concepts of replacement and non-replacement</h2>
-<p>In the poker example above, we <em>did not replace</em> the first card we drew. If we were to replace the card, it would leave the probability the same before the second pick as before the first pick. That is, the conditional probability remains the same. <em>If we replace, conditions do not change.</em> But if we do not replace the item drawn, the probability changes from one moment to the next. (Perhaps refresh your mind with the examples in the discussion of conditional probability including <a href="probability_theory_1b.html#sec-example-four-events" class="quarto-xref"><span>Section&nbsp;9.1.1</span></a>)</p>
-<p>If we sample with replacement, the sample drawings remain <em>independent</em> of each other — a topic addressed in <a href="probability_theory_1b.html#sec-independence" class="quarto-xref"><span>Section&nbsp;9.1</span></a>.</p>
+<p>In the poker example above, we <em>did not replace</em> the first card we drew. If we were to replace the card, it would leave the probability the same before the second pick as before the first pick. That is, the conditional probability remains the same. <em>If we replace, conditions do not change.</em> But if we do not replace the item drawn, the probability changes from one moment to the next. (Perhaps refresh your mind with the examples in the discussion of conditional probability including <a href="probability_theory_1b.html#sec-example-four-events" class="quarto-xref"><span>Section 9.1.1</span></a>)</p>
+<p>If we sample with replacement, the sample drawings remain <em>independent</em> of each other — a topic addressed in <a href="probability_theory_1b.html#sec-independence" class="quarto-xref"><span>Section 9.1</span></a>.</p>
 <p>In many cases, a key decision in modeling the situation in which we are interested is whether to sample with or without replacement. The choice must depend on the characteristics of the situation.</p>
 <p>There is a close connection between the lack of finiteness of the concept of universe in a given situation, and sampling with replacement. That is, when the universe (population) we have in mind is not small, or has no conceptual bounds at all, then the probability of each successive observation remains the same, and this is modeled by sampling with replacement. (“Not finite” is a less expansive term than “infinite,” though one might regard them as synonymous.)</p>
-<p><a href="probability_theory_3.html" class="quarto-xref"><span>Chapter&nbsp;12</span></a> discusses problems whose appropriate concept of a universe is finite, whereas <a href="probability_theory_4_finite.html" class="quarto-xref"><span>Chapter&nbsp;13</span></a> discusses problems whose appropriate concept of a universe is not finite. This general procedure will be discussed several times, with examples included.</p>
+<p><a href="probability_theory_3.html" class="quarto-xref"><span>Chapter 12</span></a> discusses problems whose appropriate concept of a universe is finite, whereas <a href="probability_theory_4_finite.html" class="quarto-xref"><span>Chapter 13</span></a> discusses problems whose appropriate concept of a universe is not finite. This general procedure will be discussed several times, with examples included.</p>
 
 
 </section>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>One simple rule-of-thumb is to quadruple the original number. The reason for quadrupling is that four times as many iterations (trials) of this resampling procedure give <em>twice</em> as much accuracy (as measured by the standard deviation, the most frequent measurement of accuracy). That is, the error decreases with the square root of the number of iterations. If you see that you need <em>much</em> more accuracy, then <em>immediately</em> increase the number of iterations even more than four times — perhaps ten or a hundred times.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1449,18 +1470,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1492,11 +1502,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1506,8 +1555,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1519,7 +1577,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1563,6 +1744,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1588,6 +1770,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1649,17 +1857,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./more_sampling_tools.html" class="pagination-link">
+      <a href="./more_sampling_tools.html" class="pagination-link" aria-label="Two puzzles and more tools">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./probability_theory_3.html" class="pagination-link">
+      <a href="./probability_theory_3.html" class="pagination-link" aria-label="Probability Theory, Part 3">
         <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability Theory, Part 3</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

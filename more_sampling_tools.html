@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 10&nbsp; Two puzzles and more tools</title>
+<title>10&nbsp; Two puzzles and more tools – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,19 +116,47 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
   });
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="font-awesome.min.css">
@@ -133,12 +168,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./more_sampling_tools.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./more_sampling_tools.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Two puzzles and more tools</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -148,7 +183,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -392,7 +427,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -427,7 +462,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="introduction" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">10.1</span> Introduction</h2>
@@ -450,16 +487,21 @@ div.csl-indent {
 <li><p>Three possibilities: 6a) Diver found chest I-Ga, 6b) diver found I-Gb, 6c) diver found II-Gc.</p>
 <p>From step 2, the cases a, b, and c in step 6 have equal probabilities.</p></li>
 <li><p>If possibility 6a is the case, then the other chest is I-Gb; the comparable statements for cases 6b and 6c are I-Ga and II-S.</p></li>
-<li><p>From steps 6 and 7: From equal probabilities of the three cases, and no other possible outcome, <span class="math inline">\(P(6a) = 1/3\)</span>, <span class="math inline">\(P(6b) = 1/3\)</span>, <span class="math inline">\(P(6c) = 1/3\)</span>.</p></li>
+<li><p>From steps 6 and 7: From equal probabilities of the three cases, and no other possible outcome, <span class="math inline">\(P(6a) = 1/3\)</span>, <span class="math inline">\(P(6b) = 1/3\)</span>, <span class="math inline">\(P(6c) =
+1/3\)</span>.</p></li>
 <li><p>So <span class="math inline">\(P(G) = P(6a) + P(6b)\)</span> = 1/3 + 1/3 = 2/3.</p></li>
 </ol>
 <p>See <a href="#fig-ships-gold-silver" class="quarto-xref">Figure&nbsp;<span>10.1</span></a>.</p>
-<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="more_sampling_tools_cache/html/fig-ships-gold-silver_d1be610f16f2ac1ab3a6e9ef0cb6d92c">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-ships-gold-silver" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="diagrams/ships_gold_silver.svg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;10.1: Ships with Gold and Silver</figcaption>
+<div id="fig-ships-gold-silver" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ships-gold-silver-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/ships_gold_silver.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ships-gold-silver-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.1: Ships with Gold and Silver
+</figcaption>
 </figure>
 </div>
 </div>
@@ -485,17 +527,17 @@ Consider introducing elif here.
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=gold_silver_ships.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-1_fabeec7a11a6bc7b27d5fa26a3582487">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-2_cdf8f42a86a4e2aa9c3c63f04b8f8482">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 3 buckets.  Each bucket represents a ship.  Each has two chests.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>bucket1 <span class="op">=</span> [<span class="st">'Gold'</span>, <span class="st">'Gold'</span>]  <span class="co"># Chests in first ship.</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>bucket2 <span class="op">=</span> [<span class="st">'Gold'</span>,  <span class="st">'Silver'</span>]  <span class="co"># Chests in second ship.</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>bucket3 <span class="op">=</span> [<span class="st">'Silver'</span>, <span class="st">'Silver'</span>]  <span class="co"># Chests in third ship.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-3_d4c86973121812b0bdd5cef2a11cea7b">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For each trial, we will have one of three states:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. When opening the first chest, it did not contain gold.</span></span>
@@ -551,7 +593,7 @@ Consider introducing elif here.
 <p>Boolean arrays are a fundamental tool in Python, and we will use them in nearly all our simulations.</p>
 <p>Here is a remind of how those arrays work.</p>
 <p>First, let’s slice out the first 10 values of the <code>second_chests</code> trial-by-trial results tally from the simulation above:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-6_34e110705a0050dc86c658313a59b1b4">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get values at positions 0 through 9 (up to, but not including position 10)</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>first_10_chests <span class="op">=</span> second_chests[:<span class="dv">10</span>]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>first_10_chests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -565,7 +607,7 @@ Consider introducing elif here.
 <p>Before we started the simulation, we set <code>second_chests</code> to contain 10,000 strings, where each string was “No gold in chest 1, chest 2 never opened”. In the simulation, we check whether there was gold in the first chest, and, if not, we don’t change the value in <code>second_chest</code>, and the value remains as “No gold in chest 1, chest 2 never opened”.</p>
 <p>Only if there was gold in the first chest, do we go on to check whether the second chest contains silver or gold. Therefore, we only set a new value in <code>second_chests</code> where there was gold in the first chest.</p>
 <p>Now let’s show the effect of running a comparison on <code>first_10_chests</code>:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-8_875d3c19a7d81f5241a9824bc304e6b8">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>were_gold <span class="op">=</span> (first_10_chests <span class="op">==</span> <span class="st">'Gold'</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>were_gold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -587,7 +629,6 @@ Parentheses and Boolean comparisons
 </div>
 </div>
 <p>The <code>== 'Gold'</code> <em>comparison</em> is asking a question. It is asking that question of an array, and the array contains multiple values. NumPy treats this comparison as asking the question <em>of each element in the array</em>. We get an answer for the question <em>for each element</em>. The answer for position <span class="python">0</span> is <code>True</code> if the element at position <span class="python">0</span> is equal to <code>'Gold'</code> and <code>False</code> otherwise, and so on, for positions <span class="python">1</span>, <span class="python">2</span> and so on. We started with 10 strings. After the comparison <code>== 'Gold'</code> we have 10 Boolean values, where a Boolean value can either be <code>True</code> or <code>False</code>.</p>
-
 <!---
 We need an illustration here of form:
 
@@ -600,8 +641,8 @@ False   =   "Silver"                     == 'Gold'
 
 Any takers?  Good techniques?   Maybe generated Markdown table with transparent boerder for second and fourth column?
 -->
-<p>Now we have an array with <code>True</code> for the “Gold” results and <code>False</code> otherwise, we can count the number of “Gold” results by using <code>np.sum</code> on the array. As you remember (<a href="resampling_with_code.html#sec-count-with-sum" class="quarto-xref"><span>Section&nbsp;5.14</span></a>) <code>np.sum</code> counts <code>True</code> as 1 and <code>False</code> as 0, so the sum of the Boolean array is just the number of <code>True</code> values in the array — the count that we need.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-10_f394a00637a3b05e5285781d678a95cf">
+<p>Now we have an array with <code>True</code> for the “Gold” results and <code>False</code> otherwise, we can count the number of “Gold” results by using <code>np.sum</code> on the array. As you remember (<a href="resampling_with_code.html#sec-count-with-sum" class="quarto-xref"><span>Section 5.14</span></a>) <code>np.sum</code> counts <code>True</code> as 1 and <code>False</code> as 0, so the sum of the Boolean array is just the number of <code>True</code> values in the array — the count that we need.</p>
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The number of True values — so the number of "Gold" chests.</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(were_gold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -621,18 +662,18 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 </div>
 
 <p>Notice that the first part of the code is identical to the first approach to this problem. There are two key differences — see the comments for an explanation.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-12_1c9a5dd9c0ca275672ca380a46322538">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-13_1ea04065048da5f0edefc5a851eddf83">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The 3 buckets, each representing two chests on a ship.</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># As before.</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>bucket1 <span class="op">=</span> [<span class="st">'Gold'</span>, <span class="st">'Gold'</span>]  <span class="co"># Chests in first ship.</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>bucket2 <span class="op">=</span> [<span class="st">'Gold'</span>,  <span class="st">'Silver'</span>]  <span class="co"># Chests in second ship.</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>bucket3 <span class="op">=</span> [<span class="st">'Silver'</span>, <span class="st">'Silver'</span>]  <span class="co"># Chests in third ship.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-14_af12ff0ad27719cb95197511b8a819a6">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is where the difference starts.  We are now going to fill in</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the result for the first chest _and_ the result for the second chest.</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
@@ -688,25 +729,25 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 <h2 data-number="10.5" class="anchored" data-anchor-id="sec-combine-booleans"><span class="header-section-number">10.5</span> Combining Boolean arrays</h2>
 <p>We can do the count we need by <em>combining</em> the Boolean arrays with the <code>&amp;</code> operator. <code>&amp;</code> combines Boolean arrays with a <em>logical and</em>. <em>Logical and</em> is a rule for combining two Boolean values, where the rule is: the result is <code>True</code> if the first value is <code>True</code> <em>and</em> the second value if <code>True</code>.</p>
 <p>Here we use the <code>&amp;</code> <em>operator</em> to combine some Boolean values on the left and right of the operator:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-17_28ca69950ca18d81ddfb807fdad776ef">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="op">&amp;</span> <span class="va">True</span>   <span class="co"># Both are True, so result is True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-18_61fd16b0676dd97be64c06d766827f6c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="op">&amp;</span> <span class="va">False</span>   <span class="co"># At least one of the values is False, so result is False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-19_049786a0c76f448912c67480f9330bc3">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="op">&amp;</span> <span class="va">True</span>   <span class="co"># At least one of the values is False, so result is False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-20_95252c84d207ec1d87908f9bb37c8ff0">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="va">False</span> <span class="op">&amp;</span> <span class="va">False</span>   <span class="co"># At least one (in fact both) are False, result is False.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>False</code></pre>
@@ -724,7 +765,7 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 </div>
 <div class="callout-body-container callout-body">
 <p>In fact Python has another operation to apply this <em>logical and</em> operation to values — the <code>and</code> operator:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-21_0cc91dcf7aa195fde30bca84127cf62b">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="va">True</span> <span class="kw">and</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
@@ -748,7 +789,7 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 </div>
 <p>Above you saw that the <code>==</code> operator (as in <code>== 'Gold'</code>), when applied to arrays, asks the question of every element in the array.</p>
 <p>First make the Boolean arrays.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-26_0c7963dd5c6a4e2f6782edee088a20a7">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>ten_first_gold <span class="op">=</span> (ten_first_chests <span class="op">==</span> <span class="st">'Gold'</span>)</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ten first == 'Gold'"</span>, ten_first_gold)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -761,7 +802,7 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 </div>
 </div>
 <p>Now let us use <code>&amp;</code> to combine Boolean arrays:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-28_6e1f0f863503aa1e5782891b91556f64">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>ten_both <span class="op">=</span> (ten_first_gold <span class="op">&amp;</span> ten_second_gold)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>ten_both</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -772,7 +813,7 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 <p>Notice that Python does the comparison <em>elementwise</em> — element by element.</p>
 <p>You saw that when we did <code>second_chests == 'Gold'</code> this had the effect of asking the <code>== 'Gold'</code> question of <em>each element</em>, so there will be one answer per element in <code>second_chests</code>. In that case there was an array to the <em>left</em> of <code>==</code> and a single value to the <em>right</em>. We were comparing an array to a value.</p>
 <p>Here we are asking the <code>&amp;</code> question of <code>ten_first_gold</code> and <code>ten_second_gold</code>. Here there is an array to the <em>left</em> and an array to the <em>right</em>. We are asking the <code>&amp;</code> question 10 times, but the first question we are asking is:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-30_f773d40ed1a26d94eadc7b8485014485">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First question, giving first element of result.</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>(ten_first_gold[<span class="dv">0</span>] <span class="op">&amp;</span> ten_second_gold[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -780,7 +821,7 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 </div>
 </div>
 <p>The second question is:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-32_49889d7ca3ebcf76a3126eba6cf27dba">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Second question, giving second element of result.</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>(ten_first_gold[<span class="dv">1</span>] <span class="op">&amp;</span> ten_second_gold[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -789,7 +830,7 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 </div>
 <p>and so on. We have ten elements on <em>each side</em>, and 10 answers, giving an array (<code>ten_both</code>) of 10 elements. Each element in <code>ten_both</code> is the answer to the <code>&amp;</code> question for the elements at the corresponding positions in <code>ten_first_gold</code> and <code>ten_second_gold</code>.</p>
 <p>We could also create the Boolean arrays and do the <code>&amp;</code> operation all in one step, like this:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-34_86619302a6131aed2c3ef46b90d7e45f">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>ten_both <span class="op">=</span> (ten_first_chests <span class="op">==</span> <span class="st">'Gold'</span>) <span class="op">&amp;</span> (ten_second_chests <span class="op">==</span> <span class="st">'Gold'</span>)</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>ten_both</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -823,7 +864,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>Remember, we wanted the answer to the question: how many trials had “Gold” in the first chest <em>and</em> “Gold” in the second. We can answer that question for the first 10 trials with <code>np.sum</code>:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-35_320daefa5db607214dbf3fa17496d98d">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>n_ten_both <span class="op">=</span> np.<span class="bu">sum</span>(ten_both)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>n_ten_both</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -831,7 +872,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>We can answer the same question for <em>all</em> the trials, in the same way:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-37_efb740531546c8aad10fb59030d7e5e0">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>first_gold <span class="op">=</span> (first_chests <span class="op">==</span> <span class="st">'Gold'</span>)</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>second_gold <span class="op">=</span> (second_chests <span class="op">==</span> <span class="st">'Gold'</span>)</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>n_both_gold <span class="op">=</span> np.<span class="bu">sum</span>(first_gold <span class="op">&amp;</span> second_gold)</span>
@@ -841,7 +882,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>We could also do the same calculation all in one line:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-39_f53c293149f6e8e0754d22d797243aa8">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice the parentheses - we need these - see above.</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>n_both_gold <span class="op">=</span> np.<span class="bu">sum</span>((first_chests <span class="op">==</span> <span class="st">'Gold'</span>) <span class="op">&amp;</span> (second_chests <span class="op">==</span> <span class="st">'Gold'</span>))</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>n_both_gold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -850,7 +891,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>We can then count all the ships where the first chest was gold:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-41_b1dffbfdf0061271e8daff7b00fb4072">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>n_first_gold <span class="op">=</span> np.<span class="bu">sum</span>(first_chests <span class="op">==</span> <span class="st">'Gold'</span>)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>n_first_gold</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -858,7 +899,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>The final calculation is the proportion of second chests that are gold, given the first chest was also gold:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-43_6c1f068893d7b7ab44ac9d60540871d0">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>p_g_given_g <span class="op">=</span> n_both_gold <span class="op">/</span> n_first_gold</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>p_g_given_g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -879,15 +920,19 @@ Parentheses, arrays and comparisons
 </blockquote>
 <p>In fact the first person to propose (and solve) this problem was Steve Selvin, a professor of public health at the University of California, Berkeley <span class="citation" data-cites="slevin1975monty">(<a href="references.html#ref-slevin1975monty" role="doc-biblioref">Selvin 1975</a>)</span>.</p>
 <p>Most people, including at least one of us, your humble authors, quickly come to the wrong conclusion. The most common but incorrect answer is that it will make no difference if you switch doors or stay with your original choice. The obvious intuition is that, after Monty opens his door, there are two doors that might have the car behind them, and therefore, there is a 50% chance it will be behind any one of the two. It turns out that answer is wrong; you will double your chances of winning by switching doors. Did you get the answer right?</p>
-<p>If you got the answer wrong, you are in excellent company. As you can see from the commentary in <span class="citation" data-cites="savant1990monty">Savant (<a href="references.html#ref-savant1990monty" role="doc-biblioref">1990</a>)</span>, many mathematicians wrote to Parade magazine to assert that the (correct) solution was wrong. <a href="https://en.wikipedia.org/wiki/Paul_Erdős">Paul Erdős</a> was one of the most famous mathematicians of the 20th century; he could not be convinced of the correct solution until he had seen a computer simulation <span class="citation" data-cites="vazsonyi1999door">(<a href="references.html#ref-vazsonyi1999door" role="doc-biblioref">Vazsonyi 1999</a>)</span>, of the type we will do below.</p>
+<p>If you got the answer wrong, you are in excellent company. As you can see from the commentary in <span class="citation" data-cites="savant1990monty">Savant (<a href="references.html#ref-savant1990monty" role="doc-biblioref">1990</a>)</span>, many mathematicians wrote to Parade magazine to assert that the (correct) solution was wrong. <a href="https://en.wikipedia.org/wiki/Paul_Erd%C5%91s">Paul Erdős</a> was one of the most famous mathematicians of the 20th century; he could not be convinced of the correct solution until he had seen a computer simulation <span class="citation" data-cites="vazsonyi1999door">(<a href="references.html#ref-vazsonyi1999door" role="doc-biblioref">Vazsonyi 1999</a>)</span>, of the type we will do below.</p>
 <p>To simulate a trial of this problem, we need to select a door at random to house the car, and another door at random, to be the door the contestant chooses. We number the doors 1, 2 and 3. Now we need two random choices from the options 1, 2 or 3, one for the door with the car, the other for the contestant door. To chose a door for the car, we could throw a die, and chose door 1 if the die shows 1 or 4, door 2 if the die shows 2 or 5, and door 3 for 3 or 6. Then we throw the die again to chose the contestant door.</p>
 <p>But throwing dice is a little boring; we have to find the die, then throw it many times, and record the results. Instead we can ask the computer to chose the doors at random.</p>
 <p>For this simulation, let us do 25 trials. We ask the computer to create two sets of 25 random numbers from 1 through 3. The first set is the door with the car behind it (“Car door”). The second set have the door that the contestant chose at random (“Our door”). We put these in a table, and make some new, empty columns to fill in later. The first new column is “Monty opens”. In due course, we will use this column to record the door that Monty Hall will open on this trial. The last two columns express the outcome. The first is “Stay wins”. This has “Yes” if we win on this trial by sticking to our original choice of door, and “No” otherwise. The last column is “Switch wins”. This has “Yes” if we win by switching doors, and “No” otherwise. See table <a href="#tbl-montyblank" class="quarto-xref">Table&nbsp;<span>10.1</span></a>).</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/montyblank_074759883797d2eb83d35fcdbb18a74b">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-montyblank" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;10.1: 25 simulations of the Monty Hall problem </caption>
+<div id="tbl-montyblank" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-montyblank-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10.1: 25 simulations of the Monty Hall problem
+</figcaption>
+<div aria-describedby="tbl-montyblank-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -1102,6 +1147,8 @@ Parentheses, arrays and comparisons
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 </div>
 </div>
 <p>In the first trial in <a href="#tbl-montyblank" class="quarto-xref">Table&nbsp;<span>10.1</span></a>), the computer selected door 3 for car, and door 3 for the contestant. Now Monty must open a door, and he cannot open our door (door 3) so he has the choice of opening door 1 or door 2; he chooses randomly, and opens door 2. On this trial, we win if we stay with our original choice, and we lose if we change to the remaining door, door 1.</p>
@@ -1109,11 +1156,15 @@ Parentheses, arrays and comparisons
 <p>You may want to print out table <a href="#tbl-montyblank" class="quarto-xref">Table&nbsp;<span>10.1</span></a>, and fill out the blank columns, to work through the logic.</p>
 <p>After doing a few more trials, and some reflection, you may see that there are two different situations here: the situation when our <em>initial guess was right</em>, and the situation where our <em>initial guess was wrong</em>. When our initial guess was right, we win by staying with our original choice, but when it was wrong, we always win by switching. The chance of our <em>initial guess</em> being correct is 1/3 (one door out of three). So the chances of winning by staying are 1/3, and the chances of winning by switching are 2/3. But remember, you don’t need to follow this logic to get the right answer. As you will see below, the resampling simulation shows us that the Switch strategy wins.</p>
 <p>Table <a href="#tbl-montyfull" class="quarto-xref">Table&nbsp;<span>10.2</span></a> is a version of table <a href="#tbl-montyblank" class="quarto-xref">Table&nbsp;<span>10.1</span></a> for which we have filled in the blank columns using the logic above.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/montyfull_3cd895b1fa966ad0c1038b95f00b36e4">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-montyfull" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;10.2: 25 simulations of the Monty Hall problem, filled out </caption>
+<div id="tbl-montyfull" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-montyfull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10.2: 25 simulations of the Monty Hall problem, filled out
+</figcaption>
+<div aria-describedby="tbl-montyfull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -1328,6 +1379,8 @@ Parentheses, arrays and comparisons
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 </div>
 </div>
 <p>The proportion of times “Stay” wins in these 25 trials is 0.36. The proportion of times “Switch” wins is 0.64; the Switch strategy wins about twice as often as the Stay strategy.</p>
@@ -1342,14 +1395,14 @@ Parentheses, arrays and comparisons
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=monty_hall.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-opts.label="py_ed" data-hash="more_sampling_tools_cache/html/unnamed-chunk-48_fc195e571f3fc31bd32134dcfac57b12">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The Monty Hall problem has a slightly complicated structure, so we will start by looking at the procedure for one trial. When we have that clear, we will put that procedure into a <code>for</code> loop for the simulation.</p>
 <p>Let’s start with some variables. Let’s call the door I choose <code>my_door</code>.</p>
 <p>We choose that door at random from a sequence of all possible doors. Call the doors 1, 2 and 3 from left to right.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-49_c1dc6a9adab33cde72f16c4736fe42c1">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of doors to chose from.</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>doors <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1363,7 +1416,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>We choose one of the doors to be the door with the car behind it:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-51_5510e481d76caf0dcd015adaf07f0e4c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One door at random has the car behind it.</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>car_door <span class="op">=</span> rnd.choice(doors)</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1378,7 +1431,7 @@ Parentheses, arrays and comparisons
 <p><code>my_door</code> and <code>car_door</code> might be the same.</p>
 <p>So, to get Monty’s choices, we want to take all doors (<code>doors</code>) and remove <code>my_door</code> and <code>car_door</code>. That leaves the door or doors Monty can open.</p>
 <p>Here are the doors Monty cannot open. Remember, a third of the time <code>my_door</code> and <code>car_door</code> will be the same, so we will include the same door twice, as doors Monty can’t open.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-53_1eba0016a93c1f39537554198f2d933c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>cant_open <span class="op">=</span> [my_door, car_door]</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>cant_open</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1389,10 +1442,10 @@ Parentheses, arrays and comparisons
 <p>NumPy has a good function for this, called <span class="python"><code>np.setdiff1d</code></span>. It calculates the <em>set difference</em> between two sequences, such as arrays.</p>
 <p>The set difference between two sequences is the members that <em>are</em> in the first sequence, but are <em>not</em> in the second sequence. Here are a few examples of this set difference function in NumPy.</p>
 <div class="python">
-<p>Notice that we are using <em>lists</em> as the input (first and second) sequences here. We can use lists or arrays or any other type of sequence in Python. (See <a href="sampling_tools.html#sec-lists" class="quarto-xref"><span>Section&nbsp;7.3.2</span></a> for an introduction to lists).</p>
+<p>Notice that we are using <em>lists</em> as the input (first and second) sequences here. We can use lists or arrays or any other type of sequence in Python. (See <a href="sampling_tools.html#sec-lists" class="quarto-xref"><span>Section 7.3.2</span></a> for an introduction to lists).</p>
 <p>Numpy functions like <code>np.setdiff1d</code> always <em>return</em> an array.</p>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-55_2c96e5886ac5184b4972320bf54fa6b8">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Members in [1, 2, 3] that are *not* in [1]</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1, 2, 3, removing 1, if present.</span></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>np.setdiff1d([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1400,7 +1453,7 @@ Parentheses, arrays and comparisons
 <pre><code>array([2, 3])</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-56_af77e0cc39f85af5707d863a60eb0ad4">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Members in [1, 2, 3] that are *not* in [2, 3]</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1, 2, 3, removing 2 and 3, if present.</span></span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>np.setdiff1d([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1408,7 +1461,7 @@ Parentheses, arrays and comparisons
 <pre><code>array([1])</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-57_f37151d38f1fa90574718b68bc712fed">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Members in [1, 2, 3] that are *not* in [2, 2]</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1, 2, 3, removing 2 and 2 again, if present.</span></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>np.setdiff1d([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1417,7 +1470,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>This logic allows us to choose the doors Monty can open:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-61_bdae794e9c740a129bc20b0c358e2366">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>montys_choices <span class="op">=</span> np.setdiff1d(doors, [my_door, car_door])</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>montys_choices</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1426,7 +1479,7 @@ Parentheses, arrays and comparisons
 </div>
 <p>Notice that <code>montys_choices</code> will only have one element left when <code>my_door</code> and <code>car_door</code> were different, but it will have two elements if <code>my_door</code> and <code>car_door</code> were the same.</p>
 <p>Let’s play out those two cases:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-63_9f303944cee1cfe05c7d1942c78e0476">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>my_door <span class="op">=</span> <span class="dv">1</span>  <span class="co"># For example.</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>car_door <span class="op">=</span> <span class="dv">2</span>  <span class="co"># For example.</span></span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Monty can only choose door 3 now.</span></span>
@@ -1436,7 +1489,7 @@ Parentheses, arrays and comparisons
 <pre><code>array([3])</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-64_fb017671e3f3e72f5521f212137ef48f">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>my_door <span class="op">=</span> <span class="dv">1</span>  <span class="co"># For example.</span></span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>car_door <span class="op">=</span> <span class="dv">1</span>  <span class="co"># For example.</span></span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Monty can choose either door 2 or door 3.</span></span>
@@ -1447,7 +1500,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>If Monty can only choose one door, we’ll take that. Otherwise we’ll chose a door at random from the two doors available.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-67_bdaebc77a3ecee91f16a263ee1068493">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(montys_choices) <span class="op">==</span> <span class="dv">1</span>:  <span class="co"># Only one door available.</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>    montys_door <span class="op">=</span> montys_choices[<span class="dv">0</span>]  <span class="co"># Take the first (of 1!).</span></span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:  <span class="co"># Two doors to choose from:</span></span>
@@ -1460,7 +1513,7 @@ Parentheses, arrays and comparisons
 </div>
 <div class="python">
 <p>In fact, we can avoid that <code>if len(</code> check for the number of doors, because <code>rnd.choice</code> will also work on a sequence of length 1 — in that case, it always returns the single element in the sequence, like this:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-69_32c7f3d4794f589b738e789985e3c173">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rnd.choice on sequence with single element - always returns that element.</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>rnd.choice([<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1468,7 +1521,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>That means we can simplify the code above to:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-70_573688da060fe1379432dccf78868511">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose single door left to choose, or door at random if two.</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>montys_door <span class="op">=</span> rnd.choice(montys_choices)</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>montys_door</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1478,7 +1531,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>Now we know Monty’s door, we can identify the other door, by removing our door, and Monty’s door, from the available options:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-71_8c19dcdbead2aa8d1dee44023f3ddbad">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>remaining_doors <span class="op">=</span> np.setdiff1d(doors, [my_door, montys_door])</span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="co"># There is only one remaining door, take that.</span></span>
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>other_door <span class="op">=</span> remaining_doors[<span class="dv">0</span>]</span>
@@ -1488,7 +1541,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>The logic above gives us the full procedure for one trial.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-73_48522023b456564d3a9de703ef4f63fc">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>my_door <span class="op">=</span> rnd.choice(doors)</span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>car_door <span class="op">=</span> rnd.choice(doors)</span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Which door will Monty open?</span></span>
@@ -1506,7 +1559,7 @@ Parentheses, arrays and comparisons
 <span id="cb84-15"><a href="#cb84-15" aria-hidden="true" tabindex="-1"></a>    switch_wins <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>All that remains is to put that trial procedure into a loop, and collect the results as we repeat the procedure many times.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-75_ff7479e3d03f1a07199872a8fe3f3ecd">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrays to store the results for each trial.</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>stay_wins <span class="op">=</span> np.repeat([<span class="va">False</span>], <span class="dv">10000</span>)</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>switch_wins <span class="op">=</span> np.repeat([<span class="va">False</span>], <span class="dv">10000</span>)</span>
@@ -1544,9 +1597,9 @@ Parentheses, arrays and comparisons
 <pre><code>p for switch: 0.6674</code></pre>
 </div>
 </div>
-<p>We can also follow the same strategy as we used for the second implementation of the two-ships problem (<a href="#sec-ships-booleans" class="quarto-xref"><span>Section&nbsp;10.4</span></a>).</p>
+<p>We can also follow the same strategy as we used for the second implementation of the two-ships problem (<a href="#sec-ships-booleans" class="quarto-xref"><span>Section 10.4</span></a>).</p>
 <p>Here, as in the second two-ships implementation, we do not calculate the trial results (<code>stay_wins</code>, <code>switch_wins</code>) in each trial. Instead, we store the <em>doors</em> for each trial, and then use Boolean arrays to calculate the results for all trials, at the end.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-77_58b448eef82e26d4495594a7ae11f319">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instead of storing the trial results, we store the doors for each trial.</span></span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>my_doors <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>car_doors <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
@@ -1591,7 +1644,7 @@ Parentheses, arrays and comparisons
 <section id="insight-from-the-monty-hall-simulation" class="level3" data-number="10.7.1">
 <h3 data-number="10.7.1" class="anchored" data-anchor-id="insight-from-the-monty-hall-simulation"><span class="header-section-number">10.7.1</span> Insight from the Monty Hall simulation</h3>
 <p>The code simulation gives us an estimate of the right answer, but it also forces us to set out the exact mechanics of the problem. For example, by looking at the code, we see that we can calculate “stay_wins” with this code alone:</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-79_d63fb5610a7d20b0c7323782fce49fb7">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Just choose my door and the car door for each trial.</span></span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>my_doors <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>car_doors <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
@@ -1622,7 +1675,7 @@ Parentheses, arrays and comparisons
 <p>For example, let us say we chose door 1.</p>
 <p>Let us say that the car is also under door 1.</p>
 <p>Monty has the option of choosing door 2 or door 3, and he chooses randomly between them.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-81_167b611463a71b20114aea2d3c1a0387">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>my_door <span class="op">=</span> <span class="dv">1</span>  <span class="co"># We chose door 1 at random.</span></span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>car_door <span class="op">=</span> <span class="dv">1</span>  <span class="co"># This trial, by chance, the car door is 1.</span></span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Monty is left with doors 2 and 3 to choose from.</span></span>
@@ -1637,7 +1690,7 @@ Parentheses, arrays and comparisons
 </div>
 <p>Now — let us say we happen to know that Monty is rather lazy, and he will always choose the left-most (lower-numbered) door of the two options.</p>
 <p>In the previous example, Monty had the option of choosing door 2 and 3. In this new scenario, we know that he will always choose door 2 (the left-most door).</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-83_b1c96bfd5472275bc69ddd3baf0c498c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>my_door <span class="op">=</span> <span class="dv">1</span>  <span class="co"># We chose door 1 at random.</span></span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>car_door <span class="op">=</span> <span class="dv">1</span>  <span class="co"># This trial, by chance, the car door is 1.</span></span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Monty is left with doors 2 and 3 to choose from.</span></span>
@@ -1651,7 +1704,7 @@ Parentheses, arrays and comparisons
 </div>
 </div>
 <p>It feels as if we have more information about where the car is, when we know this. Consider the situation where we have chosen door 1, and Monty opens door 3. We know that he would have preferred to open door 2, if he was allowed. We therefore know he wasn’t allowed to open door 2, and that means the car is definitely under door 2.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-85_8df4cd7479979cbc3a1e2e459d312d37">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>my_door <span class="op">=</span> <span class="dv">1</span>  <span class="co"># We chose door 1 at random.</span></span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>car_door <span class="op">=</span> <span class="dv">2</span>  <span class="co"># This trial, by chance, the car door under door 2.</span></span>
 <span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Monty is left with door 3 only to choose from.</span></span>
@@ -1673,14 +1726,14 @@ Parentheses, arrays and comparisons
 <p>If you can quickly see the answer to both questions — well done — but, are you sure you are right?</p>
 <p>We can test by simulation.</p>
 <p>For our test of the “switch is right” strategy, we can tell if one door is to the right of another door by comparison; higher numbers mean further to the right: 2 is right of 1, and 3 is right of 2.</p>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-87_fab800218ad173b8adb3518b6286a96d">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Door 3 is right of door 1.</span></span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="op">&gt;</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="more_sampling_tools_cache/html/unnamed-chunk-89_8fb5f2412ec92ac8c8ebf2c1bb02189d">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A test of the switch-if-right strategy.</span></span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The car doors.</span></span>
 <span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>car_doors <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
@@ -1734,7 +1787,7 @@ Parentheses, arrays and comparisons
 <p>We will soon see that these same advantages also apply to reasoning about statistics.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-goldberg1986probability" class="csl-entry" role="listitem">
 Goldberg, Samuel. 1986. <em>Probability: An Introduction</em>. Courier Corporation. <a href="https://www.google.co.uk/books/edition/Probability/CmzFx9rB_FcC">https://www.google.co.uk/books/edition/Probability/CmzFx9rB_FcC</a>.
 </div>
@@ -1749,10 +1802,10 @@ Vazsonyi, Andrew. 1999. <span>“Which Door Has the Cadillac.”</span> <em>Deci
 </div>
 </div>
 </section>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>The treasure fleet problem is a restatement of <a href="https://en.wikipedia.org/wiki/Bertrand's_box_paradox">a problem that Joseph Bertrand posed</a> early in the 19th century.) Here is a variation from <span class="citation" data-cites="goldberg1986probability">(<a href="references.html#ref-goldberg1986probability" role="doc-biblioref">Goldberg 1986, 99</a>)</span>:</p>
+<li id="fn1"><p>The treasure fleet problem is a restatement of <a href="https://en.wikipedia.org/wiki/Bertrand%27s_box_paradox">a problem that Joseph Bertrand posed</a> early in the 19th century.) Here is a variation from <span class="citation" data-cites="goldberg1986probability">(<a href="references.html#ref-goldberg1986probability" role="doc-biblioref">Goldberg 1986, 99</a>)</span>:</p>
 <blockquote class="blockquote">
 <p>Three identical boxes each contain two coins. In one box both are pennies, in the second both are nickels, and in the third there is one penny and one nickel.</p>
 <p>A man chooses a box at random and takes out a coin. If the coin is a penny, what is the probability that the other coin in the box is also a penny?</p>
@@ -1793,7 +1846,7 @@ Vazsonyi, Andrew. 1999. <span>“Which Door Has the Cadillac.”</span> <em>Deci
 <p>This is the same error you would get for running the code <code>'Gold' &amp; ten_second_chests</code> on its own.</p>
 <p>The point to take away is, that when you are using <code>&amp;</code> to combine Boolean arrays in Python, remember operator precedence, and, when in doubt, put parentheses around the expressions on either side of <code>&amp;</code>, as here.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1831,18 +1884,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1874,11 +1916,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1888,8 +1969,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1901,7 +1991,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1945,6 +2158,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1970,6 +2184,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2031,17 +2271,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./probability_theory_1b.html" class="pagination-link">
+      <a href="./probability_theory_1b.html" class="pagination-link" aria-label="Probability Theory Part I (continued)">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability Theory Part I (continued)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./probability_theory_2_compound.html" class="pagination-link">
+      <a href="./probability_theory_2_compound.html" class="pagination-link" aria-label="Probability Theory, Part 2: Compound Probability">
         <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Probability Theory, Part 2: Compound Probability</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 31&nbsp; Bayesian Analysis by Simulation</title>
+<title>31&nbsp; Bayesian Analysis by Simulation – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,19 +116,47 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
   });
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="font-awesome.min.css">
@@ -133,12 +168,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bayes_simulation.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bayes_simulation.html"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Bayesian Analysis by Simulation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -148,7 +183,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -392,7 +427,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -440,7 +475,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <blockquote class="blockquote">
 <p>This branch of mathematics [probability] is the only one, I believe, in which good writers frequently get results entirely erroneous. <span class="citation" data-cites="peirce1923chance">(<a href="references.html#ref-peirce1923chance" role="doc-biblioref">Peirce 1923</a>, Doctrine of Chances, II)</span></p>
@@ -475,11 +512,11 @@ In-place operators in Python
 <p>In the code that follows, we are going to use a new and neat feature of Python, called <em>in-place</em> operations.</p>
 <p>We often find ourselves in the situation where we have some variable, say <code>a</code>, and we want to do some operation on the value of <code>a</code> <em>and then store the result in <code>a</code> again</em>.</p>
 <p>Of course, we could do something like this:</p>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-1_7c60ccbea268d8fc5307cd2fabd0383a">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The initial value of "a".</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-2_d8c09996d29bd6c0f3d46826f6b82d6c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a to get the value of a plus 1.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> a <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result.</span></span>
@@ -489,11 +526,11 @@ In-place operators in Python
 </div>
 </div>
 <p>Because this is such a common kind of thing to do, Python has special operators to do this for us, called <em>in-place</em> operators. For the example above, there is an <em>in-place addition</em> operator <code>+=</code> that takes the value of the variable on the left hand side, adds the value on the right hand side, and stores the result in the variable on the left hand side. For example:</p>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-3_4c6c95fcba70e05dfa65ff5a09dfc7f9">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The initial value of "b".</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-4_a951e0cdd0ef05ffabc9d74bd4bbc878">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set b to get the value of b plus 1.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice the in-place operator "+=".</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">+=</span> <span class="dv">1</span></span>
@@ -516,7 +553,7 @@ In-place operators in Python
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=bayes_cars.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-5_79f5e0a79f9a1f38d84079cca371095c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the random number generator.</span></span>
@@ -556,7 +593,7 @@ In-place operators in Python
 </div>
 <p>The answer looks to be somewhere between 5 and 6%. The code clearly follows the description step by step, but it is also quite slow. If we can improve the code, we may be able to do our simulation with more cars, and get a more accurate answer.</p>
 <p>Let’s use arrays to store the states of all cars in the lot simultaneously:</p>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-7_811aa7644e3284a46c228f818a4e640f">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of cars; we made this number larger by a factor of 100</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">1_000_000</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -697,7 +734,7 @@ P(B \text{ GIVEN THAT } R)
 <p><span class="math display">\[
 P(B | R)
 \]</span></p>
-<p>We read this as “the probability that the car is broken given that the car is red”. Such a probability is known as a <em>conditional probability</em>. We discuss these in more detail in <a href="probability_theory_1a.html#sec-cond-uncond" class="quarto-xref"><span>Section&nbsp;8.13</span></a>.</p>
+<p>We read this as “the probability that the car is broken given that the car is red”. Such a probability is known as a <em>conditional probability</em>. We discuss these in more detail in <a href="probability_theory_1a.html#sec-cond-uncond" class="quarto-xref"><span>Section 8.13</span></a>.</p>
 <p>In our original problem, we ask what the chance is of a car being broken given that a mechanic approved it. As discussed under “Ratios of proportions”, it can be calculated with:</p>
 <p><span class="math display">\[
 \begin{align*}
@@ -731,7 +768,7 @@ P(B | A) = P(B \text{ and } A) / P(A)
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=bayes_covid.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-9_8bd3783578549b28868c1d7c8ae8acf5">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
@@ -844,7 +881,7 @@ P(T^-) = P(T^- | C^-) * P(C^-) + P(T^- | C^+) * P(C^+)
 <li>Select only the ones that had an accident last year.</li>
 <li>Among those, calculate what their average risk is of making an accident. This will indicate the appropriate insurance premium.</li>
 </ol>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-11_8d696444e137ca2ec7921d99aa789225">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
@@ -925,9 +962,13 @@ End of notebook.
 <p>…there are mice of two colors, black and brown. The black mice are of two genetic kinds, homozygotes (<em>BB</em>) and heterozygotes (<em>Bb</em>), and the brown mice are of one kind (<em>bb</em>). It is known from established genetic theory that the probabilities associated with offspring from various matings are as listed in <a href="#tbl-mice-genetics" class="quarto-xref">Table&nbsp;<span>31.1</span></a>.</p>
 </blockquote>
 <p>(See <span class="citation" data-cites="box1992bayesian">(<a href="references.html#ref-box1992bayesian" role="doc-biblioref">Box and Tiao 1992, 12–14</a>)</span>).</p>
-<div id="tbl-mice-genetics" class="anchored">
-<table class="table">
-<caption>Table&nbsp;31.1: Probabilities for Genetic Character of Mice Offspring</caption>
+<div id="tbl-mice-genetics" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mice-genetics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;31.1: Probabilities for Genetic Character of Mice Offspring
+</figcaption>
+<div aria-describedby="tbl-mice-genetics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -958,6 +999,8 @@ End of notebook.
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 <p>Suppose we have a “test” mouse which has been produced by a mating between two (<em>Bb</em>) mice and is black. What is the genetic kind of this mouse?</p>
 <p>To answer that, we look at the information in the last line of the table: it shows that the probabilities of a test mouse is of kind <em>BB</em> and <em>Bb</em> are precisely known, and are 1/3 and 2/3 respectively ((1/4)/(1/4 + 1/2) vs (1/2)/(1/4 + 1/2)). We call this our “prior” estimate — in other words, our estimate before seeing data.</p>
 <p>Suppose the test mouse is now mated with a brown mouse (of kind <em>bb</em>) and produces seven black offspring. Before, we thought that it was more likely for the parent to be of kind <em>Bb</em> than of kind <em>BB</em>. But if that were true, then we would have expected to have seen some brown offspring (the probability of mating <em>Bb</em> with <em>bb</em> resulting in brown offspring is given as 0.5). Therefore, we sense that it may now be more likely that the parent was of type <em>BB</em> instead. How do we quantify that?</p>
@@ -982,7 +1025,7 @@ TODO - explain continue in more detail?  Have we covered `np.all`?
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=box_tao_mice.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-13_4f276baf254f66a39a6ba6c003a453e9">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
@@ -1045,7 +1088,7 @@ TODO - explain continue in more detail?  Have we covered `np.all`?
 <p>To do this, we will use <span class="python">two-dimensional arrays</span>.</p>
 <div class="python">
 <p>So far, nearly all the arrays we have used are one-dimensional. A one-dimensional array is a sequence of values. Let us generate a one-dimensional array with <code>rnd.choice</code>, as we have many times in this book, and in this chapter.</p>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-15_990df570b435ee8f8cc5b5e8fac52eb9">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A one-dimensional array, with five elements.</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>one_d <span class="op">=</span> rnd.choice([<span class="dv">1</span>, <span class="dv">2</span>], size<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>one_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1054,7 +1097,7 @@ TODO - explain continue in more detail?  Have we covered `np.all`?
 </div>
 </div>
 <p>However, we can also generate arrays with more than one dimension. In particular we can generate arrays with two dimensions. An array with two dimensions has rows and columns, much like a Pandas data frame. However, unlike data frames, two-dimensional arrays have no row or column names. Here is a two-dimensional array we create with <code>rnd.choice</code>, by passing two values to the size argument:</p>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-16_f4f14242e4cc2d42df9eeb7588018929">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A two-dimensional array with five rows and three columns.</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>two_d <span class="op">=</span> rnd.choice([<span class="dv">1</span>, <span class="dv">2</span>], size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>two_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1067,7 +1110,7 @@ TODO - explain continue in more detail?  Have we covered `np.all`?
 </div>
 </div>
 <p>As usual, we can apply Boolean comparison operations to this array, to get a two-dimensional Boolean array:</p>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-17_b669e4085b272f41f781eff3559cee64">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>is_2 <span class="op">=</span> two_d <span class="op">==</span> <span class="dv">2</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>is_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1080,7 +1123,7 @@ TODO - explain continue in more detail?  Have we covered `np.all`?
 </div>
 <p>Numpy thinks of two-dimensional arrays as having two <em>axes</em>, where the first axis (axis at position 0) is the row axis, and the second axis (at position 1) is the column axis.</p>
 <p>Many Numpy functions have an <code>axis</code> argument that asks the function to apply its operation along a particular axis. For example, we might want to ask whether <code>all</code> the values in <em>each column</em> (across axis position 1) are equal to 2. We can do this using <code>np.all</code>:</p>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-18_b81ca21fdd53d4c309e942e74a62a7b1">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>all_equal_2 <span class="op">=</span> np.<span class="bu">all</span>(is_2, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>all_equal_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1089,7 +1132,7 @@ TODO - explain continue in more detail?  Have we covered `np.all`?
 </div>
 <p>Notice that we get one answer for each row (axis=0), where the answer is <code>np.all</code> across the columns, for that row.</p>
 </div>
-<div class="cell" data-layout-align="center" data-hash="bayes_simulation_cache/html/unnamed-chunk-23_c93ad941de54f6d79437c31c5a6d9dae">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">1_000_000</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># In n_trials trials, pair two Bb mice and generate a child.</span></span>
@@ -1173,12 +1216,16 @@ XXX TODO: How can we show how to derive this quantity using a filter tree type a
 <section id="estimating-the-posterior-distribution" class="level3" data-number="31.4.2">
 <h3 data-number="31.4.2" class="anchored" data-anchor-id="estimating-the-posterior-distribution"><span class="header-section-number">31.4.2</span> Estimating the Posterior Distribution</h3>
 <p>Next we estimate the posterior distribution. <a href="#fig-batch_posterior" class="quarto-xref">Figure&nbsp;<span>31.1</span></a> shows the prior distribution of batch yields, based on 100 previous batches.</p>
-<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="bayes_simulation_cache/html/fig-batch_posterior_6f29870f0ff1721b626791c2a444978f">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-batch_posterior" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="diagrams/batch_posterior.svg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;31.1: Posterior distribution of batch yields</figcaption>
+<div id="fig-batch_posterior" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-batch_posterior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="diagrams/batch_posterior.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-batch_posterior-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;31.1: Posterior distribution of batch yields
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1215,7 +1262,7 @@ XXX TODO: How can we show how to derive this quantity using a filter tree type a
 <p>Bayesian problems of updating estimates can be handled easily and straightforwardly with simulation, whether the data are discrete or continuous. The process and the results tend to be intuitive and transparent. Simulation works best with the original raw data rather than with abstractions from them via percentages and distributions. This can aid the understanding as well as facilitate computation.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-box1992bayesian" class="csl-entry" role="listitem">
 Box, George E. P., and George C. Tiao. 1992. <em>Bayesian Inference in Statistical Analysis</em>. New <span>Y</span>ork: Wiley &amp; Sons, Inc. <a href="https://www.google.co.uk/books/edition/Bayesian_Inference_in_Statistical_Analys/T8Askeyk1k4C">https://www.google.co.uk/books/edition/Bayesian_Inference_in_Statistical_Analys/T8Askeyk1k4C</a>.
 </div>
@@ -1242,12 +1289,12 @@ Wonnacott, Thomas H, and Ronald J Wonnacott. 1990. <em>Introductory Statistics</
 </div>
 </div>
 </section>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>We can use a similar procedure to illustrate an aspect of the Bayesian procedure that Box and Tiao emphasize, its sequentially-consistent character. First let us carry out the above procedure but observe only three black balls in a row. The program to be used is the same except for the insertion of “3” for “7” where “7” appears. We then estimate the probability for BB, which turns out to be about 1/5 instead of about 1/65. We then substitute for bucket A a bucket A’ with appropriate numbers of black Bb’s and black BB’s, to represent the “updated” prior probability. We may then continue by substituting “4” for “3” above (to attain a total of seven observed black balls), and find that the probability is about what it was when we observed 7 black balls in a single sample (1/65). This shows that the Bayesian procedure accumulates information without “leakage” and with consistency.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1285,18 +1332,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1328,11 +1364,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1342,8 +1417,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1355,7 +1439,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1399,6 +1606,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1424,6 +1632,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1485,17 +1719,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./how_big_sample.html" class="pagination-link">
+      <a href="./how_big_sample.html" class="pagination-link" aria-label="How Large a Sample?">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">How Large a Sample?</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./exercise_solutions.html" class="pagination-link">
+      <a href="./exercise_solutions.html" class="pagination-link" aria-label="Exercise Solutions">
         <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

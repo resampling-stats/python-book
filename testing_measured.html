@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.51">
+<meta name="generator" content="quarto-1.6.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resampling statistics - 24&nbsp; The Statistics of Hypothesis-Testing With Measured Data</title>
+<title>24&nbsp; The Statistics of Hypothesis-Testing With Measured Data – Resampling statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -100,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -109,22 +116,49 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     $("table").addClass('lightable-paper lightable-striped lightable-hover')
   });
 </script>
-
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="font-awesome.min.css">
@@ -136,12 +170,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./testing_measured.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./testing_measured.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing With Measured Data</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -151,7 +185,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Resampling statistics</a> 
@@ -395,7 +429,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -438,14 +472,16 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <!---
 Discussion here of dispersion - have we discussed this before?
 
 Methods of estimating dispersion.
 -->
-<p><a href="testing_counts_1.html" class="quarto-xref"><span>Chapter&nbsp;21</span></a> and <a href="point_estimation.html" class="quarto-xref"><span>Chapter&nbsp;19</span></a> discussed testing a hypothesis with data that either arrive in dichotomized (yes-no) form, or come as data in situations where it is convenient to dichotomize. We next consider hypothesis testing using measured data. Conventional statistical practice employs such devices as the “t-test” and “analysis of variance.” In contrast to those complex devices, the resampling method does not differ greatly from what has been discussed in previous chapters.</p>
+<p><a href="testing_counts_1.html" class="quarto-xref"><span>Chapter 21</span></a> and <a href="point_estimation.html" class="quarto-xref"><span>Chapter 19</span></a> discussed testing a hypothesis with data that either arrive in dichotomized (yes-no) form, or come as data in situations where it is convenient to dichotomize. We next consider hypothesis testing using measured data. Conventional statistical practice employs such devices as the “t-test” and “analysis of variance.” In contrast to those complex devices, the resampling method does not differ greatly from what has been discussed in previous chapters.</p>
 <section id="sec-pig-rations-measured" class="level3" data-number="24.0.1">
 <h3 data-number="24.0.1" class="anchored" data-anchor-id="sec-pig-rations-measured"><span class="header-section-number">24.0.1</span> Example: The Pig Rations Still Once Again, Using Measured Data</h3>
 <p><strong>Testing for the difference between means of two equal-sized samples of measured-data observations</strong></p>
@@ -453,11 +489,15 @@ Methods of estimating dispersion.
 <p>The term “lose information” can be understood intuitively. Consider two sets of three sacks of corn. Set A includes sacks containing, respectively, one pound, two pounds, and three pounds. Set B includes sacks of one pound, two pounds, and a hundred pounds. If we <em>rank</em> the sacks by weight, the two sets can no longer be distinguished. The one-pound and two-pound sacks have ranks one and two in both cases, and their relative places in their sets are the same. But if we know <em>not only</em> that the one-pound sack is the smallest of its set and the three-pound or hundred-pound sack is the largest, but <em>also</em> that the largest sack is three pounds (or a hundred pounds), we have more information about a set than if we only know the ranks of its sacks.</p>
 <p>Rank data are also known as “ordinal” data, whereas data measured in (say) pounds are known as “cardinal” data. Even though converting from cardinal (measured) to ordinal (ranked) data loses information, the conversion may increase convenience, and may therefore be worth doing in some cases.</p>
 <p><a href="#tbl-pig-ab-rations" class="quarto-xref">Table&nbsp;<span>24.1</span></a> has the measured data for pig rations A and B.</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-1_ba2d9bfb535af13d79c93684508194e8">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-pig-ab-rations" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;24.1: Measured data for pig rations A and B </caption>
+<div id="tbl-pig-ab-rations" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pig-ab-rations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;24.1: Measured data for pig rations A and B
+</figcaption>
+<div aria-describedby="tbl-pig-ab-rations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">ration</th>
@@ -564,34 +604,44 @@ Methods of estimating dispersion.
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
 </div>
 <p>We begin a measured-data procedure by noting that if the two pig foods are the same, then each of the observed weight gains came from the <em>same benchmark universe</em>. This is the basic tactic in our statistical strategy. That is, if the two foods came from the same universe, <em>our best guess about the composition of that universe is that it includes weight gains just like the twenty-four we have observed</em> , and in the same proportions, because that is all the information that we have about the universe; this is the bootstrap method. Since ours is (by definition) a sample from an infinite (or at least, a very large) universe of possible weight gains, we assume that there are <em>many</em> weight gains in the universe just like the ones we have observed, in the same proportion as we have observed them. For example, we assume that 2/24 of the universe is composed of 34-pound weight gains, as seen in <a href="#fig-rations-hist" class="quarto-xref">Figure&nbsp;<span>24.1</span></a>:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/fig-rations-hist_3b99e62ad04521dff97ff1c01d49d989">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-rations-hist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="testing_measured_files/figure-html/fig-rations-hist-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;24.1: Histogram of weight gain</figcaption>
+<div id="fig-rations-hist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rations-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="testing_measured_files/figure-html/fig-rations-hist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rations-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24.1: Histogram of weight gain
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>We recognize, of course, that weight gains other than the exact ones we observed certainly would occur in repeated experiments. And if we thought it reasonable to do so, we could assume that the “distribution” of the weight gains would follow a regular “smooth” shape such as <a href="#fig-rations-ideal" class="quarto-xref">Figure&nbsp;<span>24.2</span></a>. But deciding just how to draw <a href="#fig-rations-ideal" class="quarto-xref">Figure&nbsp;<span>24.2</span></a> from the data in <a href="#fig-rations-hist" class="quarto-xref">Figure&nbsp;<span>24.1</span></a> requires that we make arbitrary assumptions about unknown conditions. And if we were to draw <a href="#fig-rations-ideal" class="quarto-xref">Figure&nbsp;<span>24.2</span></a> in a form that would be sufficiently regular for conventional mathematical analysis, we might have to make some <em>very strong</em> assumptions going far beyond the observed data.</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/fig-rations-ideal_f17aaec0b77e6e70cf2d5b118be90ae7">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-rations-ideal" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="testing_measured_files/figure-html/fig-rations-ideal-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;24.2: Idealized distribution for weight gain</figcaption>
+<div id="fig-rations-ideal" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rations-ideal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="testing_measured_files/figure-html/fig-rations-ideal-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rations-ideal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24.2: Idealized distribution for weight gain
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Drawing a smooth curve such as <a href="#fig-rations-ideal" class="quarto-xref">Figure&nbsp;<span>24.2</span></a> from the raw data in <a href="#fig-rations-hist" class="quarto-xref">Figure&nbsp;<span>24.1</span></a> might be satisfactory — if done with wisdom and good judgment. But there is no necessity to draw such a smooth curve, in this case or in most cases. We can proceed by assuming simply that the benchmark universe — the universe to which we shall compare our samples, conventionally called the “null” or “hypothetical” universe — is composed only of elements similar to the observations we have in hand. We thereby lose no efficiency and avoid making unsound assumptions.</p>
-<p>To carry out our procedure in practice: 1) Write down each of the twenty-four weight gains on a blank index card. We then have one card each for 31, 34, 29, 26, and so on. 2) Shuffle the twenty-four cards thoroughly, and pick one card. 3) Record the weight gain, and replace the card. (Recall that we are treating the weight gains as if they come from an infinite universe — that is, as if the probability of selecting any amount is the same no matter which others are selected randomly. Another way to say this is to state that each selection is independent of each other selection. If we did not replace the card before selecting the next weight gain, the selections would no longer be independent. See <a href="probability_theory_2_compound.html" class="quarto-xref"><span>Chapter&nbsp;11</span></a> for further discussion of this issue.) 4) Repeat this process until you have made two sets of 12 observations. 5) Call the first hand “food A” and the second hand “food B.” Determine the average weight gain for the two hands, and record it as in <a href="#tbl-eg-pigs-measured" class="quarto-xref">Table&nbsp;<span>24.2</span></a>. Repeat this procedure many times.</p>
+<p>To carry out our procedure in practice: 1) Write down each of the twenty-four weight gains on a blank index card. We then have one card each for 31, 34, 29, 26, and so on. 2) Shuffle the twenty-four cards thoroughly, and pick one card. 3) Record the weight gain, and replace the card. (Recall that we are treating the weight gains as if they come from an infinite universe — that is, as if the probability of selecting any amount is the same no matter which others are selected randomly. Another way to say this is to state that each selection is independent of each other selection. If we did not replace the card before selecting the next weight gain, the selections would no longer be independent. See <a href="probability_theory_2_compound.html" class="quarto-xref"><span>Chapter 11</span></a> for further discussion of this issue.) 4) Repeat this process until you have made two sets of 12 observations. 5) Call the first hand “food A” and the second hand “food B.” Determine the average weight gain for the two hands, and record it as in <a href="#tbl-eg-pigs-measured" class="quarto-xref">Table&nbsp;<span>24.2</span></a>. Repeat this procedure many times.</p>
 <p>In operational steps:</p>
 <ul>
 <li><strong>Step 1.</strong> Write down each observed weight gain on a card, e.g.&nbsp;31, 34, 29 …</li>
@@ -604,10 +654,15 @@ Methods of estimating dispersion.
 <li><strong>Step 8.</strong> Repeat this procedure perhaps fifty times, and calculate the proportion “more.” This estimates the probability sought.</li>
 </ul>
 <p>In none of the first ten simulated trials did the difference in the means of the random hands exceed the observed difference (3.16 pounds, in the top line in the table) between foods A and B. (The difference between group <em>totals</em> tells the same story and is faster, requiring no division calculations.)</p>
-<p>In the old days before a computer was easily available, I (JLS) would quit making trials at such a point, confident that a difference in means as great as observed is not likely to happen by chance. (Using the convenient “multiplication rule” described in <a href="probability_theory_1b.html" class="quarto-xref"><span>Chapter&nbsp;9</span></a>, we can estimate the probability of such an occurrence happening by chance in 10 successive trials as <span class="math inline">\(\frac{1}{2} * \frac{1}{2} * \frac{1}{2} ... = \frac{1}{2}^{10} = 1/1024 \approx .001\)</span> = .1 percent, a small chance indeed.) Nevertheless, let us press on to do 50 trials.</p>
-<div id="tbl-eg-pigs-measured" class="anchored">
-<table class="table">
-<caption>Table&nbsp;24.2: Results of fifty random samples for measured pig rations</caption>
+<p>In the old days before a computer was easily available, I (JLS) would quit making trials at such a point, confident that a difference in means as great as observed is not likely to happen by chance. (Using the convenient “multiplication rule” described in <a href="probability_theory_1b.html" class="quarto-xref"><span>Chapter 9</span></a>, we can estimate the probability of such an occurrence happening by chance in 10 successive trials as <span class="math inline">\(\frac{1}{2} * \frac{1}{2} * \frac{1}{2} ... = \frac{1}{2}^{10} = 1/1024
+\approx .001\)</span> = .1 percent, a small chance indeed.) Nevertheless, let us press on to do 50 trials.</p>
+<div id="tbl-eg-pigs-measured" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-eg-pigs-measured-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;24.2: Results of fifty random samples for measured pig rations
+</figcaption>
+<div aria-describedby="tbl-eg-pigs-measured-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 16%">
 <col style="width: 18%">
@@ -1041,7 +1096,9 @@ Methods of estimating dispersion.
 </tbody>
 </table>
 </div>
-<p><a href="#tbl-eg-pigs-measured" class="quarto-xref">Table&nbsp;<span>24.2</span></a> shows fifty trials of which only one (the thirty-ninth) is as “far out” as the observed samples. These data give us an estimate of the probability that, if the two foods come from the same universe, a difference this great or greater would occur just by chance. (Compare this 2 percent estimate with the probability of roughly 1 percent estimated with the conventional <em>t</em> test — a “significance level” of 1 percent.) On the average, the test described in this section yields a significance level as high as such mathematical-probability tests as the <em>t</em> test — that is, it is just as efficient — though the tests described in the examples of <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section&nbsp;21.2.7</span></a> and <a href="testing_counts_2.html#sec-pig-pairs" class="quarto-xref"><span>Section&nbsp;23.2.1</span></a> are likely to be less efficient because they convert measured data to ranked or classified data. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</figure>
+</div>
+<p><a href="#tbl-eg-pigs-measured" class="quarto-xref">Table&nbsp;<span>24.2</span></a> shows fifty trials of which only one (the thirty-ninth) is as “far out” as the observed samples. These data give us an estimate of the probability that, if the two foods come from the same universe, a difference this great or greater would occur just by chance. (Compare this 2 percent estimate with the probability of roughly 1 percent estimated with the conventional <em>t</em> test — a “significance level” of 1 percent.) On the average, the test described in this section yields a significance level as high as such mathematical-probability tests as the <em>t</em> test — that is, it is just as efficient — though the tests described in the examples of <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.7</span></a> and <a href="testing_counts_2.html#sec-pig-pairs" class="quarto-xref"><span>Section 23.2.1</span></a> are likely to be less efficient because they convert measured data to ranked or classified data. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>It is <em>not</em> appropriate to say that these data give us an estimate of the probability that the foods “do not come” from the same universe. This is because we can <em>never</em> state a probability that a sample came from a given universe unless the alternatives are fully specified in advance.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>This example also illustrates how the <em>dispersion within samples</em> affects the difficulty of finding out whether the samples differ from each other. For example, the average weight gain for food A was 32 pounds, versus 29 pounds for food B. If <em>all</em> the food A-fed pigs had gained weight within a range of say 29.9 and 30.1 pounds, and if all the food B-fed pigs had gained weight within a range of 28.9 and 29.1 pounds — that is, if the highest weight gain in food B had been lower than the lowest weight gain in food A — then there would be no question that food A is better, and even fewer observations would have made this statistically conclusive. Variation (dispersion) is thus of great importance in statistics and in the social sciences. The larger the dispersion among the observations <em>within</em> the samples, the larger the <em>sample size</em> necessary to make a conclusive comparison between two groups or reliable estimates of summarization statistics. (The dispersion might be measured by the mean absolute deviation (the average absolute difference between the mean and the individual observations, treating both plus and minus differences as positive), the variance (the average <em>squared</em> difference between the mean and the observations), the standard deviation (the square root of the variance), the range (the difference between the smallest and largest observations), or some other device.)</p>
 <!---
@@ -1062,14 +1119,14 @@ Discussion of bootstrap and median?
 </div>
 
 <p>First we need to get the measured data from the data file using <span class="python">the Pandas library</span>:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-2_071f9ae9fedd7dfe0ef5b99431057cc8">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Numpy library for arrays.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Pandas library for loading and selecting data.</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We load the file containing the data:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-3_2534a274e07e7c7789bd570977709f3a">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data file containing pig ration data.</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>rations_df <span class="op">=</span> pd.read_csv(<span class="st">'data/pig_rations.csv'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first 5 rows.</span></span>
@@ -1084,7 +1141,7 @@ Discussion of bootstrap and median?
 </div>
 </div>
 <p>Let us first select the rows containing data for ration B (we will get the rows for ration A afterwards):</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-5_5397ad462c038c5b267e180f7f0c5492">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select ration B rows.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ration_b_df <span class="op">=</span> rations_df[rations_df[<span class="st">'ration'</span>] <span class="op">==</span> <span class="st">'B'</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  Show the first five rows.</span></span>
@@ -1099,7 +1156,7 @@ Discussion of bootstrap and median?
 </div>
 </div>
 <p>Finally for ration B, convert the weights to an array for use in the simulation.</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-7_9db6e46ebb5943325e248490d509cfe3">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>b_weights <span class="op">=</span> np.array(ration_b_df[<span class="st">'weight_gain'</span>])</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result.</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>b_weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1108,7 +1165,7 @@ Discussion of bootstrap and median?
 </div>
 </div>
 <p>Select ration A rows, and get the weights as an array:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-9_c2151a7a1315e01a491126b14fe03e8b">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ration_a_df <span class="op">=</span> rations_df[rations_df[<span class="st">'ration'</span>] <span class="op">==</span> <span class="st">'A'</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>a_weights <span class="op">=</span> np.array(ration_a_df[<span class="st">'weight_gain'</span>])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result.</span></span>
@@ -1117,8 +1174,8 @@ Discussion of bootstrap and median?
 <pre><code>array([31, 34, 29, 26, 32, 35, 38, 34, 31, 29, 32, 31])</code></pre>
 </div>
 </div>
-<p>We will use the <code>a_weights</code> and <code>b_weights</code> arrays for our simulation. We are going to shuffle these weights, so we first <em>concatenate</em> the two arrays (see <a href="probability_theory_3.html#sec-concatenate" class="quarto-xref"><span>Section&nbsp;12.16.1</span></a>) so we can shuffle them:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-11_13ecfa6978d30556e4c6c6bdb6859b40">
+<p>We will use the <code>a_weights</code> and <code>b_weights</code> arrays for our simulation. We are going to shuffle these weights, so we first <em>concatenate</em> the two arrays (see <a href="probability_theory_3.html#sec-concatenate" class="quarto-xref"><span>Section 12.16.1</span></a>) so we can shuffle them:</p>
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> np.concatenate([a_weights, b_weights])</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>both</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1127,7 +1184,7 @@ Discussion of bootstrap and median?
 </div>
 </div>
 <p>Now do the simulation:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-13_d1607a2b657a86f6d7cd25afb6449848">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the random number generator</span></span>
@@ -1162,13 +1219,13 @@ Discussion of bootstrap and median?
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_measured_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="testing_measured_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>From this histogram we see that a very small proportion of the trials produced a difference between groups as large as that observed (or larger). Python will calculate this for us with the following code:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-15_fe4763b5bd8cd58d23b4a5f84cdbc5f4">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine how many of the trials produced a difference between resamples.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>count_more <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&gt;=</span> <span class="dv">38</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Likewise for a difference of -38.</span></span>
@@ -1192,12 +1249,16 @@ End of notebook
 <section id="sec-liquor-public-measured" class="level3" data-number="24.0.2">
 <h3 data-number="24.0.2" class="anchored" data-anchor-id="sec-liquor-public-measured"><span class="header-section-number">24.0.2</span> Example: Is There a Difference in Liquor Prices Between State-Run and Privately-Run Systems?</h3>
 <p>This is an example of <strong>testing for differences between means of unequal-sized samples of measured data</strong>.</p>
-<p>In the 1960s I (JLS) studied the price of liquor in the sixteen “monopoly” states (where the state government owns the retail liquor stores) compared to the twenty-six states in which retail liquor stores are privately owned. (Some states were omitted for technical reasons. And it is interesting to note that the situation and the price pattern has changed radically since then.) These data were introduced in the context of a problem in probability in <a href="probability_theory_3.html#sec-public-liquor" class="quarto-xref"><span>Section&nbsp;12.16</span></a>.</p>
-<p><a href="#tbl-whiskey-prices2" class="quarto-xref">Table&nbsp;<span>24.3</span></a> is the same as the matching table in <a href="probability_theory_3.html#sec-public-liquor" class="quarto-xref"><span>Section&nbsp;12.16</span></a>. They show the representative 1961 prices of a fifth of Seagram 7 Crown whiskey in the two sets of states:<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-17_b8c97cf2f3f5a27785c95d1aa6fd7efc">
-<div id="tbl-whiskey-prices2" class="anchored">
-<table class="table table-sm table-striped small">
-<caption>Table&nbsp;24.3: Whiskey prices by state category</caption>
+<p>In the 1960s I (JLS) studied the price of liquor in the sixteen “monopoly” states (where the state government owns the retail liquor stores) compared to the twenty-six states in which retail liquor stores are privately owned. (Some states were omitted for technical reasons. And it is interesting to note that the situation and the price pattern has changed radically since then.) These data were introduced in the context of a problem in probability in <a href="probability_theory_3.html#sec-public-liquor" class="quarto-xref"><span>Section 12.16</span></a>.</p>
+<p><a href="#tbl-whiskey-prices2" class="quarto-xref">Table&nbsp;<span>24.3</span></a> is the same as the matching table in <a href="probability_theory_3.html#sec-public-liquor" class="quarto-xref"><span>Section 12.16</span></a>. They show the representative 1961 prices of a fifth of Seagram 7 Crown whiskey in the two sets of states:<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div class="cell" data-layout-align="center">
+<div id="tbl-whiskey-prices2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-whiskey-prices2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;24.3: Whiskey prices by state category
+</figcaption>
+<div aria-describedby="tbl-whiskey-prices2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 16%">
 <col style="width: 16%">
@@ -1359,19 +1420,24 @@ End of notebook
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 </div>
 <p>The <em>economic</em> question that underlay the investigation — having both theoretical and policy ramifications — is as follows: Does state ownership affect prices? The <em>empirical</em> question is whether the prices in the two sets of states were systematically different. In <em>statistical</em> terms, we wish to test the hypothesis that there was a difference between the groups of states related to their mode of liquor distribution, or whether the observed $.49 differential in means might well have occurred by happenstance. In other words, we want to know whether the two sub-groups of states differed systematically in their liquor prices, or whether the observed pattern could well have been produced by chance variability.</p>
 <p>The first step is to examine the two sets of data graphically to see whether there was such a clear-cut difference between them — of the order of Snow’s data on cholera, or the Japanese Navy data on beri-beri — that no test was necessary. The separate displays, and then the two combined together, are shown in <a href="#fig-whiskey-hist2" class="quarto-xref">Figure&nbsp;<span>24.3</span></a>; the answer is not clear-cut and hence a formal test is necessary.</p>
-
 <!---
 Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 -->
-<div class="cell" data-layout-align="center" data-opts.label="svg_fig" data-hash="testing_measured_cache/html/fig-whiskey-hist2_6efb81fcfe53590777c795a1e3b755de">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-whiskey-hist2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="testing_measured_files/figure-html/fig-whiskey-hist2-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;24.3: Whiskey prices by state category</figcaption>
+<div id="fig-whiskey-hist2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-whiskey-hist2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="testing_measured_files/figure-html/fig-whiskey-hist2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-whiskey-hist2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;24.3: Whiskey prices by state category
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1379,7 +1445,7 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 <p>At first I used a resampling permutation test as follows: Assuming that the entire universe of possible prices consists of the set of events that were observed, because that is all the information available about the universe, I wrote each of the forty-two observed state prices on a separate card. The shuffled deck simulated a situation in which each state has an equal chance for each price.</p>
 <p>On the “null hypothesis” that the two groups’ prices do <em>not</em> reflect different price-setting mechanisms, but rather differ only by chance, I then examined how often that simulated universe stochastically produces groups with results as different as observed in 1961. I repeatedly dealt groups of 16 and 26 cards, without replacing the cards, to simulate hypothetical monopoly-state and private-state samples, each time calculating the difference in mean prices.</p>
 <p>The probability that the benchmark null-hypothesis universe would produce a difference between groups as large or larger than observed in 1961 is estimated by how frequently the mean of the group of randomly-chosen sixteen prices from the simulated state-ownership universe is less than (or equal to) the mean of the actual sixteen state-ownership prices. If the simulated difference between the randomly-chosen groups was frequently equal to or greater than observed in 1961, one would not conclude that the observed difference was due to the type of retailing system because it could well have been due to chance variation.</p>
-<p>Here is that procedure as <span class="python">a Python</span> notebook. Compare to the very similar bootstrap procedure in <a href="probability_theory_3.html#sec-public-liquor" class="quarto-xref"><span>Section&nbsp;12.16</span></a>.</p>
+<p>Here is that procedure as <span class="python">a Python</span> notebook. Compare to the very similar bootstrap procedure in <a href="probability_theory_3.html#sec-public-liquor" class="quarto-xref"><span>Section 12.16</span></a>.</p>
 <div class="notebook" name="liquor_permutation" title="Permutation test of public and private liquor prices">
 <p>Start of <code>liquor_permutation</code> notebook</p>
 <div class="nb-links">
@@ -1387,7 +1453,7 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=liquor_permutation.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-18_f90002b3cf61746ea6f8086b3072e090">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
@@ -1395,7 +1461,7 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the plotting library</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-19_ec661f093470ff6ffa611b1b3462b508">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data from a data file.</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>prices_df <span class="op">=</span> pd.read_csv(<span class="st">'data/liquor_prices.csv'</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Show this first five rows.</span></span>
@@ -1410,7 +1476,7 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 </div>
 </div>
 <p>Take all prices from the loaded data file, and convert into an arrays for each category.</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-21_44c51007e1ba630a65de412fe6463ecd">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rows for private prices.</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>priv_df <span class="op">=</span> prices_df[prices_df[<span class="st">'state_type'</span>] <span class="op">==</span> <span class="st">'private'</span>]</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert corresponding prices to array.</span></span>
@@ -1423,7 +1489,7 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
        5.2 , 5.1 , 4.8 , 4.29])</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-22_e1448c9595282ec26c0eae6020f2d820">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rows for government prices.</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>govt_df <span class="op">=</span> prices_df[prices_df[<span class="st">'state_type'</span>] <span class="op">==</span> <span class="st">'government'</span>]</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert corresponding prices to array.</span></span>
@@ -1436,7 +1502,7 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 </div>
 </div>
 <p>Calculate actual difference:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-25_44c9ebf91237ae67810895fef2165272">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>actual_diff <span class="op">=</span> np.mean(priv) <span class="op">-</span> np.mean(govt)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>actual_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1444,7 +1510,7 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 </div>
 </div>
 <p>Concatenate the private and government values into one array:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-27_06eebbd51f3807b9e627dff9c44e4e98">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the two arrays of data into one array.</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> np.concatenate([priv, govt])</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>both </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1456,7 +1522,7 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 </div>
 </div>
 <p>Do simulation:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-29_37ce380025ef856885a021f80635b1ad">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fake differences for each trial.</span></span>
@@ -1504,7 +1570,7 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_measured_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="testing_measured_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1515,11 +1581,11 @@ Refer back to @sec-inference-ideas tables 11.3 and 11.4.
 End of liquor_permutation notebook.
 -->
 <p>The result — about zero percent of the simulations generated a value as large or larger than the actual difference — implies that there is a very small probability that two groups with mean prices as different as were observed would happen by chance if drawn from the universe of 42 observed prices. So we “reject the null hypothesis” and instead find persuasive the proposition that the type of liquor distribution system influences the prices that consumers pay.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<p>The logical framework of this resampling version of the permutation test differs greatly from the formulaic version, which relies on some sophisticated mathematics. The formula-method alternative would be the <a href="https://en.wikipedia.org/wiki/Student's_t-test">Student’s t-test</a>, in which the user simply plugs into an unintuitive formula and reads the result from a table.</p>
+<p>The logical framework of this resampling version of the permutation test differs greatly from the formulaic version, which relies on some sophisticated mathematics. The formula-method alternative would be the <a href="https://en.wikipedia.org/wiki/Student%27s_t-test">Student’s t-test</a>, in which the user simply plugs into an unintuitive formula and reads the result from a table.</p>
 <!---
 Discussion of t-test?  Have we introduced the t-test?
 -->
-<p>A Python program to handle the liquor problem with an infinite-universe bootstrap distribution simply substitutes the random sampling command <code>rnd.choice</code> for the commands to do shuffling and splitting above. The results of the bootstrap test are indistinguishable from those in the permutation version of the program above — see: <a href="probability_theory_3.html#sec-public-liquor" class="quarto-xref"><span>Section&nbsp;12.16</span></a>.</p>
+<p>A Python program to handle the liquor problem with an infinite-universe bootstrap distribution simply substitutes the random sampling command <code>rnd.choice</code> for the commands to do shuffling and splitting above. The results of the bootstrap test are indistinguishable from those in the permutation version of the program above — see: <a href="probability_theory_3.html#sec-public-liquor" class="quarto-xref"><span>Section 12.16</span></a>.</p>
 <p>Still another difficult question is whether <em>any</em> hypothesis test is appropriate, because the states were not randomly selected for inclusion in one group or another, and the results could be caused by factors other than the liquor system; this applies to both the above methods. The states constitute the entire universe in which we are interested, rather than being a sample taken from some larger universe as with a biological experiment or a small survey sample. But this objection pertains to a conventional test as well as to resampling methods. And a similar question arises throughout medical and social science — to the two water suppliers between which John Snow detected vast differences in cholera rates, to rates of lung cancer in human smokers, to analyses of changes in speeding laws, and so on.</p>
 <p>The appropriate question is not whether the units were assigned randomly, however, but whether there is strong reason to believe that the results are not meaningful because they are the result of a <em>particular</em> “hidden” variable.</p>
 <p>These debates about fundamentals illustrate the unsettled state of statistical thinking about basic issues. Other disciplines also have their controversies about fundamentals. But in statistics these issues arise as early as the introductory course, because all but the most contrived problems are shot through with these questions. Instructors and researchers usually gloss over these matters, as Gigerenzer et al., show ( <em>The Empire of Chance</em> ). Again, because with resampling one does not become immersed in the difficult mathematical techniques that underlie conventional methods, one is quicker to see these difficult questions, which apply equally to conventional methods and resampling.</p>
@@ -1530,11 +1596,15 @@ Discussion of fogginess that arises from uncertainty about maths.
 <section id="example-is-there-a-difference-between-treatments-to-prevent-low-birthweights" class="level3" data-number="24.0.3">
 <h3 data-number="24.0.3" class="anchored" data-anchor-id="example-is-there-a-difference-between-treatments-to-prevent-low-birthweights"><span class="header-section-number">24.0.3</span> Example: Is there a difference between treatments to prevent low birthweights?</h3>
 <p>Next we consider the use of resampling with <em>measured</em> data to test the hypothesis that drug A prevents low birthweights <span class="citation" data-cites="rosner1995biostatistics">(<a href="references.html#ref-rosner1995biostatistics" role="doc-biblioref">Rosner 1995, 291</a>)</span>. The data for the treatment and control groups are shown in <a href="#tbl-birthweights" class="quarto-xref">Table&nbsp;<span>24.4</span></a>.</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-31_8244129c6b92fac4f36db008e7685b98">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-birthweights" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;24.4: Birthweights in clinical trial for drug to prevent low birthweights </caption>
+<div id="tbl-birthweights" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-birthweights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;24.4: Birthweights in clinical trial for drug to prevent low birthweights
+</figcaption>
+<div aria-describedby="tbl-birthweights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Treatment</th>
@@ -1665,16 +1735,22 @@ Discussion of fogginess that arises from uncertainty about maths.
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
 </div>
 <p>The treatment group averaged .82 pounds more than the control group (<a href="#tbl-birth-means" class="quarto-xref">Table&nbsp;<span>24.5</span></a>):</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-32_e3f42be6938a57e4b373ef268d23042a">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-birth-means" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;24.5: Mean birthweight per group</caption>
+<div id="tbl-birth-means" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-birth-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;24.5: Mean birthweight per group
+</figcaption>
+<div aria-describedby="tbl-birth-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -1693,6 +1769,8 @@ Discussion of fogginess that arises from uncertainty about maths.
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
@@ -1710,7 +1788,7 @@ Discussion of fogginess that arises from uncertainty about maths.
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=birthweight_bootstap.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-33_11d25f64676245c682d135f0c97d0fcf">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1737,7 +1815,7 @@ Discussion of fogginess that arises from uncertainty about maths.
 </div>
 </div>
 <p>Proceed with the simulation:</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-34_442be08807e54a4e6b5954705b183d48">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate treatment and control arrays.</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> np.concatenate([treat, control])</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1776,7 +1854,7 @@ Discussion of fogginess that arises from uncertainty about maths.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_measured_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="testing_measured_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1811,7 +1889,7 @@ End of notebook
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=mouse_bootstrap.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-37_a458b9ce40fd8d6341e1113f15a6963f">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1865,7 +1943,7 @@ End of notebook
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_measured_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="testing_measured_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1896,7 +1974,7 @@ End of notebook
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=mouse_permutation.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-39_5c699e9748df0da9681ee8948bdac632">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1952,7 +2030,7 @@ End of notebook
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_measured_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="testing_measured_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1969,14 +2047,18 @@ End of notebook
 <section id="example-differences-among-four-pig-rations" class="level3" data-number="24.1.1">
 <h3 data-number="24.1.1" class="anchored" data-anchor-id="example-differences-among-four-pig-rations"><span class="header-section-number">24.1.1</span> Example: differences among four pig rations</h3>
 <p><strong>Test for Differences Among Means of More Than Two Samples of Measured Data</strong>.</p>
-<p>In the examples of <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section&nbsp;21.2.0.1</span></a> and <a href="testing_counts_1.html#sec-female-calves" class="quarto-xref"><span>Section&nbsp;21.2.1</span></a> we investigated whether or not the results shown by a <em>single</em> sample are sufficiently different from a null (benchmark) hypothesis so that the sample is unlikely to have come from the null-hypothesis benchmark universe. In the examples of <a href="testing_counts_1.html#sec-cancer-cures" class="quarto-xref"><span>Section&nbsp;21.2.4</span></a>, <a href="testing_counts_2.html#sec-pig-pairs" class="quarto-xref"><span>Section&nbsp;23.2.1</span></a>, and <a href="#sec-pig-rations-measured" class="quarto-xref"><span>Section&nbsp;24.0.1</span></a> we then investigated whether or not the results shown by <em>two</em> samples suggest that both had come from the <em>same</em> universe, a universe that was assumed to be the composite of the two samples. Now, as in <a href="testing_counts_2.html#sec-fruitfly-four" class="quarto-xref"><span>Section&nbsp;23.1.1</span></a>, we investigate whether or not <em>several</em> samples come from the same universe, except that now we work with measured data rather than with counted data.</p>
+<p>In the examples of <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.0.1</span></a> and <a href="testing_counts_1.html#sec-female-calves" class="quarto-xref"><span>Section 21.2.1</span></a> we investigated whether or not the results shown by a <em>single</em> sample are sufficiently different from a null (benchmark) hypothesis so that the sample is unlikely to have come from the null-hypothesis benchmark universe. In the examples of <a href="testing_counts_1.html#sec-cancer-cures" class="quarto-xref"><span>Section 21.2.4</span></a>, <a href="testing_counts_2.html#sec-pig-pairs" class="quarto-xref"><span>Section 23.2.1</span></a>, and <a href="#sec-pig-rations-measured" class="quarto-xref"><span>Section 24.0.1</span></a> we then investigated whether or not the results shown by <em>two</em> samples suggest that both had come from the <em>same</em> universe, a universe that was assumed to be the composite of the two samples. Now, as in <a href="testing_counts_2.html#sec-fruitfly-four" class="quarto-xref"><span>Section 23.1.1</span></a>, we investigate whether or not <em>several</em> samples come from the same universe, except that now we work with measured data rather than with counted data.</p>
 <p>If one experiments with each of 100 different pig foods on twelve pigs, some of the foods will show much better results than will others <em>just by chance</em>, just as one family in sixteen is likely to have the very “high” number of 4 daughters in its first four children. Therefore, it is wrong reasoning to try out the 100 pig foods, select the food that shows the best results, and then compare it statistically with the average (sum) of all the other foods (or worse, with the poorest food). With such a procedure and enough samples, you will surely find one (or more) that seems very atypical statistically. A bridge hand with 12 or 13 spades seems very atypical, too, but if you deal enough bridge hands you will sooner or later get one with 12 or 13 spades — as a purely chance phenomenon, dealt randomly from a standard deck. Therefore we need a test that prevents our falling into such traps. Such a test usually operates by taking into account the differences among <em>all</em> the foods that were tried.</p>
-<p>The method of <a href="#sec-pig-rations-measured" class="quarto-xref"><span>Section&nbsp;24.0.1</span></a> can be extended to handle this problem. Assume that <em>four</em> foods were each tested on twelve pigs. The weight gains in pounds for the pigs fed on foods A and B were as before. <a href="#tbl-pig-cd-rations" class="quarto-xref">Table&nbsp;<span>24.6</span></a> has the weight gains for foods C and D. (Compare these with the weight gains for foods A and B in <a href="#tbl-pig-ab-rations" class="quarto-xref">Table&nbsp;<span>24.1</span></a>).</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-41_ad662f9051419c6c08a3609dea0c4d0c">
+<p>The method of <a href="#sec-pig-rations-measured" class="quarto-xref"><span>Section 24.0.1</span></a> can be extended to handle this problem. Assume that <em>four</em> foods were each tested on twelve pigs. The weight gains in pounds for the pigs fed on foods A and B were as before. <a href="#tbl-pig-cd-rations" class="quarto-xref">Table&nbsp;<span>24.6</span></a> has the weight gains for foods C and D. (Compare these with the weight gains for foods A and B in <a href="#tbl-pig-ab-rations" class="quarto-xref">Table&nbsp;<span>24.1</span></a>).</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-pig-cd-rations" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;24.6: Measured data for pig rations C and D </caption>
+<div id="tbl-pig-cd-rations" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pig-cd-rations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;24.6: Measured data for pig rations C and D
+</figcaption>
+<div aria-describedby="tbl-pig-cd-rations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -2108,6 +2190,8 @@ End of notebook
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
@@ -2119,17 +2203,21 @@ End of notebook
 <li><strong>Step 3.</strong> Repeat step 2 fifty times.</li>
 <li><strong>Step 4.</strong> Count the trials in which the differences between the simulated groups with the highest and lowest means are as large or larger than the differences between the means of the highest and lowest observed samples. The proportion of such trials to the total number of trials is the probability that all four samples would differ as much as do the observed samples if they (in technical terms) come from the same universe.</li>
 </ul>
-<p>The problem, as handled by the steps given above, is quite similar to the way we handled the example in <a href="testing_counts_2.html#sec-four-rehabs" class="quarto-xref"><span>Section&nbsp;23.1.2</span></a>, except that the data are measured (in pounds of weight gain) rather than simply counted (the number of rehabilitations).</p>
+<p>The problem, as handled by the steps given above, is quite similar to the way we handled the example in <a href="testing_counts_2.html#sec-four-rehabs" class="quarto-xref"><span>Section 23.1.2</span></a>, except that the data are measured (in pounds of weight gain) rather than simply counted (the number of rehabilitations).</p>
 <p>Instead of working through a program for the procedure outlined above, let us consider a different approach to the problem — computing the difference between each <em>pair</em> of foods, six differences in all, converting all minus (-) signs to (+) differences (taking the <em>absolute</em> value). Then we can <em>total</em> the six absolute differences, and compare the total with the sum of the six absolute differences in the <em>observed</em> sample. The proportion of the resampling trials in which the observed sample sum is equaled or exceeded by the sum of the differences in the trials is the probability that the observed samples would differ as much as they do if they come from the same universe.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <p>One naturally wonders whether this latter test statistic is better than the range, as discussed above. It would seem obvious that using the information contained in all four samples should increase the precision of the estimate. And indeed it is so, as you can confirm for yourself by comparing the results of the two approaches. But in the long run, the estimate provided by the two approaches would be much the same. That is, there is no reason to think that one or another of the estimates is <em>biased</em> . However, successive samples from the population would steady down faster to the true value using the four-group-based estimate than they would using the range. That is, the four-group-based estimate would require a smaller sample of pigs.</p>
 <p>Is there reason to prefer one or the other approach from the point of view of some decision that might be made? One might think that the range procedure throws light on which <em>one</em> of the foods is best in a way that the four-group-based approach does not. But this is not correct. Both approaches answer this question, and <em>only</em> this question: Are the results from the four foods likely to have resulted from the same “universe” of weight gains or not? If one wants to know whether the <em>best</em> food is similar to, say, all the other three, the appropriate approach would be a <em>two-sample</em> approach similar to various two-sample examples discussed earlier. (It would be still <em>another</em> question to ask whether the best food is different from the worst. One would then use a procedure different from either of those discussed above.)</p>
 <p>If the foods cost the same, one would not need even a two-sample analysis to decide which food to feed. Feed the one whose results are best in the experiment, without bothering to ask whether it is “really” the best; you can’t go wrong as long as it doesn’t cost more to use it. (One could inquire about the probability that the food yielding the best results in the experiment would attain those results by chance even if it was worse than the others by some stipulated amount, but pursuing that line of thought may be left to the student as an exercise.)</p>
 <p>In the notebook below, we want a measure of how the groups differ. The obvious first step is to add up the total weight gains for each group (<a href="#tbl-gain-sums" class="quarto-xref">Table&nbsp;<span>24.7</span></a>):</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-42_d51fe2bf5c2082b171e2c9b4fc862e8e">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-gain-sums" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;24.7: Weight gain sum per group</caption>
+<div id="tbl-gain-sums" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gain-sums-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;24.7: Weight gain sum per group
+</figcaption>
+<div aria-describedby="tbl-gain-sums-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th"></th>
@@ -2156,12 +2244,14 @@ End of notebook
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
 </div>
 <p>The next step is to calculate the differences between all the possible combinations of groups.</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-43_7a69c75eb074f6109e067c7ce10d5c77">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>differences <span class="op">=</span> np.array([<span class="dv">382</span> <span class="op">-</span> <span class="dv">344</span>, <span class="dv">382</span> <span class="op">-</span> <span class="dv">364</span>, <span class="dv">382</span> <span class="op">-</span> <span class="dv">335</span>,</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                        <span class="dv">344</span> <span class="op">-</span> <span class="dv">364</span>, <span class="dv">344</span> <span class="op">-</span> <span class="dv">335</span>, <span class="dv">364</span> <span class="op">-</span> <span class="dv">335</span>])</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>differences</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2174,21 +2264,21 @@ End of notebook
 <section id="using-squared-differences" class="level2" data-number="24.2">
 <h2 data-number="24.2" class="anchored" data-anchor-id="using-squared-differences"><span class="header-section-number">24.2</span> Using Squared Differences</h2>
 <p>Here we face a choice. We could work with the absolute differences — that is, the results of the subtractions — treating each result as a positive number even if it is negative. We have seen this approach before. Therefore let us now take the opportunity of showing another approach. Instead of working with the absolute differences, we <em>square</em> each difference, and then sum the squares.</p>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-45_1d03d33ec2c101910d7ca48fa6d74945">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>squared_differences <span class="op">=</span> differences <span class="op">**</span> <span class="dv">2</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>squared_differences</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([1444,  324, 2209,  400,   81,  841])</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-46_8156538ee3b4ea2e288184f6ead94062">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sum_sq_d <span class="op">=</span> np.<span class="bu">sum</span>(squared_differences)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sum_sq_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.int64(5299)</code></pre>
 </div>
 </div>
-<p>Squaring arrays squares <em>each element</em> of the array (see <a href="standard_scores.html#sec-squared-arrays" class="quarto-xref"><span>Section&nbsp;16.7.1</span></a>):</p>
+<p>Squaring arrays squares <em>each element</em> of the array (see <a href="standard_scores.html#sec-squared-arrays" class="quarto-xref"><span>Section 16.7.1</span></a>):</p>
 <p>An advantage of working with the squares is that they are positive — a negative number squared is positive — which is convenient. Additionally, conventional statistics works mainly with squared quantities, and therefore it is worth getting familiar with that point of view. The squared differences in this case add up to 5299.</p>
 <p>Using Python, we shuffle all the weight gains together, select four random groups, and determine whether the sum of squared differences in the resample equal or exceed 5299. If they do so with regularity, then we conclude that the observed differences could easily have occurred by chance.</p>
 <p>With the <span class="python"><code>np.concatenate</code></span> func, we string the four arrays into a single array called <code>all_weights</code>. After shuffling (using <span class="python"><code>rnd.permuted</code></span> the 48-pig weight-gain array <code>all_weights</code> into <code>shuffled</code>, we split <code>shuffled</code> into four randomized samples. And we compute the squared differences between the pairs of groups and <code>sum</code> the squared differences just as we did above for the observed groups.</p>
@@ -2200,7 +2290,7 @@ End of notebook
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=squared_rations.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-49_614752cb3dae03a4fb54eb0082c6518c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -2221,7 +2311,7 @@ End of notebook
 4      A           32</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-51_7bff74b8285f8c6a85bfe2215ceaa9a7">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get arrays for each ration.</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>a_rows <span class="op">=</span> rations_df[rations_df[<span class="st">'ration'</span>] <span class="op">==</span> <span class="st">'A'</span>]</span>
@@ -2245,7 +2335,7 @@ End of notebook
        34, 33, 32, 25, 31, 26, 32, 27, 28, 29, 29, 28, 23, 25])</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-53_0729f4d2c61a4b7ff8bd41263b262e84">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># An array to store the result of each trial.</span></span>
@@ -2300,7 +2390,7 @@ End of notebook
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_measured_files/figure-html/unnamed-chunk-53-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="testing_measured_files/figure-html/unnamed-chunk-53-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -2314,18 +2404,22 @@ End of notebook
 </section>
 <section id="exercises" class="level2" data-number="24.3">
 <h2 data-number="24.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">24.3</span> Exercises</h2>
-<p>Solutions for problems may be found in <a href="exercise_solutions.html" class="quarto-xref"><span>Chapter&nbsp;32</span></a>.</p>
+<p>Solutions for problems may be found in <a href="exercise_solutions.html" class="quarto-xref"><span>Chapter 32</span></a>.</p>
 <section id="sec-exr-paired-differences" class="level3" data-number="24.3.1">
 <h3 data-number="24.3.1" class="anchored" data-anchor-id="sec-exr-paired-differences"><span class="header-section-number">24.3.1</span> Exercise: paired differences</h3>
 <p>The data shown in <a href="#tbl-hamilton-scores" class="quarto-xref">Table&nbsp;<span>24.8</span></a> might be data for the outcomes of two different mechanics, showing the length of time until the next overhaul is needed for nine pairs of similar vehicles. Or they could be two readings made by different instruments on the same sample of rock. In fact, they represent data for two successive tests for depression on the Hamilton scale, before and after drug therapy.</p>
 <!---
 Note on source in Hollander: Salsburg (1970): Personal communication (with the cooperation of Pfizer and co, Groton, Conn.)
 -->
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-55_88c9c46b0c33f3c4b9ba09d6943df055">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-hamilton-scores" class="anchored">
-<table class="lightable-paper lightable-striped lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table&nbsp;24.8: Hamilton Depression Scale Values </caption>
+<div id="tbl-hamilton-scores" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-hamilton-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;24.8: Hamilton Depression Scale Values
+</figcaption>
+<div aria-describedby="tbl-hamilton-scores-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="lightable-paper lightable-striped lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">Patient #</th>
@@ -2382,6 +2476,8 @@ Note on source in Hollander: Salsburg (1970): Personal communication (with the c
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 
 
 </div>
@@ -2395,7 +2491,7 @@ Note on source in Hollander: Salsburg (1970): Personal communication (with the c
 <a class="interact-button" href="https://resampling-stats.github.io/python-book/notebooks/lab/index.html?path=paired_differences.ipynb">Interact</a>
 </div>
 
-<div class="cell" data-layout-align="center" data-hash="testing_measured_cache/html/unnamed-chunk-56_25b1800712267602d0853f0731d525cb">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2412,15 +2508,15 @@ Note on source in Hollander: Salsburg (1970): Personal communication (with the c
 <!---
 End of notebook.
 -->
-<p>See <a href="exercise_solutions.html#sec-soln-paired-differences" class="quarto-xref"><span>Section&nbsp;32.1</span></a> for a solution.</p>
+<p>See <a href="exercise_solutions.html#sec-soln-paired-differences" class="quarto-xref"><span>Section 32.1</span></a> for a solution.</p>
 </section>
 <section id="sec-exr-seatbelt-proportions" class="level3" data-number="24.3.2">
 <h3 data-number="24.3.2" class="anchored" data-anchor-id="sec-exr-seatbelt-proportions"><span class="header-section-number">24.3.2</span> Exercise: seatbelt proportions</h3>
 <p>Thirty-six of 72 (.5) taxis surveyed in Pittsburgh had visible seatbelts. Seventy-seven of 129 taxis in Chicago (.597) had visible seatbelts. Calculate a confidence interval for the difference in proportions, estimated at -.097. (Source: Peskun, Peter H., “A New Confidence Interval Method Based on the Normal Approximation for the Difference of Two Binomial Probabilities,” <em>Journal of the American Statistical Association</em> , 6/93 p.&nbsp;656).</p>
-<p>For solution, see <a href="exercise_solutions.html#sec-soln-seatbelt-proportions" class="quarto-xref"><span>Section&nbsp;32.2</span></a>}</p>
+<p>For solution, see <a href="exercise_solutions.html#sec-soln-seatbelt-proportions" class="quarto-xref"><span>Section 32.2</span></a>}</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-chung1958randomization" class="csl-entry" role="listitem">
 Chung, James H, and Donald AS Fraser. 1958. <span>“Randomization Tests for a Multivariate Two-Sample Problem.”</span> <em>Journal of the American Statistical Association</em> 53 (283): 729–35. <a href="https://www.jstor.org/stable/pdf/2282050.pdf">https://www.jstor.org/stable/pdf/2282050.pdf</a>.
 </div>
@@ -2448,7 +2544,7 @@ Simon, Julian Lincoln, and David M Simon. 1996. <span>“The Effects of Regulati
 </div>
 </section>
 </section>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>Technical Note: The test described in this section is non-parametric and therefore makes no assumptions about the shapes of the distributions, which is good because we would be on soft ground if we assumed normality in the pig-food case, given the sample sizes. This test does not, however, throw away information as do the rank and median tests illustrated earlier. And indeed, this test proves to be more powerful than the other non-parametric tests. After developing this test, I discovered that its general logic follows the tradition of the “randomization” tests, based on an idea by R.A. Fisher <span class="citation" data-cites="fisher1935design fisher1960design">(<a href="references.html#ref-fisher1935design" role="doc-biblioref">1935</a>; <a href="references.html#ref-fisher1960design" role="doc-biblioref">1960, chap. III</a>, section 21)</span> and worked out for the two-sample cases by E.J.G. Pitman <span class="citation" data-cites="pitman1937significance">(<a href="references.html#ref-pitman1937significance" role="doc-biblioref">1937</a>)</span>. But the only earlier mentions of sampling from the universe of possibilities are in M. Dwass <span class="citation" data-cites="dwass1957modified">(<a href="references.html#ref-dwass1957modified" role="doc-biblioref">1957</a>)</span> and J.H. Chung and D. Fraser <span class="citation" data-cites="chung1958randomization">(<a href="references.html#ref-chung1958randomization" role="doc-biblioref">1958</a>)</span>. I am grateful to J. Pratt for bringing the latter literature to my attention.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -2457,7 +2553,7 @@ Simon, Julian Lincoln, and David M Simon. 1996. <span>“The Effects of Regulati
 <li id="fn4"><p>Various tests indicate that the difference between the groups of states was highly significant. See Simon and Simon <span class="citation" data-cites="simon1996effects">(<a href="references.html#ref-simon1996effects" role="doc-biblioref">1996</a>)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Technical Note: Computing the sum of squared differences renders this test superficially more similar to the analysis of variance but will not alter the results. This test has not been discussed in the statistical literature, to my knowledge, except perhaps for a faint suggestion at the end of Chung and Fraser <span class="citation" data-cites="chung1958randomization">(<a href="references.html#ref-chung1958randomization" role="doc-biblioref">1958</a>)</span>. This and the two-sample test can easily be performed with canned computer programs as well as Python. In addition to their advantages of nonparametricity, they are equally efficient and vastly easier to teach and to understand than the t-test and the analysis of variance. Therefore, we believe that these tests should be “treatments of choice,” as the doctors say.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -2495,18 +2591,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2538,11 +2623,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2552,8 +2676,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2565,7 +2698,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2609,6 +2865,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2634,6 +2891,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2695,17 +2978,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./testing_counts_2.html" class="pagination-link">
+      <a href="./testing_counts_2.html" class="pagination-link" aria-label="The Statistics of Hypothesis-Testing with Counted Data, Part 2">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">The Statistics of Hypothesis-Testing with Counted Data, Part 2</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./testing_procedures.html" class="pagination-link">
+      <a href="./testing_procedures.html" class="pagination-link" aria-label="General Procedures for Testing Hypotheses">
         <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">General Procedures for Testing Hypotheses</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
