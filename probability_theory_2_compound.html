@@ -1302,7 +1302,7 @@ Table&nbsp;11.2: Results of 25 hands using random numbers
 <pre><code>0.4191</code></pre>
 </div>
 </div>
-<p>End of <code>one_pair.ipynb</code> notebook</p>
+<p>End of <code>one_pair</code> notebook</p>
 </div>
 <p>In one run of the program, the result in <code>kk</code> was 0.419, so our estimate would be that the probability of a single pair is 0.419.</p>
 <p>How accurate are these resampling estimates? The accuracy depends on the <em>number of hands</em> we deal — the more hands, the greater the accuracy. If we were to examine millions of hands, 42 percent would contain a pair each; that is, the chance of getting a pair in the long run is 42 percent. It turns out the estimate of 48 percent based on 25 hands in <a href="#tbl-one-pair" class="quarto-xref">Table&nbsp;<span>11.1</span></a> is fairly close to the long-run estimate, though whether or not it is close <em>enough</em> depends on one’s needs of course. If you need great accuracy, deal many more hands.</p>
@@ -1365,7 +1365,7 @@ Table&nbsp;11.2: Results of 25 hands using random numbers
 <pre><code>0.0272</code></pre>
 </div>
 </div>
-<p>End of <code>three_of_a_kind.ipynb</code> notebook</p>
+<p>End of <code>three_of_a_kind</code> notebook</p>
 </div>
 <p>To estimate the probability of getting a two-pair hand, we revert to the original program (counting pairs), except that we examine all the results in the score-keeping vector <code>z</code> for hands in which we had <em>two</em> pairs, instead of <em>one</em> .</p>
 <div class="notebook" name="two_pairs" title="Two pairs">
@@ -1412,7 +1412,7 @@ Table&nbsp;11.2: Results of 25 hands using random numbers
 <pre><code>0.0487</code></pre>
 </div>
 </div>
-<p>End of <code>two_pairs.ipynb</code> notebook</p>
+<p>End of <code>two_pairs</code> notebook</p>
 </div>
 <p>For efficiency (though efficiency really is not important here because the computer performs its operations so cheaply) we could develop both estimates in a single program by simply generating 10000 hands, and count the number with three-of-a-kind and the number with two pairs.</p>
 <p>Before we leave the poker problems, we note a difficulty with Monte Carlo simulation. The probability of a royal flush is so low (about one in half a million) that it would take much computer time to compute. On the other hand, considerable inaccuracy is of little matter. Should one care whether the probability of a royal flush is 1/100,000 or 1/500,000?</p>
