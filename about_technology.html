@@ -388,7 +388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#python-and-its-packages" id="toc-python-and-its-packages" class="nav-link active" data-scroll-target="#python-and-its-packages"><span class="header-section-number">4.1</span> Python and its packages</a></li>
   <li><a href="#the-environment" id="toc-the-environment" class="nav-link" data-scroll-target="#the-environment"><span class="header-section-number">4.2</span> The environment</a></li>
   <li><a href="#getting-started-with-the-notebook" id="toc-getting-started-with-the-notebook" class="nav-link" data-scroll-target="#getting-started-with-the-notebook"><span class="header-section-number">4.3</span> Getting started with the notebook</a></li>
-  <li><a href="#running-the-code-on-your-own-computer" id="toc-running-the-code-on-your-own-computer" class="nav-link" data-scroll-target="#running-the-code-on-your-own-computer"><span class="header-section-number">4.8</span> Running the code on your own computer</a></li>
+  <li><a href="#sec-running-own-computer" id="toc-sec-running-own-computer" class="nav-link" data-scroll-target="#sec-running-own-computer"><span class="header-section-number">4.8</span> Running the code on your own computer</a></li>
   </ul>
 </nav>
     </div>
@@ -417,8 +417,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This chapter introduces you to the technology we will use throughout the book. By <em>technology</em>, we mean two things:</p>
 <ul>
 <li>The Python programming language, along with some important add-on libraries for data analysis.</li>
-<li>The Jupyter notebook system for running and editing Python code in a <span class="python">web</span> interface.</li>
+<li>The Jupyter notebook system for running and editing Python code in a web interface.</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Using Python on the web and on your computer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this chapter, we concentrate on the technology we use for the interactive version of the book. The interactive version allows you to run Python code as interactive <em>notebooks</em> in your web browser.</p>
+<p>Either now, or later, you should also consider running the code on your own computer — see <a href="#sec-running-own-computer" class="quarto-xref"><span>Section 4.8</span></a>.</p>
+</div>
+</div>
 <p>The chapter introduces <span class="python">Python and its libraries</span>, and then gives an example to introduce Python and the Jupyter Notebook. If you have not used Python before, the example notebook will get you started. The example also shows how we will be using notebooks through the rest of the book.</p>
 <section id="python-and-its-packages" class="level2 python" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="python-and-its-packages"><span class="header-section-number">4.1</span> Python and its packages</h2>
@@ -445,20 +459,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a class="interact-button" href="./interact/lab/index.html?path=billies_bill.ipynb">Interact</a>
 </div>
 
-<p>The text in this notebook section assumes you have opened the page as an interactive notebook, on your own computer, or one of the Jupyter web interfaces.</p>
-<p>A notebook can contain blocks of text — like this one — as well as code, and the results from running the code.</p>
-<p>If you are in the notebook interface (rather than reading this in the textbook), you will see the Jupyter menu near the top of the page, with headings “File”, “Edit” and so on.</p>
 <div class="python">
-<p>Underneath that, by default, you may see a row of icons - the “Toolbar”.</p>
-<p>In the toolbar, you may see icons to run the current cell, among others.</p>
-<p>To move from one cell to the next, you can click the run icon in the toolbar, but it is more efficient to press the Shift key, and press Enter (with Shift still held down). We will write this as Shift-Enter.</p>
+<p>The text in this notebook section assumes you have opened the page as an interactive notebook on the web, or on your own computer (see <a href="#sec-running-own-computer" class="quarto-xref"><span>Section 4.8</span></a>).</p>
 </div>
+<p>A notebook can contain blocks of text — like this one — as well as code, and the results from running the code.</p>
+<p>Jupyter Notebooks are made up of <em>cells</em>.</p>
+<p>Jupyter cells can contain text or code.</p>
+<p>Notebook text can have formatting, such as links.</p>
+<p>For example, this sentence ends with a link to the earlier <a href="https://resample.statistics.com/intro-text-online">second edition of this book</a>.</p>
+<p>If you are in the interactive notebook interface (rather than reading this in the textbook), you will see the Jupyter menu bar near the top of the page, with headings “File”, “Edit” and so on.</p>
+<p>In Jupyter, underneath the File … menu bar, by default, you may see a row of icons - the “Toolbar”.</p>
+<p>In the Jupyter toolbar, you may see icons to run the current cell, among others.</p>
+<p>To move from one cell to the next, you can click the run icon in the toolbar, but it is more efficient to press the Shift key, and press Enter (with Shift still held down). We will write this as Shift-Enter.</p>
 <p>In this, our first notebook, we will be using Python to solve one of those difficult and troubling problems in life — working out the bill in a restaurant.</p>
 <section id="the-meal-in-question" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="the-meal-in-question"><span class="header-section-number">4.4</span> The meal in question</h2>
 <p>Alex and Billie are at a restaurant, getting ready to order. They do not have much money, so they are calculating the expected bill before they order.</p>
 <p>Alex is thinking of having the fish for £10.50, and Billie is leaning towards the chicken, at £9.25. First they calculate their combined bill.</p>
-<p>Below this text you see a <em>code</em> cell. It contains the Python code to calculate the total bill. Press <span class="python">Shift-Enter</span> in the cell below, to see the total.</p>
+<p>Below this text you see a <em>code</em> cell. It contains the Python code to calculate the total bill. Press <span class="python">Shift-Enter</span> in the cell below, to see the total..</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fl">10.50</span> <span class="op">+</span> <span class="fl">9.25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -475,7 +493,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Unlike a calculator, we can also put notes next to our calculations, to remind us what they are for. One way of doing this is to use a “comment”. You have already seen comments in the previous chapter.</p>
 <p>A comment is some text that the computer will ignore. In Python, you can make a comment by starting a line with the <code>#</code> (hash) character. For example, the next cell is a code cell, but when you run it, it does not show any result. In this case, that is because the computer sees the <code>#</code> at the beginning of the line, and then ignores the rest.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This bit of text is for me to read, and the computer to ignore.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This bit of text is for us to read, and the computer to ignore.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Many of the code cells you see will have comments in them, to explain what the code is doing.</p>
 <p>Practice writing comments for your own code. It is a very good habit to get into. You will find that experienced programmers write many comments on their code. They do not do this to show off, but because they have a lot of experience in reading code, and they know that comments make it much easier to read and understand code.</p>
@@ -627,11 +645,28 @@ Note
 <p>End of <code>billies_bill</code> notebook</p>
 </section>
 </div>
+<!---
+End of notebook.
+-->
 </section>
-<section id="running-the-code-on-your-own-computer" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="running-the-code-on-your-own-computer"><span class="header-section-number">4.8</span> Running the code on your own computer</h2>
+<section id="sec-running-own-computer" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="sec-running-own-computer"><span class="header-section-number">4.8</span> Running the code on your own computer</h2>
 <p>Many people, including your humble authors, like to be able to run code examples on their own computers. This section explains how you can set up to run the notebooks on your own computer.</p>
-<p>Once you have done this setup, you can use the “download” link</p>
+<p>Once you have done this setup, you can use the “download” link that you will see for each notebook, to download the notebook to your machine. From there, you can open the notebook on Jupyter.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Download links and data files
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Most of the download links in this book will trigger a download of the notebook file. This is a file with extension <span class="python"><code>.ipynb</code></span>, that you can open with Jupyter.</p>
+<p>Later in the book, you will see examples where the notebook loads a data file. In that case, the download link for the notebook points to a <code>.zip</code> file containing the notebook and the data file. Unzip the <code>.zip</code> file to get the notebook and data file, and then open the resulting notebook in Jupyter.</p>
+</div>
+</div>
 <div class="python">
 <p>You will need to install the Python language on your computer, and then install the following packages:</p>
 <ul>
@@ -647,6 +682,10 @@ Note
 <p>To use Pip, start a terminal (Start key, “cmd” in Windows, Command key and space then “Terminal” on Mac), and then, at the prompt, type:</p>
 <p>Now you should be able to start the Jupyter notebook application. See the <a href="https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#starting-the-notebook-server">Jupyter documentation for how to start Jupyter</a>. Open the notebook you downloaded for the chapter; you will now be able to run the code on your own computer, and experiment by making changes.</p>
 </div>
+<p>You can run any of the code notebooks in this textbook on your own machine by downloading the notebook, via the download link at the top of each notebook section, and then opening the resulting notebook in Jupyter.</p>
+<!---
+End of R segment.
+-->
 
 
 </section>
