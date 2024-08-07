@@ -491,7 +491,7 @@ window.Quarto = {
 <p>Democratic <a href="https://en.wikipedia.org/wiki/Marcy_Kaptur">congresswoman Marcy Kaptur</a> has represented the 9th district of Ohio since 1983. Ohio’s 9th district is relatively working class, and the Democratic party has, traditionally, represented people with lower income. However, Kaptur has pointed out that this pattern appears to be changing; more of the high-income congressional districts now lean Democrat, and the Republican party is now more likely to represent lower-income districts. The French economist <a href="https://en.wikipedia.org/wiki/Thomas_Piketty">Thomas Piketty</a> has described this phenomenon across several Western countries. Voters for left parties are now more likely to be highly educated and wealthy. He terms this shift “Brahmin Left Vs Merchant Right” <span class="citation" data-cites="piketty2018brahmin">(<a href="references.html#ref-piketty2018brahmin" role="doc-biblioref">Piketty 2018</a>)</span>. The data below come from a <a href="https://s3.documentcloud.org/documents/23726766/rep-kaptur-district-chart.pdf">table Kaptur prepared</a> that shows this pattern in the 2023 US congress. The table lists the top 20 districts by the median income of the households in that district, along with their representatives and their party.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-district_income" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-district_income" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-district_income-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;16.1: 20 most wealthy 2023 Congressional districts by household income
@@ -682,7 +682,7 @@ Table&nbsp;16.1: 20 most wealthy 2023 Congressional districts by household incom
 <p>In fact, if we look at all 441 congressional districts in Kaptur’s table, we find a large difference in the average median household income for Democrat and Republican districts; the Democrat districts are, on average, about 14% richer (<a href="#tbl-party_means" class="quarto-xref">Table&nbsp;<span>16.2</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-party_means" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-party_means" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-party_means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;16.2: Means for median household income by party
@@ -734,10 +734,32 @@ Table&nbsp;16.2: Means for median household income by party
 4,KY-5,37910,H. Rogers,Republican
 5,MS-2,37933,B. G. Thompson,Democrat</code></pre>
 </div>
+<p>In the code that follows, we will <em>read</em> the values from the CSV file directly into Python.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Download links with data files
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Up till now, the Download links for notebook files point to a single file — the <em>notebook</em>. The <span class="python">Jupyter notebook file has extension <code>.ipynb</code></span> .</p>
+<p>From now on, some examples involve reading a data file. In order to run the notebook, you need the notebook file (with extension<span class="python"><code>.ipynb</code></span>) as well as the data file. For those cases, the download link points to a <code>.zip</code> file containing the notebook file and the data file. To run the example on your computer, download the <code>.zip</code> file, extract the contents, and then open the notebook file using Jupyter.</p>
+</div>
+</div>
 </section>
 <section id="sec-pandas-intro" class="level3 python" data-number="16.1.2">
 <h3 data-number="16.1.2" class="anchored" data-anchor-id="sec-pandas-intro"><span class="header-section-number">16.1.2</span> Introducing the Pandas library</h3>
-<p>Here we start using the Pandas library to load table data into Python.</p>
+<div class="notebook" name="starting_pandas" title="Starting with Pandas">
+<p>Start of <code>starting_pandas</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/starting_pandas.zip">Download zip with notebook + data file</a>
+<a class="interact-button" href="./interact/lab/index.html?path=starting_pandas.ipynb">Interact</a>
+</div>
+
+<p>Here we use the Pandas library to load table data into Python.</p>
 <p>Thus far we have used the Numpy library to work with data in arrays. As always with Python, when we want to use a library — like Numpy, or Pandas — we have to <code>import</code> it first.</p>
 <p>We have used the term <em>library</em> here, but Python uses the term <em>module</em> to refer to libraries of code and data that you <code>import</code>. We will use the terms “library” and “module” to mean the same thing — a Python module.</p>
 <p>When using Numpy, we write:</p>
@@ -795,7 +817,6 @@ Sorting
 <p>If the data were not already in income order, we could have sorted them with NumPy’s <code>sort</code> function.</p>
 </div>
 </div>
-</section>
 <p>We are particularly interested in the column named <code>Median_Income</code>.</p>
 <p>You may remember the idea of <em>indexing</em>, introduced in <a href="resampling_with_code2.html#sec-array-indexing" class="quarto-xref"><span>Section 6.6</span></a>. Indexing occurs when we fetch data from within a container, such as a string or an array. We do this by putting square brackets <code>[]</code> after the value we want to index into, and put something inside the brackets to say what we want.</p>
 <p>For example, to get the <em>first</em> element of the <code>priv</code> array above, we use indexing:</p>
@@ -832,7 +853,18 @@ Need to introduce indexing with slices.
 <pre><code>array([22237, 28352, 31362, 37910, 37933])</code></pre>
 </div>
 </div>
-<p>:::</p>
+<p>End of <code>starting_pandas</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
+</section>
+<!---
+End of python block
+-->
+<!---
+End of R block
+-->
 <section id="incomes-and-ranks" class="level3" data-number="16.1.3">
 <h3 data-number="16.1.3" class="anchored" data-anchor-id="incomes-and-ranks"><span class="header-section-number">16.1.3</span> Incomes and Ranks</h3>
 <p>We now have the <code>incomes</code> values as an array.</p>
@@ -900,7 +932,7 @@ Need to introduce indexing with slices.
 <p>By scrolling through the CSV file, or (in our case) using some simple <span class="python">Pandas</span> code that we won’t cover now, we find the rows corresponding to McCarthy (KM) and Ocasio-Cortez (AOC) — <a href="#tbl-rows-of-interest" class="quarto-xref">Table&nbsp;<span>16.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-rows-of-interest" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-rows-of-interest" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rows-of-interest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;16.3: Rows for Kevin McCarthy and Alexandra Ocasio-Cortez
@@ -1532,7 +1564,7 @@ Figure&nbsp;16.1: Income histogram plus or minus 1 and 2 standard deviations
 <p>Consider the values in <a href="#tbl-epl-points-wages" class="quarto-xref">Table&nbsp;<span>16.4</span></a>. Each row of the table corresponds to a team competing in the English Premier League (EPL) for the 2021-2022 season. For those of you with absolutely no interest in sports, the EPL is the league of the top 20 teams in English football, or <em>soccer</em> to our North American friends. The <code>points</code> column of the table gives the total number of points at the end of the 2021 season (from 38 games). The team gets 3 points for a win, and 1 point for a draw, so the maximum possible points from 38 games are <span class="math inline">\(3 * 38 = 114\)</span>. The <code>wages</code> column gives the estimated total wage bill in thousands of British Pounds (£1000).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-epl-points-wages" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-epl-points-wages" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-epl-points-wages-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;16.4: 2021 points and wage bills (£1000s) for EPL teams

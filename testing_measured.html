@@ -1111,6 +1111,19 @@ Discussion of bootstrap and median?
 <p>The Python notebook compares the difference in the sums of the weight gains for the actual pigs against the difference resulting from two randomly-chosen groups of pigs, using the same numerical weight gains of individual pigs as were obtained in the actual experiment. If the differences in average weight gains of the randomly ordered groups are rarely as large as the difference in weight gains from the actual sets of pigs fed food A-alpha and food B-beta, then we can conclude that the foods do make a difference in pigs’ weight gains.</p>
 <p>Note first that pigs in group A gained a total of 382 pounds while group B gained a total of 344 pounds — 38 fewer. To minimize computations, we will deal with totals like these, not averages.</p>
 <p>First we construct vectors A and B of the weight gains of the pigs fed with the two foods. Then we combine the two vectors into one long vector and select two groups of 12 randomly and with replacement (the two <code>rnd.choice</code> commands). Notice we sample <em>with replacement</em>. This is the <em>bootstrap</em> procedure*, where we simulate new samples by resampling with replacement from the original sample. We <code>sum</code> the weight gains for the two resamples, and calculate the difference. We keep track of those differences by storing them in the <code>results</code> array, graph them on a histogram, and see how many times resample A exceeded resample B by at least 38 pounds, or vice versa (we are testing whether the two are different, not whether food A produces larger weight gains).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notebook with data file
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As you saw in <span class="quarto-unresolved-ref">?sec-download-links</span>, the following notebook reads a data file, so the download link points to a <code>.zip</code> file containing the notebook and the data file.</p>
+</div>
+</div>
 <div class="notebook" name="measured_rations" title="Pig rations via bootstrap">
 <p>Start of <code>measured_rations</code> notebook</p>
 <div class="nb-links">
