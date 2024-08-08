@@ -795,6 +795,7 @@ Pick a number from 1 through 5
 </div>
 </div>
 <p>Creating ranges of numbers is so common that Python has a <span class="python">standard Numpy function <code>np.arange</code></span> to do that.</p>
+<div class="python">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An array containing all the numbers from 0 through 9.</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>some_numbers <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span>
@@ -803,7 +804,6 @@ Pick a number from 1 through 5
 <pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
 </div>
 </div>
-<div class="python">
 <p>Notice that we send <code>np.arange</code> the <em>arguments</em> 0 and 10. The first argument, here 0, is the <em>start</em> value. The second argument, here 10, is the <em>stop</em> value. Numpy (in the <code>arange</code> function) understands this to mean: <em>start</em> at 0 (the start value) and go up to <em>but do not include</em> 10 (the stop value).</p>
 <p>You can therefore read <code>np.arange(0, 10)</code> as “the sequence of integers starting at 0, up to, but not including 10”.</p>
 <p>Like <code>np.round</code>, the arguments to <code>np.arange</code> also have names, so, we could also write:</p>
@@ -837,6 +837,9 @@ Pick a number from 1 through 5
 </div>
 </div>
 </div>
+<!---
+End of Python section
+-->
 <p>Here are some more examples of <span class="python"><code>np.arange</code></span>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All the integers starting at 10, up to, but not including 15.</span></span>

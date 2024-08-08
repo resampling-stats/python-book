@@ -465,7 +465,7 @@ div.csl-indent {
 <p>We begin the trials with data as in <a href="#tbl-fruitfly-4-groups" class="quarto-xref">Table&nbsp;<span>23.1</span></a>. In two of the six simulation trials, one or more one samples (groups) shows 14 or more males. Without even concerning ourselves about whether we should be looking at males or females, or just males, or needing to do more trials, we can see that it would be <em>very common indeed</em> to have one of four treatments show fourteen or more of one sex just by chance. This discovery clearly indicates that a result that would be fairly unusual (five in 25) for a single sample alone is commonplace in one of four observed samples.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-fruitfly-4-groups" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-fruitfly-4-groups" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-fruitfly-4-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;23.1: Results from 6 random trials for Fruitfly 4-group problem
@@ -1191,7 +1191,7 @@ Table&nbsp;23.3: Results from fifty simulation trials of the paired pigs problem
 </div>
 </figure>
 </div>
-<p>Now for a Python program and results. This notebook is different from the example at <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.7</span></a> in that it compares the weight-gain results of <em>pairs</em> of pigs, instead of simply looking at the <em>rankings</em> for weight gains.</p>
+<p>Now for a Python program and results. This notebook is different from the example at <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.9</span></a> in that it compares the weight-gain results of <em>pairs</em> of pigs, instead of simply looking at the <em>rankings</em> for weight gains.</p>
 <p>The key to the pigs pair notebook is the <code>rnd.choice</code> line. If we assume that ration A does not have an effect on weight gain (which is the “benchmark” or “null” hypothesis), then the results of the actual experiment would be no different than if we randomly <code>rnd.choice</code> “A” and “B” and treat an “A” as a larger weight gain for the ration A pig, and a “B” as a larger weight gain for the ration B pig. Both events have a .5 chance of occurring for each pair of pigs because if the rations had no effect on weight gain (the null hypothesis), ration A pigs would have larger weight gains about half of the time. The next step is to count (<code>sum</code>) the number of times that the weight gains of one group (call it the group fed with ration A) were larger than the weight gains of the other (call it the group fed with ration B). The complete program follows:</p>
 <div class="notebook" name="pig_pairs" title="Paired test for pig rations">
 <p>Start of <code>pig_pairs</code> notebook</p>
@@ -1239,7 +1239,7 @@ Table&nbsp;23.3: Results from fifty simulation trials of the paired pigs problem
 <!---
 End of notebook
 -->
-<p>Notice how we proceeded in examples <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.7</span></a> and <a href="#sec-pig-pairs" class="quarto-xref"><span>Section 23.2.1</span></a>. The data were originally quantitative — weight gains in pounds for each pig. But for simplicity we classified the data into simpler counted-data formats. The first format (<a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.7</span></a>) was a rank order, from highest to lowest. The second format (<a href="#sec-pig-pairs" class="quarto-xref"><span>Section 23.2.1</span></a>) was simply higher-lower, obtained by randomly pairing the observations (using alphabetical letter, or pig’s stall number, or whatever was the cause of the order in which the data were presented to be random). Classifying the data in either of these ways loses some information and makes the subsequent tests somewhat cruder than more refined analysis could provide (as we shall see in the following chapter), but the loss of efficiency is not crucial in many such cases. We shall see how to deal directly with the quantitative data in <a href="testing_measured.html" class="quarto-xref"><span>Chapter 24</span></a>.</p>
+<p>Notice how we proceeded in examples <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.9</span></a> and <a href="#sec-pig-pairs" class="quarto-xref"><span>Section 23.2.1</span></a>. The data were originally quantitative — weight gains in pounds for each pig. But for simplicity we classified the data into simpler counted-data formats. The first format (<a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.9</span></a>) was a rank order, from highest to lowest. The second format (<a href="#sec-pig-pairs" class="quarto-xref"><span>Section 23.2.1</span></a>) was simply higher-lower, obtained by randomly pairing the observations (using alphabetical letter, or pig’s stall number, or whatever was the cause of the order in which the data were presented to be random). Classifying the data in either of these ways loses some information and makes the subsequent tests somewhat cruder than more refined analysis could provide (as we shall see in the following chapter), but the loss of efficiency is not crucial in many such cases. We shall see how to deal directly with the quantitative data in <a href="testing_measured.html" class="quarto-xref"><span>Chapter 24</span></a>.</p>
 </section>
 <section id="example-merged-firms-compared-to-two-non-merged-groups" class="level3" data-number="23.2.2">
 <h3 data-number="23.2.2" class="anchored" data-anchor-id="example-merged-firms-compared-to-two-non-merged-groups"><span class="header-section-number">23.2.2</span> Example: merged firms compared to two non-merged groups</h3>
@@ -1255,7 +1255,7 @@ Example 17-5
 <p>Here (<a href="#tbl-mergers-data" class="quarto-xref">Table&nbsp;<span>23.4</span></a>) are the data (provided by the authors):</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-mergers-data" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-mergers-data" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mergers-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;23.4: Revenue Growth In Year 1 Following Merger
@@ -1482,7 +1482,7 @@ Table&nbsp;23.4: Revenue Growth In Year 1 Following Merger
 <p>Here are those average revenue growth rates for the three groups:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-merger-means" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-merger-means" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-merger-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;23.5: Year's revenue growth
@@ -1522,7 +1522,7 @@ Table&nbsp;23.5: Year's revenue growth
 <p>Here (<a href="#tbl-merger-ranks" class="quarto-xref">Table&nbsp;<span>23.6</span></a>) are those ranks, where 1 = worst, 3 = best:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-merger-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-merger-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-merger-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;23.6: Revenue growth ranked within matched set (1=best)
@@ -1748,7 +1748,7 @@ Table&nbsp;23.6: Revenue growth ranked within matched set (1=best)
 <p>These (<a href="#tbl-merger-mean-ranks" class="quarto-xref">Table&nbsp;<span>23.7</span></a>) are the average ranks for the three groups (1 = worst, 3 = best):</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-merger-mean-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-merger-mean-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-merger-mean-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;23.7: Mean rank of year revenue growth
@@ -1844,7 +1844,7 @@ End of notebook
 <p>Assume that we now switch scales from the merger data, so that #1 = best and #3 = worst, and that the outcomes on a series of tests were ranked from best (#1) to worst (#3) within each triplet. Assume that the combined drug-and-therapy regime has the best average rank. How sure can we be that the observed result would not occur by chance? Here are the data from the merger study, seen here as <a href="#tbl-therapy-ranks" class="quarto-xref">Table&nbsp;<span>23.8</span></a>:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-therapy-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-therapy-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-therapy-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;23.8: Ranked therapies within matched-patient triplets (1=best)
@@ -2070,7 +2070,7 @@ Table&nbsp;23.8: Ranked therapies within matched-patient triplets (1=best)
 <p>These (<a href="#tbl-therapy-mean-ranks" class="quarto-xref">Table&nbsp;<span>23.9</span></a>) are the average ranks for the three groups (1 = best, 3 = worst):</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-therapy-mean-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<div id="tbl-therapy-mean-ranks" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-therapy-mean-ranks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;23.9: Mean rank of therapy in matched triplets
