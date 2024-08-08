@@ -423,9 +423,8 @@ div.csl-indent {
   <li><a href="#sec-public-liquor" id="toc-sec-public-liquor" class="nav-link" data-scroll-target="#sec-public-liquor"><span class="header-section-number">12.16</span> Example: public and private liquor pricing</a>
   <ul class="collapse">
   <li><a href="#sec-concatenate" id="toc-sec-concatenate" class="nav-link" data-scroll-target="#sec-concatenate"><span class="header-section-number">12.16.1</span> Concatenating arrays</a></li>
-  <li><a href="#price-simulation" id="toc-price-simulation" class="nav-link" data-scroll-target="#price-simulation"><span class="header-section-number">12.16.2</span> Price simulation</a></li>
+  <li><a href="#sec-on-histograms" id="toc-sec-on-histograms" class="nav-link" data-scroll-target="#sec-on-histograms"><span class="header-section-number">12.16.2</span> Plotting histograms</a></li>
   </ul></li>
-  <li><a href="#the-general-procedure" id="toc-the-general-procedure" class="nav-link" data-scroll-target="#the-general-procedure"><span class="header-section-number">12.17</span> The general procedure</a></li>
   </ul>
 </nav>
     </div>
@@ -1455,8 +1454,225 @@ Figure&nbsp;12.2: Whiskey prices by state category
 End of R block.
 -->
 </section>
-<section id="price-simulation" class="level3" data-number="12.16.2">
-<h3 data-number="12.16.2" class="anchored" data-anchor-id="price-simulation"><span class="header-section-number">12.16.2</span> Price simulation</h3>
+<section id="sec-on-histograms" class="level3" data-number="12.16.2">
+<h3 data-number="12.16.2" class="anchored"><span class="header-section-number">12.16.2</span> Plotting histograms</h3>
+<p>The other procedure we will use for the simulation, is graphing the results with a <em>histogram</em>.</p>
+<p>A histogram is a visual way to show the <em>distribution</em> of a sequence of values.</p>
+<div class="python">
+<p>We now enter the world of <em>plotting</em> in Python. As Numpy is a Python library for working with arrays, Matplotlib is a library for making and showing plots.</p>
+<p>To use the Numpy library, we <code>import</code> it. As you have seen, the usual convention is to make the standard <code>numpy</code> library name easier to read and type, by renaming the library to <code>np</code> on <code>import</code>, like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import numpy library and rename to "np"</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In a similar way, we need to import the Matplotlib library. In fact we will be using a particular part of the Matplotlib library, called <code>pyplot</code>.</p>
+<p>We use the following standard convention to import that the <code>pyplot</code> part of the Matplotlib library and give it the shorter name of <code>plt</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Modules and submodules
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We have been calling Numpy and Matlotlib <em>libraries</em>, but technically, Python calls these <em>modules</em>. Modules are collections of code and data that you can <code>import</code> into Python. For example, Numpy (now renamed as <code>np</code>) is a module:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show type for the import Numpy module (renamed as "np")</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(np)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'module'&gt;</code></pre>
+</div>
+</div>
+<p>We can get elements contained in (attached to) a module using the <code>.</code> syntax. For example, here we get the value of the <code>pi</code> variable, attached to the Numpy module.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get and show the value of the variable "pi" attached to (contained within)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the Numpy module.</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>np.pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.141592653589793</code></pre>
+</div>
+</div>
+<p>One type of thing a module can contain, is other modules. These modules-attached-to-modules are called <em>submodules</em>. You have already see us use the <code>random</code> submodule attached to the Numpy module:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># "random" is itself a module, attached to (contained within) the Numpy</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># module.  It is therefore a "submodule" of Numpy.</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(np.random)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'module'&gt;</code></pre>
+</div>
+</div>
+<p>We have created random number generators by using the <code>default_rng()</code> function from the <code>random</code> submodule.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>pyplot</code> is a submodule of Matplotlib.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reimport the module to remind ourselves of the import line.</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plt is a new name we have set for the "pyplot" submodule of Matplotlib.</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(plt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'module'&gt;</code></pre>
+</div>
+</div>
+<p>The <code>pyplot</code> module of Matplotlib has many useful functions for making and displaying plots.</p>
+</div>
+</div>
+<!---
+End of submodules callout.
+-->
+<p>The easiest way to explain histograms is to show one.</p>
+<p>Let’s start with a sequence of values we are interested in:</p>
+<p>Here are the 24 values for whiskey prices in states that did not have a liquor monopoly (<code>priv</code>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>priv <span class="op">=</span> np.array([</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.82</span>, <span class="fl">5.29</span>, <span class="fl">4.89</span>, <span class="fl">4.95</span>, <span class="fl">4.55</span>, <span class="fl">4.90</span>, <span class="fl">5.25</span>, <span class="fl">5.30</span>, <span class="fl">4.29</span>, <span class="fl">4.85</span>, <span class="fl">4.54</span>, <span class="fl">4.75</span>,</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.85</span>, <span class="fl">4.85</span>, <span class="fl">4.50</span>, <span class="fl">4.75</span>, <span class="fl">4.79</span>, <span class="fl">4.85</span>, <span class="fl">4.79</span>, <span class="fl">4.95</span>, <span class="fl">4.95</span>, <span class="fl">4.75</span>, <span class="fl">5.20</span>, <span class="fl">5.10</span>,</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.80</span>, <span class="fl">4.29</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These are the 16 values for states with a liquor monopoly (<code>govt</code>):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>govt <span class="op">=</span> np.array([</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.65</span>, <span class="fl">4.55</span>, <span class="fl">4.11</span>, <span class="fl">4.15</span>, <span class="fl">4.20</span>, <span class="fl">4.55</span>, <span class="fl">3.80</span>, <span class="fl">4.00</span>, <span class="fl">4.19</span>, <span class="fl">4.75</span>, <span class="fl">4.74</span>, <span class="fl">4.50</span>,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.10</span>, <span class="fl">4.00</span>, <span class="fl">5.05</span>, <span class="fl">4.20</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We concatenate these values to get a sequence (an array) of all 40 liquor prices:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>prices <span class="op">=</span> np.concatenate([priv, govt])</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>prices</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([4.82, 5.29, 4.89, 4.95, 4.55, 4.9 , 5.25, 5.3 , 4.29, 4.85, 4.54,
+       4.75, 4.85, 4.85, 4.5 , 4.75, 4.79, 4.85, 4.79, 4.95, 4.95, 4.75,
+       5.2 , 5.1 , 4.8 , 4.29, 4.65, 4.55, 4.11, 4.15, 4.2 , 4.55, 3.8 ,
+       4.  , 4.19, 4.75, 4.74, 4.5 , 4.1 , 4.  , 5.05, 4.2 ])</code></pre>
+</div>
+</div>
+<p>We are interested in the distribution of these 40 values. To show the distribution, we can make and show a histogram of these prices, using the <span class="python"><code>hist</code> function attached to the <code>plt</code> submodule</span> .</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>hist_res <span class="op">=</span> plt.hist(prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="probability_theory_3_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="python"><code>plt.hist</code></span> has calculated some suitable intervals (<em>bins</em>) to divide up the range of values, and then counted how many values in <code>prices</code> fall into each interval (bin).</p>
+<p>You will notice that <span class="python"><code>plt.hist</code></span> has sent back some results from the process of making the histogram.</p>
+<p>The first result of interest to us is the definition of the intervals (bins) into which the histogram has divided the range of the <code>prices</code> values.</p>
+<div class="python">
+<p>In fact, <code>plt.hist</code> sent back the edges of these bins in the second element of <code>hist_res</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bin edges</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>bin_edges <span class="op">=</span> hist_res[<span class="dv">1</span>]</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>bin_edges</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([3.8 , 3.95, 4.1 , 4.25, 4.4 , 4.55, 4.7 , 4.85, 5.  , 5.15, 5.3 ])</code></pre>
+</div>
+</div>
+<p>Think of these values as the 10 values that start each of the 10 bins, followed by a final value that ends the final bin.</p>
+<p>This means that the first bin was from (including) 3.8 up to, but not including 3.95, the second bin was from (including) 3.95 up to, but not including 4.1 and so on. The last bin is from (including) 5.15 through (including) 5.3. Notice there are 11 edges, forming 10 bins.</p>
+<p>Put another way, the edges that <code>plt.hist</code> sent back are the 10 left hand (inclusive) edges of the 10 bins, and a final right hand (inclusive) edge of the final (10<sup>th</sup>) bin.</p>
+<p>The first value that comes back in the list of results is the array of counts of values in <code>prices</code> that fall within each bin.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Counts of values falling into each bin.</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> hist_res[<span class="dv">0</span>]</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>counts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([1., 2., 6., 2., 3., 4., 9., 9., 2., 4.])</code></pre>
+</div>
+</div>
+<p>This means that 1 value from <code>prices</code> fell in the range 3.8 up to (not including) 3.95, 2 values fell in the range 3.95 up to (not including) 4.1, and so on.</p>
+<p>Notice that the counts correspond to the heights of the bars on the histogram, so the first bar has height 1, the second bar has height 2, and so on.</p>
+<p>By default, <code>plt.hist</code> assumes you want 10 bins, and uses its default method of calculation to work out the edges for those 10 bins. You can specify another number of bins, by sending a number for the <code>bins</code> argument to <code>plt.hist</code>. For example, you might want 20 bins:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>results_20 <span class="op">=</span> plt.hist(prices, bins<span class="op">=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="probability_theory_3_files/figure-html/unnamed-chunk-59-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We now have 21 new edge values, the first 20 values giving the (inclusive) left-hand edges, and the last giving the (inclusive) right hand edge of the last bin.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>bin_edges_20 <span class="op">=</span> results_20[<span class="dv">1</span>]</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>bin_edges_20</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([3.8  , 3.875, 3.95 , 4.025, 4.1  , 4.175, 4.25 , 4.325, 4.4  ,
+       4.475, 4.55 , 4.625, 4.7  , 4.775, 4.85 , 4.925, 5.   , 5.075,
+       5.15 , 5.225, 5.3  ])</code></pre>
+</div>
+</div>
+<p>We can also specify our own edges, in order to bypass <code>plt.hist</code>s default algorithm to calculate edges. For example, we might prefer 16 bins of width 0.1, starting at 3.8, giving edges like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>our_edges <span class="op">=</span> <span class="fl">3.8</span> <span class="op">+</span> np.arange(<span class="dv">16</span>) <span class="op">*</span> <span class="fl">0.1</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>our_edges</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([3.8, 3.9, 4. , 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5. ,
+       5.1, 5.2, 5.3])</code></pre>
+</div>
+</div>
+<p>We can send these directly to <code>plt.hist</code> to set the edges:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>results_16 <span class="op">=</span> plt.hist(prices, bins<span class="op">=</span>our_edges)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the edges that come back (these are the edges we sent).</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>results_16[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([3.8, 3.9, 4. , 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5. ,
+       5.1, 5.2, 5.3])</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="probability_theory_3_files/figure-html/unnamed-chunk-62-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If we run <code>plt.hist</code> without collecting the values that come back, Jupyter (as usual) will show the values as the result of the cell.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If we don't collect the results, Jupyter shows them to us,</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if this is the last expression in the cell.</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>plt.hist(prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="probability_theory_3_files/figure-html/unnamed-chunk-63-5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here we see that the result that came back is a list with three values. As you saw before, the first value is the array with the counts for each of the (by default) 10 bins. The second is the array with the bin edges (10 left edges and last right edge). The last is a reference to the values that make up the graphical display; this is advanced, and we won’t look at these any further in this book.</p>
+<p>It can be distracting to see the counts, bin edges and graphical display values along with the plot, so from now on we will suppress Jupyter’s default behavior of showing the results that came back from the <code>plt.hist</code> function call by adding a semi-colon at the end of the function call, like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>plt.hist(prices)<span class="op">;</span>  <span class="co"># Note the semi-colon</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="probability_theory_3_files/figure-html/unnamed-chunk-64-7.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The semi-colon is a standard indicator to Jupyter that it should not display the results that came back from the function call. To repeat, we use it with plotting functions to suppress the various values that come back from these functions, as they are usually not of immediate interest.</p>
+</div>
+<!---
+End Python
+-->
+<!---
+End R
+-->
+<section id="price-simulation" class="level3" data-number="12.16.3">
+<h3 data-number="12.16.3" class="anchored" data-anchor-id="price-simulation"><span class="header-section-number">12.16.3</span> Price simulation</h3>
+<p>Now we have the machinery to concatenate arrays, and make histograms, we are ready to do the price simulation.</p>
 <div class="notebook" name="liquor_prices" title="Public and private liquor prices">
 <p>Start of <code>liquor_prices</code> notebook</p>
 <div class="nb-links">
@@ -1465,59 +1681,59 @@ End of R block.
 </div>
 
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the plotting library</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the plotting library</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fake_diffs <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>priv <span class="op">=</span> np.array([</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.82</span>, <span class="fl">5.29</span>, <span class="fl">4.89</span>, <span class="fl">4.95</span>, <span class="fl">4.55</span>, <span class="fl">4.90</span>, <span class="fl">5.25</span>, <span class="fl">5.30</span>, <span class="fl">4.29</span>, <span class="fl">4.85</span>, <span class="fl">4.54</span>, <span class="fl">4.75</span>,</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.85</span>, <span class="fl">4.85</span>, <span class="fl">4.50</span>, <span class="fl">4.75</span>, <span class="fl">4.79</span>, <span class="fl">4.85</span>, <span class="fl">4.79</span>, <span class="fl">4.95</span>, <span class="fl">4.95</span>, <span class="fl">4.75</span>, <span class="fl">5.20</span>, <span class="fl">5.10</span>,</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.80</span>, <span class="fl">4.29</span>])</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>govt <span class="op">=</span> np.array([</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.65</span>, <span class="fl">4.55</span>, <span class="fl">4.11</span>, <span class="fl">4.15</span>, <span class="fl">4.20</span>, <span class="fl">4.55</span>, <span class="fl">3.80</span>, <span class="fl">4.00</span>, <span class="fl">4.19</span>, <span class="fl">4.75</span>, <span class="fl">4.74</span>, <span class="fl">4.50</span>,</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.10</span>, <span class="fl">4.00</span>, <span class="fl">5.05</span>, <span class="fl">4.20</span>])</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>actual_diff <span class="op">=</span> np.mean(priv) <span class="op">-</span> np.mean(govt)</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the two arrays of data into one array.</span></span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> np.concatenate([priv, govt])</span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat 10000 simulation trials</span></span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample 26 with replacement for private group</span></span>
-<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>    fake_priv <span class="op">=</span> np.random.choice(both, size<span class="op">=</span><span class="dv">26</span>)</span>
-<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample 16 with replacement for govt. group</span></span>
-<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>    fake_govt <span class="op">=</span> np.random.choice(both, size<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the mean of the "private" group.</span></span>
-<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> np.mean(fake_priv)</span>
-<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Mean of the "govt." group</span></span>
-<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> np.mean(fake_govt)</span>
-<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Difference in the means</span></span>
-<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>    diff <span class="op">=</span> p <span class="op">-</span> g</span>
-<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep score of the trials</span></span>
-<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>    fake_diffs[i] <span class="op">=</span> diff</span>
-<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Graph of simulation results to compare with the observed result.</span></span>
-<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a>plt.hist(fake_diffs)</span>
-<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Difference in average prices (cents)'</span>)</span>
-<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average price difference (Actual difference = '</span></span>
-<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a><span class="ss">f'</span><span class="sc">{</span>actual_diff <span class="op">*</span> <span class="dv">100</span><span class="sc">:.0f}</span><span class="ss"> cents)'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>fake_diffs <span class="op">=</span> np.zeros(<span class="dv">10000</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>priv <span class="op">=</span> np.array([</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.82</span>, <span class="fl">5.29</span>, <span class="fl">4.89</span>, <span class="fl">4.95</span>, <span class="fl">4.55</span>, <span class="fl">4.90</span>, <span class="fl">5.25</span>, <span class="fl">5.30</span>, <span class="fl">4.29</span>, <span class="fl">4.85</span>, <span class="fl">4.54</span>, <span class="fl">4.75</span>,</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.85</span>, <span class="fl">4.85</span>, <span class="fl">4.50</span>, <span class="fl">4.75</span>, <span class="fl">4.79</span>, <span class="fl">4.85</span>, <span class="fl">4.79</span>, <span class="fl">4.95</span>, <span class="fl">4.95</span>, <span class="fl">4.75</span>, <span class="fl">5.20</span>, <span class="fl">5.10</span>,</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.80</span>, <span class="fl">4.29</span>])</span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>govt <span class="op">=</span> np.array([</span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.65</span>, <span class="fl">4.55</span>, <span class="fl">4.11</span>, <span class="fl">4.15</span>, <span class="fl">4.20</span>, <span class="fl">4.55</span>, <span class="fl">3.80</span>, <span class="fl">4.00</span>, <span class="fl">4.19</span>, <span class="fl">4.75</span>, <span class="fl">4.74</span>, <span class="fl">4.50</span>,</span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>    <span class="fl">4.10</span>, <span class="fl">4.00</span>, <span class="fl">5.05</span>, <span class="fl">4.20</span>])</span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>actual_diff <span class="op">=</span> np.mean(priv) <span class="op">-</span> np.mean(govt)</span>
+<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the two arrays of data into one array.</span></span>
+<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> np.concatenate([priv, govt])</span>
+<span id="cb64-16"><a href="#cb64-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-17"><a href="#cb64-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeat 10000 simulation trials</span></span>
+<span id="cb64-18"><a href="#cb64-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
+<span id="cb64-19"><a href="#cb64-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-20"><a href="#cb64-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample 26 with replacement for private group</span></span>
+<span id="cb64-21"><a href="#cb64-21" aria-hidden="true" tabindex="-1"></a>    fake_priv <span class="op">=</span> np.random.choice(both, size<span class="op">=</span><span class="dv">26</span>)</span>
+<span id="cb64-22"><a href="#cb64-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-23"><a href="#cb64-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sample 16 with replacement for govt. group</span></span>
+<span id="cb64-24"><a href="#cb64-24" aria-hidden="true" tabindex="-1"></a>    fake_govt <span class="op">=</span> np.random.choice(both, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb64-25"><a href="#cb64-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-26"><a href="#cb64-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the mean of the "private" group.</span></span>
+<span id="cb64-27"><a href="#cb64-27" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> np.mean(fake_priv)</span>
+<span id="cb64-28"><a href="#cb64-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-29"><a href="#cb64-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Mean of the "govt." group</span></span>
+<span id="cb64-30"><a href="#cb64-30" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> np.mean(fake_govt)</span>
+<span id="cb64-31"><a href="#cb64-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-32"><a href="#cb64-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Difference in the means</span></span>
+<span id="cb64-33"><a href="#cb64-33" aria-hidden="true" tabindex="-1"></a>    diff <span class="op">=</span> p <span class="op">-</span> g</span>
+<span id="cb64-34"><a href="#cb64-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-35"><a href="#cb64-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep score of the trials</span></span>
+<span id="cb64-36"><a href="#cb64-36" aria-hidden="true" tabindex="-1"></a>    fake_diffs[i] <span class="op">=</span> diff</span>
+<span id="cb64-37"><a href="#cb64-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-38"><a href="#cb64-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Graph of simulation results to compare with the observed result.</span></span>
+<span id="cb64-39"><a href="#cb64-39" aria-hidden="true" tabindex="-1"></a>plt.hist(fake_diffs)</span>
+<span id="cb64-40"><a href="#cb64-40" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Difference in average prices (cents)'</span>)</span>
+<span id="cb64-41"><a href="#cb64-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Average price difference (Actual difference = '</span></span>
+<span id="cb64-42"><a href="#cb64-42" aria-hidden="true" tabindex="-1"></a><span class="ss">f'</span><span class="sc">{</span>actual_diff <span class="op">*</span> <span class="dv">100</span><span class="sc">:.0f}</span><span class="ss"> cents)'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="probability_theory_3_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="probability_theory_3_files/figure-html/unnamed-chunk-76-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1527,12 +1743,13 @@ End of R block.
 <p>The results shown above — not even one “success” in 10,000 trials — imply that there is only a very small probability that two groups with mean prices as different as were observed would happen by chance if drawn with replacement from the universe of 42 observed prices.</p>
 <p>Here we think of these states as if they came from a non-finite universe, which is one possible interpretation for one particular context. However, in <a href="probability_theory_4_finite.html" class="quarto-xref"><span>Chapter 13</span></a> we will postulate a finite universe, which is appropriate if it is reasonable to consider that these observations constitute the entire universe (aside from those states excluded from the analysis because of data complexities).</p>
 </section>
-</section>
 <section id="the-general-procedure" class="level2" data-number="12.17">
 <h2 data-number="12.17" class="anchored" data-anchor-id="the-general-procedure"><span class="header-section-number">12.17</span> The general procedure</h2>
 <p><a href="testing_procedures.html" class="quarto-xref"><span>Chapter 25</span></a> generalizes what we have done in the probability problems above into a general procedure, which will in turn be a subpart of a general procedure for all of resampling.</p>
 
 
+</section>
+</div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-arbuthnot1710christenings" class="csl-entry" role="listitem">
 Arbuthnot, John. 1710. <span>“An Argument for Divine Providence, Taken from the Constant Regularity Observ’d in the Births of Both Sexes. By Dr. John Arbuthnott, Physitian in Ordinary to Her Majesty, and Fellow of the College of Physitians and the Royal Society.”</span> <em>Philosophical Transactions of the Royal Society of London</em> 27 (328): 186–90. <a href="https://royalsocietypublishing.org/doi/pdf/10.1098/rstl.1710.0011">https://royalsocietypublishing.org/doi/pdf/10.1098/rstl.1710.0011</a>.
@@ -1541,6 +1758,7 @@ Arbuthnot, John. 1710. <span>“An Argument for Divine Providence, Taken from th
 Mosteller, Frederick, Robert E. K. Rourke, and George Brinton Thomas Jr. 1961. <em>Probability with Statistical Applications</em>. 2nd ed. <a href="https://archive.org/details/probabilitywiths0000most">https://archive.org/details/probabilitywiths0000most</a>.
 </div>
 </div>
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
