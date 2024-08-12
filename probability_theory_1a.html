@@ -446,7 +446,7 @@ window.Quarto = {
   <li><a href="#mutually-exclusive-events-the-addition-rule" id="toc-mutually-exclusive-events-the-addition-rule" class="nav-link" data-scroll-target="#mutually-exclusive-events-the-addition-rule"><span class="header-section-number">8.7</span> Mutually exclusive events — the addition rule</a></li>
   <li><a href="#joint-probabilities" id="toc-joint-probabilities" class="nav-link" data-scroll-target="#joint-probabilities"><span class="header-section-number">8.8</span> Joint probabilities</a></li>
   <li><a href="#sec-what-is-resampling" id="toc-sec-what-is-resampling" class="nav-link" data-scroll-target="#sec-what-is-resampling"><span class="header-section-number">8.9</span> The Monte Carlo simulation method (resampling)</a></li>
-  <li><a href="#if-statements-in" id="toc-if-statements-in" class="nav-link" data-scroll-target="#if-statements-in"><span class="header-section-number">8.10</span> If statements in Python</a></li>
+  <li><a href="#sec-if-statements" id="toc-sec-if-statements" class="nav-link" data-scroll-target="#sec-if-statements"><span class="header-section-number">8.10</span> If statements in Python</a></li>
   <li><a href="#the-deductive-formulaic-method" id="toc-the-deductive-formulaic-method" class="nav-link" data-scroll-target="#the-deductive-formulaic-method"><span class="header-section-number">8.11</span> The deductive formulaic method</a></li>
   <li><a href="#multiplication-rule" id="toc-multiplication-rule" class="nav-link" data-scroll-target="#multiplication-rule"><span class="header-section-number">8.12</span> Multiplication rule</a></li>
   <li><a href="#sec-cond-uncond" id="toc-sec-cond-uncond" class="nav-link" data-scroll-target="#sec-cond-uncond"><span class="header-section-number">8.13</span> Conditional and unconditional probabilities</a></li>
@@ -654,8 +654,8 @@ Figure&nbsp;8.1: Tree diagram
 </ol>
 <p>Actually doing the above series of steps by hand is useful to build your intuition about probability and simulation methods. But the procedure can also be simulated with a computer. We will use Python to do this in a moment.</p>
 </section>
-<section id="if-statements-in" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="if-statements-in"><span class="header-section-number">8.10</span> If statements in Python</h2>
+<section id="sec-if-statements" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="sec-if-statements"><span class="header-section-number">8.10</span> If statements in Python</h2>
 <p>Before we get to the simulation, we need another feature of Python, called a <em>conditional</em> or <em>if</em> statement.</p>
 <p>Here we have rewritten step 4 above, but using indentation to emphasize the idea:</p>
 <pre><code>If you have drawn a blue ball from bucket A:
@@ -779,15 +779,15 @@ Figure&nbsp;8.1: Tree diagram
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By default, say we have no result.</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="st">'No result'</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>a_ball <span class="op">=</span> rnd.choice(bucket_A)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If you have drawn a blue ball from bucket A:</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If you have drawn a blue ball from bucket A: (then run indented code)</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a_ball <span class="op">==</span> <span class="st">'blue'</span>:</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Draw a ball at random from bucket B</span></span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    b_ball <span class="op">=</span> rnd.choice(bucket_B)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># if the ball is green:</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># if the ball is green: (then run the indented code)</span></span>
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> b_ball <span class="op">==</span> <span class="st">'green'</span>:</span>
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># record "yes"</span></span>
 <span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> <span class="st">'yes'</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># otherwise:</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># otherwise (not green):</span></span>
 <span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># record "no".</span></span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> <span class="st">'no'</span></span>
