@@ -415,6 +415,11 @@ div.csl-indent {
   </ul></li>
   <li><a href="#three-simulation-steps" id="toc-three-simulation-steps" class="nav-link" data-scroll-target="#three-simulation-steps"><span class="header-section-number">6.4</span> Three simulation steps</a>
   <ul class="collapse">
+  <li><a href="#more-on-s" id="toc-more-on-s" class="nav-link" data-scroll-target="#more-on-s"><span class="header-section-number">6.4.1</span> More on arrays</a></li>
+  </ul></li>
+  <li><a href="#sec-array-length" id="toc-sec-array-length" class="nav-link" data-scroll-target="#sec-array-length"><span class="header-section-number">6.5</span> array length</a></li>
+  <li><a href="#sec-array-indexing" id="toc-sec-array-indexing" class="nav-link" data-scroll-target="#sec-array-indexing"><span class="header-section-number">6.6</span> Indexing into arrays with integers</a>
+  <ul class="collapse">
   <li><a href="#repeating-trials" id="toc-repeating-trials" class="nav-link" data-scroll-target="#repeating-trials"><span class="header-section-number">6.6.1</span> Repeating trials</a></li>
   <li><a href="#sec-for-loops" id="toc-sec-for-loops" class="nav-link" data-scroll-target="#sec-for-loops"><span class="header-section-number">6.6.2</span> For-loops in Python</a></li>
   <li><a href="#sec-for-range" id="toc-sec-for-range" class="nav-link" data-scroll-target="#sec-for-range"><span class="header-section-number">6.6.3</span> <code>range</code> in Python <code>for</code> loops</a></li>
@@ -562,16 +567,8 @@ div.csl-indent {
 </ol>
 <p>Repeating the trial many times is the job of the <code>for</code> loop, and we will come to that soon.</p>
 <p>In order to record the results, we will store each trial result in an array.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-More on arrays
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="more-on-s" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="more-on-s"><span class="header-section-number">6.4.1</span> More on arrays</h3>
 <p>Since we will be working with arrays a lot, it is worth knowing more about them.</p>
 <p>A <span class="python">NumPy array</span> is a <em>container</em> that stores many elements of the same type. You have already seen, in <a href="resampling_method.html" class="quarto-xref"><span>Chapter 2</span></a>, how we can create an array from a sequence of numbers using the <span class="python"><code>np.array</code></span> function.</p>
 <div class="cell" data-layout-align="center">
@@ -595,6 +592,8 @@ More on arrays
 </div>
 </div>
 <p>Notice the argument <code>5</code> to the <span class="python"><code>np.zeros</code></span> function. This tells the function how many zeros we want in the array that the function will return.</p>
+</section>
+</section>
 <section id="sec-array-length" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="sec-array-length"><span class="header-section-number">6.5</span> array length</h2>
 <p>The are various useful things we can do with this array container. One is to ask how many elements there are in the array container. We can use the <span class="python"><code>len</code></span> function to calculate the number of elements in an array:</p>
@@ -607,8 +606,8 @@ More on arrays
 </div>
 </section>
 <section id="sec-array-indexing" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="sec-array-indexing"><span class="header-section-number">6.6</span> Indexing into arrays</h2>
-<p>Another thing we can do is <em>set</em> the value for a particular element in the array. To do this, we use square brackets following the array value, on the left hand side of the equals sign, like this:</p>
+<h2 data-number="6.6" class="anchored" data-anchor-id="sec-array-indexing"><span class="header-section-number">6.6</span> Indexing into arrays with integers</h2>
+<p>Another thing we can do with arrays is <em>set</em> the value for a particular element. To do this, we use square brackets following the array value, on the left hand side of the equals sign, like this:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the value of the *first* element in the array.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>z[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span></span>
@@ -646,9 +645,6 @@ More on arrays
 </div>
 <p>Read the first code line here as “v gets the value at position <span class="python">0</span> in the array”.</p>
 <p>Using square brackets to get and set element values is called <em>indexing</em> into the array.</p>
-</section>
-</div>
-</div>
 <section id="repeating-trials" class="level3" data-number="6.6.1">
 <h3 data-number="6.6.1" class="anchored" data-anchor-id="repeating-trials"><span class="header-section-number">6.6.1</span> Repeating trials</h3>
 <p>As a preview, let us now imagine that we want to do 50 simulated trials of Robert Swain’s jury in Hypothetical County. We will want to store the count for each trial, to give 50 counts.</p>

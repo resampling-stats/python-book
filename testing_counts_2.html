@@ -407,18 +407,19 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#comparisons-among-more-than-two-samples-of-counted-data" id="toc-comparisons-among-more-than-two-samples-of-counted-data" class="nav-link active" data-scroll-target="#comparisons-among-more-than-two-samples-of-counted-data"><span class="header-section-number">23.1</span> Comparisons among more than two samples of counted data</a>
+  <li><a href="#sec-logical-operators" id="toc-sec-logical-operators" class="nav-link active" data-scroll-target="#sec-logical-operators"><span class="header-section-number">23.1</span> Technical aside: logical operators</a></li>
+  <li><a href="#comparisons-among-more-than-two-samples-of-counted-data" id="toc-comparisons-among-more-than-two-samples-of-counted-data" class="nav-link" data-scroll-target="#comparisons-among-more-than-two-samples-of-counted-data"><span class="header-section-number">23.2</span> Comparisons among more than two samples of counted data</a>
   <ul class="collapse">
-  <li><a href="#sec-fruitfly-four" id="toc-sec-fruitfly-four" class="nav-link" data-scroll-target="#sec-fruitfly-four"><span class="header-section-number">23.1.1</span> Example: Do Any of Four Treatments Affect Sex Ratio in Fruit Flies?</a></li>
-  <li><a href="#sec-four-rehabs" id="toc-sec-four-rehabs" class="nav-link" data-scroll-target="#sec-four-rehabs"><span class="header-section-number">23.1.2</span> Example: Do Four Psychological Treatments Differ in Effectiveness?</a></li>
-  <li><a href="#example-three-way-comparison" id="toc-example-three-way-comparison" class="nav-link" data-scroll-target="#example-three-way-comparison"><span class="header-section-number">23.1.3</span> Example: Three-way Comparison</a></li>
+  <li><a href="#sec-fruitfly-four" id="toc-sec-fruitfly-four" class="nav-link" data-scroll-target="#sec-fruitfly-four"><span class="header-section-number">23.2.1</span> Example: Do Any of Four Treatments Affect Sex Ratio in Fruit Flies?</a></li>
+  <li><a href="#sec-four-rehabs" id="toc-sec-four-rehabs" class="nav-link" data-scroll-target="#sec-four-rehabs"><span class="header-section-number">23.2.2</span> Example: Do Four Psychological Treatments Differ in Effectiveness?</a></li>
+  <li><a href="#example-three-way-comparison" id="toc-example-three-way-comparison" class="nav-link" data-scroll-target="#example-three-way-comparison"><span class="header-section-number">23.2.3</span> Example: Three-way Comparison</a></li>
   </ul></li>
-  <li><a href="#paired-comparisons-with-counted-data" id="toc-paired-comparisons-with-counted-data" class="nav-link" data-scroll-target="#paired-comparisons-with-counted-data"><span class="header-section-number">23.2</span> Paired Comparisons With Counted Data</a>
+  <li><a href="#paired-comparisons-with-counted-data" id="toc-paired-comparisons-with-counted-data" class="nav-link" data-scroll-target="#paired-comparisons-with-counted-data"><span class="header-section-number">23.3</span> Paired Comparisons With Counted Data</a>
   <ul class="collapse">
-  <li><a href="#sec-pig-pairs" id="toc-sec-pig-pairs" class="nav-link" data-scroll-target="#sec-pig-pairs"><span class="header-section-number">23.2.1</span> Example: the pig rations again, but comparing pairs of pigs</a></li>
-  <li><a href="#example-merged-firms-compared-to-two-non-merged-groups" id="toc-example-merged-firms-compared-to-two-non-merged-groups" class="nav-link" data-scroll-target="#example-merged-firms-compared-to-two-non-merged-groups"><span class="header-section-number">23.2.2</span> Example: merged firms compared to two non-merged groups</a></li>
+  <li><a href="#sec-pig-pairs" id="toc-sec-pig-pairs" class="nav-link" data-scroll-target="#sec-pig-pairs"><span class="header-section-number">23.3.1</span> Example: the pig rations again, but comparing pairs of pigs</a></li>
+  <li><a href="#example-merged-firms-compared-to-two-non-merged-groups" id="toc-example-merged-firms-compared-to-two-non-merged-groups" class="nav-link" data-scroll-target="#example-merged-firms-compared-to-two-non-merged-groups"><span class="header-section-number">23.3.2</span> Example: merged firms compared to two non-merged groups</a></li>
   </ul></li>
-  <li><a href="#technical-note" id="toc-technical-note" class="nav-link" data-scroll-target="#technical-note"><span class="header-section-number">23.3</span> Technical note</a></li>
+  <li><a href="#technical-note" id="toc-technical-note" class="nav-link" data-scroll-target="#technical-note"><span class="header-section-number">23.4</span> Technical note</a></li>
   </ul>
 </nav>
     </div>
@@ -447,10 +448,205 @@ div.csl-indent {
 <p>Here’s the bad-news-good-news message again: The bad news is that the subject of inferential statistics is extremely difficult — not because it is complex but rather because it is subtle. The cause of the difficulty is that the world around us is difficult to understand, and spoon-fed mathematical simplifications which you manipulate mechanically simply mislead you into thinking you understand that about which you have not got a clue.</p>
 <p>The good news is that you — and that means <em>you</em> , even if you say you are “no good at mathematics” — can understand these problems with a layperson’s hard thinking, even if you have no mathematical background beyond arithmetic and you think that you have no mathematical capability. That’s because the difficulty lies in such matters as pin-pointing the right question, and understanding how to interpret your results.</p>
 <p>The problems in the previous chapter were tough enough. But this chapter considers problems with additional complications, such as when there are more than two groups, or paired comparisons for the same units of observation.</p>
-<section id="comparisons-among-more-than-two-samples-of-counted-data" class="level2" data-number="23.1">
-<h2 data-number="23.1" class="anchored" data-anchor-id="comparisons-among-more-than-two-samples-of-counted-data"><span class="header-section-number">23.1</span> Comparisons among more than two samples of counted data</h2>
-<section id="sec-fruitfly-four" class="level3" data-number="23.1.1">
-<h3 data-number="23.1.1" class="anchored" data-anchor-id="sec-fruitfly-four"><span class="header-section-number">23.1.1</span> Example: Do Any of Four Treatments Affect Sex Ratio in Fruit Flies?</h3>
+<p>But first, we need another addition to our Python vocabulary.</p>
+<section id="sec-logical-operators" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="sec-logical-operators"><span class="header-section-number">23.1</span> Technical aside: logical operators</h2>
+<div class="notebook" name="logical_operators" title="Logical operators">
+<p>Start of <code>logical_operators</code> notebook</p>
+<div class="nb-links">
+<a class="notebook-link" href="notebooks/logical_operators.ipynb">Download notebook</a>
+<a class="interact-button" href="./interact/lab/index.html?path=logical_operators.ipynb">Interact</a>
+</div>
+
+<p>This section continues our programme of expanding the range of Python features that you can use to clear code. As we introduce each feature, we will use them in the following examples.</p>
+<p>As motivation, we are about to do some simulations where we are interested in the number of some particular type of observations in each trial. For example, let’s do 10 coin tosses with <code>rnd.choice</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For each element, heads of tails is equally likely.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>coins <span class="op">=</span> rnd.choice([<span class="st">'heads'</span>, <span class="st">'tails'</span>], size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>coins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array(['tails', 'tails', 'tails', 'tails', 'tails', 'heads', 'tails',
+       'tails', 'tails', 'heads'], dtype='&lt;U5')</code></pre>
+</div>
+</div>
+<p>Let us now say that we are interested to record if the trial had <em>either</em> 2 or fewer “heads” <em>or</em> two or fewer “tails”.</p>
+<p>We could write it like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'heads'</span>) <span class="op">&lt;=</span> <span class="dv">2</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Trial is of interest'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Trial is of interest</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'tails'</span>) <span class="op">&lt;=</span> <span class="dv">2</span>:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Trial is of interest'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is a little repetitive to have to repeat the code identical code to print the same message for either of the two cases, and it would be even more repetitive if there were more lines of identical code to run for each of the two cases.</p>
+<p>Python solves this problem with the <span class="python"><code>or</code></span> operator, like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'heads'</span>) <span class="op">&lt;=</span> <span class="dv">2</span> <span class="kw">or</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'tails'</span>) <span class="op">&lt;=</span> <span class="dv">2</span>:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Trial is of interest'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Trial is of interest</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is an operator?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Above, we called <span class="python"><code>or</code></span> an <em>operator</em>. An operator, for our purposes, is a special character <span class="python">, or a word,</span> that sits between two values, and that tells Python how to combine these values.</p>
+<p>For example <code>+</code> is an operator. When <code>+</code> sits between two numbers in code, Python interprets this to mean “take the two numbers on either side, and make a new number that is the result of adding the two numbers”:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># + is an operator that, between two numbers, means "add the numbers".</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4</code></pre>
+</div>
+</div>
+<p><code>+</code>, <code>-</code>, <code>/</code> and <code>*</code> are all examples of operators that do <em>arithmetic</em> on the numbers to either side — they are <em>arithmetic</em> operators.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># * is an operator that, between two numbers, means "multiply the numbers".</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">*</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>8</code></pre>
+</div>
+</div>
+</div>
+</div>
+<!---
+End of callout note.
+-->
+<p>We are about to use the operator <span class="python"><code>or</code></span>. <span class="python"><code>or</code></span> is a <em>logical</em> operator. It is a logical operator because it does not operate on <em>numbers</em> (as arithmetic operators do), but on <em>logical</em> (<em>Boolean</em>) values — values that can be either <code>True</code> or <code>False</code>.</p>
+<p>For example, here we use <span class="python"><code>or</code></span>. to combine a <code>True</code> value (on the left) with a <code>False</code> value (on the right). It gives a result — <code>True</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="va">True</span> <span class="kw">or</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True</code></pre>
+</div>
+</div>
+<p><span class="python"><code>or</code></span> applies a very simple rule: if <em>either</em> the left-hand (LH) <em>or</em> the right-hand (RH) values are <code>True</code>, then <span class="python"><code>or</code></span> evaluates to <code>True</code>. Only if <em>neither</em> of the LH and RH values are <code>True</code>, does it return <code>False</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Both LH and RH are True, return True.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'True or True result:'</span>, <span class="va">True</span> <span class="kw">or</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True or True result: True</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only LH is True, return True.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'True or False result:'</span>, <span class="va">True</span> <span class="kw">or</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True or False result: True</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only RH is True, return True.</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'False or True result:'</span>, <span class="va">False</span> <span class="kw">or</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False or True result: True</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Neither LH nor RH are True, return False.</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'False or False result:'</span>, <span class="va">False</span> <span class="kw">or</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False or False result: False</code></pre>
+</div>
+</div>
+<p>Now let’s go back to the <code>if</code> statement above. The conditional part of the header line is:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'heads'</span>) <span class="op">&lt;=</span> <span class="dv">2</span> <span class="kw">or</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'tails'</span>) <span class="op">&lt;=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>np.True_</code></pre>
+</div>
+</div>
+<p>This will be <code>True</code> <em>either</em> when there there are two or fewer “heads”, <em>or</em> when there are two or fewer tails. Therefore, when we use this conditional in an <code>if</code> statement, we make the <em>body</em> of the <code>if</code> statement run only if either of the two conditions are <code>True</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'heads'</span>) <span class="op">&lt;=</span> <span class="dv">2</span> <span class="kw">or</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'tails'</span>) <span class="op">&lt;=</span> <span class="dv">2</span>:</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Trial is of interest'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Trial is of interest</code></pre>
+</div>
+</div>
+<p>While we are here, Python has another very useful logical operator: <span class="python"><code>and</code></span>.</p>
+<p><span class="python"><code>and</code></span> takes the LH and RH values, and returns <code>True</code> only if <em>both</em> values are <code>True</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Both LH and RH are True, return True.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'True and True result:'</span>, <span class="va">True</span> <span class="kw">and</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True and True result: True</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only LH is True, return False.</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'True and False result:'</span>, <span class="va">True</span> <span class="kw">and</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True and False result: False</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only RH is True, return False.</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'False and True result:'</span>, <span class="va">False</span> <span class="kw">and</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False and True result: False</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Neither LH nor RH are True, return False.</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'False and False result:'</span>, <span class="va">False</span> <span class="kw">and</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False and False result: False</code></pre>
+</div>
+</div>
+<p>We could, for example, ask whether the number of heads is &gt;=3 <em>and</em> &lt;=7 (is in the range 3 through 7).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'heads'</span>) <span class="op">&gt;=</span> <span class="dv">3</span> <span class="kw">and</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'heads'</span>) <span class="op">&lt;=</span> <span class="dv">7</span>:</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Trial is of interest'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="python">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Python interval comparison
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In fact, Python has a special shortcut syntax called <em>interval comparison</em> for that last question — whether a number is within a range. It looks like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Asks whether thee number of heads is &gt;= 3 *and* &lt;= 7.</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="op">&lt;=</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'heads'</span>) <span class="op">&lt;=</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>np.False_</code></pre>
+</div>
+</div>
+<p>Notice the value at one end of the range the left (here, the lower value), then the comparison operator, then the value to compare, then another comparison operator, followed by the value at the other end of the range on the right.</p>
+<p>The interval comparison above is a shortcut for the more verbose version we would need when using <code>and</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Also asks whether thee number of heads is &gt;= 3 *and* &lt;= 7.</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="op">&lt;=</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'heads'</span>) <span class="kw">and</span> np.<span class="bu">sum</span>(coins <span class="op">==</span> <span class="st">'heads'</span>) <span class="op">&lt;=</span> <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>np.False_</code></pre>
+</div>
+</div>
+</div>
+</div>
+<!---
+End of callout block.
+-->
+</div>
+<!---
+End of Python block.
+-->
+<p>End of <code>logical_operators</code> notebook</p>
+</div>
+<!---
+End of notebook.
+-->
+</section>
+<section id="comparisons-among-more-than-two-samples-of-counted-data" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="comparisons-among-more-than-two-samples-of-counted-data"><span class="header-section-number">23.2</span> Comparisons among more than two samples of counted data</h2>
+<section id="sec-fruitfly-four" class="level3" data-number="23.2.1">
+<h3 data-number="23.2.1" class="anchored" data-anchor-id="sec-fruitfly-four"><span class="header-section-number">23.2.1</span> Example: Do Any of Four Treatments Affect Sex Ratio in Fruit Flies?</h3>
 <p>This is an example of the general problem — <strong>when the benchmark universe proportion is known, is the proportion of the binomial population affected by any of the treatments?</strong></p>
 <p>Suppose that, instead of experimenting with just one type of radiation treatment on the flies (as in <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.1</span></a>), you try <em>four</em> different treatments, which we shall label A, B, C, and D. Treatment A produces fourteen males and six females, but treatments B, C, and D produce ten, eleven, and ten males, respectively. It is immediately obvious that there is no reason to think that treatment B, C, or D affects the sex ratio. But what about treatment A?</p>
 <p>A frequent and dangerous mistake made by young scientists is to scrounge around in the data for the most extreme result, and then treat it as if it were the only result. In the context of this example, it would be fallacious to think that the probability of the fourteen-males-to-six females split observed for treatment A is the same as the probability that we figured for a <em>single</em> experiment in the example <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.1</span></a>. Instead, we must consider that our benchmark universe is composed of <em>four sets</em> of twenty trials, each trial having a 50-50 probability of being male. We can consider that our previous trials 1-4 in <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.1</span></a> constitute a <em>single</em> new trial, and each subsequent set of four previous trials constitute another new trial. We then ask how likely a new trial of our sets of twenty flips is to produce <em>one</em> set with fourteen or more of one or the other sex.</p>
@@ -551,38 +747,38 @@ Table&nbsp;23.1: Results from 6 random trials for Fruitfly 4-group problem
 <p>In each trial we generate 4 random samples (groups) of 20 fruit flies, and for each, we count the number of males (“males”s) and then check whether that group has more than 13 of either sex (actually, more than 13 “males”s or less than 7 “males”). If it does, then we change a variable called <code>unusual</code> to 1, which informs us that for this sample, at least 1 group of 20 fruit flies had results as unusual as the results from the fruit flies exposed to the four treatments.</p>
 <p>After the 10,000 runs are made, we count the number of trials where one sample had a group of fruit flies with 14 or more of either sex, and show the results.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n_iters <span class="op">=</span> <span class="dv">10_000</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Make array to store results for each trial.</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_iters)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_iters):</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unusual indicates whether we have obtained any trial group with more</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># than 13 of either sex. We start at 0 (= no).</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    unusual <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Repeat the following steps 4 times to constitute 4 trial groups</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (representing treatments A, B, C, and D) of 20 flies each.</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        flies <span class="op">=</span> rnd.choice([<span class="st">'male'</span>, <span class="st">'female'</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        n_males <span class="op">=</span> np.<span class="bu">sum</span>(flies <span class="op">==</span> <span class="st">'male'</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n_males <span class="op">&gt;=</span> <span class="dv">14</span> <span class="kw">or</span> n_males <span class="op">&lt;=</span> <span class="dv">6</span>:</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            unusual <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unusual now tells us whether we got a result as extreme as that</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># observed (unusual == 1 if we did, unusual == 0 if not). We must</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># keep track of this result in the results variable, for each experiment.</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> unusual</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># The number of trials for which at least one of the four tests</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># exceeded 13 males or 13 females.</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(results)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_iters</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion of trials with one or more group &gt;=14 or &lt;=6 :'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>n_iters <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Make array to store results for each trial.</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_iters)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_iters):</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unusual indicates whether we have obtained any trial group with more</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># than 13 of either sex. We start at 0 (= no).</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    unusual <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Repeat the following steps 4 times to constitute 4 trial groups</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (representing treatments A, B, C, and D) of 20 flies each.</span></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>        flies <span class="op">=</span> rnd.choice([<span class="st">'male'</span>, <span class="st">'female'</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>        n_males <span class="op">=</span> np.<span class="bu">sum</span>(flies <span class="op">==</span> <span class="st">'male'</span>)</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n_males <span class="op">&gt;=</span> <span class="dv">14</span> <span class="kw">or</span> n_males <span class="op">&lt;=</span> <span class="dv">6</span>:</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>            unusual <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># unusual now tells us whether we got a result as extreme as that</span></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># observed (unusual == 1 if we did, unusual == 0 if not). We must</span></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># keep track of this result in the results variable, for each experiment.</span></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> unusual</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="co"># The number of trials for which at least one of the four tests</span></span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="co"># exceeded 13 males or 13 females.</span></span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(results)</span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_iters</span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion of trials with one or more group &gt;=14 or &lt;=6 :'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Proportion of trials with one or more group &gt;=14 or &lt;=6 : 0.3886</code></pre>
+<pre><code>Proportion of trials with one or more group &gt;=14 or &lt;=6 : 0.3808</code></pre>
 </div>
 </div>
 <p>End of <code>fruit_fly4</code> notebook</p>
@@ -590,13 +786,13 @@ Table&nbsp;23.1: Results from 6 random trials for Fruitfly 4-group problem
 <!---
 End of notebook
 -->
-<p>In one set of 10,000 trials, there were more than 13 males or more than 13 females 39 percent of the time — clearly not an unusual occurrence.</p>
+<p>In one set of 10,000 trials, there were more than 13 males or more than 13 females 38 percent of the time — clearly not an unusual occurrence.</p>
 </section>
-<section id="sec-four-rehabs" class="level3" data-number="23.1.2">
-<h3 data-number="23.1.2" class="anchored" data-anchor-id="sec-four-rehabs"><span class="header-section-number">23.1.2</span> Example: Do Four Psychological Treatments Differ in Effectiveness?</h3>
+<section id="sec-four-rehabs" class="level3" data-number="23.2.2">
+<h3 data-number="23.2.2" class="anchored" data-anchor-id="sec-four-rehabs"><span class="header-section-number">23.2.2</span> Example: Do Four Psychological Treatments Differ in Effectiveness?</h3>
 <p><strong>Do Several Two-Outcome Samples Differ Among Themselves in Their Proportions?</strong></p>
 <p>Consider four different psychological treatments designed to rehabilitate young offenders. Instead of a numerical test score, there is only a “yes” or a “no” answer as to whether the young person has kept their record clean or has gotten into trouble again. Call a clean record “success”. Label the treatments P, R, S, and T, each of which is administered to a separate group of twenty young offenders. The number of “success” outcomes per group has been: P, 17; R, 10; S, 10; T, 7. Is it improbable that all four groups come from the same universe?</p>
-<p>This problem is like the placebo vs.&nbsp;cancer-cure problem, but now there are more than two samples. It is also like the four-sample irradiated-fruit flies example (<a href="#sec-fruitfly-four" class="quarto-xref"><span>Section 23.1.1</span></a>), except that now we are <em>not</em> asking whether any or some of the samples differ from a <em>given universe</em> (50-50 sex ratio in that case). Rather, we are now asking whether there are differences <em>among</em> the samples themselves. Please keep in mind that we are still dealing with two-outcome (success-or-failure, yes-or-no, well-or-sick) problems. The outcomes fall into categories, to which we give labels (“success” or “failure”, “well” or “sick”). Later we shall take up problems that are similar except that the outcomes are “quantitative” — in that the outcomes are numbers rather than labels.</p>
+<p>This problem is like the placebo vs.&nbsp;cancer-cure problem, but now there are more than two samples. It is also like the four-sample irradiated-fruit flies example (<a href="#sec-fruitfly-four" class="quarto-xref"><span>Section 23.2.1</span></a>), except that now we are <em>not</em> asking whether any or some of the samples differ from a <em>given universe</em> (50-50 sex ratio in that case). Rather, we are now asking whether there are differences <em>among</em> the samples themselves. Please keep in mind that we are still dealing with two-outcome (success-or-failure, yes-or-no, well-or-sick) problems. The outcomes fall into categories, to which we give labels (“success” or “failure”, “well” or “sick”). Later we shall take up problems that are similar except that the outcomes are “quantitative” — in that the outcomes are numbers rather than labels.</p>
 <p>If all four groups were drawn from the same universe, that universe has an estimated success rate of 17/20 + 10/20 + 10/20 + 7/20 = 44/80 = 55/100 = 55%, because the observed data <em>taken as a whole</em> constitute our best guess as to the nature of the universe from which they come — again, <em>if</em> they all come from the same universe. (Please think this matter over a bit, because it is important and subtle. It may help you to notice the absence of any <em>other</em> information about the universe from which they have all come, if they have come from the same universe.)</p>
 <p>Therefore, select twenty two-digit numbers for each group from the random-number table, marking “success” for each number in the range 1 through 55 and “failure” for each number 56 through 100. Conduct a number of such trials. Then count the proportion of times that the difference between the highest and lowest groups is larger than the widest observed difference, the difference between P and T (17-7 = 10). In <a href="#tbl-offenders" class="quarto-xref">Table&nbsp;<span>23.2</span></a>, none of the first six trials shows anywhere near as large a difference as the observed range of 10, suggesting that it would be rare for four treatments that are “really” similar to show so great a difference. There is thus reason to believe that P and T differ in their effects.</p>
 <div id="tbl-offenders" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -680,66 +876,66 @@ Table&nbsp;23.2: Results of Six Random Trials for Problem “offenders”
 </div>
 
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the random number generator</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of trials</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the sample size for each trial</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>sample_size <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># An empty array to store the trial results.</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.zeros(n_trials)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The first treatment group</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> rnd.choice([<span class="st">'success'</span>, <span class="st">'failure'</span>], p<span class="op">=</span>[<span class="fl">0.55</span>, <span class="fl">0.45</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count successes.</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    a_count <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">==</span> <span class="st">'success'</span>)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Second, third and fourth treatment groups, and successes.</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> rnd.choice([<span class="st">'success'</span>, <span class="st">'failure'</span>], p<span class="op">=</span>[<span class="fl">0.55</span>, <span class="fl">0.45</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    b_count <span class="op">=</span> np.<span class="bu">sum</span>(b <span class="op">==</span> <span class="st">'success'</span>)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> rnd.choice([<span class="st">'success'</span>, <span class="st">'failure'</span>], p<span class="op">=</span>[<span class="fl">0.55</span>, <span class="fl">0.45</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    c_count <span class="op">=</span> np.<span class="bu">sum</span>(c <span class="op">==</span> <span class="st">'success'</span>)</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> rnd.choice([<span class="st">'success'</span>, <span class="st">'failure'</span>], p<span class="op">=</span>[<span class="fl">0.55</span>, <span class="fl">0.45</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    d_count <span class="op">=</span> np.<span class="bu">sum</span>(d <span class="op">==</span> <span class="st">'success'</span>)</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Now find all the pairwise differences in successes among the groups.</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    a_minus_b <span class="op">=</span> a_count <span class="op">-</span> b_count</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    a_minus_c <span class="op">=</span> a_count <span class="op">-</span> c_count</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    a_minus_d <span class="op">=</span> a_count <span class="op">-</span> d_count</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    b_minus_c <span class="op">=</span> b_count <span class="op">-</span> c_count</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    b_minus_d <span class="op">=</span> b_count <span class="op">-</span> d_count</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    c_minus_d <span class="op">=</span> c_count <span class="op">-</span> d_count</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Concatenate, or join, all the differences in a single array "diffs".</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    diffs <span class="op">=</span> np.array([a_minus_b, a_minus_c, a_minus_d,</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>                      b_minus_c, b_minus_d, c_minus_d])</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Since we are interested only in the magnitude of the difference, not its</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># direction, we take the absolute value of all the differences (we remove</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># any minus signs, making all values positive).</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    abs_diffs <span class="op">=</span> np.<span class="bu">abs</span>(diffs)</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the largest of all the differences</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    max_abs_diff <span class="op">=</span> np.<span class="bu">max</span>(abs_diffs)</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep score of the largest</span></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    scores[i] <span class="op">=</span> max_abs_diff</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End a trial, go back and repeat until all 10000 are complete.</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="co"># How many of the trials yielded a maximum difference greater than the</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="co"># observed maximum difference?</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(scores <span class="op">&gt;=</span> <span class="dv">10</span>)</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion &gt;= 10 was'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the random number generator</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of trials</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the sample size for each trial</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>sample_size <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co"># An empty array to store the trial results.</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials</span></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The first treatment group</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> rnd.choice([<span class="st">'success'</span>, <span class="st">'failure'</span>], p<span class="op">=</span>[<span class="fl">0.55</span>, <span class="fl">0.45</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count successes.</span></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    a_count <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">==</span> <span class="st">'success'</span>)</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Second, third and fourth treatment groups, and successes.</span></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> rnd.choice([<span class="st">'success'</span>, <span class="st">'failure'</span>], p<span class="op">=</span>[<span class="fl">0.55</span>, <span class="fl">0.45</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>    b_count <span class="op">=</span> np.<span class="bu">sum</span>(b <span class="op">==</span> <span class="st">'success'</span>)</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> rnd.choice([<span class="st">'success'</span>, <span class="st">'failure'</span>], p<span class="op">=</span>[<span class="fl">0.55</span>, <span class="fl">0.45</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    c_count <span class="op">=</span> np.<span class="bu">sum</span>(c <span class="op">==</span> <span class="st">'success'</span>)</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> rnd.choice([<span class="st">'success'</span>, <span class="st">'failure'</span>], p<span class="op">=</span>[<span class="fl">0.55</span>, <span class="fl">0.45</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>    d_count <span class="op">=</span> np.<span class="bu">sum</span>(d <span class="op">==</span> <span class="st">'success'</span>)</span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Now find all the pairwise differences in successes among the groups.</span></span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>    a_minus_b <span class="op">=</span> a_count <span class="op">-</span> b_count</span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>    a_minus_c <span class="op">=</span> a_count <span class="op">-</span> c_count</span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>    a_minus_d <span class="op">=</span> a_count <span class="op">-</span> d_count</span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>    b_minus_c <span class="op">=</span> b_count <span class="op">-</span> c_count</span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>    b_minus_d <span class="op">=</span> b_count <span class="op">-</span> d_count</span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>    c_minus_d <span class="op">=</span> c_count <span class="op">-</span> d_count</span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Concatenate, or join, all the differences in a single array "diffs".</span></span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>    diffs <span class="op">=</span> np.array([a_minus_b, a_minus_c, a_minus_d,</span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>                      b_minus_c, b_minus_d, c_minus_d])</span>
+<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Since we are interested only in the magnitude of the difference, not its</span></span>
+<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># direction, we take the absolute value of all the differences (we remove</span></span>
+<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># any minus signs, making all values positive).</span></span>
+<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a>    abs_diffs <span class="op">=</span> np.<span class="bu">abs</span>(diffs)</span>
+<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the largest of all the differences</span></span>
+<span id="cb42-46"><a href="#cb42-46" aria-hidden="true" tabindex="-1"></a>    max_abs_diff <span class="op">=</span> np.<span class="bu">max</span>(abs_diffs)</span>
+<span id="cb42-47"><a href="#cb42-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep score of the largest</span></span>
+<span id="cb42-48"><a href="#cb42-48" aria-hidden="true" tabindex="-1"></a>    scores[i] <span class="op">=</span> max_abs_diff</span>
+<span id="cb42-49"><a href="#cb42-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-50"><a href="#cb42-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End a trial, go back and repeat until all 10000 are complete.</span></span>
+<span id="cb42-51"><a href="#cb42-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-52"><a href="#cb42-52" aria-hidden="true" tabindex="-1"></a><span class="co"># How many of the trials yielded a maximum difference greater than the</span></span>
+<span id="cb42-53"><a href="#cb42-53" aria-hidden="true" tabindex="-1"></a><span class="co"># observed maximum difference?</span></span>
+<span id="cb42-54"><a href="#cb42-54" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(scores <span class="op">&gt;=</span> <span class="dv">10</span>)</span>
+<span id="cb42-55"><a href="#cb42-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion</span></span>
+<span id="cb42-56"><a href="#cb42-56" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
+<span id="cb42-57"><a href="#cb42-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-58"><a href="#cb42-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion &gt;= 10 was'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Proportion &gt;= 10 was 0.011</code></pre>
+<pre><code>Proportion &gt;= 10 was 0.0121</code></pre>
 </div>
 </div>
 <p>End of <code>offenders</code> notebook</p>
@@ -758,88 +954,88 @@ End of notebook
 
 <p>The first step is to examine our data and calculate this measure: The mean is 11, the differences (call <em>deviations from the mean</em>) are 6, 1, 1, and 4, the squared deviations are 36, 1, 1, and 16, and their sum is 54. In Python:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The actual scores for each treatment.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>treat_scores <span class="op">=</span> np.array([<span class="dv">17</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">7</span>])</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The mean.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> np.mean(treat_scores)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The four deviations from the mean</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>deviations <span class="op">=</span> treat_scores <span class="op">-</span> m</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Squared deviations.</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>sq_deviations <span class="op">=</span> deviations <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum of squared deviations.</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>actual_sum_sq_deviations <span class="op">=</span> np.<span class="bu">sum</span>(sq_deviations)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result.</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>actual_sum_sq_deviations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The actual scores for each treatment.</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>treat_scores <span class="op">=</span> np.array([<span class="dv">17</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">7</span>])</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The mean.</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> np.mean(treat_scores)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The four deviations from the mean</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>deviations <span class="op">=</span> treat_scores <span class="op">-</span> m</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Squared deviations.</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>sq_deviations <span class="op">=</span> deviations <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum of squared deviations.</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>actual_sum_sq_deviations <span class="op">=</span> np.<span class="bu">sum</span>(sq_deviations)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result.</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>actual_sum_sq_deviations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.float64(54.0)</code></pre>
 </div>
 </div>
 <p>Our experiment will be, as before, to constitute four groups of 20 at random from a universe with a 55 percent rehabilitation rate. We then calculate this same measure for the random groups. If it is frequently larger than 54, then we conclude that a uniform cure rate of 55 percent could easily have produced the observed results. The program that follows also generates the four treatments by using a <code>for</code> loop, rather than spelling out the <code>rnd.choice</code> command 4 times as above. In Python:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the random number generator.</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of trials.</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the sample size for each trial.</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>sample_size <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># An empty array to store the trials.</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.zeros(n_trials)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Repeat the following steps 4 times to constitute 4 groups of 20 and</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count their success rates.</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    group_scores <span class="op">=</span> np.zeros(<span class="dv">4</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> group_no <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):  <span class="co"># for 0, 1, 2, 3.</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># A treatment group</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        group <span class="op">=</span> rnd.choice([<span class="st">'success'</span>, <span class="st">'failure'</span>], p<span class="op">=</span>[<span class="fl">0.55</span>, <span class="fl">0.45</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Count successes.</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        group_count <span class="op">=</span> np.<span class="bu">sum</span>(group <span class="op">==</span> <span class="st">'success'</span>)</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Store result</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        group_scores[group_no] <span class="op">=</span> group_count</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># End the procedure for one group of 20, go back and repeat until all 4</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="co"># are done.</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the mean</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> np.mean(group_scores)</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the deviations of the scores from the mean of the scores.</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    deviations <span class="op">=</span> group_scores <span class="op">-</span> m</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Square them, making them them positive.</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    sq_deviations <span class="op">=</span> deviations <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sum up the squared deviations.</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    sum_sq_deviations <span class="op">=</span> np.<span class="bu">sum</span>(sq_deviations)</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep track of the result for each trial.</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    scores[i] <span class="op">=</span> sum_sq_deviations</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End a trial, go back and repeat until all 10000 are complete.</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce a histogram of the trial results.</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>plt.hist(scores, bins<span class="op">=</span><span class="dv">50</span>)</span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of sum of squared deviations, in null universe'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the random number generator.</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of trials.</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the sample size for each trial.</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>sample_size <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co"># An empty array to store the trials.</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Repeat the following steps 4 times to constitute 4 groups of 20 and</span></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count their success rates.</span></span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>    group_scores <span class="op">=</span> np.zeros(<span class="dv">4</span>)</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> group_no <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):  <span class="co"># for 0, 1, 2, 3.</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># A treatment group</span></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>        group <span class="op">=</span> rnd.choice([<span class="st">'success'</span>, <span class="st">'failure'</span>], p<span class="op">=</span>[<span class="fl">0.55</span>, <span class="fl">0.45</span>], size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Count successes.</span></span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>        group_count <span class="op">=</span> np.<span class="bu">sum</span>(group <span class="op">==</span> <span class="st">'success'</span>)</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Store result</span></span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>        group_scores[group_no] <span class="op">=</span> group_count</span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># End the procedure for one group of 20, go back and repeat until all 4</span></span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>        <span class="co"># are done.</span></span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the mean</span></span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> np.mean(group_scores)</span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the deviations of the scores from the mean of the scores.</span></span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>    deviations <span class="op">=</span> group_scores <span class="op">-</span> m</span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Square them, making them them positive.</span></span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>    sq_deviations <span class="op">=</span> deviations <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sum up the squared deviations.</span></span>
+<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a>    sum_sq_deviations <span class="op">=</span> np.<span class="bu">sum</span>(sq_deviations)</span>
+<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep track of the result for each trial.</span></span>
+<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a>    scores[i] <span class="op">=</span> sum_sq_deviations</span>
+<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End a trial, go back and repeat until all 10000 are complete.</span></span>
+<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce a histogram of the trial results.</span></span>
+<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a>plt.hist(scores, bins<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of sum of squared deviations, in null universe'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>From this histogram, we see that in only about 1 percent of the cases did our trial sum of squared differences equal or exceed 54, confirming our conclusion that this is an unusual result. We can have Python calculate this proportion:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many of the trials yielded a maximum difference greater than the</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># observed maximum difference?</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(scores <span class="op">&gt;=</span> actual_sum_sq_deviations)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion &gt;='</span>, actual_sum_sq_deviations, <span class="st">'was:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many of the trials yielded a maximum difference greater than the</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># observed maximum difference?</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(scores <span class="op">&gt;=</span> actual_sum_sq_deviations)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion &gt;='</span>, actual_sum_sq_deviations, <span class="st">'was:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Proportion &gt;= 54.0 was: 0.0109</code></pre>
+<pre><code>Proportion &gt;= 54.0 was: 0.0112</code></pre>
 </div>
 </div>
 <p>The conventional way to approach this problem would be with what is known as a <a href="https://en.wikipedia.org/wiki/Chi-squared_test">chi-squared test</a>.</p>
@@ -849,8 +1045,8 @@ End of notebook
 End of notebook
 -->
 </section>
-<section id="example-three-way-comparison" class="level3" data-number="23.1.3">
-<h3 data-number="23.1.3" class="anchored" data-anchor-id="example-three-way-comparison"><span class="header-section-number">23.1.3</span> Example: Three-way Comparison</h3>
+<section id="example-three-way-comparison" class="level3" data-number="23.2.3">
+<h3 data-number="23.2.3" class="anchored" data-anchor-id="example-three-way-comparison"><span class="header-section-number">23.2.3</span> Example: Three-way Comparison</h3>
 <p>In a national election poll of 750 respondents in May, 1992, George Bush got 36 percent of the preferences (270 voters), Ross Perot got 30 percent (225 voters), and Bill Clinton got 28 percent (210 voters), with 45 undecided (<em>Wall Street Journal</em>, October 29, 1992, A16). Assuming that the poll was representative of actual voting, how likely is it that Bush was actually <em>behind</em> and just came out ahead in this poll by chance? Or to put it differently, what was the probability that Bush actually had a plurality of support, rather than that his apparent advantage was a matter of sampling variability? We test this by constructing a universe in which Bush is slightly behind (in practice, just equal), and then drawing samples to see how likely it is that those samples will show Bush ahead.</p>
 <p>We must first find that universe — among all possible universes that yield a conclusion contrary to the conclusion shown by the data, and one in which we are interested — that has the highest probability of producing the observed sample. With a two-person race the universe is obvious: a universe that is evenly split except for a single vote against “our” candidate who is now in the lead, i.e.&nbsp;in practice a 50-50 universe. In that simple case we then ask the probability that <em>that</em> universe would produce a sample as far out in the direction of the conclusion drawn from the observed sample as the observed sample.</p>
 <p>With a three-person race, however, the decision is not obvious (and if this problem becomes too murky for you, skip over it; it is included here more for fun than anything else). And there is no standard method for handling this problem in conventional statistics (a solution in terms of a confidence interval was first offered in 1992, and that one is very complicated and not very satisfactory to me (JLS)). But the sort of thinking that we must labor to accomplish is also required for any conventional solution; the difficulty is inherent in the problem, rather than being inherent in resampling, and resampling will be at least as simple and understandable as any formulaic approach.</p>
@@ -870,61 +1066,61 @@ End of notebook
 </div>
 
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the random number generator</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of trials.</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of voters who expressed a preference.</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>n_voters <span class="op">=</span> <span class="dv">705</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Benchmark proportions.</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>bench_ps <span class="op">=</span> [<span class="fl">0.35</span>, <span class="fl">0.35</span>, <span class="fl">0.30</span>]</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># An empty array to store the trials.</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.zeros(n_trials)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Take a sample of 705 votes, with replacement.</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> rnd.choice([<span class="st">'Bush'</span>, <span class="st">'Perot'</span>, <span class="st">'Clinton'</span>],</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>                      p<span class="op">=</span>bench_ps,</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>                      size<span class="op">=</span>n_voters)</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count the Bush voters, etc.</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    n_bush <span class="op">=</span> np.<span class="bu">sum</span>(samp <span class="op">==</span> <span class="st">'Bush'</span>)</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    n_perot <span class="op">=</span> np.<span class="bu">sum</span>(samp <span class="op">==</span> <span class="st">'Perot'</span>)</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    n_clinton <span class="op">=</span> np.<span class="bu">sum</span>(samp <span class="op">==</span> <span class="st">'Clinton'</span>)</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Join Perot &amp; Clinton votes in an array.</span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    others <span class="op">=</span> np.array([n_perot, n_clinton])</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the larger of the other two.</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    n_second <span class="op">=</span> np.<span class="bu">max</span>(others)</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find Bush's margin over 2nd.</span></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    lead <span class="op">=</span> n_bush <span class="op">-</span> n_second</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert vote difference to percent lead.</span></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    pct_lead <span class="op">=</span> lead <span class="op">/</span> n_voters <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Store the result.</span></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    scores[i] <span class="op">=</span> pct_lead</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>plt.hist(scores, bins<span class="op">=</span><span class="dv">50</span>)</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Bush margin over second candidate'</span>)</span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare to the observed margin in the sample of 705 corresponding to a 6.4</span></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="co"># percent margin by Bush over 2nd place finisher.</span></span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(scores <span class="op">&gt;=</span> <span class="fl">6.4</span>)</span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion of trials where Bush margin &gt;= 6.4%:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the random number generator</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of trials.</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of voters who expressed a preference.</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>n_voters <span class="op">=</span> <span class="dv">705</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Benchmark proportions.</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>bench_ps <span class="op">=</span> [<span class="fl">0.35</span>, <span class="fl">0.35</span>, <span class="fl">0.30</span>]</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="co"># An empty array to store the trials.</span></span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> np.zeros(n_trials)</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials</span></span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_trials):</span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Take a sample of 705 votes, with replacement.</span></span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>    samp <span class="op">=</span> rnd.choice([<span class="st">'Bush'</span>, <span class="st">'Perot'</span>, <span class="st">'Clinton'</span>],</span>
+<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a>                      p<span class="op">=</span>bench_ps,</span>
+<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a>                      size<span class="op">=</span>n_voters)</span>
+<span id="cb49-25"><a href="#cb49-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count the Bush voters, etc.</span></span>
+<span id="cb49-26"><a href="#cb49-26" aria-hidden="true" tabindex="-1"></a>    n_bush <span class="op">=</span> np.<span class="bu">sum</span>(samp <span class="op">==</span> <span class="st">'Bush'</span>)</span>
+<span id="cb49-27"><a href="#cb49-27" aria-hidden="true" tabindex="-1"></a>    n_perot <span class="op">=</span> np.<span class="bu">sum</span>(samp <span class="op">==</span> <span class="st">'Perot'</span>)</span>
+<span id="cb49-28"><a href="#cb49-28" aria-hidden="true" tabindex="-1"></a>    n_clinton <span class="op">=</span> np.<span class="bu">sum</span>(samp <span class="op">==</span> <span class="st">'Clinton'</span>)</span>
+<span id="cb49-29"><a href="#cb49-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Join Perot &amp; Clinton votes in an array.</span></span>
+<span id="cb49-30"><a href="#cb49-30" aria-hidden="true" tabindex="-1"></a>    others <span class="op">=</span> np.array([n_perot, n_clinton])</span>
+<span id="cb49-31"><a href="#cb49-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find the larger of the other two.</span></span>
+<span id="cb49-32"><a href="#cb49-32" aria-hidden="true" tabindex="-1"></a>    n_second <span class="op">=</span> np.<span class="bu">max</span>(others)</span>
+<span id="cb49-33"><a href="#cb49-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Find Bush's margin over 2nd.</span></span>
+<span id="cb49-34"><a href="#cb49-34" aria-hidden="true" tabindex="-1"></a>    lead <span class="op">=</span> n_bush <span class="op">-</span> n_second</span>
+<span id="cb49-35"><a href="#cb49-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert vote difference to percent lead.</span></span>
+<span id="cb49-36"><a href="#cb49-36" aria-hidden="true" tabindex="-1"></a>    pct_lead <span class="op">=</span> lead <span class="op">/</span> n_voters <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb49-37"><a href="#cb49-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Store the result.</span></span>
+<span id="cb49-38"><a href="#cb49-38" aria-hidden="true" tabindex="-1"></a>    scores[i] <span class="op">=</span> pct_lead</span>
+<span id="cb49-39"><a href="#cb49-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-40"><a href="#cb49-40" aria-hidden="true" tabindex="-1"></a>plt.hist(scores, bins<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb49-41"><a href="#cb49-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Bush margin over second candidate'</span>)</span>
+<span id="cb49-42"><a href="#cb49-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-43"><a href="#cb49-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare to the observed margin in the sample of 705 corresponding to a 6.4</span></span>
+<span id="cb49-44"><a href="#cb49-44" aria-hidden="true" tabindex="-1"></a><span class="co"># percent margin by Bush over 2nd place finisher.</span></span>
+<span id="cb49-45"><a href="#cb49-45" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(scores <span class="op">&gt;=</span> <span class="fl">6.4</span>)</span>
+<span id="cb49-46"><a href="#cb49-46" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_trials</span>
+<span id="cb49-47"><a href="#cb49-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-48"><a href="#cb49-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion of trials where Bush margin &gt;= 6.4%:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Proportion of trials where Bush margin &gt;= 6.4%: 0.0147</code></pre>
+<pre><code>Proportion of trials where Bush margin &gt;= 6.4%: 0.0182</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -935,13 +1131,13 @@ End of notebook
 End of notebook
 -->
 <p>When we run this program with a 36-36-28 split, we also get a similar result — around 2.2 percent (try it — edit <code>bench_ps</code> in the notebook and run it again).</p>
-<p>Our main result is that our 35-35-30 analysis shows a probability of only 1.5 percent that Bush would score a 6.4 percentage point “victory” in the sample, by chance, if the universe were split as specified. So Bush could feel reasonably confident that at the time the poll was taken, he was ahead of the other two candidates.</p>
+<p>Our main result is that our 35-35-30 analysis shows a probability of only 1.8 percent that Bush would score a 6.4 percentage point “victory” in the sample, by chance, if the universe were split as specified. So Bush could feel reasonably confident that at the time the poll was taken, he was ahead of the other two candidates.</p>
 </section>
 </section>
-<section id="paired-comparisons-with-counted-data" class="level2" data-number="23.2">
-<h2 data-number="23.2" class="anchored" data-anchor-id="paired-comparisons-with-counted-data"><span class="header-section-number">23.2</span> Paired Comparisons With Counted Data</h2>
-<section id="sec-pig-pairs" class="level3" data-number="23.2.1">
-<h3 data-number="23.2.1" class="anchored" data-anchor-id="sec-pig-pairs"><span class="header-section-number">23.2.1</span> Example: the pig rations again, but comparing pairs of pigs</h3>
+<section id="paired-comparisons-with-counted-data" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="paired-comparisons-with-counted-data"><span class="header-section-number">23.3</span> Paired Comparisons With Counted Data</h2>
+<section id="sec-pig-pairs" class="level3" data-number="23.3.1">
+<h3 data-number="23.3.1" class="anchored" data-anchor-id="sec-pig-pairs"><span class="header-section-number">23.3.1</span> Example: the pig rations again, but comparing pairs of pigs</h3>
 <p>This is a <strong>Paired-Comparison Test</strong>.</p>
 <p>To illustrate how several different procedures can reasonably be used to deal with a given problem, here is another way to decide whether pig ration A is “really” better: We can assume that the order of the pig scores listed <em>within each ration group</em> is random — perhaps the order of the stalls the pigs were kept in, or their alphabetical-name order, or any other random order <em>not related to their weights</em> . Match the first pig eating ration A with the first pig eating ration B, and also match the second pigs, the third pigs, and so forth. Then count the number of matched pairs on which ration A does better. On nine of twelve pairings ration A does better, that is, 31.0 &gt; 26.0, 34.0 &gt; 24.0, and so forth.</p>
 <p>Now we can ask: <em>If</em> the two rations are equally good, how often will one ration exceed the other nine or more times out of twelve, just by chance? This is the same as asking how often either heads <em>or</em> tails will come up nine or more times in twelve tosses. (This is a “two-tailed” test because, as far as we know, either ration may be as good as or better than the other.) Once we have decided to treat the problem in this manner, it is quite similar to <a href="testing_counts_1.html#sec-fruitfly" class="quarto-xref"><span>Section 21.2.1</span></a> (the first fruitfly irradiation problem). We ask how likely it is that the outcome will be as far away as the observed outcome (9 “heads” of 12) from 6 of 12 (which is what we expect to get by chance in this case if the two rations are similar).</p>
@@ -1201,37 +1397,37 @@ Table&nbsp;23.3: Results from fifty simulation trials of the paired pigs problem
 </div>
 
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>n_iters <span class="op">=</span> <span class="dv">10_000</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Make array to store results for each trial.</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_iters)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_iters):</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate randomly 12 "A" or "B"s.  Each of the 12 values represents</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># one "pairing" where "A" = ration A "wins," "B" = ration B "wins.".</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    wins <span class="op">=</span> rnd.choice([<span class="st">'A'</span>, <span class="st">'B'</span>], size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count the number of "pairings" where ration A won, put the result in</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "n_a_wins".</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    n_a_wins <span class="op">=</span> np.<span class="bu">sum</span>(wins <span class="op">==</span> <span class="st">'A'</span>)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep track of the result in results.</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> n_a_wins</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End the trial, go back and repeat until all 10000 trials are complete.</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine how often we got 9 or more "wins" for ration A.</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>high <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&gt;=</span> <span class="dv">9</span>)</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine how often we got 3 or fewer "wins" for ration A.</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>low <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&lt;=</span> <span class="dv">3</span>)</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the two together</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> high <span class="op">+</span> low</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="co">#  Convert to a proportion</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_iters</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result.</span></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion &gt;=9 or &lt;=3:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>n_iters <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Make array to store results for each trial.</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_iters)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_iters):</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate randomly 12 "A" or "B"s.  Each of the 12 values represents</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># one "pairing" where "A" = ration A "wins," "B" = ration B "wins.".</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>    wins <span class="op">=</span> rnd.choice([<span class="st">'A'</span>, <span class="st">'B'</span>], size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count the number of "pairings" where ration A won, put the result in</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "n_a_wins".</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>    n_a_wins <span class="op">=</span> np.<span class="bu">sum</span>(wins <span class="op">==</span> <span class="st">'A'</span>)</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep track of the result in results.</span></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> n_a_wins</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># End the trial, go back and repeat until all 10000 trials are complete.</span></span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine how often we got 9 or more "wins" for ration A.</span></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>high <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&gt;=</span> <span class="dv">9</span>)</span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine how often we got 3 or fewer "wins" for ration A.</span></span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a>low <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&lt;=</span> <span class="dv">3</span>)</span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the two together</span></span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> high <span class="op">+</span> low</span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a><span class="co">#  Convert to a proportion</span></span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_iters</span>
+<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result.</span></span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion &gt;=9 or &lt;=3:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Proportion &gt;=9 or &lt;=3: 0.1445</code></pre>
+<pre><code>Proportion &gt;=9 or &lt;=3: 0.1391</code></pre>
 </div>
 </div>
 <p>End of <code>pig_pairs</code> notebook</p>
@@ -1239,10 +1435,10 @@ Table&nbsp;23.3: Results from fifty simulation trials of the paired pigs problem
 <!---
 End of notebook
 -->
-<p>Notice how we proceeded in examples <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.10</span></a> and <a href="#sec-pig-pairs" class="quarto-xref"><span>Section 23.2.1</span></a>. The data were originally quantitative — weight gains in pounds for each pig. But for simplicity we classified the data into simpler counted-data formats. The first format (<a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.10</span></a>) was a rank order, from highest to lowest. The second format (<a href="#sec-pig-pairs" class="quarto-xref"><span>Section 23.2.1</span></a>) was simply higher-lower, obtained by randomly pairing the observations (using alphabetical letter, or pig’s stall number, or whatever was the cause of the order in which the data were presented to be random). Classifying the data in either of these ways loses some information and makes the subsequent tests somewhat cruder than more refined analysis could provide (as we shall see in the following chapter), but the loss of efficiency is not crucial in many such cases. We shall see how to deal directly with the quantitative data in <a href="testing_measured.html" class="quarto-xref"><span>Chapter 24</span></a>.</p>
+<p>Notice how we proceeded in examples <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.10</span></a> and <a href="#sec-pig-pairs" class="quarto-xref"><span>Section 23.3.1</span></a>. The data were originally quantitative — weight gains in pounds for each pig. But for simplicity we classified the data into simpler counted-data formats. The first format (<a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.10</span></a>) was a rank order, from highest to lowest. The second format (<a href="#sec-pig-pairs" class="quarto-xref"><span>Section 23.3.1</span></a>) was simply higher-lower, obtained by randomly pairing the observations (using alphabetical letter, or pig’s stall number, or whatever was the cause of the order in which the data were presented to be random). Classifying the data in either of these ways loses some information and makes the subsequent tests somewhat cruder than more refined analysis could provide (as we shall see in the following chapter), but the loss of efficiency is not crucial in many such cases. We shall see how to deal directly with the quantitative data in <a href="testing_measured.html" class="quarto-xref"><span>Chapter 24</span></a>.</p>
 </section>
-<section id="example-merged-firms-compared-to-two-non-merged-groups" class="level3" data-number="23.2.2">
-<h3 data-number="23.2.2" class="anchored" data-anchor-id="example-merged-firms-compared-to-two-non-merged-groups"><span class="header-section-number">23.2.2</span> Example: merged firms compared to two non-merged groups</h3>
+<section id="example-merged-firms-compared-to-two-non-merged-groups" class="level3" data-number="23.3.2">
+<h3 data-number="23.3.2" class="anchored" data-anchor-id="example-merged-firms-compared-to-two-non-merged-groups"><span class="header-section-number">23.3.2</span> Example: merged firms compared to two non-merged groups</h3>
 <!---
 Example 17-5
 -->
@@ -1799,35 +1995,35 @@ Table&nbsp;23.7: Mean rank of year revenue growth
 </div>
 
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>n_iters <span class="op">=</span> <span class="dv">10_000</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Make array to store results for each trial.</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_iters)</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_iters):</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    ranks <span class="op">=</span> rnd.choice([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], size<span class="op">=</span><span class="dv">33</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    mean_rank <span class="op">=</span> np.mean(ranks)</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> mean_rank</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Mean ranks from random rank sampling'</span>)</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&lt;=</span> <span class="fl">1.48</span>)</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_iters</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion of mean ranks &lt;= 1.48:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>n_iters <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Make array to store results for each trial.</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_iters)</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_iters):</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>    ranks <span class="op">=</span> rnd.choice([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], size<span class="op">=</span><span class="dv">33</span>)</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>    mean_rank <span class="op">=</span> np.mean(ranks)</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> mean_rank</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Mean ranks from random rank sampling'</span>)</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&lt;=</span> <span class="fl">1.48</span>)</span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_iters</span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion of mean ranks &lt;= 1.48:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Proportion of mean ranks &lt;= 1.48: 0.0</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -2120,61 +2316,61 @@ Table&nbsp;23.9: Mean rank of therapy in matched triplets
 <li>Find out how often the minimum average rank for any treatment is as low as 1.48.</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the random number generator</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of trials</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>n_iters <span class="op">=</span> <span class="dv">10_000</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># An empty array to store the trial results.</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_iters)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1 above.</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>bucket <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>n_rows <span class="op">=</span> <span class="dv">33</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials (step 6).</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_iters):</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Prepare arrays to store shuffled row results.</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    t1 <span class="op">=</span> np.zeros(n_rows)</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    t2 <span class="op">=</span> np.zeros(n_rows)</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    t3 <span class="op">=</span> np.zeros(n_rows)</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 3 (for all 33 rows).</span></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row_no <span class="kw">in</span> <span class="bu">range</span>(n_rows):</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 2.</span></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>        shuffled <span class="op">=</span> rnd.permuted(bucket)</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 2 continued.</span></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>        t1[row_no] <span class="op">=</span> shuffled[<span class="dv">0</span>]</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>        t2[row_no] <span class="op">=</span> shuffled[<span class="dv">1</span>]</span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>        t3[row_no] <span class="op">=</span> shuffled[<span class="dv">2</span>]</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 4.</span></span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    m_t1 <span class="op">=</span> np.mean(t1)</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    m_t2 <span class="op">=</span> np.mean(t2)</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    m_t3 <span class="op">=</span> np.mean(t3)</span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 5.</span></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>    means <span class="op">=</span> np.array([m_t1, m_t2, m_t3])</span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>    min_mean <span class="op">=</span> np.<span class="bu">min</span>(means)</span>
-<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> min_mean</span>
-<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">50</span>)</span>
-<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of minimum average rank'</span>)</span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7.</span></span>
-<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&lt;=</span> <span class="fl">1.48</span>)</span>
-<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_iters</span>
-<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion minimum average rank &lt;= 1.48:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set up the random number generator</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the number of trials</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>n_iters <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="co"># An empty array to store the trial results.</span></span>
+<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> np.zeros(n_iters)</span>
+<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1 above.</span></span>
+<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>bucket <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a>n_rows <span class="op">=</span> <span class="dv">33</span></span>
+<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Do 10000 trials (step 6).</span></span>
+<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_iters):</span>
+<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Prepare arrays to store shuffled row results.</span></span>
+<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a>    t1 <span class="op">=</span> np.zeros(n_rows)</span>
+<span id="cb55-22"><a href="#cb55-22" aria-hidden="true" tabindex="-1"></a>    t2 <span class="op">=</span> np.zeros(n_rows)</span>
+<span id="cb55-23"><a href="#cb55-23" aria-hidden="true" tabindex="-1"></a>    t3 <span class="op">=</span> np.zeros(n_rows)</span>
+<span id="cb55-24"><a href="#cb55-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 3 (for all 33 rows).</span></span>
+<span id="cb55-25"><a href="#cb55-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row_no <span class="kw">in</span> <span class="bu">range</span>(n_rows):</span>
+<span id="cb55-26"><a href="#cb55-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 2.</span></span>
+<span id="cb55-27"><a href="#cb55-27" aria-hidden="true" tabindex="-1"></a>        shuffled <span class="op">=</span> rnd.permuted(bucket)</span>
+<span id="cb55-28"><a href="#cb55-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Step 2 continued.</span></span>
+<span id="cb55-29"><a href="#cb55-29" aria-hidden="true" tabindex="-1"></a>        t1[row_no] <span class="op">=</span> shuffled[<span class="dv">0</span>]</span>
+<span id="cb55-30"><a href="#cb55-30" aria-hidden="true" tabindex="-1"></a>        t2[row_no] <span class="op">=</span> shuffled[<span class="dv">1</span>]</span>
+<span id="cb55-31"><a href="#cb55-31" aria-hidden="true" tabindex="-1"></a>        t3[row_no] <span class="op">=</span> shuffled[<span class="dv">2</span>]</span>
+<span id="cb55-32"><a href="#cb55-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 4.</span></span>
+<span id="cb55-33"><a href="#cb55-33" aria-hidden="true" tabindex="-1"></a>    m_t1 <span class="op">=</span> np.mean(t1)</span>
+<span id="cb55-34"><a href="#cb55-34" aria-hidden="true" tabindex="-1"></a>    m_t2 <span class="op">=</span> np.mean(t2)</span>
+<span id="cb55-35"><a href="#cb55-35" aria-hidden="true" tabindex="-1"></a>    m_t3 <span class="op">=</span> np.mean(t3)</span>
+<span id="cb55-36"><a href="#cb55-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Step 5.</span></span>
+<span id="cb55-37"><a href="#cb55-37" aria-hidden="true" tabindex="-1"></a>    means <span class="op">=</span> np.array([m_t1, m_t2, m_t3])</span>
+<span id="cb55-38"><a href="#cb55-38" aria-hidden="true" tabindex="-1"></a>    min_mean <span class="op">=</span> np.<span class="bu">min</span>(means)</span>
+<span id="cb55-39"><a href="#cb55-39" aria-hidden="true" tabindex="-1"></a>    results[i] <span class="op">=</span> min_mean</span>
+<span id="cb55-40"><a href="#cb55-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-41"><a href="#cb55-41" aria-hidden="true" tabindex="-1"></a>plt.hist(results, bins<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb55-42"><a href="#cb55-42" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of minimum average rank'</span>)</span>
+<span id="cb55-43"><a href="#cb55-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-44"><a href="#cb55-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7.</span></span>
+<span id="cb55-45"><a href="#cb55-45" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(results <span class="op">&lt;=</span> <span class="fl">1.48</span>)</span>
+<span id="cb55-46"><a href="#cb55-46" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n_iters</span>
+<span id="cb55-47"><a href="#cb55-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-48"><a href="#cb55-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion minimum average rank &lt;= 1.48:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Proportion minimum average rank &lt;= 1.48: 0.0</code></pre>
+<pre><code>Proportion minimum average rank &lt;= 1.48: 0.0001</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="testing_counts_2_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -2186,8 +2382,8 @@ End of notebook
 <p>An interesting feature of the mergers (or depression treatment) problem is that it would be hard to find a conventional test that would handle this three-way comparison in an efficient manner. Certainly it would be impossible to find a test that does not require formulae and tables that only a talented professional statistician could manage satisfactorily, and even they are not likely to fully understand those formulaic procedures.</p>
 </section>
 </section>
-<section id="technical-note" class="level2" data-number="23.3">
-<h2 data-number="23.3" class="anchored" data-anchor-id="technical-note"><span class="header-section-number">23.3</span> Technical note</h2>
+<section id="technical-note" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="technical-note"><span class="header-section-number">23.4</span> Technical note</h2>
 <p>Some of the tests introduced in this chapter are similar to standard non-parametric rank and sign tests. They differ less in the structure of the test statistic than in the way in which significance is assessed (the comparison is to multiple simulations of a model based on the benchmark hypothesis, rather than to critical values calculated analytically).</p>
 
 
