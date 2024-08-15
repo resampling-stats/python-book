@@ -353,28 +353,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./code_topics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Code topics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -393,7 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a-first-pass-computer-solution-to-the-one-pair-problem" id="toc-a-first-pass-computer-solution-to-the-one-pair-problem" class="nav-link" data-scroll-target="#a-first-pass-computer-solution-to-the-one-pair-problem"><span class="header-section-number">11.4.1</span> A first-pass computer solution to the one-pair problem</a></li>
   </ul></li>
   <li><a href="#finding-exactly-one-pair-using-code" id="toc-finding-exactly-one-pair-using-code" class="nav-link" data-scroll-target="#finding-exactly-one-pair-using-code"><span class="header-section-number">11.5</span> Finding exactly one pair using code</a></li>
-  <li><a href="#finding-number-of-repeats-using" id="toc-finding-number-of-repeats-using" class="nav-link" data-scroll-target="#finding-number-of-repeats-using"><span class="header-section-number">11.6</span> Finding number of repeats using <code>np.bincount</code></a></li>
+  <li><a href="#sec-bincount-tabulate" id="toc-sec-bincount-tabulate" class="nav-link" data-scroll-target="#sec-bincount-tabulate"><span class="header-section-number">11.6</span> Finding number of repeats using <code>np.bincount</code></a></li>
   <li><a href="#looking-for-hands-with-exactly-one-pair" id="toc-looking-for-hands-with-exactly-one-pair" class="nav-link" data-scroll-target="#looking-for-hands-with-exactly-one-pair"><span class="header-section-number">11.7</span> Looking for hands with exactly one pair</a></li>
   <li><a href="#two-more-tntroductory-poker-problems" id="toc-two-more-tntroductory-poker-problems" class="nav-link" data-scroll-target="#two-more-tntroductory-poker-problems"><span class="header-section-number">11.8</span> Two more tntroductory poker problems</a></li>
   <li><a href="#the-concepts-of-replacement-and-non-replacement" id="toc-the-concepts-of-replacement-and-non-replacement" class="nav-link" data-scroll-target="#the-concepts-of-replacement-and-non-replacement"><span class="header-section-number">11.9</span> The concepts of replacement and non-replacement</a></li>
@@ -1086,8 +1103,8 @@ Table&nbsp;11.2: Results of 25 hands using random numbers
 <li>If the number of pairs is exactly one, label the <code>hand</code> as “Yes”, otherwise label it as “No”.</li>
 </ul>
 </section>
-<section id="finding-number-of-repeats-using" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="finding-number-of-repeats-using"><span class="header-section-number">11.6</span> Finding number of repeats using <code>np.bincount</code></h2>
+<section id="sec-bincount-tabulate" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="sec-bincount-tabulate"><span class="header-section-number">11.6</span> Finding number of repeats using <code>np.bincount</code></h2>
 <p>Consider the following 5-card “hand” of values:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>hand <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

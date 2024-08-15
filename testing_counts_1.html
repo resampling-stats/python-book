@@ -375,28 +375,45 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./code_topics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Code topics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -420,8 +437,8 @@ div.csl-indent {
   <li><a href="#sec-cancer-cures" id="toc-sec-cancer-cures" class="nav-link" data-scroll-target="#sec-cancer-cures"><span class="header-section-number">21.2.5</span> Example: Comparison of possible cancer cure to placebo</a></li>
   <li><a href="#example-did-attitudes-about-marijuana-change" id="toc-example-did-attitudes-about-marijuana-change" class="nav-link" data-scroll-target="#example-did-attitudes-about-marijuana-change"><span class="header-section-number">21.2.6</span> Example: Did attitudes about marijuana change?</a></li>
   <li><a href="#sec-framingham-example" id="toc-sec-framingham-example" class="nav-link" data-scroll-target="#sec-framingham-example"><span class="header-section-number">21.2.7</span> Example: Infarction and cholesterol: Framingham study</a></li>
-  <li><a href="#sec-pig-rations" id="toc-sec-pig-rations" class="nav-link" data-scroll-target="#sec-pig-rations"><span class="header-section-number">21.2.10</span> Example: Is one pig ration more effective than the other?</a></li>
-  <li><a href="#example-do-planet-densities-differ" id="toc-example-do-planet-densities-differ" class="nav-link" data-scroll-target="#example-do-planet-densities-differ"><span class="header-section-number">21.2.11</span> Example: Do planet densities differ?</a></li>
+  <li><a href="#sec-pig-rations" id="toc-sec-pig-rations" class="nav-link" data-scroll-target="#sec-pig-rations"><span class="header-section-number">21.2.8</span> Example: Is one pig ration more effective than the other?</a></li>
+  <li><a href="#example-do-planet-densities-differ" id="toc-example-do-planet-densities-differ" class="nav-link" data-scroll-target="#example-do-planet-densities-differ"><span class="header-section-number">21.2.9</span> Example: Do planet densities differ?</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">21.3</span> Conclusion</a></li>
   </ul>
@@ -1077,7 +1094,17 @@ Table&nbsp;21.2: Results from 20 random trials for contract poll problem
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10_000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="python">
-<p>Notice the line above: <code>n = 10_000</code>. This is an alternative way of writing the familiar <code>n = 10000</code>. Python allows underscores when we type an integer; it will treat them as decoration, and ignore them in resolving the number we intend. This means that all these are equivalent to Python:</p>
+<div id="nte-integer-underscores" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note&nbsp;21.1: Underscores in Python integers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice the line above: <code>n = 10_000</code>. This is an alternative way of writing the familiar <code>n = 10000</code>. Python allows underscores among the digits when we type an integer — it will treat them as decoration, and ignore them in resolving the number we intend. This means that all these are equivalent to Python:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1106,6 +1133,14 @@ Table&nbsp;21.2: Results from 20 random trials for contract poll problem
 </div>
 <p>The underscores make no difference to the resulting number in Python; it is up to us whether we use them. They can make it easier for us humans to read the value.</p>
 </div>
+</div>
+<!---
+End of callout note.
+-->
+</div>
+<!---
+End of Python block.
+-->
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make an array of integers to store the "Yes" counts.</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>yeses <span class="op">=</span> np.zeros(n, dtype<span class="op">=</span><span class="bu">int</span>)</span>
@@ -1159,40 +1194,78 @@ End of contract_poll notebook.
 <li>Repeat step 2 1500 times and count the number of “Trump”s. If 840 or greater, record “Y”; otherwise, record “N.”</li>
 <li>Repeat steps 3 and 4 perhaps 1000 or 10,000 times, and count the number of “Y”s. The outcome estimates the probability that 840 or more Trump choices would occur if the universe is “really” half or more in favor of Clinton.</li>
 </ol>
-<p>This procedure may be done as follows with Python.</p>
+<p>Before we come to the simulation, we need some new code to tune our histograms (see <a href="probability_theory_3.html#sec-on-histograms" class="quarto-xref"><span>Section 12.16.2</span></a>). We are going to set the bins for the histogram using advanced ranges.</p>
+<div id="nte-advanced-ranges" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note&nbsp;21.2: Advanced ranges
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>So far (<a href="resampling_with_code.html#sec-ranges" class="quarto-xref"><span>Section 5.9</span></a>) we have used <span class="python"><code>np.arange</code></span> to make regular sequences of integers. For example, to make an array of the sequential integers from 3 through 12, we could use:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of repeats we will run.</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10_000</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Make an integer array to store the counts.</span></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>trumps <span class="op">=</span> np.zeros(n, dtype<span class="op">=</span><span class="bu">int</span>)</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    votes <span class="op">=</span> rnd.choice([<span class="st">'Trump'</span>, <span class="st">'Clinton'</span>], size<span class="op">=</span><span class="dv">1500</span>)</span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    trumps[i] <span class="op">=</span> np.<span class="bu">sum</span>(votes <span class="op">==</span> <span class="st">'Trump'</span>)</span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer bins from 670 through 830 in steps of 5.</span></span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>plt.hist(trumps, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">670</span>, <span class="dv">831</span>, <span class="dv">5</span>))</span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Trump voters of 1500 in null-world simulation'</span>)</span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co"># How often &gt;= 840 Trump votes in random draw?</span></span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(trumps <span class="op">&gt;=</span> <span class="dv">840</span>)</span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="co"># As a proportion of simulated resamples.</span></span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n</span>
-<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion voting for Trump:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">3</span>, <span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([ 3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</code></pre>
+</div>
+</div>
+<p>Sometimes we want to be able to specify a step size — the gap between the numbers in the sequence. In the sequence above, the gap (step) between each number is 1. We might want some other step size. To create a sequence of integers from 3 through 33 in steps of 5, we could write:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">3</span>, <span class="dv">34</span>, step<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([ 3,  8, 13, 18, 23, 28, 33])</code></pre>
+</div>
+</div>
+<p>Read this as “give me the sequence (range) of numbers, starting at 3, up to <span class="python">but not including 34</span>, in steps of 5.</p>
+<p>So far we have used integers as the start, stop and step values, but we could also use floating point values. For example, to get a sequence of values starting at 0.1 up to and including 0.9, in steps of 0.2:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="fl">0.1</span>, <span class="dv">1</span>, step<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([0.1, 0.3, 0.5, 0.7, 0.9])</code></pre>
+</div>
+</div>
+</div>
+</div>
+<!---
+End of callout note.
+-->
+<p>With that background, we can proceed with the Python implementation of the simulation procedure.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of repeats we will run.</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Make an integer array to store the counts.</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>trumps <span class="op">=</span> np.zeros(n, dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    votes <span class="op">=</span> rnd.choice([<span class="st">'Trump'</span>, <span class="st">'Clinton'</span>], size<span class="op">=</span><span class="dv">1500</span>)</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    trumps[i] <span class="op">=</span> np.<span class="bu">sum</span>(votes <span class="op">==</span> <span class="st">'Trump'</span>)</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer bins from 670 through 830 in steps of 5.</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>plt.hist(trumps, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">670</span>, <span class="dv">831</span>, <span class="dv">5</span>))</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Trump voters of 1500 in null-world simulation'</span>)</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="co"># How often &gt;= 840 Trump votes in random draw?</span></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(trumps <span class="op">&gt;=</span> <span class="dv">840</span>)</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="co"># As a proportion of simulated resamples.</span></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion voting for Trump:'</span>, kk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Proportion voting for Trump: 0.0</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_counts_1_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="testing_counts_1_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1435,44 +1508,44 @@ Table&nbsp;21.3: Results from 25 random trials for pill/placebo
 <p>Given that in the test 7 of 12 patients overall got well, the benchmark hypothesis assumes 7/12 to be the chances of any random patient being cured. We generate two similar samples of 6 patients, both taken from the same universe composed of the combined samples — the bootstrap procedure. We count (<code>sum</code>) the number who are “get well” in each sample. Then we subtract the number who got well in the “pill” sample from the number who got well in the “no-pill” sample. We record the resulting difference for each trial in the variable <code>pill_betters</code>.</p>
 <p>In the actual test, 3 more patients got well in the sample given the pill than in the sample given the placebo. We therefore count how many of the trials yield results where the difference between the sample given the pill and the sample not given the pill was greater than 2 (equal to or greater than 3). This result is the probability that the results derived from the actual test would be obtained from random samples drawn from a population which has a constant cure rate, pill or no pill.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The bucket with the pieces of paper.</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>options <span class="op">=</span> np.repeat([<span class="st">'get well'</span>, <span class="st">'not well'</span>], [<span class="dv">7</span>, <span class="dv">5</span>])</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10_000</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>pill_betters <span class="op">=</span> np.zeros(n, dtype<span class="op">=</span><span class="bu">int</span>)</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>    pill <span class="op">=</span> rnd.choice(options, size<span class="op">=</span><span class="dv">6</span>)</span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>    pill_cures <span class="op">=</span> np.<span class="bu">sum</span>(pill <span class="op">==</span> <span class="st">'get well'</span>)</span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>    placebo <span class="op">=</span> rnd.choice(options, size<span class="op">=</span><span class="dv">6</span>)</span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>    placebo_cures <span class="op">=</span> np.<span class="bu">sum</span>(placebo <span class="op">==</span> <span class="st">'get well'</span>)</span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>    pill_betters[i] <span class="op">=</span> pill_cures <span class="op">-</span> placebo_cures</span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>plt.hist(pill_betters, bins<span class="op">=</span><span class="bu">range</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">7</span>))</span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of extra cures pill vs placebo in null universe'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>rnd <span class="op">=</span> np.random.default_rng()</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The bucket with the pieces of paper.</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>options <span class="op">=</span> np.repeat([<span class="st">'get well'</span>, <span class="st">'not well'</span>], [<span class="dv">7</span>, <span class="dv">5</span>])</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10_000</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>pill_betters <span class="op">=</span> np.zeros(n, dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    pill <span class="op">=</span> rnd.choice(options, size<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    pill_cures <span class="op">=</span> np.<span class="bu">sum</span>(pill <span class="op">==</span> <span class="st">'get well'</span>)</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>    placebo <span class="op">=</span> rnd.choice(options, size<span class="op">=</span><span class="dv">6</span>)</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>    placebo_cures <span class="op">=</span> np.<span class="bu">sum</span>(placebo <span class="op">==</span> <span class="st">'get well'</span>)</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>    pill_betters[i] <span class="op">=</span> pill_cures <span class="op">-</span> placebo_cures</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>plt.hist(pill_betters, bins<span class="op">=</span><span class="bu">range</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">7</span>))</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of extra cures pill vs placebo in null universe'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="testing_counts_1_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<p><img src="testing_counts_1_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Recall our actual observed results: In the medicine group, three more patients were cured than in the placebo group. From the histogram, we see that in only about 8 percent of the simulated trials did the “medicine” group do as well or better. The results seem to suggest — but by no means conclusively — that the medicine’s performance is not due to chance. Further study would probably be warranted. The following commands added to the above program will calculate this proportion directly:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many trials gave an advantage of 3 or greater to the pill?</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(pill_betters <span class="op">&gt;=</span> <span class="dv">3</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion.</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result.</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion with advantage of 3 or more for pill:'</span>,</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(kk, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many trials gave an advantage of 3 or greater to the pill?</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">sum</span>(pill_betters <span class="op">&gt;=</span> <span class="dv">3</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a proportion.</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>kk <span class="op">=</span> k <span class="op">/</span> n</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the result.</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Proportion with advantage of 3 or more for pill:'</span>,</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>      np.<span class="bu">round</span>(kk, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Proportion with advantage of 3 or more for pill: 0.07</code></pre>
 </div>
@@ -1550,35 +1623,6 @@ Table&nbsp;21.4: Development of Myocardial Infarction in Men Aged 35-44 After 16
 <a class="interact-button" href="./interact/lab/index.html?path=framingham_hearts.ipynb">Interact</a>
 </div>
 
-<p>Before come to the simulation, we need some new code to tune our histograms (see <a href="probability_theory_3.html#sec-on-histograms" class="quarto-xref"><span>Section 12.16.2</span></a>). We are going to set the bins for the histogram using advanced ranges.</p>
-<section id="sec-more-on-ranges" class="level3" data-number="21.2.8">
-<h3 data-number="21.2.8" class="anchored" data-anchor-id="sec-more-on-ranges"><span class="header-section-number">21.2.8</span> Advanced ranges</h3>
-<p>So far (<a href="resampling_with_code.html#sec-ranges" class="quarto-xref"><span>Section 5.9</span></a>) we have used <span class="python"><code>np.arange</code></span> to make regular sequences of integers. For example, to make an array of the sequential integers from 3 through 12, we could use:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">3</span>, <span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>array([ 3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</code></pre>
-</div>
-</div>
-<p>Sometimes we want to be able to specify a step size — the gap between the numbers in the sequence. In the sequence above, the gap (step) between each number is 1. We might want some other step size. To create a sequence of integers from 3 through 33 in steps of 5, we could write:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">3</span>, <span class="dv">34</span>, step<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>array([ 3,  8, 13, 18, 23, 28, 33])</code></pre>
-</div>
-</div>
-<p>Read this as “give me the sequence (range) of numbers, starting at 3, up to <span class="python">but not including 34</span>, in steps of 5.</p>
-<p>So far we have used integers as the start, stop and step values, but we could also use floating point values. For example, to get a sequence of values starting at 0.1 up to and including 0.9, in steps of 0.2:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="fl">0.1</span>, <span class="dv">1</span>, step<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>array([0.1, 0.3, 0.5, 0.7, 0.9])</code></pre>
-</div>
-</div>
-</section>
-<section id="simulation-for-infarction-and-cholesterol" class="level3" data-number="21.2.9">
-<h3 data-number="21.2.9" class="anchored" data-anchor-id="simulation-for-infarction-and-cholesterol"><span class="header-section-number">21.2.9</span> Simulation for infarction and cholesterol</h3>
-<p>With that background, we can proceed with the simulation.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1627,7 +1671,6 @@ Table&nbsp;21.4: Development of Myocardial Infarction in Men Aged 35-44 After 16
 </div>
 <p>The results of the test using this program may be seen in the histogram. We find — perhaps surprisingly — that a difference as large as observed would occur by chance around 10 percent of the time. (If we were not guided by the theoretical expectation that high serum cholesterol produces heart disease, we might include the 10 percent difference going in the other direction, giving a 20 percent chance). Even a ten percent chance is sufficient to call into question the conclusion that high serum cholesterol is dangerous. At a minimum, this statistical result should call for more research before taking any strong action clinically or otherwise.</p>
 <p>End of <code>framingham_hearts</code> notebook</p>
-</section>
 </div>
 <!---
 End of Framingham notebook.
@@ -1637,8 +1680,8 @@ End of Framingham notebook.
 <p>Someone may ask: Why do a resampling test when you can use a standard device such as a z or t test? The great advantage of resampling is that it avoids using the wrong method. The researcher is more likely to arrive at sound conclusions with resampling because s/he can understand what s/he is doing, instead of blindly grabbing a formula which may be in error.</p>
 <p>The textbook from which the problem is drawn is an excellent one; the difficulty of its presentation is an inescapable consequence of the formulaic approach to probability and statistics. The body of complex algebra and tables that only a rare expert understands down to the foundations constitutes an impenetrable wall to understanding. Yet without such understanding, there can be only rote practice, which leads to frustration and error.</p>
 </section>
-<section id="sec-pig-rations" class="level3" data-number="21.2.10">
-<h3 data-number="21.2.10" class="anchored" data-anchor-id="sec-pig-rations"><span class="header-section-number">21.2.10</span> Example: Is one pig ration more effective than the other?</h3>
+<section id="sec-pig-rations" class="level3" data-number="21.2.8">
+<h3 data-number="21.2.8" class="anchored" data-anchor-id="sec-pig-rations"><span class="header-section-number">21.2.8</span> Example: Is one pig ration more effective than the other?</h3>
 <p><strong>Testing For a Difference in Means With a Two-by-Two Classification</strong>.</p>
 <p>Each of two new types of ration is fed to twelve pigs. A farmer wants to know whether ration A or ration B is better.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The weight gains in pounds for pigs fed on rations A and B are:</p>
 <p>A: 31, 34, 29, 26, 32, 35, 38, 34, 31, 29, 32, 31</p>
@@ -1908,8 +1951,8 @@ Table&nbsp;21.5: Results from 25 random trials for pig rations
 End of pig-ration notebook.
 -->
 </section>
-<section id="example-do-planet-densities-differ" class="level3" data-number="21.2.11">
-<h3 data-number="21.2.11" class="anchored" data-anchor-id="example-do-planet-densities-differ"><span class="header-section-number">21.2.11</span> Example: Do planet densities differ?</h3>
+<section id="example-do-planet-densities-differ" class="level3" data-number="21.2.9">
+<h3 data-number="21.2.9" class="anchored" data-anchor-id="example-do-planet-densities-differ"><span class="header-section-number">21.2.9</span> Example: Do planet densities differ?</h3>
 <p><strong>Consider the five planets known to the ancient world.</strong></p>
 <p>Mosteller and Rourke <span class="citation" data-cites="mosteller1973sturdy">(<a href="references.html#ref-mosteller1973sturdy" role="doc-biblioref">1973, 17–19</a>)</span> ask us to compare the densities of the three planets <em>farther</em> from the sun than is the earth (Mars, density 0.71; Jupiter, 0.24; and Saturn, 0.12) against the densities of the planets <em>closer</em> to the sun than is the earth (Mercury, 0.68; Venus, 0.94).</p>
 <p>The average density of the distant planets is .357, of the closer planets is .81. Is this difference (.353) statistically surprising, or is it likely to occur in a chance ordering of these planets?</p>

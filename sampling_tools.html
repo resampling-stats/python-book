@@ -382,28 +382,45 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./code_topics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Code topics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -451,8 +468,8 @@ window.Quarto = {
 <a class="interact-button" href="./interact/lab/index.html?path=sampling_tools.ipynb">Interact</a>
 </div>
 
-<section id="samples-and-labels" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="samples-and-labels"><span class="header-section-number">7.2</span> Samples and labels</h2>
+<section id="samples-and-labels-and-strings" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="samples-and-labels-and-strings"><span class="header-section-number">7.2</span> Samples and labels and strings</h2>
 <p>Thus far we have used numbers such as 1 and 0 and 10 to represent the elements we are sampling from. For example, in <a href="resampling_with_code2.html" class="quarto-xref"><span>Chapter 6</span></a>, we were simulating the chance of a particular juror being black, given that 26% of the eligible jurors in the county were black. We used <em>integers</em> for that task, where we started with all the integers from 0 through 99, and asked NumPy to select values at random from those integers. When NumPy selected an integer from 0 through 25, we chose to label the resulting simulated juror as black — there are 26 integers in the range 0 through 25, so there is a 26% chance that any one integer will be in that range. If the integer was from 26 through 99, the simulated juror was white (there are 74 integers in the range 26 through 99).</p>
 <p>Here is the process of simulating a single juror, adapted from <a href="resampling_with_code2.html#sec-random-zero-through-ninety-nine" class="quarto-xref"><span>Section 6.3.3</span></a>:</p>
 <div class="cell" data-layout-align="center">
@@ -482,10 +499,11 @@ window.Quarto = {
 </div>
 <p>This all works as we want it to, but it’s just a little bit difficult to remember the coding (less than 26 means “black”, greater than 25 means “white”). We had to use that coding because we committed ourselves to using random numbers to simulate the outcomes.</p>
 <p>However, Python can also store bits of text, called <em>strings</em>. Values that are bits of text can be very useful because the text values can be memorable labels for the entities we are sampling from, in our simulations.</p>
+<p>Before we get to strings, let us consider the <span class="python">different types of value</span> we have seen so far.</p>
+</section>
+<section id="sec-types-values" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="sec-types-values"><span class="header-section-number">7.3</span> Types of values in Python</h2>
 <div class="python">
-<p>Before we get to strings, let us consider the different types of value we have seen so far.</p>
-<section id="types-of-values-in-python" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="types-of-values-in-python"><span class="header-section-number">7.3</span> Types of values in Python</h2>
 <p>You have already come across the idea that Python values can be integers (positive or negative whole numbers), like this:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">10</span></span>
@@ -501,7 +519,7 @@ window.Quarto = {
 <pre><code>&lt;class 'int'&gt;</code></pre>
 </div>
 </div>
-<p>As you may have noticed, Python can also have <em>floating point</em> values. These are values with a decimal point — so numbers that do not have to be integers, but can be any value between the integers. These floating points values are of type <code>float</code>:</p>
+<p>Python can also have <em>floating point</em> values. These are values with a decimal point — numbers that do not have to be integers, but also can be any value between the integers. These floating point values are of type <code>float</code>:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="fl">10.1</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -509,8 +527,8 @@ window.Quarto = {
 <pre><code>&lt;class 'float'&gt;</code></pre>
 </div>
 </div>
-<section id="numpy-arrays" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="numpy-arrays"><span class="header-section-number">7.3.1</span> Numpy arrays</h3>
+<section id="sec-arrays" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="sec-arrays"><span class="header-section-number">7.3.1</span> Numpy arrays</h3>
 <p>You have also seen that Numpy contains another type, the <em>array</em>. An array is a value that contains a sequence of values. For example, here is an array of integers:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">99</span>, <span class="dv">4</span>])</span>
@@ -602,12 +620,14 @@ window.Quarto = {
 </div>
 </div>
 <p>Lists are like arrays in that they are values that contain values, but they are unlike arrays in various ways — that we will not go into now. We often use lists to construct sequences into lists to turn them into arrays. For our purposes, and particularly for our calculations, arrays are much more useful and efficient than lists.</p>
+</section>
+</div>
 <!---
 End of Python section
 -->
-</section>
-</section>
-</div>
+<!---
+End of R section.
+-->
 </section>
 <section id="sec-intro-to-strings" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="sec-intro-to-strings"><span class="header-section-number">7.4</span> String values</h2>
@@ -937,13 +957,13 @@ Using the <code>size</code> argument to <code>rnd.choice</code>
        'white', 'white', 'white', 'white', 'white'], dtype='&lt;U5')</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div id="nte-eol-comments" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Comments at the end of lines
+Note&nbsp;7.1: Comments at the end of lines
 </div>
 </div>
 <div class="callout-body-container callout-body">

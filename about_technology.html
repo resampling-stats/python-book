@@ -353,28 +353,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./code_topics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Code topics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -388,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#python-and-its-packages" id="toc-python-and-its-packages" class="nav-link active" data-scroll-target="#python-and-its-packages"><span class="header-section-number">4.1</span> Python and its packages</a></li>
   <li><a href="#the-environment" id="toc-the-environment" class="nav-link" data-scroll-target="#the-environment"><span class="header-section-number">4.2</span> The environment</a></li>
   <li><a href="#getting-started-with-the-notebook" id="toc-getting-started-with-the-notebook" class="nav-link" data-scroll-target="#getting-started-with-the-notebook"><span class="header-section-number">4.3</span> Getting started with the notebook</a></li>
-  <li><a href="#sec-running-own-computer" id="toc-sec-running-own-computer" class="nav-link" data-scroll-target="#sec-running-own-computer"><span class="header-section-number">4.8</span> Running the code on your own computer</a></li>
+  <li><a href="#sec-running-own-computer" id="toc-sec-running-own-computer" class="nav-link" data-scroll-target="#sec-running-own-computer"><span class="header-section-number">4.9</span> Running the code on your own computer</a></li>
   </ul>
 </nav>
     </div>
@@ -430,7 +447,7 @@ Using Python on the web and on your computer
 </div>
 <div class="callout-body-container callout-body">
 <p>In this chapter, we concentrate on the technology we use for the interactive version of the book. The interactive version allows you to run Python code as interactive <em>notebooks</em> in your web browser.</p>
-<p>Either now, or later, you should also consider running the code on your own computer — see <a href="#sec-running-own-computer" class="quarto-xref"><span>Section 4.8</span></a>.</p>
+<p>Either now, or later, you should also consider running the code on your own computer — see <a href="#sec-running-own-computer" class="quarto-xref"><span>Section 4.9</span></a>.</p>
 </div>
 </div>
 <p>The chapter introduces <span class="python">Python and its libraries</span>, and then gives an example to introduce Python and the Jupyter Notebook. If you have not used Python before, the example notebook will get you started. The example also shows how we will be using notebooks through the rest of the book.</p>
@@ -460,7 +477,7 @@ Using Python on the web and on your computer
 </div>
 
 <div class="python">
-<p>The text in this notebook section assumes you have opened the page as an interactive notebook on the web, or on your own computer (see <a href="#sec-running-own-computer" class="quarto-xref"><span>Section 4.8</span></a>).</p>
+<p>The text in this notebook section assumes you have opened the page as an interactive notebook on the web, or on your own computer (see <a href="#sec-running-own-computer" class="quarto-xref"><span>Section 4.9</span></a>).</p>
 </div>
 <p>A notebook can contain blocks of text — like this one — as well as code, and the results from running the code.</p>
 <p>Jupyter Notebooks are made up of <em>cells</em>.</p>
@@ -517,13 +534,13 @@ Using Python on the web and on your computer
 <p>See <a href="https://en.wikipedia.org/wiki/Order_of_operations" class="uri">https://en.wikipedia.org/wiki/Order_of_operations</a> for more detail on the standard rules.</p>
 <p>In the case above the rules tell Python to first calculate <code>9.25 * 0.15</code> (to get <code>1.3875</code>) and then to add the result to <code>10.50</code>, giving <code>11.8875</code>.</p>
 <p>We need to tell Python we want it to do the <em>addition</em> and <em>then</em> the multiplication. We do this with round brackets (parentheses):</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div id="nte-bracket-types" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Note&nbsp;4.1: Three types of brackets in Python
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -553,6 +570,9 @@ Note
 </div>
 </div>
 <p>At this stage we start to feel that we are doing too much typing. Notice that we had to type out <code>10.50 + 9.25</code> twice there. That is a little boring, but it also makes it easier to make mistakes. The more we have to type, the greater the chance we have to make a mistake.</p>
+</section>
+<section id="sec-variables" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="sec-variables"><span class="header-section-number">4.7</span> Variables</h2>
 <p>To make things simpler, we would like to be able to <em>store</em> the result of the calculation <code>10.50 + 9.25</code>, and then re-use this value, to calculate the tip.</p>
 <p>This is the role of <em>variables</em>. A <em>variable</em> is a value with a name.</p>
 <p>Here is a variable:</p>
@@ -639,8 +659,8 @@ Note
 </div>
 <p>Now we are using variables with relevant names, the calculation looks right to our eye. The code expresses the calculation as we mean it: the bill after tip is equal to the bill before the tip, plus the bill before the tip times 0.15.</p>
 </section>
-<section id="and-so-on" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="and-so-on"><span class="header-section-number">4.7</span> And so, on</h2>
+<section id="and-so-on" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="and-so-on"><span class="header-section-number">4.8</span> And so, on</h2>
 <p>Now you have done some practice with the notebook, and with variables, you are ready for a new problem in probability and statistics, in the next chapter.</p>
 <p>End of <code>billies_bill</code> notebook</p>
 </section>
@@ -649,17 +669,17 @@ Note
 End of notebook.
 -->
 </section>
-<section id="sec-running-own-computer" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="sec-running-own-computer"><span class="header-section-number">4.8</span> Running the code on your own computer</h2>
+<section id="sec-running-own-computer" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="sec-running-own-computer"><span class="header-section-number">4.9</span> Running the code on your own computer</h2>
 <p>Many people, including your humble authors, like to be able to run code examples on their own computers. This section explains how you can set up to run the notebooks on your own computer.</p>
 <p>Once you have done this setup, you can use the “download” link that you will see for each notebook, to download the notebook to your machine. From there, you can open the notebook on Jupyter.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div id="nte-basic-download-links" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Download links and data files
+Note&nbsp;4.2: Download links and data files
 </div>
 </div>
 <div class="callout-body-container callout-body">

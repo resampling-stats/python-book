@@ -404,28 +404,45 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./code_topics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Code topics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -1098,7 +1115,7 @@ Table&nbsp;24.2: Results of fifty random samples for measured pig rations
 </div>
 </figure>
 </div>
-<p><a href="#tbl-eg-pigs-measured" class="quarto-xref">Table&nbsp;<span>24.2</span></a> shows fifty trials of which only one (the thirty-ninth) is as “far out” as the observed samples. These data give us an estimate of the probability that, if the two foods come from the same universe, a difference this great or greater would occur just by chance. (Compare this 2 percent estimate with the probability of roughly 1 percent estimated with the conventional <em>t</em> test — a “significance level” of 1 percent.) On the average, the test described in this section yields a significance level as high as such mathematical-probability tests as the <em>t</em> test — that is, it is just as efficient — though the tests described in the examples of <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.10</span></a> and <a href="testing_counts_2.html#sec-pig-pairs" class="quarto-xref"><span>Section 23.3.1</span></a> are likely to be less efficient because they convert measured data to ranked or classified data. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><a href="#tbl-eg-pigs-measured" class="quarto-xref">Table&nbsp;<span>24.2</span></a> shows fifty trials of which only one (the thirty-ninth) is as “far out” as the observed samples. These data give us an estimate of the probability that, if the two foods come from the same universe, a difference this great or greater would occur just by chance. (Compare this 2 percent estimate with the probability of roughly 1 percent estimated with the conventional <em>t</em> test — a “significance level” of 1 percent.) On the average, the test described in this section yields a significance level as high as such mathematical-probability tests as the <em>t</em> test — that is, it is just as efficient — though the tests described in the examples of <a href="testing_counts_1.html#sec-pig-rations" class="quarto-xref"><span>Section 21.2.8</span></a> and <a href="testing_counts_2.html#sec-pig-pairs" class="quarto-xref"><span>Section 23.3.1</span></a> are likely to be less efficient because they convert measured data to ranked or classified data. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>It is <em>not</em> appropriate to say that these data give us an estimate of the probability that the foods “do not come” from the same universe. This is because we can <em>never</em> state a probability that a sample came from a given universe unless the alternatives are fully specified in advance.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>This example also illustrates how the <em>dispersion within samples</em> affects the difficulty of finding out whether the samples differ from each other. For example, the average weight gain for food A was 32 pounds, versus 29 pounds for food B. If <em>all</em> the food A-fed pigs had gained weight within a range of say 29.9 and 30.1 pounds, and if all the food B-fed pigs had gained weight within a range of 28.9 and 29.1 pounds — that is, if the highest weight gain in food B had been lower than the lowest weight gain in food A — then there would be no question that food A is better, and even fewer observations would have made this statistically conclusive. Variation (dispersion) is thus of great importance in statistics and in the social sciences. The larger the dispersion among the observations <em>within</em> the samples, the larger the <em>sample size</em> necessary to make a conclusive comparison between two groups or reliable estimates of summarization statistics. (The dispersion might be measured by the mean absolute deviation (the average absolute difference between the mean and the individual observations, treating both plus and minus differences as positive), the variance (the average <em>squared</em> difference between the mean and the observations), the standard deviation (the square root of the variance), the range (the difference between the smallest and largest observations), or some other device.)</p>
 <!---
@@ -1121,7 +1138,7 @@ Notebook with data file
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>As you saw in <span class="quarto-unresolved-ref">?sec-download-links</span>, the following notebook reads a data file, so the download link points to a <code>.zip</code> file containing the notebook and the data file.</p>
+<p>As you saw in <a href="standard_scores.html#nte-download-links" class="quarto-xref">Note&nbsp;<span>16.1</span></a>, the following notebook reads a data file, so the download link points to a <code>.zip</code> file containing the notebook and the data file.</p>
 </div>
 </div>
 <div class="notebook" name="measured_rations" title="Pig rations via bootstrap">
@@ -2417,7 +2434,7 @@ End of notebook
 </section>
 <section id="exercises" class="level2" data-number="24.3">
 <h2 data-number="24.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">24.3</span> Exercises</h2>
-<p>Solutions for problems may be found in <a href="exercise_solutions.html" class="quarto-xref"><span>Chapter 32</span></a>.</p>
+<p>Solutions for problems may be found in <a href="exercise_solutions.html" class="quarto-xref"><span>Appendix A</span></a>.</p>
 <section id="sec-exr-paired-differences" class="level3" data-number="24.3.1">
 <h3 data-number="24.3.1" class="anchored" data-anchor-id="sec-exr-paired-differences"><span class="header-section-number">24.3.1</span> Exercise: paired differences</h3>
 <p>The data shown in <a href="#tbl-hamilton-scores" class="quarto-xref">Table&nbsp;<span>24.8</span></a> might be data for the outcomes of two different mechanics, showing the length of time until the next overhaul is needed for nine pairs of similar vehicles. Or they could be two readings made by different instruments on the same sample of rock. In fact, they represent data for two successive tests for depression on a version of the Hamilton Depression Scale before and after drug therapy.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
@@ -2518,12 +2535,12 @@ Table&nbsp;24.8: Hamilton Depression Scale Factor IV Values
 <!---
 End of notebook.
 -->
-<p>See <a href="exercise_solutions.html#sec-soln-paired-differences" class="quarto-xref"><span>Section 32.1</span></a> for a solution.</p>
+<p>See <a href="exercise_solutions.html#sec-soln-paired-differences" class="quarto-xref"><span>Section A.1</span></a> for a solution.</p>
 </section>
 <section id="sec-exr-seatbelt-proportions" class="level3" data-number="24.3.2">
 <h3 data-number="24.3.2" class="anchored" data-anchor-id="sec-exr-seatbelt-proportions"><span class="header-section-number">24.3.2</span> Exercise: seatbelt proportions</h3>
 <p>Thirty-six of 72 (.5) taxis surveyed in Pittsburgh had visible seatbelts. Seventy-seven of 129 taxis in Chicago (.597) had visible seatbelts. Calculate a confidence interval for the difference in proportions, estimated at -.097. (Source: Peskun, Peter H., “A New Confidence Interval Method Based on the Normal Approximation for the Difference of Two Binomial Probabilities,” <em>Journal of the American Statistical Association</em> , 6/93 p.&nbsp;656).</p>
-<p>For solution, see <a href="exercise_solutions.html#sec-soln-seatbelt-proportions" class="quarto-xref"><span>Section 32.2</span></a>}</p>
+<p>For solution, see <a href="exercise_solutions.html#sec-soln-seatbelt-proportions" class="quarto-xref"><span>Section A.2</span></a>}</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">

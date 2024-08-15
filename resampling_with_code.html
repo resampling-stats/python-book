@@ -402,28 +402,45 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./code_topics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Code topics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -445,7 +462,7 @@ window.Quarto = {
   <li><a href="#sec-ranges" id="toc-sec-ranges" class="nav-link" data-scroll-target="#sec-ranges"><span class="header-section-number">5.9</span> Ranges</a></li>
   <li><a href="#sec-python-range" id="toc-sec-python-range" class="nav-link" data-scroll-target="#sec-python-range"><span class="header-section-number">5.10</span> <code>range</code> in Python</a></li>
   <li><a href="#sec-random-choice" id="toc-sec-random-choice" class="nav-link" data-scroll-target="#sec-random-choice"><span class="header-section-number">5.11</span> Choosing values at random</a></li>
-  <li><a href="#sec-sampling-arrays" id="toc-sec-sampling-arrays" class="nav-link" data-scroll-target="#sec-sampling-arrays"><span class="header-section-number">5.12</span> Sampling into arrays</a>
+  <li><a href="#sec-sampling-arrays" id="toc-sec-sampling-arrays" class="nav-link" data-scroll-target="#sec-sampling-arrays"><span class="header-section-number">5.12</span> Creating arrays with sampling</a>
   <ul class="collapse">
   <li><a href="#sum-adding-all-the-values" id="toc-sum-adding-all-the-values" class="nav-link" data-scroll-target="#sum-adding-all-the-values"><span class="header-section-number">5.12.1</span> <code>sum</code> — adding all the values</a></li>
   </ul></li>
@@ -949,13 +966,13 @@ More on <code>rnd.choice</code>
 </div>
 <p>Like <span class="python"><code>np.round</code></span> (above), <span class="python"><code>rnd.choice</code></span> is a <em>function</em>.</p>
 <div class="python">
-<div class="callout callout-style-default callout-note callout-titled">
+<div id="nte-functions-methods" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Functions and methods
+Note&nbsp;5.1: Functions and methods
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -996,7 +1013,7 @@ Figure&nbsp;5.6: Example run of the <code>rnd.choice</code> function
 </div>
 </section>
 <section id="sec-sampling-arrays" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="sec-sampling-arrays"><span class="header-section-number">5.12</span> Sampling into arrays</h2>
+<h2 data-number="5.12" class="anchored" data-anchor-id="sec-sampling-arrays"><span class="header-section-number">5.12</span> Creating arrays with sampling</h2>
 <div class="python">
 <p>In the code above, we asked Python to select a single number at random — because that is what <code>rnd.choice</code> does by default.</p>
 <p>In fact, the people who wrote <code>rnd.choice</code>, wrote it to be flexible in the work that it can do. In particular, we can tell <code>rnd.choice</code> to select <em>any number of values</em> at random, by adding a new <em>argument</em> to the function.</p>

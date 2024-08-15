@@ -402,28 +402,45 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Exercise Solutions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./technical_note.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Technical Note to the Professional Reader</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowlegements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Acknowledgements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./code_topics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Code topics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -435,7 +452,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">10.1</span> Introduction</a></li>
-  <li><a href="#selecting-elements-from-s-with-slicing" id="toc-selecting-elements-from-s-with-slicing" class="nav-link" data-scroll-target="#selecting-elements-from-s-with-slicing"><span class="header-section-number">10.2</span> Selecting elements from arrays with slicing</a></li>
+  <li><a href="#sec-slice-indexing" id="toc-sec-slice-indexing" class="nav-link" data-scroll-target="#sec-slice-indexing"><span class="header-section-number">10.2</span> Selecting elements from arrays with slicing</a></li>
   <li><a href="#the-treasure-fleet-recovered" id="toc-the-treasure-fleet-recovered" class="nav-link" data-scroll-target="#the-treasure-fleet-recovered"><span class="header-section-number">10.3</span> The treasure fleet recovered</a></li>
   <li><a href="#back-to-boolean-s" id="toc-back-to-boolean-s" class="nav-link" data-scroll-target="#back-to-boolean-s"><span class="header-section-number">10.4</span> Back to Boolean arrays</a></li>
   <li><a href="#sec-ships-booleans" id="toc-sec-ships-booleans" class="nav-link" data-scroll-target="#sec-ships-booleans"><span class="header-section-number">10.5</span> Boolean arrays and another take on the ships problem</a></li>
@@ -473,8 +490,8 @@ window.Quarto = {
 <p>Before we get down to the business of complex probabilistic problems in the next few chapters, let’s consider a couple of peculiar puzzles. These puzzles allow us to introduce some more of the key tools in Python for Monte Carlo resampling, and show the power of such simulation to help solve, and then reason about, problems in probability.</p>
 <p>But, before we get to the puzzles, we will need some more elements of Python.</p>
 </section>
-<section id="selecting-elements-from-s-with-slicing" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="selecting-elements-from-s-with-slicing"><span class="header-section-number">10.2</span> Selecting elements from arrays with slicing</h2>
+<section id="sec-slice-indexing" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="sec-slice-indexing"><span class="header-section-number">10.2</span> Selecting elements from arrays with slicing</h2>
 <div class="notebook" name="selecting_by_slicing" title="Selecting elements by slicing">
 <p>Start of <code>selecting_by_slicing</code> notebook</p>
 <div class="nb-links">
@@ -834,13 +851,13 @@ Any takers?  Good techniques?   Maybe generated Markdown table with transparent 
 </div>
 </div>
 <div class="python">
-<div class="callout callout-style-default callout-note callout-titled">
+<div id="nte-and-and-and" class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code>&amp;</code> and <code>and</code> in Python
+Note&nbsp;10.1: <code>&amp;</code> and <code>and</code> in Python
 </div>
 </div>
 <div class="callout-body-container callout-body">
