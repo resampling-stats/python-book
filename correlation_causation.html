@@ -544,7 +544,7 @@ window.Quarto = {
 <p>Hypothetical physical-education scores of a group of ten high-school boys are shown in <a href="#tbl-physical-mental" class="quarto-xref">Table&nbsp;<span>29.1</span></a>, ordered from high to low, along with the I.Q. score for each boy. The ranks for each student’s athletic and I.Q. scores are then shown in the third and fourth columns:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-physical-mental" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
+<div id="tbl-physical-mental" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-physical-mental-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;29.1: Hypothetical athletic and I.Q. scores for high school boys
@@ -1174,36 +1174,30 @@ Figure&nbsp;29.4: Given Scores for I.Q. and Athletic Ability
 <h2 data-number="29.4" class="anchored" data-anchor-id="sec-sum-products"><span class="header-section-number">29.4</span> Correlation with sum of products</h2>
 <p>Now let us take advantage of a handy property of numbers. The more closely two sets of numbers match each other in order, the higher the sums of their products. Consider the following arrays of the numbers 1, 2, and 3:</p>
 <p><strong>Columns in matching order</strong></p>
-<p><span class="math display">\[
-\begin{align*}
+<p><span class="math display">\[\begin{align*}
 1 * 1 = 1 \\
 2 * 2 = 4 \\
 3 * 3 = 9 \\
 \\
 \mathrm{SUM} = 14
-\end{align*}
-\]</span></p>
+\end{align*}\]</span></p>
 <p><strong>Columns not in matching order</strong></p>
-<p><span class="math display">\[
-\begin{align*}
+<p><span class="math display">\[\begin{align*}
 1 * 2 = 2 \\
 2 * 3 = 6 \\
 3 * 1 = 3 \\
 \\
 \mathrm{SUM} = 11
-\end{align*}
-\]</span></p>
+\end{align*}\]</span></p>
 <p>I will not attempt a mathematical proof, but the reader is encouraged to try additional combinations to be sure that the highest sum is obtained when the order of the two columns is the same. Likewise, the lowest sum is obtained when the two columns are in perfectly opposite order:</p>
 <p><strong>Columns in opposite order</strong></p>
-<p><span class="math display">\[
-\begin{align*}
+<p><span class="math display">\[\begin{align*}
 1 * 3 = 3 \\
 2 * 3 = 4 \\
 3 * 1 = 3 \\
 \\
 \mathrm{SUM} = 10
-\end{align*}
-\]</span></p>
+\end{align*}\]</span></p>
 <p>Consider the cases in <a href="#tbl-pos-neg-mult" class="quarto-xref">Table&nbsp;<span>29.4</span></a> which are chosen to illustrate a perfect (linear) association between <em>x</em> (Column 1) and <em>y1</em> (Column 2), and also between <em>x</em> (Column 1) and <em>y2</em> (Column 4); the numbers shown in Columns 3 and 5 are those that would be consistent with perfect associations. Notice the sum of the multiples of the <em>x</em> and <em>y</em> values in the two cases. It is either higher (<em>x</em> * <em>y1</em>) or lower (<em>x</em> * <em>y2</em>) than for any other possible way of arranging the <em>y</em>’s. Any other arrangement of the <em>y</em>’s (<em>y3</em>, in Column 6, for example, chosen at random), when multiplied by the <em>x</em>’s in Column 1, (<em>x</em> * <em>y3</em>), produces a sum that falls somewhere between the sums of <em>x</em> * <em>y1</em> and <em>x</em> * <em>y2</em>, as is the case with any other set of <em>y3</em>’s which is not perfectly correlated with the <em>x</em>’s.</p>
 <div id="tbl-pos-neg-mult" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -1453,7 +1447,7 @@ End of notebook
 <p>Efron and Tibshirani <span class="citation" data-cites="efron1993bootstrap">(<a href="references.html#ref-efron1993bootstrap" role="doc-biblioref">1993, 72</a>)</span> show data on the extents to which 164 men a) took the drug prescribed to them (cholestyramine), and b) showed a decrease in total plasma cholesterol. <a href="#tbl-cholestyramine" class="quarto-xref">Table&nbsp;<span>29.5</span></a> shows the first 15 of the values (note that a positive value in the “Decrease in cholesterol” column denotes a decrease in cholesterol, while a negative value denotes an increase.)</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-cholestyramine" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
+<div id="tbl-cholestyramine" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cholestyramine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;29.5: First 15 rows of compliance / blood cholesterol
@@ -2455,7 +2449,7 @@ End of notebook
 <p><a href="#tbl-voter-participation" class="quarto-xref">Table&nbsp;<span>29.11</span></a> shows voter participation rates in the various states in the 1844 presidential election. Should we conclude that there was a negative relationship between the participation rate and the vote spread between the parties in the election? (Adapted from <span class="citation" data-cites="noreen1989computer">(<a href="references.html#ref-noreen1989computer" role="doc-biblioref">Noreen 1989, 20</a>, Table 2-4)</span>:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-voter-participation" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
+<div id="tbl-voter-participation" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-voter-participation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;29.11: Voter Participation In 1844 Presidential Election
@@ -2671,7 +2665,7 @@ End of notebook.
 <p>All the other things equal, an increase in a country’s money supply is inflationary and should have a negative impact on the exchange rate for the country’s currency. The data in the following table (<a href="#tbl-exchange" class="quarto-xref">Table&nbsp;<span>29.12</span></a>) were computed using data from tables in the 1983/1984 <em>Statistical Yearbook of the United Nations</em>. The table shows the first 15 rows.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="tbl-exchange" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;" data-quarto-postprocess="true">
+<div id="tbl-exchange" class="lightable-paper lightable-striped lightable-hover quarto-float quarto-figure quarto-figure-center anchored" data-quarto-postprocess="true" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-exchange-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;29.12: % change in exchange rates and money supply 1983-1984
